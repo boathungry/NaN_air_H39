@@ -119,15 +119,16 @@ Main success scenario:
 Alternative flow: 
 
 B KRÖFUR:
-#1--Skrá nýjan verktaka--
-	Actors: Yfirmaður, verktaki
-	Main success scenario: 
-1.	Ef notanda er yfirmaður getur hann valið (ýtt á hnapp) ”Contractor” í valmynd og gerir það
-2.	Notandi velur “Register new contractor” úr valmynd
-3.	Forritið biður notandann að gefa upp (eitt í einu) nafn verktaka (einstaklings eða fyrirtæki), nafn tengiliðs, símanúmer, opnunartíma og staðsetningu
-4.	Forritið birtir upplýsingarnar um nýja verktakann á skjáinn og spyr hvort allt sé í lagi
-5.	Notandi staðfestir það og nýi verktakinn er kominn inn í kerfið
-	Alternative flow: 
+#1
+--Skrá nýjan verktaka--
+Actors: Yfirmaður, verktaki
+Main success scenario: 
+1.Ef notanda er yfirmaður getur hann valið (ýtt á hnapp) ”Contractor” í valmynd og gerir það
+2.Notandi velur “Register new contractor” úr valmynd
+3.Forritið biður notandann að gefa upp (eitt í einu) nafn verktaka (einstaklings eða fyrirtæki), nafn tengiliðs, símanúmer, opnunartíma og staðsetningu
+4.Forritið birtir upplýsingarnar um nýja verktakann á skjáinn og spyr hvort allt sé í lagi
+5.Notandi staðfestir það og nýi verktakinn er kominn inn í kerfið
+Alternative flow: 
 3a. Notandinn getur hætt við hvenær sem er. Þá fer forritið aftur í valmynd í 2.
 5a – 1. Notandinn svarar neitandi
 5a – 2. Forritið spyr hverju notandinn vill breyta
