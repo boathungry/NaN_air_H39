@@ -1,39 +1,57 @@
 A-KRÖFUR:
 
+#1
 --Skrá nýjan starfsmann--
 
+#2
 --Breyta upplýsingum um starfsmann--
 
+#3
 --Fá lista af starfsmönnum--
 
+#4
 --Leita að starfsmanni--
 
+#5
 --Skrá nýjan áfangastað--
 
+#6
 --Breyta upplýsingum um áfangastað--
 
+#7
 --Fá lista af áfangastöðum--
 
+#8
 --Leita að áfangastað--
 
+#9
 --Skrá nýja fasteign--
 
+#10
 --Breyta upplýsingum um fasteign--
 
+#11
 --Fá lista af fasteignum--
 
+#12
 --Leita að fasteign--
 
+#13
 --Búa til verkbeiðni--
 
+#14
 --Skrá viðhaldsskýrslu--
 
+#15
 --Samþykkja viðhaldsskýrslu--
 
+#15
 --Breyta viðhaldsskýrslu--
 
+#16
 --Merkja verkbeiðni sem tilbúna fyrir lokun--
 
+#17
 --Sjá verkbeiðnir og skýrslur fyrir fasteign--
 
 B KRÖFUR:
