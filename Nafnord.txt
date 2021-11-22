@@ -1,0 +1,19 @@
+#Yfirmaður
+#starfsmaður
+#Kennitala
+#verkbeiðni
+#verkskýrslur
+#leita
+#Fasteignir
+#Staðsetning(áfangastaður)
+#Kennitala
+#Verktaki
+#Fasteignanúmer
+#Forgangsröðun
+#Endurtekin verkefni
+#viðhaldsskýrsla
+#Vinnuplan
+#Dagatal?
+#viðhaldsverk
+#afgreiðsla
+#yfirlit
