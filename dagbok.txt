@@ -1,0 +1,13 @@
+NaN air hópverkefni 2021
+Hópur 39
+Dagbók
+#########################
+
+--22.11.2021--
+Morgunfundur: Byrjuðum á að kynna okkur og plana hvernig við myndum byrja. Ákváðum að byrja á því að gera git repository,
+búa til dagbókina og velja verkefnastjóra. Eftir það ætlum við svo að byrja á nafnorðagreiningu.
+-Þór
+
+Eftir daginn: 
+
+--23.11.2021--
