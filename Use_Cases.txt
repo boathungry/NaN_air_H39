@@ -2,57 +2,111 @@ A-KRÖFUR:
 
 #1
 --Skrá nýjan starfsmann--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 #2
 --Breyta upplýsingum um starfsmann--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 #3
 --Fá lista af starfsmönnum--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 #4
 --Leita að starfsmanni--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 #5
 --Skrá nýjan áfangastað--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 #6
 --Breyta upplýsingum um áfangastað--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 #7
 --Fá lista af áfangastöðum--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 #8
 --Leita að áfangastað--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 #9
 --Skrá nýja fasteign--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 #10
 --Breyta upplýsingum um fasteign--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 #11
 --Fá lista af fasteignum--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 #12
 --Leita að fasteign--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 #13
 --Búa til verkbeiðni--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 #14
 --Skrá viðhaldsskýrslu--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 #15
 --Samþykkja viðhaldsskýrslu--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 #15
 --Breyta viðhaldsskýrslu--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 #16
 --Merkja verkbeiðni sem tilbúna fyrir lokun--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 #17
 --Sjá verkbeiðnir og skýrslur fyrir fasteign--
+Actors: 
+Main success scenario: 
+Alternative flow: 
 
 B KRÖFUR:
 
