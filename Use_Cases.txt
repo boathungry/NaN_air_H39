@@ -2,13 +2,23 @@ A-KRÖFUR:
 
 #1
 --Skrá nýjan starfsmann--
-Actors: 
+Actors: Yfirmaður, Starfsmaður
 Main success scenario: 
+1. Ef notandi er yfirmaður getur hann valið 'Staff' í valmynd og gerir það
+2. Notandi velur 'Register new staff member' úr valmynd
+3. Forritið biður notandann að gefa upp (eitt í einu) nafn, kennitölu, heimilisfang, heimasíma, GSM-síma, netfang og á hvaða áfangastað viðkomandi starfar
+4. Forritið birtir upplýsingarnar um nýja starfsmanninn á skjánum og spyr hvort allt sé í lagi
+5. Notandinn staðfestir það og nýi starfsmaðurinn er kominn inn í kerfið.
 Alternative flow: 
+3a. Notandinn getur hvenær sem er hætt við. Þá fer forritið aftur í valmyndina í 2.
+5a - 1. Notandinn svarar neitandi
+5a - 2. Forritið spyr hverju notandinn vill breyta
+5a - 3. Notandinn velur það sem hann vill breyta og skrifar það sem á að koma í staðinn
+5a - 4. Upplýsingarnar eru uppfærðar og forritið fer aftur í 4.
 
 #2
 --Breyta upplýsingum um starfsmann--
-Actors: 
+Actors: Yfirmaður, Starfsmaður
 Main success scenario: 
 Alternative flow: 
 
