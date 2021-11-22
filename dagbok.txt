@@ -4,9 +4,13 @@ Dagbók
 #########################
 
 --22.11.2021--
-Morgunfundur: Byrjuðum á að kynna okkur og plana hvernig við myndum byrja. Ákváðum að byrja á því að gera git repository, búa til dagbókina og velja verkefnastjóra. Eftir það ætlum við svo að byrja á nafnorðagreiningu.
+Morgunfundur: Byrjuðum á að kynna okkur og plana hvernig við myndum byrja. Ákváðum að byrja á því að gera git repository, búa til dagbókina og velja verkefnastjóra. Við ákváðum að skiptast á að vera verkefnastjóri daglega og fara í stafrófsröð, þannig að verkefnastjóri dagsins var Hjörleifur.
+Eftir það ætlum við svo að byrja á nafnorðagreiningu, notendahópagreiningu og gera drög að nokkrum notkunartilvikum.
 -Þór
 
 Eftir daginn: 
 
 --23.11.2021--
+Morgunfundur: 
+
+Eftir daginn: 
