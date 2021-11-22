@@ -19,3 +19,4 @@
 #yfirlit
 #Viðhalds áætlun
 #Leitarsíur
+#skráning
