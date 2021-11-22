@@ -18,3 +18,5 @@
 #afgreiðsla
 #yfirlit
 #Viðhalds áætlun
+#Leitarsíur
+#skráning
