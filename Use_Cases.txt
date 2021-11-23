@@ -122,20 +122,22 @@ Alternative flow:
 
 #14
 --Skrá viðhaldsskýrslu--
-Actors: 
+Actors: Starfsmaður, Yfirmaður
 Main success scenario: 
 Alternative flow: 
 
 #15
 --Samþykkja viðhaldsskýrslu--
-Actors: 
+Actors: Yfirmaður
 Main success scenario: 
 Alternative flow: 
 
 #15
 --Breyta viðhaldsskýrslu--
-Actors: 
+Actors: Starfsmaður, Yfirmaður
 Main success scenario: 
+1. 
+2. 
 Alternative flow: 
 
 #16
