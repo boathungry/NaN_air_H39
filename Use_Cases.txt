@@ -403,39 +403,79 @@ Alternative flow:
 3a. Notandi hættir við að vísa í verktaka og velur að fara til baka
 5a. Notandi vill eyða vísun í verktaka svo hann velur „Remove“ takka
 
-
 #7
 --Tilgreina þóknun og setja athugasemdir við verktaka--
-Actors: 
+Actors: Yfirmaður, starfsmaður, verktaki
 Main success scenario: 
+1.	Notandi (yfirmaður eða starfsmaður) skráir viðhaldsskýrslu (sjá notkunartilvik #14 í A-kröfum) ásamt því að vísa í verktaka (sjá notkunartilvik #6 í B-kröfum)
+2.	Þegar vísun í hvern verktaka fyrir sig á sér stað getur notandi valið takkann „Specify the commission“ og gerir hann það
+3.	Forritið biður notanda að slá inn þóknun verktakans sem er valinn og hann gerir það
+4.	Forritið býður upp á að skrifa athugasemd við verktakann og notandi geri það
+5.	Notandi velur hnapp sem staðfestir og vistar upplýsingarnar við þann verktaka og birtir á skjáinn
 Alternative flow: 
+3a. Notandi vill hætta við og fer til baka
+
 
 
 #8
---Kalla fram viðhald verkefnis eftir staðsetningu, dagsetningu eða tímabili--
-Actors: 
+--Kalla fram viðhald verkefnis eftir staðsetningu og dagsetningu eða tímabili--
+Actors: Starfsmaður
 Main success scenario: 
+1.	Ef notandi er starfsmaður getur hann valið „Projects“ í valmynd og gerir það
+2.	Í projects kemur upp listi yfir mögulegar staðsetningar starfsmanns og velur notandi þá staðsetningu sem er næst honum
+3.	Forritið birtir takka sem hægt er að velja á milli dagsetningar eða tímabils (frá-til) og velja þá dagsetningu á dagatali sem notandi vill sjá
+4.	Notandi velur dagsetningu
+5.	Forritið birtir lista yfir verkefni þeirrar dagsetningar sem notandi getur notast við
 Alternative flow: 
+2a - 1. Notandi getur farið til baka hvenær sem hann vill
+2a – 2. Notandi sér ekki sína staðsetningu og getur því valið að skrifa inn sjálfur
+2a – 3. Leitin skilaði engri niðurstöðu svo forritið birtir „No results for {það sem notandi skrifaði inn}“ og fer svo aftur í 2. 
+5a. Engin verkefni eru fyrir þann dag svo forritið birtir „There are no project for the selected date“
 
 
 #9
 --Skrá endurtekin viðhaldsverk--
-Actors: 
+Actors: Starfsmaður
 Main success scenario: 
+1.Ef notandi er starfsmaður og býr til verkbeiðni (sjá notkunartilvik #13 í A-kröfum) birtir forritið upp hnappinn „Repeat the project“ og notandi velur það
+2.Forritið birtir valkostina að endurtaka verkefni daglega, vikulega, mánaðarlega eða daglega frá deginum sem verkbeiðnin er búin til
+3.Notandi velur vikulega og smellir á vista
+4.Vikulega birtir forritið um þá verkbeiðni sem á að vera endurtekin
 Alternative flow: 
+2a. Notandi getur farið til baka hvenær sem er
+3a - 1. Notandi vill breyta vali sínu svo hann smellir á verkbeiðnina og á „breyta“
+3a – 2. Notandi endurtekur þá frá skrefi 2. 
+
 
 
 #10
 --Forgangsraða verkefnum--
-Actors: 
+Actors: Yfirmenn
 Main success scenario: 
+1.Notandi er yfirmaður og fær hann skilaboð í hvert sinn sem ný verkbeiðni hefur verið gerð
+2.Forritið býður honum að merkja mikilvægi verkefnisins með tökkunum „!“, „!!“ og „!!!“ og velur hann hæsta mikilvægi („!!!“)
+3.Notanda býðst að raða mikilvægi í „descending“ eða „ascending“ röð og velur hann „ascending“
+4.Forritið birtir þau verkefni sem skráð eru eftir mikilvægi, þ.e. „!!!“ efst, „!!“ næst og að lokum „!“
 Alternative flow: 
+1a. Notandi vill merkja mikilvægi verkefnis sem er nú þegar klárað og fær því villumeldingu og skilaboðin „This project is already finished, no need to prioritize!“
+2a. Notandi velur að sleppa að merkja mikilvægi og smellir á „Close“
+
 
 
 #11
 --Kalla fram samantektir og yfirlit--
-Actors: 
+Actors: Yfirmaður, starfsmaður
 Main success scenario: 
+1.Ef notandi er yfirmaður eða starfsmaður getur hann valið „Overview“ og gerir það
+2.Forritið birtir þá upp dagatal og notanda gefst að velja tímabil (frá-til) og velur notandi tímabil
+3.Forritið birtir valmynd þar sem hægt er að velja „Real estate“, „Employee“ eða „Contractor“ og notandi velur „Emplyee“
+4.Forritið birtir lista yfir starfsmenn ásamt „leitarboxi“ þar sem notandi getur leitað að ákveðnum starfsmanni eftir nafni eða símanúmeri
+5.Notandi slær inn nafn starfsmann og forritið birtir upplýsingar um hvaða verkefni tiltekni starfsmaðurinn hefur gert á völdu tímabili
 Alternative flow: 
+3a. Notandi velur „Real estate“
+3b. Notandi velur „Contractor“
+4a. Notandi valdi „Real estate“ svo forritið birtir lista yfir fasteignir ásamt „leitarboxi“ þar sem notandi getur leitað eftir ákveðinni fasteign eftir heimilisfangi, staðsetningu eða póstnúmeri
+4b. Notandi valdi „Contractor“ avo forritið birtir lista yfir verktaka ásamt „leitarboxi“ þar sem notandi getur leitað að ákveðnum verktaka eftir nafni, símanúmeri eða fyrirtæki
+5a. Nafn/heimilisfang/símanúmer/staðsetning/póstnúmer/fyrirtæki sem notandi skrifaði er ekki í kerfinu svo forritið birtir skilaboðin „Sorry, your search has no results“
 
 
