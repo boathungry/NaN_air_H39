@@ -117,15 +117,35 @@ Alternative flow:
 
 #16
 --Merkja verkbeiðni sem tilbúna fyrir lokun--
-Actors: 
+Actors: Yfirmaður
 Main success scenario: 
+1. Notandi velur verkbeiðni
+2. Notandi fær gefna upp valmöguleika og velur af þeim að loka verkbeiðni, ef verklýsing er til staðar fær hann valmöguleika á því að samþykja verklýsingu og loka beiðni
+3. Notandi velur valmöguleikan að loka verkbeiðni
+4. Forritið spyr hann hvort að hann sé viss um að hann vilji loka beiðni
+5. Notandi samþykir og beiðni er lokuð
 Alternative flow: 
+2a.-1 Verklýsing er ekki til staðar og því er ekki í boði að loka beiðni
+2a.-2 Notandi fær valmöguleikan á því að skrá verklýsingu
+2a.-3 Notandi velur að skrá nýja verklýsingu
+2a.-4 Notandi skrifar verklýsingu og vistar
+2a.-5 Nú fær notandi valmöguleikan á því að samþykja verklýsingu og loka verkbeiðni
+5a.-1 Notandi svarar "Nei" og verkbeiðninni er ekki lokað
+5a.-2 Notandi fer aftur verkbeiðni og getur litið yfir hana til yfirferðar
 
 #17
 --Sjá verkbeiðnir og skýrslur fyrir fasteign--
-Actors: 
+Actors: Starfsmenn og yfirmaður
 Main success scenario: 
+1. Notandi velur að leita
+2. Notandi velur að leita að verkbeiðni/verkbeiðnum
+3. Notandi velur síu "fasteign" og slær inn auðkennisnúmer fasteignar
+4. Forritið birtir lista yfir allar verkbeiðnar sem eiga við tiltekna fasteign
+5. Notandi getur nú valið þá verkbeiðni sem hann vill skoða
+6. Notandi sér nú verkbeiðni
 Alternative flow: 
+Notandi getur hætt við hvenær sem er og farið aftur í valmynd 1
+
 
 B KRÖFUR:
 #1
