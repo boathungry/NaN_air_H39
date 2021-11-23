@@ -13,6 +13,6 @@ Eftir daginn:
 Valdís: Byrjaði á use case fyrir B-kröfurnar. Náði einnig að klára fyrsta use case-ið. 
 
 --23.11.2021--
-Morgunfundur: 
+Morgunfundur: Töluðum um það sem við náðum að gera í gær og plönuðum út daginn. Markmiðið er að klára Use Cases, Nafnorðagreiningu og Notendahópagreiningu í dag.
 
 Eftir daginn: 
