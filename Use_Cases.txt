@@ -180,13 +180,23 @@ Alternative flow:
 5a – 2. Forritið spyr hverju notandinn vill breyta
 5a – 3. Notandinn velur það sem hann vill breyta og skrifar það sem á að koma í staðinn
 5a – 4. Upplýsingar eru uppfærðar og forritið fer aftur í 4. 
-	
+
 
 #2
 --Breyta upplýsingum um verktaka--
-Actors: 
+Actors: Yfirmaður, verktaki
 Main success scenario: 
+1.Ef notandi er yfirmaður getur hann valið (ýtt á hnapp) ”Contractor” í valmynd og gerir það
+2.Notandinn leitar að verktaka (sjá notkunartilvik #5)
+3.Notandi velur ákveðinn verktaka
+4.Forritið birtir upplýsingar um þann verktaka og býður notanda upp á að breyta verktaka, eyða verktaka eða fara til baka
+5.Notandi velur að breyta verktaka
+6.Forritið gefur upp lista yfir hluti sem hægt er að breyta og notandinn velur það sem hann vill breyta
+7.Notandi skrifar inn nýjar upplýsingar
+8.Forritið fer aftur í 4. og notandi getur breytt fleiri upplýsingum eða farið til baka ef hann vill
 Alternative flow: 
+2a. Notandi fær lista af verktökum (sjá notkunartilvik #4) og heldur áfram í 3.
+3a. Notandi velur vitlausan verktaka svo hann fer til baka í 2. 
 	
 
 #3
