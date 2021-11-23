@@ -12,6 +12,7 @@ Eftir daginn:
 Þór: Bjó til github repository, byrjaði á dagbókinni og byrjaði á use cases fyrir A-kröfurnar. Náði að klára fyrsta use case-ið fyrir lok dags. Sé fram á að það taki minni tíma að skrifa use cases á morgun, fyrst að mikill tími fór í samræður meðal hópsins og uppsetningu á skjölum.
 Valdís: Byrjaði á use case fyrir B-kröfurnar. Náði einnig að klára fyrsta use case-ið. 
 Hjörleifur: byrjaði á notendahópgreiningu
+Ingi: Byrjaði á nafnorðagreiningu
 
 --23.11.2021--
 Morgunfundur: Töluðum um það sem við náðum að gera í gær og plönuðum út daginn. Markmiðið er að klára Use Cases, Nafnorðagreiningu og Notendahópagreiningu í dag.
