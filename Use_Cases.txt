@@ -137,9 +137,22 @@ Alternative flow:
 
 #9
 --Skrá nýja fasteign--
-Actors: 
+Actors: Yfirmaður
 Main success scenario: 
+1. Notandi velur 'Housing' úr valmynd
+2. Ef notandi er yfirmaður getur hann valið 'Register new housing' úr næstu valmynd og gerir það
+3. Forritið biður notandann að gefa upp (eitt í einu) áfangastað, heimilisfang og ástand
+4. Forritið spyr notandann hvort hann vilji bæta við aðstöðu (e. amenities)
+5. Ef það er aðstaða í húsnæðinu sem þarfnast viðhalds skrifar notandinn það inn
+6. Forritið fer aftur í 5. og spyr endurtekið þar til notandinn svarar neitandi
+7. Forritið birtir upplýsingarnar um nýju fasteignina ásamt auðkenni sem kerfið gefur henni og spyr hvort allt sé í lagi
+8. Notandinn staðfestir það og nýja fasteignin er komin inn í kerfið
 Alternative flow: 
+3a. Notandinn getur hvenær sem er hætt við. Þá fer forritið aftur í valmyndina í 2.
+8a - 1. Notandinn svarar neitandi
+8a - 2. Forritið spyr hverju notandinn vill breyta
+8a - 3. Notandinn velur það sem hann vill breyta og skrifar það sem á að koma í staðinn
+8a - 4. Upplýsingarnar eru uppfærðar og forritið fer aftur í 4.
 
 #10
 --Breyta upplýsingum um fasteign--
