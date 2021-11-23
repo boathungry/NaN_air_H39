@@ -33,13 +33,30 @@ Alternative flow:
 
 #3
 --Fá lista af starfsmönnum--
-Actors: 
+Actors: Yfirmaður, Starfsmaður
 Main success scenario: 
+1. Ef notandi er yfirmaður getur hann valið 'Staff' í valmynd og gerir það
+2. Notandi velur 'View list of staff members' úr valmynd
+3. Forritið birtir lista af öllum starfsmönnum og gefur svo kost á 'Sort by', 'Filter', 'Return', eða að skrifa inn númer starfsmanns í listanum til að velja hann
+4. Notandi velur 'Filter'
+5. Forritið birtir lista af því sem hægt er að sía fyrir og notandi velur það sem hann vill
+6. Forritið birtir þær síur sem eru í boði fyrir flokkinn sem notandi valdi (t.d. lista af áfangastöðum ef notandi valdi að sía eftir áfangastöðum sem starfsmenn vinna á)
+7. Notandi velur þá síu sem hann vill
+8. Forritið birtir lista af því sem passar við síuna (t.d. ef notandi valdi 'Nuuk' þá fær hann lista af þeim starfsmönnum sem vinna í Nuuk)
+9. Forritið birtir aftur þá valmöguleika sem birtust í 3.
 Alternative flow: 
+4a - 1. Notandi velur 'Sort by'
+4a - 2. Forritið birtir þá flokka sem hægt er að raða eftir og notandi velur flokk
+4a - 3. Forritið spyr notanda hvort eigi að raða í 'ascending' eða 'descending' röð og notandi velur það sem hann vill
+4a - 4. Forritið birtir lista af starfsmönnum sem búið er að raða á þann hátt sem notandinn vill
+4a - 5. Forritið fer í lið 9.
+6a. Ef það sem notandi valdi er ekki hægt að flokka á auðveldan hátt (t.d. nafn eða símanúmer) þá biður forritið notandann um að skrifa inn það sem hann vill sía eftir og heldur svo áfram í 8.
+8a. Ef ekkert passar við síuna birtir forritið 'No results found for {það sem notandi skrifaði inn}' og fer svo aftur í 6.
+
 
 #4
 --Leita að starfsmanni--
-Actors: 
+Actors: Yfirmaður, Starfsmaður
 Main success scenario: 
 Alternative flow: 
 
