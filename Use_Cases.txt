@@ -130,7 +130,7 @@ Main success scenario:
 3. Forritið birtir lista af hlutum sem er hægt að leita eftir (nafn, símanúmer, land, o.s.frv.)
 4. Notandi velur flokk
 5. Forritið biður notandann að skrifa inn það sem hann vill leita að og notandi gerir það
-6. Forritið birtir lista af þeim starfsmönnum sem passa við það sem notandi leitaði að
+6. Forritið birtir lista af þeim áfangastöðum sem passa við það sem notandi leitaði að
 7. Forritið gefur notandanum kost á að fara til baka, velja áfangastað, eða sía niðurstöður eða raða þeim (sjá notkunartilvik #7)
 Alternative flow: 
 6a. Ef ekkert passar við það sem notandinn skrifaði birtir forritið 'No results found for {það sem notandi skrifaði inn}' og fer svo aftur í 5.
@@ -195,7 +195,16 @@ Alternative flow:
 --Leita að fasteign--
 Actors: Yfirmaður, Starfsmaður
 Main success scenario: 
+1. Notandi velur 'Housing' úr valmynd
+2. Notandi velur 'Search' úr valmynd
+3. Forritið birtir lista af hlutum sem er hægt að leita eftir (nafn, áfangastaður, land, o.s.frv.)
+4. Notandi velur flokk
+5. Forritið biður notandann að skrifa inn það sem hann vill leita að og notandi gerir það
+6. Forritið birtir lista af þeim fasteignum sem passa við það sem notandi leitaði að
+7. Forritið gefur notandanum kost á að fara til baka, velja áfangastað, eða sía niðurstöður eða raða þeim (sjá notkunartilvik #7)
 Alternative flow: 
+6a. Ef ekkert passar við það sem notandinn skrifaði birtir forritið 'No results found for {það sem notandi skrifaði inn}' og fer svo aftur í 5.
+
 
 #13
 --Búa til verkbeiðni--
