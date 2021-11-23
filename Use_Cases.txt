@@ -132,7 +132,7 @@ B KRÖFUR:
 --Skrá nýjan verktaka--
 Actors: Yfirmaður, verktaki
 Main success scenario: 
-1.Ef notanda er yfirmaður getur hann valið (ýtt á hnapp) ”Contractor” í valmynd og gerir það
+1.Ef notandi er yfirmaður getur hann valið (ýtt á hnapp) ”Contractor” í valmynd og gerir það
 2.Notandi velur “Register new contractor” úr valmynd
 3.Forritið biður notandann að gefa upp (eitt í einu) nafn verktaka (einstaklings eða fyrirtæki), nafn tengiliðs, símanúmer, opnunartíma og staðsetningu
 4.Forritið birtir upplýsingarnar um nýja verktakann á skjáinn og spyr hvort allt sé í lagi
