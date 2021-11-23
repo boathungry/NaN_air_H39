@@ -211,7 +211,7 @@ Alternative flow:
 Actors: Starfsmaður, Yfirmaður
 Main success scenario: 
 1. Notandi velur að skrá nýja verkbeiðni
-2. Verkbeiðninni er úthlutað númer af kerfinu, lægsta lausa númer, 001, 002, 003 og svo framvegis og sér notandi tóma verkbeiðni
+2. Verkbeiðninni er úthlutað númer af kerfinu, lægsta lausa númer, VB001, VB002, VB003 og svo framvegis og sér notandi tóma verkbeiðni
 3. Notandi byrjar að fylla út verkbeiðnina, setur þar inn, fasteignarnúmer og aðrar nauðsynlegar upplýsingar
 4. Nafn notanda sem skráir verkbeiðni er fest við verkbeiðni
 5. Verkbeiðnin er tilbúin
@@ -222,21 +222,40 @@ Alternative flow:
 --Skrá viðhaldsskýrslu--
 Actors: Starfsmaður, Yfirmaður
 Main success scenario: 
+1. Starfsmaður velur að skrá nýja viðhaldsskýrslu.
+2. Áður en að viðhaldsskýrslu er úthlutað númer þarf notandi að velja fasteign
+3. Notandi velur fasteign sem viðhaldsskýrslan tilheyrir og þá fær viðhaldsskýrslan úthlutað númer(Lægsta lausa númer, VS001, VS002, VS003 og svo framvegis)
+4. Notandi skráir inn hvað var gert, hver framkvæmdi verkið og hver kostnaður við verkið var.
 Alternative flow: 
+3a.-1. Ef notandi er ekki með fasteign sem hann getur skráð við viðhaldsskýrslu þá er skýrslan aldrei stofnuð
+4a.-1. Notandi getur stofnað skýrsluna án þess að skrá inn nánari upplýsingar svo framarlega sem fasteign sé tengd við skýrsluna
 
 #15
 --Samþykkja viðhaldsskýrslu--
 Actors: Yfirmaður
 Main success scenario: 
+1. Notandi opnar skráða viðhaldsskýrslu.
+2. Notandi sér fyrir hvaða fasteign skýrslan var gerð auk þess hvað var gert, hver gerði það og hver kostnaðurinn er
+3. Svo framarlega sem notandi sé sáttur við skýrsluna og það sem kemur fram á henni samþykir notandi skýrsluna
+4. Eftir að notandi samþykir skýrsluna þá lokast hún og ekki er hægt að breyta neinu nema hún sé enduropnuð
 Alternative flow: 
+3a.-1. Ef notanda finnst skýrslan ekki fullnægjandi samþykir hann ekki skýrsluna
+3a.-2. Notandi getur skrifað ábendingu í skýrsluna, t.d. ef það vantar einhverjar upplýsingar eða ef notandi telur eitthvað vera rangt.
 
 #15
 --Breyta viðhaldsskýrslu--
 Actors: Starfsmaður, Yfirmaður
 Main success scenario: 
-1. 
-2. 
+1. Notandi velur gildandi og opna viðhaldsskýrslu
+2. Notandi fær upplýsingar um allt sem komið er inn í skýrsluna auk þess að sjá hvað hefur ekki verið útfyllt
+3. Notandi velur "breyta"
+4. Notandi fær valmynd með þeim hlutum skýrslunnar sem hann má breyta(Allt nema skýrslu nr.)
+5. Notandi velur úr valmynd og getur breytt, eytt eða bætt við þeim upplýsingum sem vantar
+6. Notandi fer aftur í 4.
 Alternative flow: 
+Notandi getur alltaf hætt við og farið aftur í 2.
+4a.-1. Notandi getur alltaf bakkað úr valmynd ef hann hættir við að breyta einhverju
+5a.-1. Vilji notandi ekki breyta, eyða né bæta neinu við getur hann bakkað út og farið aftur í 4.
 
 #16
 --Merkja verkbeiðni sem tilbúna fyrir lokun--
