@@ -58,7 +58,15 @@ Alternative flow:
 --Leita að starfsmanni--
 Actors: Yfirmaður, Starfsmaður
 Main success scenario: 
+1. Ef notandi er yfirmaður getur hann valið 'Staff' í valmynd og gerir það
+2. Notandi velur 'Search' úr valmynd
+3. Forritið birtir lista af hlutum sem er hægt að leita eftir (nafn, símanúmer, kennitala, o.s.frv.)
+4. Notandi velur flokk
+5. Forritið biður notandann að skrifa inn það sem hann vill leita að og notandi gerir það
+6. Forritið birtir lista af þeim starfsmönnum sem passa við það sem notandi leitaði að
+7. Forritið gefur notandanum kost á að fara til baka, velja starfsmann, eða sía niðurstöður eða raða þeim (sjá notkunartilvik #3)
 Alternative flow: 
+6a. Ef ekkert passar við það sem notandinn skrifaði birtir forritið 'No results found for {það sem notandi skrifaði inn}' og fer svo aftur í 5.
 
 #5
 --Skrá nýjan áfangastað--
