@@ -355,25 +355,53 @@ Alternative flow:
 --Fá lista af verktökum—
 Actors: Yfirmaður, starfsmaður, verktaki
 Main success scenario:
-1.Ef notandi er yfirmaður eða starfsmaður getur hann valið ”Contractor” í valmynd og gerir það
-2.Notandi velur “View list of contractors” úr valmynd
-3.Forritið birtir lista af öllum verktökum og gefur svo kost á “Sort by”, “Filter”, “Return” eða að skrifa inn númer verktaka í listanum til að velja hann
-4.Notandi velur “Sort by”
-5.	
+1.	Ef notandi er yfirmaður eða starfsmaður getur hann valið ”Contractor” í valmynd og gerir það
+2.	Notandi velur “View list of contractors” úr valmynd
+3.	Forritið birtir lista af öllum verktökum og gefur svo kost á “Sort by”, “Filter”, “Return” eða að skrifa inn númer verktaka í listanum til að velja hann
+4.	Notandi velur „Filter“
+5.	Forritið birtir lista af því sem hægt er að sía fyrir og notandi velur það sem hann vill
+6.	Forritið birtir þær síur sem í boði eru fyrir flokkinn sem notandi valdi (t.d. lista af fyrirtækjum nálægt ef notandi valdi að sía eftir staðsetningu sem verktakar vinna á)
+7.	Notandi velur sér síu
+8.	Forritið birtir lista eftir síunni sem valin var
+9.	Forritið birtir aftur þá valmöguleika sem birtust í 3. 
 Alternative flow:
+4a – 1. Notandi velur “Sort by”
+4a – 2. Forritið velur flokka sem hægt er að raða eftir og notandi velur sér flokk
+4a – 3. Forritið spyr notanda hvort raða eigi eftir „ascending“ eða „descending“ röð og notandi velur annað hvort
+4a – 4. Forritið birtir lista af verktökum eftir vali notandans á síu
+4a – 5. Forritið fer í lið 9. 
+6a. Ef það sem notandinn valdi er ekki hægt að flokka á auðveldan hátt (t.d. nafn eða símanúmer verktaka) þá biður forritið notandann um að skrifa inn það sem hann vill sía eftir og heldur svo áfram í 8. 
+8a. Ef ekkert passar við síuna birtir forritið „No results found for {það sem notandi skrifaði inn}“ og fer svo aftur í 6.
+
 
 #5
 --Leita að verktaka—
-Actors:
+Actors: Yfirmaður, starfsmaður, verktaki
 Main success scenario:
+1.	Ef notandi er yfirmaður eða starfsmaður getur hann valið ”Contractor” í valmynd og gerir það
+2.	Notandi velur „Search“ í valmynd
+3.	Forritið birtir lista sem hægt er að raða eftir (t.d. nafn, símanúmer, fyrirtæki, o.s.frv.) 
+4.	Notandi velur flokk
+5.	Forritið biður notanda um að skirfa inn það sem hann vill leita að og hann gerir það
+6.	Forritið birtir lista af þeim verktökum sem passa við leit notanda
+7.	Forritið gefur notandanum kost á að fara til baka, velja verktaka, sía niðurstöður eða raða þeim (sjá notkunartilvik #3)
 Alternative flow:
+6a. Ef ekkert passar við það sem notandinn skrifaði birtir forritið „No results found for {það sem notandi skrifaði inn}“ og fer svo aftur í 5. 
 
 
 #6
 --Vísa í a.m.k. einn verktaka í viðhaldsskýrslu--
-Actors: 
+Actors: Yfirmaður, starfsmaður, verktaki
 Main success scenario: 
+1.	Notandi (yfirmaður eða starfsmaður) skráir viðhaldsskýrslu (sjá notkunartilvik #14 í A-kröfum)
+2.	Þegar skráning á sér stað velur notandi hnapp sem á stendur „Refer to a contractor“
+3.	Forritið biður notanda um að skrifa inn nafn og/eða fyrirtæki verktaka og hann gerir það
+4.	Forritið býður notanda að bæta við öðrum verktaka og hann gerir það
+5.	Notandi velur hnapp sem staðfestir 
+6.	Forritið vistar það við viðhaldsskýrsluna og birtir það á skjánum
 Alternative flow: 
+3a. Notandi hættir við að vísa í verktaka og velur að fara til baka
+5a. Notandi vill eyða vísun í verktaka svo hann velur „Remove“ takka
 
 
 #7
