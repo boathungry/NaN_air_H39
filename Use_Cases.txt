@@ -2,6 +2,7 @@ A-KRÖFUR:
 
 #1
 --Skrá nýjan starfsmann--
+Author: Þór Breki Þorgrímsson
 Actors: Yfirmaður, Starfsmaður
 Main success scenario: 
 1. Ef notandi er yfirmaður getur hann valið 'Staff' í valmynd og gerir það
@@ -18,6 +19,7 @@ Alternative flow:
 
 #2
 --Breyta upplýsingum um starfsmann--
+Author: Þór Breki Þorgrímsson
 Actors: Yfirmaður, Starfsmaður
 Main success scenario: 
 1. Ef notandi er yfirmaður getur hann valið 'Staff' í valmynd og gerir það
@@ -33,6 +35,7 @@ Alternative flow:
 
 #3
 --Fá lista af starfsmönnum--
+Author: Þór Breki Þorgrímsson
 Actors: Yfirmaður, Starfsmaður
 Main success scenario: 
 1. Ef notandi er yfirmaður getur hann valið 'Staff' í valmynd og gerir það
@@ -56,6 +59,7 @@ Alternative flow:
 
 #4
 --Leita að starfsmanni--
+Author: Þór Breki Þorgrímsson
 Actors: Yfirmaður, Starfsmaður
 Main success scenario: 
 1. Ef notandi er yfirmaður getur hann valið 'Staff' í valmynd og gerir það
@@ -70,6 +74,7 @@ Alternative flow:
 
 #5
 --Skrá nýjan áfangastað--
+Author: Þór Breki Þorgrímsson
 Actors: Yfirmaður
 Main success scenario: 
 1. Notandi velur 'Destinations' úr valmynd
@@ -86,6 +91,7 @@ Alternative flow:
 
 #6
 --Breyta upplýsingum um áfangastað--
+Author: Þór Breki Þorgrímsson
 Actors: Yfirmaður
 Main success scenario: 
 1. Notandi velur 'Destinations' úr valmynd
@@ -101,6 +107,7 @@ Alternative flow:
 
 #7
 --Fá lista af áfangastöðum--
+Author: Þór Breki Þorgrímsson
 Actors: Yfirmaður, Starfsmaður
 Main success scenario: 
 1. Notandi velur 'Destinations' úr valmynd
@@ -123,6 +130,7 @@ Alternative flow:
 
 #8
 --Leita að áfangastað--
+Author: Þór Breki Þorgrímsson
 Actors: Yfirmaður, Starfsmaður
 Main success scenario: 
 1. Notandi velur 'Destinations' úr valmynd
@@ -137,6 +145,7 @@ Alternative flow:
 
 #9
 --Skrá nýja fasteign--
+Author: Þór Breki Þorgrímsson
 Actors: Yfirmaður
 Main success scenario: 
 1. Notandi velur 'Housing' úr valmynd
@@ -156,6 +165,7 @@ Alternative flow:
 
 #10
 --Breyta upplýsingum um fasteign--
+Author: Þór Breki Þorgrímsson
 Actors: Yfirmaður
 Main success scenario: 
 1. Notandi velur 'Housing' úr valmynd
@@ -171,6 +181,7 @@ Alternative flow:
 
 #11
 --Fá lista af fasteignum--
+Author: Þór Breki Þorgrímsson
 Actors: Yfirmaður, Starfsmaður
 Main success scenario: 
 1. Notandi velur 'Housing' úr valmynd
@@ -193,6 +204,7 @@ Alternative flow:
 
 #12
 --Leita að fasteign--
+Author: Þór Breki Þorgrímsson
 Actors: Yfirmaður, Starfsmaður
 Main success scenario: 
 1. Notandi velur 'Housing' úr valmynd
