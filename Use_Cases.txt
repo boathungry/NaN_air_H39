@@ -201,9 +201,15 @@ Alternative flow:
 
 #3
 --Kalla fram upplýsingar um verktaka--
-Actors: 
+Actors: Starfsmaður, verktaki 
 Main success scenario: 
+1.Ef notandi er starfsmaður getur hann valið (ýtt á hnapp) ”Contractor” í valmynd og gerir það
+2.Notandinn leitar að verktaka (sjá notkunartilvik #5)
+3.Notandi velur ákveðinn verktaka
+4.Forritið birtir upplýsingar um þann verktaka og býður notanda upp á að fara til baka
 Alternative flow: 
+2a. Notandi fær lista af verktökum (sjá notkunartilvik #4) og heldur áfram í 3. 
+3a. Notandi velur vitlausan verktaka svo hann fer til baka í 2. 
 	
 
 #4
