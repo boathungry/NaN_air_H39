@@ -70,15 +70,34 @@ Alternative flow:
 
 #5
 --Skrá nýjan áfangastað--
-Actors: 
+Actors: Yfirmaður
 Main success scenario: 
+1. Notandi velur 'Destinations' úr valmynd
+2. Ef notandi er yfirmaður getur hann valið 'Register new destination' úr næstu valmynd og gerir það
+3. Forritið biður notandann að gefa upp (eitt í einu) land, flugvöll, símanúmer og opnunartíma
+4. Forritið birtir upplýsingarnar um nýja áfangastaðinn á skjánum og spyr hvort allt sé í lagi
+5. Notandinn staðfestir það og nýji áfangastaðurinn er kominn í kerfið.
 Alternative flow: 
+3a. Notandinn getur hvenær sem er hætt við. Þá fer forritið aftur í valmyndina í 2.
+5a - 1. Notandinn svarar neitandi
+5a - 2. Forritið spyr hverju notandinn vill breyta
+5a - 3. Notandinn velur það sem hann vill breyta og skrifar það sem á að koma í staðinn
+5a - 4. Upplýsingarnar eru uppfærðar og forritið fer aftur í 4.
 
 #6
 --Breyta upplýsingum um áfangastað--
-Actors: 
+Actors: Yfirmaður
 Main success scenario: 
+1. Notandi velur 'Destinations' úr valmynd
+2. Notandi leitar að áfangastað (sjá notkunartilvik #8)
+3. Notandi velur viðkomandi áfangastað
+4. Forritið birtir upplýsingar um áfangastaðinn og gefur val á að eyða áfangastað, breyta áfangastað, eða snúa til baka
+5. Notandi velur að breyta áfangastað
+6. Forritið gefur lista af því sem hægt er að breyta og notandi velur það sem hann vill breyta
+7. Notandi skrifar nýju upplýsingarnar inn
+8. Forritið fer aftur í 4. og notandi getur breytt fleiri atriðum eða farið til baka ef hann vill
 Alternative flow: 
+2a. Notandi fær lista af áfangastöðum (sjá notkunartilvik #7) og heldur áfram í 3.
 
 #7
 --Fá lista af áfangastöðum--
