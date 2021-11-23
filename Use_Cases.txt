@@ -156,13 +156,22 @@ Alternative flow:
 
 #10
 --Breyta upplýsingum um fasteign--
-Actors: 
+Actors: Yfirmaður
 Main success scenario: 
+1. Notandi velur 'Housing' úr valmynd
+2. Notandi leitar að fasteign (sjá notkunartilvik #12)
+3. Notandi velur viðkomandi fasteign
+4. Forritið birtir upplýsingar um fasteignina og gefur val á að eyða fasteign, breyta fasteign, eða snúa til baka
+5. Notandi velur að breyta fasteign
+6. Forritið gefur lista af því sem hægt er að breyta og notandi velur það sem hann vill breyta
+7. Notandi skrifar nýju upplýsingarnar inn
+8. Forritið fer aftur í 4. og notandi getur breytt fleiri atriðum eða farið til baka ef hann vill
 Alternative flow: 
+2a. Notandi fær lista af fasteignum (sjá notkunartilvik #11) og heldur áfram í 3.
 
 #11
 --Fá lista af fasteignum--
-Actors: 
+Actors: Yfirmaður, Starfsmaður
 Main success scenario: 
 Alternative flow: 
 
