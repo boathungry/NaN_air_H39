@@ -19,3 +19,4 @@ Morgunfundur: Töluðum um það sem við náðum að gera í gær og plönuðum
 
 Eftir daginn: 
 Þór: Kláraði use cases fyrir A-kröfurnar.
+Valdís: Kláraði use cases fyrir B-kröfurnar.
