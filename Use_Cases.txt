@@ -407,11 +407,11 @@ Alternative flow:
 --Tilgreina þóknun og setja athugasemdir við verktaka--
 Actors: Yfirmaður, starfsmaður, verktaki
 Main success scenario: 
-1.	Notandi (yfirmaður eða starfsmaður) skráir viðhaldsskýrslu (sjá notkunartilvik #14 í A-kröfum) ásamt því að vísa í verktaka (sjá notkunartilvik #6 í B-kröfum)
-2.	Þegar vísun í hvern verktaka fyrir sig á sér stað getur notandi valið takkann „Specify the commission“ og gerir hann það
-3.	Forritið biður notanda að slá inn þóknun verktakans sem er valinn og hann gerir það
-4.	Forritið býður upp á að skrifa athugasemd við verktakann og notandi geri það
-5.	Notandi velur hnapp sem staðfestir og vistar upplýsingarnar við þann verktaka og birtir á skjáinn
+1.Notandi (yfirmaður eða starfsmaður) skráir viðhaldsskýrslu (sjá notkunartilvik #14 í A-kröfum) ásamt því að vísa í verktaka (sjá notkunartilvik #6 í B-kröfum)
+2.Þegar vísun í hvern verktaka fyrir sig á sér stað getur notandi valið takkann „Specify the commission“ og gerir hann það
+3.Forritið biður notanda að slá inn þóknun verktakans sem er valinn og hann gerir það
+4.Forritið býður upp á að skrifa athugasemd við verktakann og notandi geri það
+5.Notandi velur hnapp sem staðfestir og vistar upplýsingarnar við þann verktaka og birtir á skjáinn
 Alternative flow: 
 3a. Notandi vill hætta við og fer til baka
 
@@ -421,11 +421,11 @@ Alternative flow:
 --Kalla fram viðhald verkefnis eftir staðsetningu og dagsetningu eða tímabili--
 Actors: Starfsmaður
 Main success scenario: 
-1.	Ef notandi er starfsmaður getur hann valið „Projects“ í valmynd og gerir það
-2.	Í projects kemur upp listi yfir mögulegar staðsetningar starfsmanns og velur notandi þá staðsetningu sem er næst honum
-3.	Forritið birtir takka sem hægt er að velja á milli dagsetningar eða tímabils (frá-til) og velja þá dagsetningu á dagatali sem notandi vill sjá
-4.	Notandi velur dagsetningu
-5.	Forritið birtir lista yfir verkefni þeirrar dagsetningar sem notandi getur notast við
+1.Ef notandi er starfsmaður getur hann valið „Projects“ í valmynd og gerir það
+2.Í projects kemur upp listi yfir mögulegar staðsetningar starfsmanns og velur notandi þá staðsetningu sem er næst honum
+3.Forritið birtir takka sem hægt er að velja á milli dagsetningar eða tímabils (frá-til) og velja þá dagsetningu á dagatali sem notandi vill sjá
+4.Notandi velur dagsetningu
+5.Forritið birtir lista yfir verkefni þeirrar dagsetningar sem notandi getur notast við
 Alternative flow: 
 2a - 1. Notandi getur farið til baka hvenær sem hann vill
 2a – 2. Notandi sér ekki sína staðsetningu og getur því valið að skrifa inn sjálfur
