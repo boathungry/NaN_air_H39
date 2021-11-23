@@ -110,9 +110,15 @@ Alternative flow:
 
 #13
 --Búa til verkbeiðni--
-Actors: 
+Actors: Starfsmaður, Yfirmaður
 Main success scenario: 
+1. Notandi velur að skrá nýja verkbeiðni
+2. Verkbeiðninni er úthlutað númer af kerfinu, lægsta lausa númer, 001, 002, 003 og svo framvegis og sér notandi tóma verkbeiðni
+3. Notandi byrjar að fylla út verkbeiðnina, setur þar inn, fasteignarnúmer og aðrar nauðsynlegar upplýsingar
+4. Nafn notanda sem skráir verkbeiðni er fest við verkbeiðni
+5. Verkbeiðnin er tilbúin
 Alternative flow: 
+3a.-1. Notandi skráir engar upplýsingar á verkbeiðni, hún er samt til, hefur númer og skráðan stofnanda.
 
 #14
 --Skrá viðhaldsskýrslu--
