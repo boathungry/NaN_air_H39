@@ -195,9 +195,11 @@ Main success scenario:
 7.Notandi skrifar inn nýjar upplýsingar
 8.Forritið fer aftur í 4. og notandi getur breytt fleiri upplýsingum eða farið til baka ef hann vill
 Alternative flow: 
-2a. Notandi fær lista af verktökum (sjá notkunartilvik #4) og heldur áfram í 3.
+2a. Notandi fær lista af verktökum (sjá notkunartilvik #4) og heldur áfram í 3. 
 3a. Notandi velur vitlausan verktaka svo hann fer til baka í 2. 
-	
+
+
+
 
 #3
 --Kalla fram upplýsingar um verktaka--
@@ -210,44 +212,62 @@ Main success scenario:
 Alternative flow: 
 2a. Notandi fær lista af verktökum (sjá notkunartilvik #4) og heldur áfram í 3. 
 3a. Notandi velur vitlausan verktaka svo hann fer til baka í 2. 
-	
 
-#4
+
+#4 
+--Fá lista af verktökum—
+Actors: Yfirmaður, starfsmaður, verktaki
+Main success scenario:
+1.Ef notandi er yfirmaður eða starfsmaður getur hann valið ”Contractor” í valmynd og gerir það
+2.Notandi velur “View list of contractors” úr valmynd
+3.Forritið birtir lista af öllum verktökum og gefur svo kost á “Sort by”, “Filter”, “Return” eða að skrifa inn númer verktaka í listanum til að velja hann
+4.Notandi velur “Sort by”
+5.	
+Alternative flow:
+
+#5
+--Leita að verktaka—
+Actors:
+Main success scenario:
+Alternative flow:
+
+
+#6
 --Vísa í a.m.k. einn verktaka í viðhaldsskýrslu--
 Actors: 
 Main success scenario: 
 Alternative flow: 
-	
 
-#5
+
+#7
 --Tilgreina þóknun og setja athugasemdir við verktaka--
 Actors: 
 Main success scenario: 
 Alternative flow: 
-	
 
-#6
+
+#8
 --Kalla fram viðhald verkefnis eftir staðsetningu, dagsetningu eða tímabili--
 Actors: 
 Main success scenario: 
 Alternative flow: 
-	
 
-#7
+
+#9
 --Skrá endurtekin viðhaldsverk--
 Actors: 
 Main success scenario: 
 Alternative flow: 
-	
 
-#8
+
+#10
 --Forgangsraða verkefnum--
 Actors: 
 Main success scenario: 
 Alternative flow: 
-	
 
-#9
+
+#11
 --Kalla fram samantektir og yfirlit--
 Actors: 
 Main success scenario: 
