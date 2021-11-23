@@ -20,7 +20,16 @@ Alternative flow:
 --Breyta upplýsingum um starfsmann--
 Actors: Yfirmaður, Starfsmaður
 Main success scenario: 
+1. Ef notandi er yfirmaður getur hann valið 'Staff' í valmynd og gerir það
+2. Notandi leitar að starfsmanni (sjá notkunartilvik #4)
+3. Notandi velur viðkomandi starfsmann
+4. Forritið birtir upplýsingar um starfsmanninn og gefur val á að eyða starfsmanni, breyta starfsmanni, eða snúa til baka
+5. Notandi velur að breyta starfsmanni
+6. Forritið gefur lista af því sem hægt er að breyta og notandi velur það sem hann vill breyta
+7. Notandi skrifar nýju upplýsingarnar inn
+8. Forritið fer aftur í 4. og notandi getur breytt fleiri atriðum eða farið til baka ef hann vill
 Alternative flow: 
+2a. Notandi fær lista af starfsmönnum (sjá notkunartilvik #3) og heldur áfram í 3.
 
 #3
 --Fá lista af starfsmönnum--
