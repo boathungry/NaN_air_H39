@@ -20,6 +20,7 @@ Morgunfundur: Töluðum um það sem við náðum að gera í gær og plönuðum
 Eftir daginn: 
 Þór: Kláraði use cases fyrir A-kröfurnar.
 Valdís: Kláraði use cases fyrir B-kröfurnar.
+Hjörleifur: Byrjaði á að formfære use cases
 
 --24.11.2021--
 Morgunfundur: Töluðum um árangur gærdagsins og plönuðum daginn. Ætlum að vinna í Klasariti, Stöðuritum og Kröfulista í dag.
