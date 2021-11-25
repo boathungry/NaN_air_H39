@@ -6,7 +6,6 @@ Dagbók
 --22.11.2021--
 Morgunfundur: Byrjuðum á að kynna okkur og plana hvernig við myndum byrja. Ákváðum að byrja á því að gera git repository, búa til dagbókina og velja verkefnastjóra. Við ákváðum að skiptast á að vera verkefnastjóri daglega og fara í stafrófsröð, þannig að verkefnastjóri dagsins var Hjörleifur.
 Eftir það ætlum við svo að byrja á nafnorðagreiningu, notendahópagreiningu og gera drög að nokkrum notkunartilvikum.
--Þór
 
 Eftir daginn: 
 Þór: Bjó til github repository, byrjaði á dagbókinni og byrjaði á use cases fyrir A-kröfurnar. Náði að klára fyrsta use case-ið fyrir lok dags. Sé fram á að það taki minni tíma að skrifa use cases á morgun, fyrst að mikill tími fór í samræður meðal hópsins og uppsetningu á skjölum.
@@ -27,3 +26,9 @@ Morgunfundur: Töluðum um árangur gærdagsins og plönuðum daginn. Ætlum að
 
 Eftir daginn: 
 Hjörleifur: Formfærði öll use cases
+Þór: Kláraði state machine diagram fyrir verkbeiðni
+
+--25.11.2021--
+Morgunfundur: Ætlum að vinna saman í að klára klasaritið og Wireframe í dag. Vonandi getum við þá líka lagt lokahönd á skýrsluna.
+
+Eftir daginn: 
