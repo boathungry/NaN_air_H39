@@ -26,3 +26,4 @@ Hjörleifur: Byrjaði á að formfære use cases
 Morgunfundur: Töluðum um árangur gærdagsins og plönuðum daginn. Ætlum að vinna í Klasariti, Stöðuritum og Kröfulista í dag.
 
 Eftir daginn: 
+Hjörleifur: Formfærði öll use cases
