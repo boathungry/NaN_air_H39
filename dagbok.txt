@@ -45,3 +45,4 @@ Morgunfundur: Ætlum að klára klasaritið saman og klára svo skýrsluna.
 Eftir daginn: 
 Hjörleifur: Lagaði uppsettningu á skýrslu og skilaði inn
 Valdís: Las yfir skýrslu og lagaði innsláttar-/stafsetningarvillur
+Þór: Hjálpaði til við að leggja lokahönd á klasaritið og fara yfir skýrsluna
