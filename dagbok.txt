@@ -43,3 +43,4 @@ Hjörleifur: Vann í klasaritinu
 Morgunfundur: Ætlum að klára klasaritið saman og klára svo skýrsluna.
 
 Eftir daginn: 
+Hjörleifur: Lagaði uppsettningu á skýrslu og skilaði inn
