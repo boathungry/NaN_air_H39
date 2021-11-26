@@ -28,6 +28,7 @@ Eftir daginn:
 Hjörleifur: Formfærði öll use cases
 Þór: Kláraði state machine diagram fyrir verkbeiðni
 Valdís: Vann aðeins í klasariti
+Ingi: Kláraði kröfulista og notendahópagreiningu
 
 --25.11.2021--
 Morgunfundur: Ætlum að vinna saman í að klára klasaritið og Wireframe í dag. Vonandi getum við þá líka lagt lokahönd á skýrsluna.
@@ -35,6 +36,7 @@ Morgunfundur: Ætlum að vinna saman í að klára klasaritið og Wireframe í d
 Eftir daginn: 
 Valdís: Gerði lokaorð og inngang fyrir skýrslu
 Þór: Vann í klasaritinu
+Ingi: Vann í útlitshönnunn
 
 --26.11.2021--
 Morgunfundur: Ætlum að klára klasaritið saman og klára svo skýrsluna.
