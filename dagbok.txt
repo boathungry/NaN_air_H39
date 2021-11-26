@@ -37,6 +37,7 @@ Eftir daginn:
 Valdís: Gerði lokaorð og inngang fyrir skýrslu
 Þór: Vann í klasaritinu
 Ingi: Vann í útlitshönnunn
+Hjörleifur: Vann í klasaritinu
 
 --26.11.2021--
 Morgunfundur: Ætlum að klára klasaritið saman og klára svo skýrsluna.
