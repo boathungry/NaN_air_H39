@@ -52,3 +52,6 @@ Horfðum á fyrirlestur
 
 --30.11.2021--
 Morgunfundur: Ætlum að laga það sem við getum í hönnunarskýrslunni þangað til við getum fengið fund með kennara og komist að því hvernig við eigum að hafa klasaritið okkar.
+
+--01.12.2021--
+Morgunfundur: Stefnum á að byrja að kóða
