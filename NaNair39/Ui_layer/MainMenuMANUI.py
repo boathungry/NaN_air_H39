@@ -52,5 +52,7 @@ class ManagerUI(LogIn):
                 self.valmynd_yfirmenn()
             elif selection.lower() == "q":
                 on = False
+            else:
+                print("Invalid option put into selection field.")
         
     
