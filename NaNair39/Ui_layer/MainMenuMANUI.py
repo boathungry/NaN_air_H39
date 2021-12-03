@@ -1,24 +1,31 @@
 from NaNair39.Ui_layer.main_login import LogIn
+from datetime import date
+from PropertyMenu import PropertyMenu
 class ManagerUI(LogIn):
     def __init__(self, name):
-        super().__init__(name, staff_class="y")
+        super().__init__(name, staff_class="m")
         
     def valmynd_yfirmenn(self):
         on = True
+        today = date.today()
+        today_string = today.strftime("%d/%m/%Y")
         while on:
-            print(f"Welcome {self.name}")
+            print(f"Welcome {self.name}. Todays date is {today_string}")
             print("1. Staff")
             print("2. Locations")
             print("3. Work order")
+            print("l. log out")
             print("q. quit")
             selection = input("Input selection: ")
             if selection == "1":
                 self.staffing_options()
             elif selection == "2":
-                self.location_options()
+                PropertyMenu.location_options(self.staff_class)
             elif selection == "3":
                 pass
-            elif selection == "q":
+            elif selection.lower() == "l":
+                user = LogIn.main_menu
+            elif selection.lower() == "q":
                 on = False
             else:
                 print("Invalid option put into selection field.")
@@ -45,4 +52,5 @@ class ManagerUI(LogIn):
                 self.valmynd_yfirmenn()
             elif selection.lower() == "q":
                 on = False
+        
     
