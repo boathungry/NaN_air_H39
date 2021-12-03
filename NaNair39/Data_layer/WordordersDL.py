@@ -28,4 +28,3 @@ class Workorder:
     def change_information(self, VB):
         pass
 
-"work request,location,properties,description"
