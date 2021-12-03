@@ -1,6 +1,7 @@
 from typing import Sized
 from Models.EmployeeModel import Employee
 from Models.PropertyModel import Property
+from Models.ContractorModel import Contractor
 from Logic_layer.LLAPI import LLAPI
 
 NAME = "name"
@@ -12,6 +13,9 @@ TITLE = "title"
 
 SIZE = "size"
 ROOMS = "rooms"
+
+EMAIL = "email"
+HOURS = "opening hours"
 
 class ChangeHandler():
     def __init__(self) -> None:
@@ -36,16 +40,26 @@ class ChangeHandler():
         attribute = attribute.lower()
         if attribute == NAME:
             property.name = new_value
-        if attribute == LOCATION:
+        elif attribute == LOCATION:
             property.location = new_value
-        if attribute == SIZE:
+        elif attribute == SIZE:
             property.size = new_value
-        if attribute == ROOMS:
+        elif attribute == ROOMS:
             property.rooms = int(new_value)
 
 
     def change_contractor(contractor:Contractor, attribute:str, new_value:str):
-        pass
+        attribute = attribute.lower()
+        if attribute == NAME:
+            contractor.name = new_value
+        elif attribute == PHONE:
+            contractor.phone = new_value
+        elif attribute == EMAIL:
+            contractor.email = new_value
+        elif attribute == HOURS:
+            contractor.opening_hours = new_value
+        elif attribute == ADDRESS:
+            contractor.address = new_value
 
     def change_work_order(work_order:WorkOrder, attribute:str, new_value:str):
         pass
