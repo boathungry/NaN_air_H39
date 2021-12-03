@@ -8,4 +8,7 @@ class PropertyMenu(LogIn):
         location_deets = get_location_details(self.location)
         on = True
         while on:
-            pass
+            if self.staff_class == "m":
+                pass
+            elif self.staff_class == "e":
+                pass
