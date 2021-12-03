@@ -1,9 +1,7 @@
-from typing import Sized
 from Models.EmployeeModel import Employee
 from Models.PropertyModel import Property
 from Models.ContractorModel import Contractor
 from Models.WorkorderModel import Workorder
-from Logic_layer.LLAPI import LLAPI
 
 NAME = "name"
 LOCATION = "location"
