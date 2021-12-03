@@ -20,6 +20,9 @@ class DLAPI:
 
     def change_information(self, empl):
         return self.emplDL.change_information_employee(empl)
+
+    def search_by_email(self, empl):
+        return self.emplDL.search_by_email(empl)
     
     def get_all_properties(self):
         return self.propDL.get_all_properties()
