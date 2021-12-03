@@ -1,5 +1,5 @@
-ssn,name,email,phone,location
-0101001999,Jón Jónsson,jonssonjon@jonsson.is,5550000,Nuuk
-1212121999,Pétur Halldórsson,phall12@jonsson.is,6531010,Svalbard18282934940,Joiniws,ingsa@fw.is,292910349,Nuuk
-dsadsadsa,sadsadsa,sadsadsa,dasdsadsa,assdsadsa
-dsadsadsa,dsadsad,2132321,1232132132,°12°121
+name,email,location,address,phone,cellphone,title
+Jan Jacobsen,jan.jacobsen@nanair.is,Svalbard,Vei 230 12 Longyearbyen,+47 92 09 77 00,+354 777 1337,y
+Jacob Yxa,jacob.yxa@nanair.is,Svalbard,Vei 224 3B Longyearbyen,+47 92 09 77 01,+354 777 1338,s
+Nanna Daema,nanna.daema@nanair.is,Svalbard,Ivan Starostin st. 109 Barantsburg,+47 92 09 77 02,+354 777 1339,s
+Minik Wallace,minik.wallace@nanair.is,Nuuk,Isaajap Aqqutaa 1 3900,+299 34 24 67,+354 777 1361,y
