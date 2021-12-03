@@ -25,5 +25,5 @@ class EmployeeDL:
     def delete_employee(self, empl):
         pass
 
-    def change_information(self, empl):
+    def change_information_employee(self, empl):
         pass
