@@ -44,3 +44,6 @@ class RegistrationHandler():
         new_workorder = Workorder(work_request, location, properties, description)
         DLAPI.create_workorder(new_workorder)
         return new_workorder
+
+    def register_work_request(self, id, open_date, due_date, repeat:bool, repeat_interval_days:int = 0, priority:str, property:Property):
+        pass
