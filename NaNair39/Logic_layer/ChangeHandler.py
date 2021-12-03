@@ -2,6 +2,7 @@ from typing import Sized
 from Models.EmployeeModel import Employee
 from Models.PropertyModel import Property
 from Models.ContractorModel import Contractor
+from Models.WorkorderModel import Workorder
 from Logic_layer.LLAPI import LLAPI
 
 NAME = "name"
@@ -17,11 +18,15 @@ ROOMS = "rooms"
 EMAIL = "email"
 HOURS = "opening hours"
 
+REQUEST = "work request"
+PROPERTIES = "properties"
+DESCRIPTION = "description"
+
 class ChangeHandler():
     def __init__(self) -> None:
         pass
 
-    def change_employee(employee:Employee, attribute:str, new_value:str):
+    def change_employee(employee:Employee, attribute:str, new_value):
         attribute = attribute.lower()
         if attribute == NAME:
             employee.name = new_value
@@ -36,7 +41,7 @@ class ChangeHandler():
         elif attribute == TITLE:
             employee.title = new_value
 
-    def change_property(property:Property, attribute:str, new_value:str):
+    def change_property(property:Property, attribute:str, new_value):
         attribute = attribute.lower()
         if attribute == NAME:
             property.name = new_value
@@ -45,10 +50,10 @@ class ChangeHandler():
         elif attribute == SIZE:
             property.size = new_value
         elif attribute == ROOMS:
-            property.rooms = int(new_value)
+            property.rooms = new_value
 
 
-    def change_contractor(contractor:Contractor, attribute:str, new_value:str):
+    def change_contractor(contractor:Contractor, attribute:str, new_value):
         attribute = attribute.lower()
         if attribute == NAME:
             contractor.name = new_value
@@ -61,5 +66,13 @@ class ChangeHandler():
         elif attribute == ADDRESS:
             contractor.address = new_value
 
-    def change_work_order(work_order:WorkOrder, attribute:str, new_value:str):
-        pass
+    def change_work_order(work_order:Workorder, attribute:str, new_value):
+        attribute = attribute.lower()
+        if attribute == REQUEST:
+            work_order.work_request = new_value
+        elif attribute == LOCATION:
+            work_order.location = new_value
+        elif attribute == PROPERTIES:
+            work_order.properties = new_value
+        elif attribute == DESCRIPTION:
+            work_order.description = new_value
