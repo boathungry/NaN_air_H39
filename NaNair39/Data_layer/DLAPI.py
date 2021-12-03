@@ -1,7 +1,6 @@
-from EmployeeDL import EmployeeDL
+from NaNair39.Data_layer.EmployeeDL import EmployeeDL
 from NaNair39.Data_layer.PropertiesDL import PropertyDL
-from PropertiesDL import PropertyDL
-from WordordersDL import WorkorderDL
+from NaNair39.Data_layer.WordordersDL import WorkorderDL
 
 class DLAPI:
     
