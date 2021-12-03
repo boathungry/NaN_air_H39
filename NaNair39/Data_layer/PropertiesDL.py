@@ -12,7 +12,7 @@ class PropertyDL:
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                prop = Property(row["idnumber"],row["name"], row["location"], row["location"],row["address"],row["rooms"])
+                prop = Property(row["idnumber"],row["name"], row["location"], row["address"],row["size"],row["rooms"])
                 return_list.append(prop)
         return return_list
     
