@@ -2,7 +2,7 @@ class Property:
 
     def __init__(self, name, location, size, rooms):
         self.name = name
-        self.locationn = location
+        self.location = location
         self.size = size
         self.rooms = rooms
 
