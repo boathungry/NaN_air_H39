@@ -50,7 +50,6 @@ class ChangeHandler():
         elif attribute == ROOMS:
             property.rooms = new_value
 
-
     def change_contractor(contractor:Contractor, attribute:str, new_value):
         attribute = attribute.lower()
         if attribute == NAME:
