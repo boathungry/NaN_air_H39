@@ -1,19 +1,20 @@
-
+from Login_menuUI import HomeMenu
 class LogIn:
     def __init__(self, email = "", name = "", staff_class = "", location = ""):
         self.name = name
         self.email = email
         self.staff_class = staff_class
         self.location = location
-    def innskra(self):
-        self.email = input("Please input your email: ")
-        #input file opener and use dictionary to input all the things
-        self.main_menu(self.staff_class)
+
     def main_menu(self):
+        HomeMenu.innskra()
         if self.staff_class == "y":
             YfirmennUI.valmynd_yfirmenn()
         elif self.staff_class == "s":
             self.valmynd_starfsmenn
+        else:
+            print("Some information is wrong")
+            HomeMenu.innskra()
     
     
             
