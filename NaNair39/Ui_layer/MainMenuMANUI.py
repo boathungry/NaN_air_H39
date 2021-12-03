@@ -1,4 +1,4 @@
-
+from NaNair39.Ui_layer.main_login import LogIn
 class ManagerUI(LogIn):
     def __init__(self, name):
         super().__init__(name, staff_class="y")
@@ -45,7 +45,4 @@ class ManagerUI(LogIn):
                 self.valmynd_yfirmenn()
             elif selection.lower() == "q":
                 on = False
-    def location_options(self):
-        location_deets = get_location_details(self.location)
-        on = True
-        while on:
+    
