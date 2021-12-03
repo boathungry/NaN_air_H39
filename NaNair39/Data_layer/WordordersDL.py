@@ -2,7 +2,7 @@ import csv
 
 from Models.WorkorderModel import Workorder
 
-class Workorder:
+class WorkorderDL:
 
     def __init__ (self):
         self.filepath = "csv_files/Workorders.csv"
@@ -16,15 +16,14 @@ class Workorder:
                 return_list.append(VB)
         return return_list
     
-    def create_employee(self, VB):
+    def create_workorder(self, VB):
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
             fieldnames = ["work request","location","properties","description"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({'': VB.workorder, 'location': VB.location, 'property': VB.properties, 'description': VB.description})
     
-    def delete_employee(self, VB):
+    def delete_workorder(self, VB):
         pass
 
-    def change_information(self, VB):
+    def change_information_workorder(self, VB):
         pass
-
