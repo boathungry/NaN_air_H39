@@ -21,3 +21,9 @@ class EmployeeDL:
             fieldnames = ["name","email","location","address","phone","cellphone","title"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({'name': empl.name, 'email': empl.email, 'location': empl.location, 'address': empl.address, 'phone': empl.phone, 'cellphone': empl.cellphone, 'title': empl.title})
+    
+    def delete_employee(self, empl):
+        pass
+
+    def change_information(self, empl):
+        pass
