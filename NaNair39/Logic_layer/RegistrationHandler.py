@@ -12,7 +12,7 @@ class RegistrationHandler():
     def register_employee(self, name, location, address, phone, cellphone, title):
         """Registers a new employee and returns the employee."""
         new_employee = Employee(name, location, address, phone, cellphone, title)
-        self.dl_api.create_employee(new_employee)
+        self.dl_api.create_employee(new_employee) #register new data to database immediately!
         return new_employee
 
     def register_property(self, name, location, size, rooms):
@@ -24,7 +24,7 @@ class RegistrationHandler():
     def register_contractor(self, name, phone, email, opening_hours, address):
         """Registers a new contractor and returns the contractor."""
         new_contractor = Contractor(name, phone, email, opening_hours, address)
-        self.dl_api.create_contractor(new_contractor)
+        self.dl_api.create_contractor(new_contractor) #NOT IMPLEMENTED YET
         return new_contractor
 
     def register_work_report(self, work_request, location, properties, description):

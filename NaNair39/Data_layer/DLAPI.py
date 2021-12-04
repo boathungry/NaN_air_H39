@@ -17,7 +17,7 @@ class DLAPI:
     def create_employee(self, empl):
         return self.emplDL.create_employee(empl)
 
-    def delete_employe(self,empl):
+    def delete_employee(self,empl):
         return self.emplDL.delete_employee(empl)
 
     def change_information(self, empl):
