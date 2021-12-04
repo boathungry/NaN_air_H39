@@ -2,6 +2,7 @@ from Models.EmployeeModel import Employee
 from Models.PropertyModel import Property
 from Models.ContractorModel import Contractor
 from Models.WorkReportModel import WorkReport
+from Data_layer.DLAPI import DLAPI
 
 NAME = "name"
 LOCATION = "location"
@@ -20,10 +21,10 @@ PROPERTIES = "properties"
 DESCRIPTION = "description"
 
 class ChangeHandler():
-    def __init__(self) -> None:
-        pass
+    def __init__(self, dl_api:DLAPI = DLAPI()) -> None:
+        self.dl_api = dl_api
 
-    def change_employee(employee:Employee, attribute:str, new_value):
+    def change_employee(self, employee:Employee, attribute:str, new_value):
         """Takes an employee, an attribute of that employee, and a new value for the attribute. Changes the attribute to the new value."""
         attribute = attribute.lower()
         if attribute == NAME:
@@ -38,8 +39,13 @@ class ChangeHandler():
             employee.cellphone = new_value
         elif attribute == TITLE:
             employee.title = new_value
+        else:
+            return None
+        
+        self.dl_api.change_information(employee)
+        return new_value
 
-    def change_property(property:Property, attribute:str, new_value):
+    def change_property(self, property:Property, attribute:str, new_value):
         """Takes a property, an attribute of that property, and a new value for the attribute. Changes the attribute to the new value."""
         attribute = attribute.lower()
         if attribute == NAME:
@@ -51,7 +57,7 @@ class ChangeHandler():
         elif attribute == ROOMS:
             property.rooms = new_value
 
-    def change_contractor(contractor:Contractor, attribute:str, new_value):
+    def change_contractor(self, contractor:Contractor, attribute:str, new_value):
         """Takes a contractor, an attribute of that employee, and a new value for the attribute. Changes the attribute to the new value."""
         attribute = attribute.lower()
         if attribute == NAME:
@@ -65,7 +71,7 @@ class ChangeHandler():
         elif attribute == ADDRESS:
             contractor.address = new_value
 
-    def change_work_report(work_report:WorkReport, attribute:str, new_value):
+    def change_work_report(self, work_report:WorkReport, attribute:str, new_value):
         """Takes a work report, an attribute of that work report, and a new value for the attribute. Changes the attribute to the new value."""
         attribute = attribute.lower()
         if attribute == LOCATION:
