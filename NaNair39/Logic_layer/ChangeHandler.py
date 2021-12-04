@@ -1,7 +1,7 @@
 from Models.EmployeeModel import Employee
 from Models.PropertyModel import Property
 from Models.ContractorModel import Contractor
-from Models.WorkorderModel import Workorder
+from Models.WorkReportModel import WorkReport
 
 NAME = "name"
 LOCATION = "location"
@@ -16,7 +16,6 @@ ROOMS = "rooms"
 EMAIL = "email"
 HOURS = "opening hours"
 
-REQUEST = "work request"
 PROPERTIES = "properties"
 DESCRIPTION = "description"
 
@@ -25,6 +24,7 @@ class ChangeHandler():
         pass
 
     def change_employee(employee:Employee, attribute:str, new_value):
+        """Takes an employee, an attribute of that employee, and a new value for the attribute. Changes the attribute to the new value."""
         attribute = attribute.lower()
         if attribute == NAME:
             employee.name = new_value
@@ -40,6 +40,7 @@ class ChangeHandler():
             employee.title = new_value
 
     def change_property(property:Property, attribute:str, new_value):
+        """Takes a property, an attribute of that property, and a new value for the attribute. Changes the attribute to the new value."""
         attribute = attribute.lower()
         if attribute == NAME:
             property.name = new_value
@@ -51,6 +52,7 @@ class ChangeHandler():
             property.rooms = new_value
 
     def change_contractor(contractor:Contractor, attribute:str, new_value):
+        """Takes a contractor, an attribute of that employee, and a new value for the attribute. Changes the attribute to the new value."""
         attribute = attribute.lower()
         if attribute == NAME:
             contractor.name = new_value
@@ -63,13 +65,12 @@ class ChangeHandler():
         elif attribute == ADDRESS:
             contractor.address = new_value
 
-    def change_work_order(work_order:Workorder, attribute:str, new_value):
+    def change_work_report(work_report:WorkReport, attribute:str, new_value):
+        """Takes a work report, an attribute of that work report, and a new value for the attribute. Changes the attribute to the new value."""
         attribute = attribute.lower()
-        if attribute == REQUEST:
-            work_order.work_request = new_value
-        elif attribute == LOCATION:
-            work_order.location = new_value
+        if attribute == LOCATION:
+            work_report.location = new_value
         elif attribute == PROPERTIES:
-            work_order.properties = new_value
+            work_report.properties = new_value
         elif attribute == DESCRIPTION:
-            work_order.description = new_value
+            work_report.description = new_value

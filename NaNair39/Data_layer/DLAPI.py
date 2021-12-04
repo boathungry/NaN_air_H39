@@ -1,13 +1,13 @@
 from Data_layer.EmployeeDL import EmployeeDL
 from Data_layer.PropertiesDL import PropertyDL
-from Data_layer.WorkordersDL import WorkorderDL
+from Data_layer.WorkReportDL import WorkReportDL
 
 class DLAPI:
     
     def __init__(self):
         self.emplDL = EmployeeDL()
         self.propDL = PropertyDL()
-        self.VB = WorkorderDL()
+        self.VB = WorkReportDL()
 
     def get_all_employees(self):
         return self.emplDL.get_all_employees()
@@ -36,14 +36,25 @@ class DLAPI:
     def change_information_property(self,prop):
         return self.propDL.change_information_property(prop)
     
-    def get_all_workorders(self):
-        return self.VB.get_all_Workorders()
+    def get_all_work_reports(self):
+        return self.VB.get_all_work_reports()
     
-    def create_workorder(self,VB):
-        return self.VB.create_workorder(VB)
+    def create_work_report(self,VB):
+        return self.VB.create_work_report(VB)
 
-    def delete_workorder(self,VB):
-        return self.VB.delete_workorder(VB)
+    def delete_work_report(self,VB):
+        return self.VB.delete_work_report(VB)
 
-    def change_information_workorder(self,VB):
-        return self.VB.change_information_workorder(VB)
+    def change_information_work_report(self,VB):
+        return self.VB.change_information_work_report(VB)
+
+    def get_all_work_requests(self):
+        return self.VB.get_all_work_requests()
+    
+    def create_work_request(self,VB):
+        return self.VB.create_work_request(VB)
+
+    def delete_work_request(self,VB):
+        return self.VB.delete_work_request(VB)
+
+    
