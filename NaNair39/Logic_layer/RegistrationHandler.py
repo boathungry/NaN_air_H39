@@ -4,23 +4,6 @@ from Models.ContractorModel import Contractor
 from Models.WorkReportModel import WorkReport
 from Data_layer.DLAPI import DLAPI
 
-NAME = "name"
-LOCATION = "location"
-ADDRESS = "address"
-PHONE = "phone"
-CELLPHONE = "cellphone"
-TITLE = "title"
-
-SIZE = "size"
-ROOMS = "rooms"
-
-EMAIL = "email"
-HOURS = "opening hours"
-
-REQUEST = "work request"
-PROPERTIES = "properties"
-DESCRIPTION = "description"
-
 class RegistrationHandler():
     def __init__(self) -> None:
         pass
