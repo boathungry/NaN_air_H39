@@ -2,6 +2,7 @@ from Models.EmployeeModel import Employee
 from Models.PropertyModel import Property
 from Models.ContractorModel import Contractor
 from Models.WorkReportModel import WorkReport
+from Models.WorkRequestModel import WorkRequest
 from Data_layer.DLAPI import DLAPI
 
 class RegistrationHandler():
@@ -33,4 +34,4 @@ class RegistrationHandler():
         return new_work_report
 
     def register_work_request(self, request_id, open_date, due_date, priority:str, property:Property, repeat:bool = False, repeat_interval_days:int = 0):
-        pass
+        new_work_request = WorkRequest()
