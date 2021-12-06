@@ -14,7 +14,7 @@ class ManagerUI(LogIn):
         while on:
             print(f"Welcome {self.name}. Todays date is {today_string}")
             print("1. Staff")
-            print("2. Locations")
+            print("2. Locations and properties")
             print("3. Work requests/reports")
             print("l. log out")
             print("q. quit")
