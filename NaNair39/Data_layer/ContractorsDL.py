@@ -1,6 +1,6 @@
 from Data_layer.EmployeeDL import EmployeeDL
 from Data_layer.PropertiesDL import PropertyDL
-from Data_layer.WorkordersDL import WorkorderDL
+from Data_layer.WorkRequestDL import WorkRequestDL
 from Data_layer.ContractorsDL import ContractorDL
 
 class DLAPI:
@@ -8,7 +8,7 @@ class DLAPI:
     def __init__(self):
         self.emplDL = EmployeeDL()
         self.propDL = PropertyDL()
-        self.VB = WorkorderDL()
+        self.VB = WorkRequestDL()
         self.contr = ContractorDL()
 
     def get_all_employees(self):
