@@ -40,10 +40,10 @@ class RegistrationHandler():
         DLAPI.create_contractor(new_contractor)
         return new_contractor
 
-    def register_workorder(self, work_request, location, properties, description):
-        new_workorder = Workorder(work_request, location, properties, description)
+    def register_work_order(self, work_request, location, repeat, time, properties, description):
+        new_workorder = Workorder(work_request, location, repeat, time, properties, description)
         DLAPI.create_workorder(new_workorder)
         return new_workorder
 
-    def register_work_request(self, id, open_date, due_date, repeat:bool, repeat_interval_days:int = 0, priority:str, property:Property):
+    def register_work_report(self, id, open_date, due_date, repeat:bool, repeat_interval_days:int = 0, priority:str, property:Property):
         pass

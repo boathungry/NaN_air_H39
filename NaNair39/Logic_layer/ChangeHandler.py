@@ -2,6 +2,7 @@ from Models.EmployeeModel import Employee
 from Models.PropertyModel import Property
 from Models.ContractorModel import Contractor
 from Models.WorkorderModel import Workorder
+from datetime import date
 
 NAME = "name"
 LOCATION = "location"
@@ -19,6 +20,9 @@ HOURS = "opening hours"
 REQUEST = "work request"
 PROPERTIES = "properties"
 DESCRIPTION = "description"
+REPEAT = "repeat"
+TIME = "time"
+DONE = "done"
 
 class ChangeHandler():
     def __init__(self) -> None:
@@ -73,3 +77,5 @@ class ChangeHandler():
             work_order.properties = new_value
         elif attribute == DESCRIPTION:
             work_order.description = new_value
+        elif attribute == DONE:
+            work_order.done == new_value
