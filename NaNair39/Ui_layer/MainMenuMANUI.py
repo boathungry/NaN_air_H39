@@ -1,9 +1,8 @@
-from Ui_layer.main_login import LogIn
 from datetime import date
 from Ui_layer.PropertyMenu import PropertyMenu
 from Ui_layer.WorkReportMenu import WorkReportMenu
 
-class ManagerUI(LogIn):
+class ManagerUI:
     def __init__(self, name):
         super().__init__(name, staff_class="m")
         
@@ -26,7 +25,7 @@ class ManagerUI(LogIn):
             elif selection == "3":
                 WorkReportMenu.WorkReportMenuMain()
             elif selection.lower() == "l":
-                LogIn.main_menu
+                "LogedIn.main_menu"
             elif selection.lower() == "q":
                 on = False
             else:

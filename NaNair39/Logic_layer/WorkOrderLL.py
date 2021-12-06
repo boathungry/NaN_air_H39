@@ -1,4 +1,4 @@
-from Models.WorkorderModel import Workorder
+from Models.WorkRequestModel import Workorder
 from Logic_layer.LLAPI import LLAPI
 from RegistrationHandler import RegistrationHandler
 from ChangeHandler import ChangeHandler

@@ -1,20 +1,20 @@
 from Ui_layer.MainMenuMANUI import ManagerUI
 from Ui_layer.MainMenuEMPUI import EmployeeUI
 
-class LogIn:
-    def __init__(self, email = "", name = "", staff_class = "", location = ""):
+class LogedIn:
+    def __init__(self, email = "", name = "", title = "", location = ""):
         self.name = name
         self.email = email
-        self.staff_class = staff_class
+        self.title = title
         self.location = location
         
 
     def main_menu(self):
-        
-        if self.staff_class == "m":
+
+        if self.title.lower() == "manager":
             ManagerUI.managers_menu()
-        elif self.staff_class == "e":
-            EmployeeUI.valmynd_starfsfolk()
+        elif self.title.lower() == "employee":
+            "EmployeeUI.valmynd_starfsfolk()"
         else:
             print("Some information is wrong")
             self.main_menu()

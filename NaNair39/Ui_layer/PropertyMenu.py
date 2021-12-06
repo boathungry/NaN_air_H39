@@ -1,13 +1,10 @@
-from NaNair39.Ui_layer.MainMenuMANUI import ManagerUI
-
-
 
 class PropertyMenu:
     def __init__(self):
         super().__init__()
 
     def location_options_mangers(self):
-        location_deets = get_location_details(self.location)
+        location_deets = "get_location_details(self.location)"
         manpropon = True
         while manpropon:
             print("1. Destinations")
@@ -20,7 +17,7 @@ class PropertyMenu:
             elif selection == "2":
                 self.property_manager_menu()
             elif selection.lower() == "b":
-                ManagerUI.managers_menu()
+                pass
             elif selection.lower() == "q":
                 manpropon = False
             else:
@@ -45,7 +42,7 @@ class PropertyMenu:
             elif selection == "4":
                 pass
             elif selection.lower() == "b":
-                ManagerUI.managers_menu()
+                "ManagerUI.managers_menu()"
             elif selection.lower() == "q":
                 manlocon = False
     def property_manager_menu():
@@ -67,7 +64,7 @@ class PropertyMenu:
             elif selection == "4":
                 pass
             elif selection.lower() == "b":
-                ManagerUI.managers_menu()
+                "ManagerUI.managers_menu()"
             elif selection.lower() == "q":
                 propmanmenuon = False
             else:

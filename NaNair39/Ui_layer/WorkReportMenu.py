@@ -1,5 +1,5 @@
 
-class WorkReportMenu(LogIn):
+class WorkReportMenu:
     def __init__(self):
         super().__init__()
     
