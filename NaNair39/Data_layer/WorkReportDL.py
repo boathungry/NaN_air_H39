@@ -1,29 +1,29 @@
 import csv
 
-from Models.WorkorderModel import Workorder
+from Models.WorkReportModel import WorkReport
 
-class WorkorderDL:
+class WorkReportDL:
 
     def __init__ (self):
         self.filepath = "csv_files/Workorders.csv"
 
-    def get_all_Workorders(self):
+    def get_all_work_reports(self):
         return_list = []
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                VB = Workorder(row["work request"],row["location"], row["properties"], row["description"])
+                VB = WorkReport(row["work request"],row["location"], row["properties"], row["description"])
                 return_list.append(VB)
         return return_list
     
-    def create_workorder(self, VB):
+    def create_work_report(self, VB):
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
             fieldnames = ["work request","location","properties","description"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerow({'': VB.workorder, 'location': VB.location, 'property': VB.properties, 'description': VB.description})
+            writer.writerow({'': VB.workreport, 'location': VB.location, 'property': VB.properties, 'description': VB.description})
     
-    def delete_workorder(self, VB):
+    def delete_work_report(self, VB):
         pass
 
-    def change_information_workorder(self, VB):
+    def change_information_work_report(self, VB):
         pass
