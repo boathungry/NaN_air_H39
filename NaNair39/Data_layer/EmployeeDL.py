@@ -28,7 +28,7 @@ class EmployeeDL:
     def change_information_employee(self, empl):
         pass
 
-    def search_by_email(self, empl, email):
+    def search_by_email(self, email):
         self.email = email
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -36,3 +36,12 @@ class EmployeeDL:
                 if row["email"] == self.email:
                     empl = Employee(row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
             return empl
+
+    def login_by_email(self, email):
+        self.email = email
+        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if row["email"] == self.email:
+                    user = Employee(row["name"],row["email"], row["location"],row["title"])
+            return user
