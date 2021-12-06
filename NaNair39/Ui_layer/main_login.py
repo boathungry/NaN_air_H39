@@ -1,6 +1,6 @@
-from Login_menuUI import HomeMenu
-from MainMenuMANUI import ManagerUI
-from MainMenuEMPUI import EmployeeUI
+from Ui_layer.Login_menuUI import HomeMenu
+from Ui_layer.MainMenuMANUI import ManagerUI
+from Ui_layer.MainMenuEMPUI import EmployeeUI
 
 class LogIn:
     def __init__(self, email = "", name = "", staff_class = "", location = ""):
@@ -19,7 +19,7 @@ class LogIn:
             EmployeeUI.valmynd_starfsfolk()
         else:
             print("Some information is wrong")
-            HomeMenu.innskra()
+            self.main_menu()
     
     
             
