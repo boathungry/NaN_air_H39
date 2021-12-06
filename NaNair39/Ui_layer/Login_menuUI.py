@@ -1,9 +1,8 @@
 
-class HomeMenu:
-    def __init__(self, email = ""):
-        self.email = email
-
+class LogIn:
     def innskra(self):
-        self.email = input("Please input your email: ")
-        #input file opener and use dictionary to input all the things
+        email = input("Please input your email: ")
+        
+        #look up email, generate user info from that
+        
         

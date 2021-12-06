@@ -1,4 +1,7 @@
-from Ui_layer.main_login import LogIn
+from Ui_layer.Login_menuUI import LogIn
 def main():
-    LogIn.innskra()
+    user = LogIn.innskra()
+    
+
+
 main()

@@ -1,4 +1,3 @@
-from Ui_layer.Login_menuUI import HomeMenu
 from Ui_layer.MainMenuMANUI import ManagerUI
 from Ui_layer.MainMenuEMPUI import EmployeeUI
 
@@ -11,10 +10,9 @@ class LogIn:
         
 
     def main_menu(self):
-        HomeMenu.innskra()
-
+        
         if self.staff_class == "m":
-            ManagerUI.valmynd_yfirmenn()
+            ManagerUI.managers_menu()
         elif self.staff_class == "e":
             EmployeeUI.valmynd_starfsfolk()
         else:
