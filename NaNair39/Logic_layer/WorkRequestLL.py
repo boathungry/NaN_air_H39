@@ -41,7 +41,7 @@ class WorkRequest(RegistrationHandler, ChangeHandler):
             
         
     def mark_as_done(self, work_request:WorkRequest):
-        ChangeHandler.change_work_request(self, work_request, "done", True)
+        ChangeHandler.change_work_request(self, work_request, "done", date.today())
 
             
 
