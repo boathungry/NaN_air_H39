@@ -40,43 +40,26 @@ class SearchHandler():
     def __init__(self, dl_api:DLAPI = DLAPI(), ll_api:LLAPI = LLAPI()) -> None:
         self.data_api = dl_api
         self.logic_api = ll_api
+        self.empl_attributes = [NAME, LOCATION, ADDRESS, PHONE, CELLPHONE, TITLE]
+        self.prop_attributes = [NAME, LOCATION, SIZE, ROOMS]
 
-    def search(self, search_object, attribute:str, value):
+    def search(self, search_object, attribute:str, value) -> list:
+        """Searches for objects of the given type whose values in the given attribute match the given value.
+        Returns a list of the found objects."""
 
         if search_object == Employee:
-            search_results = self.search_for_empl(search_object, attribute, value)
+            if attribute in self.empl_attributes:
+                search_results = self.data_api.search_employee(attribute, value)
+            else:
+                search_results = []
         elif search_object == Property:
-            search_results = self.search_for_prop(search_object, attribute, value)
+            if attribute in self.prop_attributes:
+                search_results = self.data_api.search_property(attribute, value)
+            else:
+                search_results = []
         elif search_object == WorkReport:
-            search_results = self.search_for_report(search_object, attribute, value)
+            search_results = self.data_api.search_workreport(attribute, value)
         elif search_object == WorkRequest:
-            search_results = self.search_for_request(search_object, attribute, value)
+            search_results = self.data_api.search_workrequest(attribute, value)
 
         return search_results
-
-    def search_for_empl(self, employee:Employee, attribute:str, value):
-        """Searches for employees whose given attribute (name, email, ID, etc.) matches the given value. Returns the search result."""
-        if attribute.lower() == NAME:
-            result = self.data_api.search_by_name(employee) #NOT IMPLEMENTED YET
-        elif attribute.lower() == EMAIL:
-            result = self.data_api.search_by_email(employee)
-        elif attribute.lower() == LOCATION:
-            result = self.data_api.search_by_location(employee) #NOT IMPLEMENTED YET
-        elif attribute.lower() == ADDRESS:
-            result = self.data_api.search_by_address(employee) #NOT IMPLEMENTED YET
-        elif attribute.lower() == PHONE:
-            result = self.data_api.search_by_phone(employee) #NOT IMPLEMENTED YET
-        elif attribute.lower() == CELLPHONE:
-            result = self.data_api.search_by_cellphone(employee) #NOT IMPLEMENTED YET
-        
-        return result
-
-    def search_for_prop(self, property:Property, attribute:str, value):
-        if attribute.lower() == NAME:
-            result = 
-
-    def search_for_report(self, work_report:WorkReport, attribute:str, value):
-        pass
-
-    def search_for_request(self, work_request:WorkRequest, attribute:str, value):
-        pass

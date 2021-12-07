@@ -22,11 +22,12 @@ class DLAPI:
     def delete_employee(self,empl):
         return self.emplDL.delete_employee(empl)
 
+    def search_employee(self, attribute:str, value):
+        """Searches for employees whose values in the given attribute matches the given value. Returns a list of employees."""
+        return self.emplDL.search_for_employee(attribute, value)
+
     def change_information(self, empl):
         return self.emplDL.change_information_employee(empl)
-
-    def search_by_email(self, empl):
-        return self.emplDL.search_by_email(empl)
     
     def get_all_properties(self):
         return self.propDL.get_all_properties()
