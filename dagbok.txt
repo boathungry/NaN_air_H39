@@ -70,4 +70,9 @@ Hjörleifur: hélt áfram með UI
 --06.12.2021--
 Morgunfundur: Héldum fund til að skipuleggja daginn, ákveðið var að vinna áfram í kóðanum.
 
+Eftir daginn:
+Hjörleifur: hélt áfram með UI, reyndi að koma login kerfi í gang, gekk ekki. 
+
+--07.12.2021--
+Morgunfundur: Ræddum um að halda áfram með það sem við unnum í gær, og reyna að koma log in í gang
 
