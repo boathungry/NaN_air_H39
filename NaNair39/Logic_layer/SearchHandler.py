@@ -55,7 +55,7 @@ class SearchHandler():
         return search_results
 
     def search_for_empl(self, employee:Employee, attribute:str, value):
-        """Searches for employees whose given attribute (name, email, ID, etc.) matches the given value."""
+        """Searches for employees whose given attribute (name, email, ID, etc.) matches the given value. Returns the search result."""
         if attribute.lower() == NAME:
             result = self.data_api.search_by_name(employee) #NOT IMPLEMENTED YET
         elif attribute.lower() == EMAIL:
@@ -68,9 +68,12 @@ class SearchHandler():
             result = self.data_api.search_by_phone(employee) #NOT IMPLEMENTED YET
         elif attribute.lower() == CELLPHONE:
             result = self.data_api.search_by_cellphone(employee) #NOT IMPLEMENTED YET
+        
+        return result
 
     def search_for_prop(self, property:Property, attribute:str, value):
-        pass
+        if attribute.lower() == NAME:
+            result = 
 
     def search_for_report(self, work_report:WorkReport, attribute:str, value):
         pass
