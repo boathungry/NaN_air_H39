@@ -11,6 +11,12 @@ class LogIn:
             user = EmployeeDL.login_by_email(usermail)
             print(user)
             return user
+    def temp_innskra():
+        print("1. Managers")
+        print("2. Staff")
+        print("q. Quit")
+        selection = input("Input selection: ")
+        return selection
 
         
         

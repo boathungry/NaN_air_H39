@@ -1,8 +1,19 @@
 import Ui_layer.main_login
 import Ui_layer.Login_menuUI
+import Ui_layer.MainMenuEMPUI
+import Ui_layer.MainMenuMANUI
 def main():
-    user = Ui_layer.Login_menuUI.LogIn.innskra()
+    """user = Ui_layer.Login_menuUI.LogIn.innskra()
     print(user)
-    Ui_layer.main_login.LogedIn(user)
-    
+    Ui_layer.main_login.LogedIn(user)"""
+    selection = Ui_layer.Login_menuUI.LogIn.temp_innskra()
+    if selection == "1":
+        Ui_layer.MainMenuMANUI.ManagerUI.managers_menu()
+    elif selection == "2":
+        Ui_layer.MainMenuEMPUI
+    elif selection.lower == "q":
+        pass
+    else:
+        print("Wrong input!")
+        main()
 main()

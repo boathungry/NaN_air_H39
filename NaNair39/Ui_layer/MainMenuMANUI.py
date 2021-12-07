@@ -4,15 +4,16 @@ import Ui_layer.WorkReportMenu
 import Ui_layer.main_login
 import Main
 class ManagerUI:
-    def __init__(self, name):
-        super().__init__(name)
+    def __init__(self):
+        self.staff_class = "manager"
+        
         
     def managers_menu(self):
         on = True
         today = date.today()
         today_string = today.strftime("%d/%m/%Y")
         while on:
-            print(f"Welcome {self.name}. Todays date is {today_string}")
+            """print(f"Welcome {self.name}. Todays date is {today_string}")"""
             print("1. Staff")
             print("2. Locations and properties")
             print("3. Work requests/reports")
