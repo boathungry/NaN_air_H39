@@ -11,8 +11,8 @@ class WorkReportMenu:
         print("4. Mark meaitenance or work report as ready for closing")
         print("5. Accept finished maintenance and work reports")
         print("6. View work and maintenance reports")
-        print("b. back to main menu")
-        print("q. quit")
+        print("b. Back to main menu")
+        print("q. Quit")
         selection = input("Input selection: ")
         if selection == "1":
             pass
@@ -33,12 +33,14 @@ class WorkReportMenu:
         else:
             print("Wrong input!")
             self.Work_report_manager_menu()
+
+            
     def work_report_staff_menu(self):
         print("1. Create work request")
         print("2. create maintenance request")
         print("3. Change maintenance report")
-        print("4. browse work and maintenance reports")
-        print("b. back to main menu")
+        print("4. Browse work and maintenance reports")
+        print("b. Back to main menu")
         print("q. Quit")
         selection = input("Input selection: ")
         if selection == "1":
@@ -54,5 +56,5 @@ class WorkReportMenu:
         elif selection.lower() == "q":
             pass
         else:
-            print("Wron input!")
+            print("Wrong input!")
             self.work_report_staff_menu()
