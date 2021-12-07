@@ -1,5 +1,8 @@
 import Ui_layer.MainMenuMANUI
 import Ui_layer.MainMenuEMPUI
+
+#Mögulega að implementa baka um einn menu frekar en alltaf á main menu ef tími gefst
+
 class PropertyMenu:
     def __init__(self, title):
         self.title = title
@@ -87,7 +90,7 @@ class PropertyMenu:
             print("Wrong input")
             self.property_manager_menu()
         
-    def destination_staff_menu():
+    def destination_staff_menu(self):
         print("1. Get list of destinations")
         print("2. Search for destination")
         print("b. Back to main menu")
@@ -100,6 +103,24 @@ class PropertyMenu:
             #Implement destination search class
             pass
         elif selection.lower() == "b":
-            Ui_layer.MainMenuEMPUI.EmployeeUI(title="staff")
+            Ui_layer.MainMenuEMPUI.EmployeeUI(title="staff").staff_menu()
         elif selection.lower() == "q":
             pass
+        else:
+            print("Wrong input!")
+            self.destination_staff_menu()
+
+    def property_staff_menu(self):
+        print("1. Get list of properties")
+        print("2. Search for property")
+        print("b. Back to main menu")
+        print("q. Quit")
+        selection = input("Input selection")
+        if selection == "1":
+            #implement list of properties class
+            pass
+        elif selection == "2":
+            #implement search for properties class
+            pass
+        elif selection.lower() == "b":
+            Ui_layer.MainMenuEMPUI.EmployeeUI(title= "staff").staff_menu()
