@@ -40,7 +40,6 @@ class EmployeeDL:
         attribute = attribute.lower()
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
-            reader = csv.DictReader
             for row in reader:
                 if row[attribute]==value:
                     empl = Employee(row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])

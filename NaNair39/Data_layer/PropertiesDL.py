@@ -28,6 +28,7 @@ class PropertyDL:
     def change_information_property(self, prop):
         pass
 
+    """
     def search_property(self, idnumber):
         self.idnumber = idnumber
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
@@ -38,3 +39,15 @@ class PropertyDL:
                     return property
                     
             return None
+    """
+
+    def search_for_property(self, attribute:str, value):
+        results_list = []
+        attribute = attribute.lower()
+        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                prop = Property(row["idnumber"],row["name"], row["location"], row["address"],row["size"],row["cellphone"],row["rooms"])
+                if row[attribute] == value:
+                    results_list.append(prop)
+            return results_list
