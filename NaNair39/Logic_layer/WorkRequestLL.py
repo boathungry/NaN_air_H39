@@ -37,10 +37,11 @@ class WorkRequest(RegistrationHandler, ChangeHandler):
             elif TIME == "yearly":
                 date_next = date_today + pandas.DateOffset(years=1)
 
-            RegistrationHandler.register_work_request(self, work_request, location, properties, description, worker, priority, repeat, time, start, done)
+            RegistrationHandler.register_work_request(self, work_request, location, properties, description, worker, priority, repeat, date_next, start, done)
             
         
-   # def mark_as_done():
-     #   ChangeHandler.change_work_request(work_request:Workrequest, attribute:str, new_value)
+    def mark_as_done(self, work_request:WorkRequest):
+        ChangeHandler.change_work_request(self, work_request:WorkRequest, "done", new_value)
+
             
 

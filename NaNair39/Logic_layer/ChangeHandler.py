@@ -19,7 +19,7 @@ EMAIL = "email"
 HOURS = "opening hours"
 
 ID = "id"
-REQUEST = "work request"
+REQUEST = "work_request"
 LOCATION = "location"
 PROPERTIES = "properties"
 DESCRIPTION = "description"
@@ -120,16 +120,26 @@ class ChangeHandler():
 
     def change_work_request(self, work_request:WorkRequest, attribute:str, new_value):
         attribute = attribute.lower()
-        if attribute == OPEN:
-            work_request.open_date = new_value
-        elif attribute == DUE:
-            work_request.due_date = new_value
+        if attribute == REQUEST:
+            work_request.work_request = new_value
+        elif attribute == LOCATION:
+            work_request.location = new_value
+        elif attribute == PROPERTIES:
+            work_request.properties = new_value
+        elif attribute == DESCRIPTION:
+            work_request.description = new_value
+        elif attribute == WORKER:
+            work_request.worker= new_value
         elif attribute == PRIORITY:
-            work_request.priority = new_value
+            work_request.priority= new_value
         elif attribute == REPEAT:
-            work_request.repeat = new_value
-        elif attribute == INTERVAL:
-            work_request.repeat_interval = new_value
+            work_request.repeat= new_value
+        elif attribute == TIME:
+            work_request.time= new_value
+        elif attribute == START:
+            work_request.start= new_value
+        elif attribute == DONE:
+            work_request.done= new_value
         else: return None
 
         self.dl_api.change_information_work_request(work_request) #NOT IMPLEMENTED YET
