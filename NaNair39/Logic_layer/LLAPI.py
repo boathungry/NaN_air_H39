@@ -1,12 +1,19 @@
 from Data_layer.DLAPI import DLAPI
 from Logic_layer.ChangeHandler import ChangeHandler
 from Logic_layer.RegistrationHandler import RegistrationHandler
+from Logic_layer.WorkReportLL import WorkReport
+from Logic_layer.WorkRequestLL import WorkRequest
+from NaNair39.Models.WorkReportModel import WorkReport
+from NaNair39.Models.WorkRequestModel import WorkRequest
+
 
 class LLAPI():
     def __init__(self, data_API = DLAPI()) -> None:
         self.dl_API = data_API
         self.change_handler = ChangeHandler(data_API)
         self.registration_handler = RegistrationHandler(data_API)
+        self.work_report = WorkReport(data_API)
+        self.work_request = WorkRequest(data_API)
     
     def change_employee(self, employee, attribute, new_value):
         """Passes the chosen employee, attribute and new value through the logic layer where the attribute is changed to the new value."""
