@@ -11,7 +11,7 @@ def main():
         user = ManagerUI("manager")
         ManagerUI.managers_menu(user)
     elif selection == "2":
-        Ui_layer.MainMenuEMPUI
+        Ui_layer.MainMenuEMPUI.EmployeeUI(title="staff").staff_menu()
     elif selection.lower == "q":
         pass
     else:

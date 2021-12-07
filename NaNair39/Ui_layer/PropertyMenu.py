@@ -1,32 +1,39 @@
 import Ui_layer.MainMenuMANUI
+import Ui_layer.MainMenuEMPUI
 class PropertyMenu:
     def __init__(self, title):
-        super().__init__()
+        self.title = title
 
     def location_options(self):
         """location_deets = "get_location_details(self.location)"""
-        
-        print("1. Destinations")
-        print("2. Properties")
-        print("b. Back")
-        print("q. Quit")
-        selection = input("Input selection: ")
-        if selection == "1" and self.title == "manager":
-            self.destination_manager_menu()
-        elif selection == "1" and self.title == "staff":
-            self.destination_staff_menu()
-        elif selection == "2" and self.title == "manager":
-            self.property_manager_menu()
-        elif selection == "2" and self.title == "staff":
-            self.property_staff_menu()
-        elif selection.lower() == "b" and self.title == "manager":
-            user = Ui_layer.MainMenuMANUI.ManagerUI("manager")
-            Ui_layer.MainMenuMANUI.ManagerUI.managers_menu(user)
-        elif selection.lower() == "q":
-            pass
-        else:
-            print("Wrong input.")
-            self.location_options()
+        location_options_on = True
+        while location_options_on:
+            print("1. Destinations")
+            print("2. Properties")
+            print("b. Back")
+            print("q. Quit")
+            print(self.title)
+            selection = input("Input selection: ")
+            if selection == "1" and self.title == "manager":
+                location_options_on = False
+                self.destination_manager_menu()
+            elif selection == "1" and self.title == "staff":
+                location_options_on = False
+                self.destination_staff_menu()
+            elif selection == "2" and self.title == "manager":
+                location_options_on = False
+                self.property_manager_menu()
+            elif selection == "2" and self.title == "staff":
+                location_options_on = False
+                self.property_staff_menu()
+            elif selection.lower() == "b" and self.title == "manager":
+                user = Ui_layer.MainMenuMANUI.ManagerUI("manager")
+                Ui_layer.MainMenuMANUI.ManagerUI.managers_menu(user)
+            elif selection.lower() == "q":
+                location_options_on = False
+            else:
+                print("Wrong input.")
+                
 
 
     def destination_manager_menu(self):
@@ -79,3 +86,20 @@ class PropertyMenu:
         else:
             print("Wrong input")
             self.property_manager_menu()
+        
+    def destination_staff_menu():
+        print("1. Get list of destinations")
+        print("2. Search for destination")
+        print("b. Back to main menu")
+        print("q. Quit")
+        selection = input("Input selection: ")
+        if selection == "1":
+            #Implement list of destinations
+            pass
+        elif selection == "2":
+            #Implement destination search class
+            pass
+        elif selection.lower() == "b":
+            Ui_layer.MainMenuEMPUI.EmployeeUI(title="staff")
+        elif selection.lower() == "q":
+            pass

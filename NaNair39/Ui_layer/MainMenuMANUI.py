@@ -21,20 +21,16 @@ class ManagerUI:
         print("q. quit")
         selection = input("Input selection: ")
         if selection == "1":
-            
             self.staffing_options()
         elif selection == "2":
-            
-            Ui_layer.PropertyMenu.PropertyMenu(ManagerUI).location_options()
+            Ui_layer.PropertyMenu.PropertyMenu(title= "manager").location_options()
         elif selection == "3":
-            
-            Ui_layer.WorkReportMenu.WorkReportMenu.WorkReportMenuMain()
+            Ui_layer.WorkReportMenu.WorkReportMenu(title= "manager").Work_report_manager_menu()
             """elif selection.lower() == "l":
             on = False
             Main.main()"""
         elif selection.lower() == "q":
-            pass
-            
+            pass 
         else:
             print("Invalid option put into selection field.")
             self.managers_menu()

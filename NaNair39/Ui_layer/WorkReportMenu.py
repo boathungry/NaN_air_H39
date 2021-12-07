@@ -1,8 +1,7 @@
 import Ui_layer.MainMenuMANUI
 class WorkReportMenu:
-    def __init__(self, title):
-        super().__init__()
-    
+    def __init__(self, title = "staff"):
+        self.title = title
     def Work_report_manager_menu(self):
         print("1. Create work request")
         print("2. Create maintenance report")
@@ -26,7 +25,7 @@ class WorkReportMenu:
         elif selection == "6":
             pass
         elif selection == "b":
-            Ui_layer.MainMenuMANUI.ManagerUI.managers_menu()
+            Ui_layer.MainMenuMANUI.ManagerUI("manager").managers_menu()
         elif selection == "q":
             pass
         else:
