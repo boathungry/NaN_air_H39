@@ -1,6 +1,6 @@
 from datetime import date
-from Ui_layer.PropertyMenu import PropertyMenu
-from Ui_layer.WorkReportMenu import WorkReportMenu
+import Ui_layer.PropertyMenu
+import Ui_layer.WorkReportMenu 
 import Ui_layer.main_login
 import Main
 class ManagerUI:
@@ -24,10 +24,10 @@ class ManagerUI:
                 self.staffing_options()
             elif selection == "2":
                 on = False
-                PropertyMenu.location_options_mangers()
+                Ui_layer.PropertyMenu.PropertyMenu.location_options_mangers()
             elif selection == "3":
                 on = False
-                WorkReportMenu.WorkReportMenuMain()
+                Ui_layer.WorkReportMenu.WorkReportMenu.WorkReportMenuMain()
             elif selection.lower() == "l":
                 on = False
                 Main.main()

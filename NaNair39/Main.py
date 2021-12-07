@@ -1,8 +1,8 @@
-from Ui_layer.main_login import LogedIn
-from Ui_layer.Login_menuUI import LogIn
+import Ui_layer.main_login
+import Ui_layer.Login_menuUI
 def main():
-    user = LogIn.innskra()
+    user = Ui_layer.Login_menuUI.LogIn.innskra()
     print(user)
-    LogedIn(user)
+    Ui_layer.main_login.LogedIn(user)
     
 main()
