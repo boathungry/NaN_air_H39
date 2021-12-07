@@ -2,7 +2,7 @@ from datetime import date
 import Ui_layer.PropertyMenu
 import Ui_layer.WorkReportMenu 
 import Ui_layer.main_login
-import Main
+"""import Main"""
 class ManagerUI:
     def __init__(self):
         self.staff_class = "manager"
@@ -17,7 +17,7 @@ class ManagerUI:
             print("1. Staff")
             print("2. Locations and properties")
             print("3. Work requests/reports")
-            print("l. log out")
+            """print("l. log out")"""
             print("q. quit")
             selection = input("Input selection: ")
             if selection == "1":
@@ -29,11 +29,12 @@ class ManagerUI:
             elif selection == "3":
                 on = False
                 Ui_layer.WorkReportMenu.WorkReportMenu.WorkReportMenuMain()
-            elif selection.lower() == "l":
+                """elif selection.lower() == "l":
                 on = False
-                Main.main()
+                Main.main()"""
             elif selection.lower() == "q":
                 on = False
+                
             else:
                 print("Invalid option put into selection field.")
 
