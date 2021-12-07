@@ -35,5 +35,5 @@ class LLAPI():
     def create_work_report(self, work_request, location, properties, description):
         self.registration_handler.register_work_report(work_request, location, properties, description)
 
-    def create_work_request(self, request_id, open_date, due_date, priority, property, repeat = False, repeat_interval = 0):
-        self.registration_handler.register_work_request(request_id, open_date, due_date, priority, property, repeat, repeat_interval)
+    def create_work_request(self, id, work_request, location, properties, description, worker, priority, repeat, time, start, done):
+        self.registration_handler.register_work_request(self, id, work_request, location, properties, description, worker, priority, repeat, time, start, done)
