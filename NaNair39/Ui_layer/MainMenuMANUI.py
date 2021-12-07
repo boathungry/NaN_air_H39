@@ -25,7 +25,7 @@ class ManagerUI:
             self.staffing_options()
         elif selection == "2":
             
-            Ui_layer.PropertyMenu.PropertyMenu(ManagerUI).location_options_mangers()
+            Ui_layer.PropertyMenu.PropertyMenu(ManagerUI).location_options()
         elif selection == "3":
             
             Ui_layer.WorkReportMenu.WorkReportMenu.WorkReportMenuMain()

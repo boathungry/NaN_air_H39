@@ -20,6 +20,4 @@ class LogedIn:
             self.main_menu()
     
     
-            
-
-            
+        
