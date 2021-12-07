@@ -1,33 +1,40 @@
 from datetime import date
-from Ui_layer.PropertyMenu import PropertyMenu
-from Ui_layer.WorkReportMenu import WorkReportMenu
-
+import Ui_layer.PropertyMenu
+import Ui_layer.WorkReportMenu 
+import Ui_layer.main_login
+"""import Main"""
 class ManagerUI:
-    def __init__(self, name):
-        super().__init__(name, staff_class="m")
+    def __init__(self):
+        self.staff_class = "manager"
+        
         
     def managers_menu(self):
         on = True
         today = date.today()
         today_string = today.strftime("%d/%m/%Y")
         while on:
-            print(f"Welcome {self.name}. Todays date is {today_string}")
+            """print(f"Welcome {self.name}. Todays date is {today_string}")"""
             print("1. Staff")
             print("2. Locations and properties")
             print("3. Work requests/reports")
-            print("l. log out")
+            """print("l. log out")"""
             print("q. quit")
             selection = input("Input selection: ")
             if selection == "1":
+                on = False
                 self.staffing_options()
             elif selection == "2":
-                PropertyMenu.location_options(self.staff_class)
+                on = False
+                Ui_layer.PropertyMenu.PropertyMenu.location_options_mangers()
             elif selection == "3":
-                WorkReportMenu.WorkReportMenuMain()
-            elif selection.lower() == "l":
-                "LogedIn.main_menu"
+                on = False
+                Ui_layer.WorkReportMenu.WorkReportMenu.WorkReportMenuMain()
+                """elif selection.lower() == "l":
+                on = False
+                Main.main()"""
             elif selection.lower() == "q":
                 on = False
+                
             else:
                 print("Invalid option put into selection field.")
 

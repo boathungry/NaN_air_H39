@@ -2,6 +2,7 @@ from Data_layer.EmployeeDL import EmployeeDL
 from Data_layer.PropertiesDL import PropertyDL
 from Data_layer.WorkReportDL import WorkReportDL
 from Data_layer.WorkRequestDL import WorkRequestDL
+from Data_layer.ContractorsDL import ContractorDL
 
 class DLAPI:
     
@@ -10,6 +11,7 @@ class DLAPI:
         self.propDL = PropertyDL()
         self.VB = WorkReportDL()
         self.reqDL = WorkRequestDL()
+        self.contr = ContractorDL()
 
     def get_all_employees(self):
         return self.emplDL.get_all_employees()
@@ -59,4 +61,11 @@ class DLAPI:
     def delete_work_request(self,req):
         return self.reqDL.delete_work_request(req)
 
-    
+    def login_by_email(self,email):    
+        return self.emplDL.login_by_email(email)
+
+    def list_all_contractors(self, contr):
+        return self.contr.list_all_contractors(contr)
+
+    def create_contractor(self, contr):
+        return self.contr.create_contractor(contr)

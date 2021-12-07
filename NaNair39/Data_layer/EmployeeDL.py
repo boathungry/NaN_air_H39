@@ -4,9 +4,11 @@ from Models.EmployeeModel import Employee
 
 class EmployeeDL:
 
-    def __init__ (self):
+    def __init__ (self, email):
+        self.email = email
         self.filepath = "csv_files/Employee.csv"
-
+    def __str__(self):
+        return self.email
     def get_all_employees(self):
         return_list = []
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
@@ -37,8 +39,8 @@ class EmployeeDL:
                     empl = Employee(row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
             return empl
 
-    def login_by_email(self, email):
-        self.email = email
+    def login_by_email(self):
+        
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
