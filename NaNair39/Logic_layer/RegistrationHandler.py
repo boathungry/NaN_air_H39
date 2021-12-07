@@ -27,14 +27,14 @@ class RegistrationHandler():
         self.dl_api.create_contractor(new_contractor) #NOT IMPLEMENTED YET
         return new_contractor
 
-    def register_work_report(self, work_request, location, properties, description):
+    def register_work_report(self, id, work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done, approved):
         """Registers a new work report and returns the work report."""
-        new_work_report = WorkReport(work_request, location, properties, description)
+        new_work_report = WorkReport(id, work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done, approved)
         self.dl_api.create_work_report(new_work_report)
         return new_work_report
 
     def register_work_request(self, id, work_request, location, properties, description, worker, priority, repeat, time, start, done):
         """Registers a new work request and returns the work request."""
-        new_work_request = WorkRequest(self, id, work_request, location, properties, description, worker, priority, repeat, time, start, done)
+        new_work_request = WorkRequest(id, work_request, location, properties, description, worker, priority, repeat, time, start, done)
         self.dl_api.create_work_request(new_work_request)
         return new_work_request

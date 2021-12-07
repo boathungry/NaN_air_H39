@@ -1,5 +1,5 @@
 from Models.WorkRequestModel import WorkRequest
-from Logic_layer.LLAPI import LLAPI
+from Data_layer.DLAPI import DLAPI
 from RegistrationHandler import RegistrationHandler
 from ChangeHandler import ChangeHandler
 from datetime import date
@@ -22,8 +22,8 @@ DONE = "done"
 
 
 class WorkRequest(RegistrationHandler, ChangeHandler):
-    def __init__(self) -> None:
-        pass
+    def __init__(self, dl_api:DLAPI = DLAPI()) -> None:
+        self.dl_api = dl_api
 
     def repeat_work_request(self, id, work_request, location, properties, description, worker, priority, repeat, time, start, done):
         date_today = date.today()
@@ -41,7 +41,7 @@ class WorkRequest(RegistrationHandler, ChangeHandler):
             
         
     def mark_as_done(self, work_request:WorkRequest):
-        ChangeHandler.change_work_request(self, work_request:WorkRequest, "done", new_value)
+        ChangeHandler.change_work_request(self, work_request, "done", date.today())
 
             
 

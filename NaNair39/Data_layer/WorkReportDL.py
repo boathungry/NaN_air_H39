@@ -12,16 +12,16 @@ class WorkReportDL:
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                VB = WorkReport(row["work request"],row["location"], row["properties"], row["description"])
+                VB = WorkReport(row["id"],row["work_request_id"], row["description"], row["location"], row["properties"], row["worker"], row["comment"], row["regular_maintenance"], row["expenses"], row["start"], row["done"], row["approved"])
                 return_list.append(VB)
         return return_list
     
     def create_work_report(self, VB):
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
-            fieldnames = ["work request","location","properties","description"]
+            fieldnames = ["id", "work_request_id", "description", "location", "properties", "worker", "comment", "regular_maintenance", "expenses", "start", "done", "approved"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerow({'': VB.workreport, 'location': VB.location, 'property': VB.properties, 'description': VB.description})
-    
+            writer.writerow({'id': VB.id, 'work_request_id': VB.work_request_id, 'description': VB.description, 'location': VB.location, 'properties': VB.properties, 'worker': VB.worker, 'comment': VB.comment, 'regular_maintenance': VB.regular_maintenance, 'expenses': VB.expenses, 'start': VB.start, 'done': VB.done, 'approved': VB.approved})
+
     def delete_work_report(self, VB):
         pass
 

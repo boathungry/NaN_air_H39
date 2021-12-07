@@ -1,3 +1,4 @@
+from pandas.tseries.offsets import CustomBusinessMonthEnd
 from Models.EmployeeModel import Employee
 from Models.PropertyModel import Property
 from Models.ContractorModel import Contractor
@@ -30,11 +31,12 @@ TIME = "time"
 START = "start"
 DONE = "done"
 
-OPEN = "open date"
-DUE = "due date"
-PRIORITY = "priority"
-REPEAT = "repeat"
-INTERVAL = "repeat interval"
+
+WORK_REQUEST_ID = "work_request_id"
+COMMENT = "comment"
+REGULAR_MAINTENANCE = "regular_maintenance"
+EXPENSES = "expenses"
+APPROVED = "approved"
 
 class ChangeHandler():
     def __init__(self, dl_api:DLAPI = DLAPI()) -> None:
@@ -104,16 +106,33 @@ class ChangeHandler():
         """Takes a work report, an attribute of that work report, and a new value for the attribute. Changes the attribute to the new value.
         Returns the given attribute if the function found an attribute by that name and managed to change it, otherwise returns None."""
         attribute = attribute.lower()
-        if attribute == LOCATION:
-            work_report.location = new_value
-        elif attribute == PROPERTIES:
-            work_report.properties = new_value
+        if attribute == ID:
+            work_report.id = new_value
+        elif attribute == WORK_REQUEST_ID:
+            work_report.work_request_id = new_value
         elif attribute == DESCRIPTION:
             work_report.description = new_value
+        elif attribute == LOCATION:
+            work_report.location == new_value
+        elif attribute == PROPERTIES:
+            work_report.properties == new_value
+        elif attribute == WORKER:
+            work_report.worker == new_value
+        elif attribute == COMMENT:
+            work_report.comment == new_value
+        elif attribute == REGULAR_MAINTENANCE:
+            work_report.regular_maintenance == new_value
+        elif attribute == EXPENSES:
+            work_report.expenses == new_value
+        elif attribute == START:
+            work_report.start == new_value
         elif attribute == DONE:
             work_report.done == new_value
+        elif attribute == APPROVED:
+            work_report.approved == new_value
         else:
             return None
+
         
         self.dl_api.change_information_work_report(work_report)
         return attribute
