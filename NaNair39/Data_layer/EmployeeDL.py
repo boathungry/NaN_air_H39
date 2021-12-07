@@ -31,21 +31,7 @@ class EmployeeDL:
         self.attribute = attribute
         self.employee = employee
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                empl = Employee(row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
-                if empl == self.employee:
-                    if row[attribute] == self.attribute:
-                        row[attribute] = new_value
-                        with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
-                            fieldnames = ["name","email","location","address","phone","cellphone","title"]
-                            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                            writer.writerow({'name': empl.name, 'email': empl.email, 'location': empl.location, 'address': empl.address, 'phone': empl.phone, 'cellphone': empl.cellphone, 'title': empl.title})
-                else:
-                    with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
-                        fieldnames = ["name","email","location","address","phone","cellphone","title"]
-                        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-                        writer.writerow({'name': empl.name, 'email': empl.email, 'location': empl.location, 'address': empl.address, 'phone': empl.phone, 'cellphone': empl.cellphone, 'title': empl.title})
+            pass
 
 
     def search_by_email(self):
