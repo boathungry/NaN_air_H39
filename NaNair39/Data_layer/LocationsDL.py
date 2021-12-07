@@ -16,3 +16,7 @@ class locationDL:
                 loct = Location(row["city"],row["country"])
                 return_list.append(loct)
         return return_list
+
+all_locations = locationDL.get_all_locations()
+for i in all_locations:
+    print(i)
