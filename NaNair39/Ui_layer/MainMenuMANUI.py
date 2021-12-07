@@ -2,6 +2,7 @@ from datetime import date
 import Ui_layer.PropertyMenu
 import Ui_layer.WorkReportMenu 
 import Ui_layer.main_login
+import Logic_layer.LLAPI
 """import Main"""
 class ManagerUI:
     def __init__(self, title = "manager"):
@@ -45,8 +46,8 @@ class ManagerUI:
         print("q. quit")
         selection = input("Input selection: ")
         if selection == "1":
-            pass
-            #vantar klasa til að búa til starfsfólk
+            self.create_employee()
+            
         elif selection == "2":
             staffmail = input("What is the email of the employee you wish to edit: ")
 
@@ -64,4 +65,28 @@ class ManagerUI:
         else:
             print("Invalid option put into selection field.")
             self.staffing_options()
-    
+    def create_employee(self):
+        name = input("What is the name of the new employee?: ")
+        location = input("What location does the employee work at?: ")
+        address = input("What is the address of the employee?: ")
+        phone = input("What is the employees phone number?: ")
+        cellphone = input("What is the employees cellphone number?: ")
+        title = input('Is the employee a "manager" or a regular "staff" member?: ')
+        createemployeloop = True
+        while createemployeloop:
+            print("Is this the correct information?")
+            print(f"Name: {name}")
+            print(f"Location: {location}")
+            print(f"Address: {address}")
+            print(f"Phone: {phone}")
+            print(f"Cellphone: {cellphone}")
+            print(f"Title: {title}")
+            rightorwrong = input("Is this information correct [y]es, [n]o, [c]ancel: ")
+            if rightorwrong.lower() == "y":
+                Logic_layer.LLAPI.LLAPI.create_employee(name, location, address, phone, cellphone, title)
+            elif rightorwrong.lower() == "c":
+                self.managers_menu()
+            elif rightorwrong.lower() == "n":
+                print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
+                fieldchange = input("Input the letter of the field you wish to change")
+
