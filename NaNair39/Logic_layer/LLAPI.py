@@ -37,8 +37,8 @@ class LLAPI():
     def create_contractor(self, name, phone, email, opening_hours, address):
         self.registration_handler.register_contractor(name, phone, email, opening_hours, address)
 
-    def create_work_report(self, work_request, location, properties, description):
-        self.registration_handler.register_work_report(work_request, location, properties, description)
+    def create_work_report(self, id, work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done, approved):
+        self.registration_handler.register_work_report(id, work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done, approved)
 
     def create_work_request(self, id, work_request, location, properties, description, worker, priority, repeat, time, start, done):
-        self.registration_handler.register_work_request(self, id, work_request, location, properties, description, worker, priority, repeat, time, start, done)
+        self.registration_handler.register_work_request(id, work_request, location, properties, description, worker, priority, repeat, time, start, done)

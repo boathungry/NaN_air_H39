@@ -4,4 +4,4 @@ class WorkReport():
         pass
 
     def approve_report():
-        pass
+        
