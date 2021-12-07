@@ -5,7 +5,7 @@ from Logic_layer.ChangeHandler import ChangeHandler
 from datetime import date
 import pandas
 
-from NaNair39.Models.EmployeeModel import Employee
+from Models.EmployeeModel import Employee
 
 ID = "id"
 REQUEST = "work request"
