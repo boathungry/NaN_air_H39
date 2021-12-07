@@ -8,6 +8,7 @@ class ContractorDL:
         self.filepath = "csv_files/Contractors.csv"
 
     def list_all_contractors(self):
+        '''Lists all contractors in given filepath'''
         return_list = []
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -17,6 +18,7 @@ class ContractorDL:
         return return_list
 
     def create_contractor(self,cont):
+        '''Appends a contractor to the given filepath'''
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
             fieldnames = ["name","email","location","address","phone","cellphone","title"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)

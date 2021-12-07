@@ -8,9 +8,15 @@ class EmployeeDL:
         self.location = location
         self.email = email
         self.filepath = "csv_files/Employee.csv"
+
+
     def __str__(self):
+        '''Returns the necessary string'''
         return self.email
+
+
     def get_all_employees(self):
+        '''Returns a list of employees in the given filepath'''
         return_list = []
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -20,6 +26,7 @@ class EmployeeDL:
         return return_list
     
     def create_employee(self, empl):
+        '''Appends a new employee to the given filepath'''
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
             fieldnames = ["name","email","location","address","phone","cellphone","title"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -47,6 +54,7 @@ class EmployeeDL:
             return results_list
             
     def login_by_email(self):
+        '''Given the users email checks if user is a registered employee or a manager'''
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:

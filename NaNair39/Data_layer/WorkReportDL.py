@@ -8,6 +8,7 @@ class WorkReportDL:
         self.filepath = "csv_files/Workorders.csv"
 
     def get_all_work_reports(self):
+        '''Lists all work reports from the given filepath'''
         return_list = []
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -17,6 +18,7 @@ class WorkReportDL:
         return return_list
     
     def create_work_report(self, VB):
+        '''Appends a new work report to the given filepath'''
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
             fieldnames = ["id", "work_request_id", "description", "location", "properties", "worker", "comment", "regular_maintenance", "expenses", "start", "done", "approved"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -29,6 +31,7 @@ class WorkReportDL:
         pass
 
     def search_for_work_report(self, attribute:str, value) -> list:
+        '''Searches for work order within the given filepath, using the given attribute'''
         results_list = []
         attribute = attribute.lower()
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:

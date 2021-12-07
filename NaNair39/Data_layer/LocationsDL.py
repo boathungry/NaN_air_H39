@@ -9,6 +9,7 @@ class locationDL:
         self.filepath = "csv_files/Locations.csv"
 
     def get_all_locations(self):
+        '''Returns all locations in given filepath'''
         return_list = []
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
