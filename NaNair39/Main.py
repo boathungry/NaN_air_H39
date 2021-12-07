@@ -8,7 +8,7 @@ def main():
     Ui_layer.main_login.LogedIn(user)"""
     selection = Ui_layer.Login_menuUI.LogIn.temp_innskra()
     if selection == "1":
-        ManagerUI.managers_menu()
+        ManagerUI.managers_menu("Argument")
     elif selection == "2":
         Ui_layer.MainMenuEMPUI
     elif selection.lower == "q":
