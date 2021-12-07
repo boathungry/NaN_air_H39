@@ -13,9 +13,8 @@ class PropertyMenu:
         while location_options_on:
             print("1. Destinations")
             print("2. Properties")
-            print("b. Back")
+            print("b. Back to main menu")
             print("q. Quit")
-            print(self.title)
             selection = input("Input selection: ")
             if selection == "1" and self.title == "manager":
                 location_options_on = False
@@ -30,8 +29,11 @@ class PropertyMenu:
                 location_options_on = False
                 self.property_staff_menu()
             elif selection.lower() == "b" and self.title == "manager":
-                user = Ui_layer.MainMenuMANUI.ManagerUI("manager")
-                Ui_layer.MainMenuMANUI.ManagerUI.managers_menu(user)
+                location_options_on = False
+                Ui_layer.MainMenuMANUI.ManagerUI(title="staff").managers_menu()
+            elif selection.lower() == "b" and self.title == "staff":
+                location_options_on = False
+                Ui_layer.MainMenuEMPUI.EmployeeUI(title="staff").staff_menu
             elif selection.lower() == "q":
                 location_options_on = False
             else:
@@ -56,8 +58,7 @@ class PropertyMenu:
         elif selection == "4":
             pass
         elif selection.lower() == "b":
-            user = Ui_layer.MainMenuMANUI.ManagerUI("manager")
-            Ui_layer.MainMenuMANUI.ManagerUI.managers_menu(user)
+            Ui_layer.MainMenuMANUI.ManagerUI(title="manager").managers_menu()
         elif selection.lower() == "q":
             pass
         else:
@@ -82,8 +83,7 @@ class PropertyMenu:
         elif selection == "4":
             pass
         elif selection.lower() == "b":
-            user = Ui_layer.MainMenuMANUI.ManagerUI("manager")
-            Ui_layer.MainMenuMANUI.ManagerUI.managers_menu(user)
+            Ui_layer.MainMenuMANUI.ManagerUI(title="manager").managers_menu()
         elif selection.lower() == "q":
             pass
         else:

@@ -23,7 +23,7 @@ class EmployeeUI:
 
         elif selection == "2":
             
-            Ui_layer.WorkReportMenu.WorkReportMenu(title="staff").WorkReportMenuMain()
+            Ui_layer.WorkReportMenu.WorkReportMenu(title="staff").work_report_staff_menu()
             """elif selection.lower() == "l":
             on = False
             Main.main()"""
