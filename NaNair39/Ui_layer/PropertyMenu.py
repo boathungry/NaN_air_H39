@@ -3,7 +3,7 @@ class PropertyMenu:
     def __init__(self, title):
         super().__init__()
 
-    def location_options_mangers(self):
+    def location_options(self):
         """location_deets = "get_location_details(self.location)"""
         
         print("1. Destinations")
@@ -11,18 +11,22 @@ class PropertyMenu:
         print("b. Back")
         print("q. Quit")
         selection = input("Input selection: ")
-        if selection == "1":
+        if selection == "1" and self.title == "manager":
             self.destination_manager_menu()
-        elif selection == "2":
+        elif selection == "1" and self.title == "staff":
+            self.destination_staff_menu()
+        elif selection == "2" and self.title == "manager":
             self.property_manager_menu()
-        elif selection.lower() == "b":
+        elif selection == "2" and self.title == "staff":
+            self.property_staff_menu()
+        elif selection.lower() == "b" and self.title == "manager":
             user = Ui_layer.MainMenuMANUI.ManagerUI("manager")
             Ui_layer.MainMenuMANUI.ManagerUI.managers_menu(user)
         elif selection.lower() == "q":
             pass
         else:
             print("Wrong input.")
-            self.location_options_mangers()
+            self.location_options()
 
 
     def destination_manager_menu(self):
