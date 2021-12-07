@@ -26,7 +26,7 @@ class WorkReportMenu:
         elif selection == "6":
             pass
         elif selection == "b":
-            MainMenuMANUI.ManagerUI.managers_menu()
+            Ui_layer.MainMenuMANUI.ManagerUI.managers_menu()
         elif selection == "q":
             pass
         else:
