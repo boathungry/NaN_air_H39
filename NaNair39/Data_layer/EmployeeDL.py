@@ -1,5 +1,5 @@
 import csv
-
+from Models.LoginModel import LoginAccount
 from Models.EmployeeModel import Employee
 
 class EmployeeDL:
@@ -56,5 +56,5 @@ class EmployeeDL:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if row["email"] == self.email:
-                    user = Employee(row["name"],row["email"], row["location"],row["title"])
+                    user = LoginAccount(row["name"],row["email"], row["location"],row["title"])
                     return user
