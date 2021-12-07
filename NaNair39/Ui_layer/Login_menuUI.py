@@ -6,7 +6,10 @@ class LogIn:
         if email.lower() == "q":
             pass
         else:
-            user = EmployeeDL.login_by_email(email)
+            usermail = EmployeeDL(email)
+            print(usermail)
+            user = EmployeeDL.login_by_email(usermail)
+            print(user)
             return user
 
         
