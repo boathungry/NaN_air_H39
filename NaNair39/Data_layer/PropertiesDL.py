@@ -27,3 +27,4 @@ class PropertyDL:
 
     def change_information_property(self, prop):
         pass
+

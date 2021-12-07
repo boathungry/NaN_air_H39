@@ -39,6 +39,17 @@ class EmployeeDL:
                     empl = Employee(row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
             return empl
 
+    def search_by_location(self, location):
+        self.location = location
+        empl_list = []
+        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader
+            for row in reader:
+                if row["location"]==self.location:
+                    empl = Employee(row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
+                    empl_list.append(empl)
+            return empl_list
+            
     def login_by_email(self):
         
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
