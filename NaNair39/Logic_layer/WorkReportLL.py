@@ -1,6 +1,6 @@
 from Models.WorkReportModel import WorkReport
 from Data_layer.DLAPI import DLAPI
-from ChangeHandler import ChangeHandler
+from Logic_layer.ChangeHandler import ChangeHandler
 from datetime import date
 
 class WorkReport():

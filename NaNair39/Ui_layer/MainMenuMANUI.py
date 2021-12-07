@@ -83,10 +83,26 @@ class ManagerUI:
             print(f"Title: {title}")
             rightorwrong = input("Is this information correct [y]es, [n]o, [c]ancel: ")
             if rightorwrong.lower() == "y":
+                createemployeloop == False
                 Logic_layer.LLAPI.LLAPI.create_employee(name, location, address, phone, cellphone, title)
             elif rightorwrong.lower() == "c":
+                createemployeloop == False
                 self.managers_menu()
             elif rightorwrong.lower() == "n":
                 print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
                 fieldchange = input("Input the letter of the field you wish to change")
+                if fieldchange.lower() == "n":
+                    name = input("What is the name of the new employee?: ")
+                elif fieldchange.lower() == "l":
+                    location = input("What location does the employee work at?: ")
+                elif fieldchange.lower() == "a":    
+                    address = input("What is the address of the employee?: ")
+                elif fieldchange.lower() == "p":
+                    phone = input("What is the employees phone number?: ")
+                elif fieldchange.lower() == "c":
+                    cellphone = input("What is the employees cellphone number?: ")
+                elif fieldchange.lower() == "t":
+                    title = input('Is the employee a "manager" or a regular "staff" member?: ')
+                else:
+                    print("Wrong input!")
 

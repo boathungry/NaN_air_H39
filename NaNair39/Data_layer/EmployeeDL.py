@@ -4,7 +4,7 @@ from Models.EmployeeModel import Employee
 
 class EmployeeDL:
 
-    def __init__ (self, email, location):
+    def __init__ (self, email= "", location= ""):
         self.location = location
         self.email = email
         self.filepath = "csv_files/Employee.csv"
