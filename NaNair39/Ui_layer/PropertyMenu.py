@@ -1,4 +1,4 @@
-
+import Ui_layer.MainMenuEMPUI
 class PropertyMenu:
     def __init__(self):
         super().__init__()
@@ -42,7 +42,7 @@ class PropertyMenu:
             elif selection == "4":
                 pass
             elif selection.lower() == "b":
-                "ManagerUI.managers_menu()"
+                Ui_layer.MainMenuEMPUI.ManagerUI.managers_menu()
             elif selection.lower() == "q":
                 manlocon = False
     def property_manager_menu():
@@ -64,7 +64,7 @@ class PropertyMenu:
             elif selection == "4":
                 pass
             elif selection.lower() == "b":
-                "ManagerUI.managers_menu()"
+                Ui_layer.MainMenuEMPUI.ManagerUI.managers_menu()
             elif selection.lower() == "q":
                 propmanmenuon = False
             else:
