@@ -1,10 +1,13 @@
 from Data_layer.EmployeeDL import EmployeeDL
 class LogIn:
     def innskra():
+        print("To quit put q in email field")
         email = input("Please input your email: ")
-        print(email)
-        user = EmployeeDL.search_by_email(email)
-        return user
+        if email.lower() == "q":
+            pass
+        else:
+            user = EmployeeDL.login_by_email(email)
+            return user
 
         
         

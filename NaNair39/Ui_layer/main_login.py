@@ -2,7 +2,7 @@ from Ui_layer.MainMenuMANUI import ManagerUI
 from Ui_layer.MainMenuEMPUI import EmployeeUI
 
 class LogedIn:
-    def __init__(self, email = "", name = "", title = "", location = ""):
+    def __init__(self, name = "", email = "", location = "", title = ""):
         self.name = name
         self.email = email
         self.title = title

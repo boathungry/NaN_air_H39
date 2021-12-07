@@ -1,10 +1,11 @@
 from datetime import date
 from Ui_layer.PropertyMenu import PropertyMenu
 from Ui_layer.WorkReportMenu import WorkReportMenu
-
+import Ui_layer.main_login
+import Main
 class ManagerUI:
     def __init__(self, name):
-        super().__init__(name, staff_class="m")
+        super().__init__(name)
         
     def managers_menu(self):
         on = True
@@ -19,13 +20,17 @@ class ManagerUI:
             print("q. quit")
             selection = input("Input selection: ")
             if selection == "1":
+                on = False
                 self.staffing_options()
             elif selection == "2":
-                PropertyMenu.location_options(self.staff_class)
+                on = False
+                PropertyMenu.location_options_mangers()
             elif selection == "3":
+                on = False
                 WorkReportMenu.WorkReportMenuMain()
             elif selection.lower() == "l":
-                "LogedIn.main_menu"
+                on = False
+                Main.main()
             elif selection.lower() == "q":
                 on = False
             else:
