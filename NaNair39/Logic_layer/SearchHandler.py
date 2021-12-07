@@ -30,11 +30,11 @@ TIME = "time"
 START = "start"
 DONE = "done"
 
-OPEN = "open date"
-DUE = "due date"
-PRIORITY = "priority"
-REPEAT = "repeat"
-INTERVAL = "repeat interval"
+WORK_REQUEST_ID = "work_request_id"
+COMMENT = "comment"
+REGULAR_MAINTENANCE = "regular_maintenance"
+EXPENSES = "expenses"
+APPROVED = "approved"
 
 class SearchHandler():
     def __init__(self, dl_api:DLAPI = DLAPI(), ll_api:LLAPI = LLAPI()) -> None:
