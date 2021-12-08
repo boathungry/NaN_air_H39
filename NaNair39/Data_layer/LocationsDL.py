@@ -3,7 +3,7 @@ import csv
 from Models.LocationModel import Location
 
 class locationDL:
-    def __init__(self,city,country):
+    def __init__(self,city = "",country = ""):
         self.city = city
         self.country = country
         self.filepath = "csv_files/Locations.csv"

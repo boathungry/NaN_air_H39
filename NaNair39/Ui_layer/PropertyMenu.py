@@ -1,3 +1,4 @@
+from Models.LocationModel import Location
 import Ui_layer.MainMenuMANUI
 import Ui_layer.MainMenuEMPUI
 import Logic_layer.LLAPI
@@ -57,7 +58,7 @@ class PropertyMenu:
         if selection == "1":
             self.create_destination()
         elif selection == "2":
-            pass
+            self.edit_destination()
         elif selection == "3":
             pass
         elif selection == "4":
@@ -179,15 +180,15 @@ class PropertyMenu:
         print("Change information about a destination")
         cityname = input("What is the city name of the destination you wish to edit?: ")
 
-        destinationinfo = Logic_layer.SearchHandler.SearchHandler.search(Des(), attribute="ID", value=employeeID)
-        print(Employeeinfo)
-        name = Employeeinfo.name
-        email = Employeeinfo.email
-        location = Employeeinfo.location
-        address = Employeeinfo.address
-        phone = Employeeinfo.phone
-        cellphone = Employeeinfo.cellphone
-        title = Employeeinfo.title
+        destinationinfo = Logic_layer.SearchHandler.SearchHandler.search(search_object=Location(), attribute="city", value=cityname)
+        print(destinationinfo)
+        name = destinationinfo.name
+        email = destinationinfo.email
+        location = destinationinfo.location
+        address = destinationinfo.address
+        phone = destinationinfo.phone
+        cellphone = destinationinfo.cellphone
+        title = destinationinfo.title
         print(f"Name: {name}")
         print(f"Email: {email}")
         print(f"Location: {location}")
