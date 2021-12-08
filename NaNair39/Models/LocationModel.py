@@ -1,5 +1,5 @@
 class Location:
-    def __init__(self, city, country, airport, phone, opening, manager):
+    def __init__(self, city = "", country = "", airport = "", phone = "", opening = "", manager = ""):
         self.city = city
         self.country = country
         self.airport = airport
