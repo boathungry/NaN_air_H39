@@ -16,7 +16,7 @@ class ManagerUI:
         today = date.today()
         today_string = today.strftime("%d/%m/%Y")
         while on:
-            """print(f"Welcome {self.name}. Todays date is {today_string}")"""
+            print(f"Welcome {self.name}. Todays date is {today_string}")
             print("1. Staff")
             print("2. Locations and properties")
             print("3. Work requests/reports")
@@ -42,7 +42,6 @@ class ManagerUI:
                 print("Invalid option put into selection field.")
 
     def staffing_options(self):
-        
         print("1. Register a new staff member")
         print("2. Edit information about a staff member")
         print("3. Get staff list")
@@ -66,46 +65,49 @@ class ManagerUI:
             print("Invalid option put into selection field.")
             self.managers_menu()
 
-    def staffing_options(self):
-        on = True
-        while on:
-            print("1. Register a new staff member")
-            print("2. Edit information about a staff member")
-            print("3. Get staff list")
-            print("4. Search for a staff member")
-            print("b. back to main menu")
-            print("q. quit")
-            selection = input("Input selection: ")
-            if selection == "1":
-                pass
-                #vantar klasa til að búa til starfsfólk
-            elif selection == "2":
-                staffmail = input("What is the email of the employee you wish to edit: ")
+    
 
-                #vantar klasa til að breyta starfsfólki
-            elif selection == "3":
-                #vantar klasa til að fá lista yfir starfsfólk
-                pass
-            elif selection == "4":
-                #vantar klasa til að leita í starfsfólki
-                pass
-            elif selection.lower() == "b":
+
+    def create_employee(self):
+        name = input("What is the name of the new employee?: ")
+        email = input("What is the employees email address?: ")
+        location = input("What location does the employee work at?: ")
+        address = input("What is the address of the employee?: ")
+        phone = input("What is the employees phone number?: ")
+        cellphone = input("What is the employees cellphone number?: ")
+        title = input('Is the employee a "manager" or a regular "staff" member?: ')
+        createemployeloop = True
+
+        while createemployeloop:
+            print("Is this the correct information?")
+            print(f"Name: {name}")
+            print(f"Email: {email}")
+            print(f"Location: {location}")
+            print(f"Address: {address}")
+            print(f"Phone: {phone}")
+            print(f"Cellphone: {cellphone}")
+            print(f"Title: {title}")
+            rightorwrong = input("Is this information correct [y]es, [n]o, [c]ancel: ")
+            if rightorwrong.lower() == "y":
+                createemployeloop = False
+                Logic_layer.LLAPI.LLAPI.create_employee(name, email, location, address, phone, cellphone, title)
+            elif rightorwrong.lower() == "c":
+                createemployeloop = False
                 self.managers_menu()
             elif rightorwrong.lower() == "n":
                 print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
                 fieldchange = input("Input the letter of the field you wish to change")
-                if fieldchange.lower() == "n":
-                    name = input("What is the name of the new employee?: ")
-                elif fieldchange.lower() == "l":
-                    location = input("What location does the employee work at?: ")
-                elif fieldchange.lower() == "a":    
-                    address = input("What is the address of the employee?: ")
-                elif fieldchange.lower() == "p":
-                    phone = input("What is the employees phone number?: ")
-                elif fieldchange.lower() == "c":
-                    cellphone = input("What is the employees cellphone number?: ")
-                elif fieldchange.lower() == "t":
-                    title = input('Is the employee a "manager" or a regular "staff" member?: ')
-                else:
-                    print("Wrong input!")
-
+            if fieldchange.lower() == "n":
+                name = input("What is the name of the new employee?: ")
+            elif fieldchange.lower() == "l":
+                location = input("What location does the employee work at?: ")
+            elif fieldchange.lower() == "a":    
+                address = input("What is the address of the employee?: ")
+            elif fieldchange.lower() == "p":
+                phone = input("What is the employees phone number?: ")
+            elif fieldchange.lower() == "c":
+                cellphone = input("What is the employees cellphone number?: ")
+            elif fieldchange.lower() == "t":
+                title = input('Is the employee a "manager" or a regular "staff" member?: ')
+            else:
+                print("Invalid option put into selection field.")

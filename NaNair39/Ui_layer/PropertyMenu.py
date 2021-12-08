@@ -30,7 +30,7 @@ class PropertyMenu:
                 self.property_staff_menu()
             elif selection.lower() == "b" and self.title == "manager":
                 location_options_on = False
-                Ui_layer.MainMenuMANUI.ManagerUI(title="staff").managers_menu()
+                Ui_layer.MainMenuMANUI.ManagerUI(title="manager").managers_menu()
             elif selection.lower() == "b" and self.title == "staff":
                 location_options_on = False
                 Ui_layer.MainMenuEMPUI.EmployeeUI(title="staff").staff_menu
