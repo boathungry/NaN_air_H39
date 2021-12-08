@@ -7,8 +7,9 @@ from Models.ContractorModel import Contractor
 from Models.LocationModel import Location
 
 class SearchHandler:
-    def __init__(self, dl_api:DLAPI = DLAPI()) -> None:
+    def __init__(self, search_results = "", dl_api:DLAPI = DLAPI()) -> None:
         self.data_api = dl_api
+        self.search_results = search_results
 
     def search(self, search_object, attribute:str, value) -> list:
         """Searches for objects of the given type whose values in the given attribute match the given value.
@@ -24,5 +25,7 @@ class SearchHandler:
             search_results = self.data_api.search_work_request(attribute, value)
         elif search_object == Location:
             search_results = self.data_api.search_work_request(attribute, value)
-        print(search_results)
-        return search_results
+        self.search_results = search_results
+        return self.search_results
+    def __str__(self):
+        return self.search_results

@@ -124,22 +124,21 @@ class ManagerUI:
 
         """searchinit = Logic_layer.SearchHandler.SearchHandler
         Employeeinfo = searchinit.search(search_object=Employee(), attribute="id", value=employeeID)"""
-        llapinint = Logic_layer.LLAPI.LLAPI
-        Employeeinfo = llapinint.search(search_object=Employee(), attribute="id", value=employeeID)
+        
+        """llapinint = self.llapi
+        Employeeinfo = llapinint.search(search_object=Employee, attribute="id", value=employeeID)
 
-        Employeeinfo = Logic_layer.SearchHandler.SearchHandler.search(self, search_object=Employee(), attribute="ID", value=employeeID)
-
-        searchinit = Logic_layer.SearchHandler.SearchHandler
-        Employeeinfo = searchinit.search(search_object=Employee(), attribute="id", value=employeeID)
-
-        print(Employeeinfo)
-        name = Employeeinfo.name
-        email = Employeeinfo.email
-        location = Employeeinfo.location
-        address = Employeeinfo.address
-        phone = Employeeinfo.phone
-        cellphone = Employeeinfo.cellphone
-        title = Employeeinfo.title
+        print("1", Employeeinfo)"""
+        Employeeinfo = Data_layer.EmployeeDL.EmployeeDL(ID=employeeID)
+        results = Employeeinfo.search_by_ID()
+        
+        name = results["emname"]
+        email = results["ememail"]
+        location = results["emlocation"]
+        address = results["emaddress"]
+        phone = results["emphone"]
+        cellphone = results["emcellphone"]
+        title = results["emtitle"]
         print(f"Name: {name}")
         print(f"Email: {email}")
         print(f"Location: {location}")
