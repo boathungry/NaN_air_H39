@@ -1,4 +1,5 @@
 from Data_layer.EmployeeDL import EmployeeDL
+from Ui_layer.MainMenuEMPUI import EmployeeUI
 
 class LogIn:
 
@@ -17,7 +18,8 @@ class LogIn:
                 print("fékk email: " + useremail)
                 #employeeDL = EmployeeDL
                 #print(employeeDL)
-                all_employees = EmployeeDL.get_all_employees()
+                user = EmployeeDL(email= useremail)
+                all_employees = EmployeeDL.get_all_employees(user)
                 print("\n------------------------------------\n")
                 print(all_employees)
                 #usermail = EmployeeDL(email)
