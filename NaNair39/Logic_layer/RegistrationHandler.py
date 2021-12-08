@@ -9,9 +9,9 @@ class RegistrationHandler():
     def __init__(self, dl_api:DLAPI = DLAPI()) -> None:
         self.dl_api = dl_api
 
-    def register_employee(self, name, location, address, phone, cellphone, title):
+    def register_employee(self, email, name, location, address, phone, cellphone, title):
         """Registers a new employee and returns the employee."""
-        new_employee = Employee(name, location, address, phone, cellphone, title)
+        new_employee = Employee(name, email, location, address, phone, cellphone, title)
         self.dl_api.create_employee(new_employee) #register new data to database immediately!
         return new_employee
 
