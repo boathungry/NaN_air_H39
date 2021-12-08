@@ -16,7 +16,7 @@ class LogIn:
                 
                 user = EmployeeDL.login_by_ID(userID)
                 if user == None:
-                    print("Email adress not found")
+                    print("ID number not found")
                 else:
                     return user
                 

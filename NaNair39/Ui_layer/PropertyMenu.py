@@ -23,20 +23,20 @@ class PropertyMenu:
             if selection == "1" and self.title == "manager":
                 location_options_on = False
                 self.destination_manager_menu()
-            elif selection == "1" and self.title == "staff":
+            elif selection == "1" and self.title == "employee":
                 location_options_on = False
                 self.destination_staff_menu()
             elif selection == "2" and self.title == "manager":
                 location_options_on = False
                 self.property_manager_menu()
-            elif selection == "2" and self.title == "staff":
+            elif selection == "2" and self.title == "employee":
                 location_options_on = False
                 self.property_staff_menu()
             elif selection.lower() == "b" and self.title == "manager":
                 location_options_on = False
                 current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.ID, self.name, self.email, self.location, self.title)
                 current_user.managers_menu()
-            elif selection.lower() == "b" and self.title == "staff":
+            elif selection.lower() == "b" and self.title == "employee":
                 location_options_on = False
                 Ui_layer.MainMenuEMPUI.EmployeeUI(title="staff").staff_menu
             elif selection.lower() == "q":

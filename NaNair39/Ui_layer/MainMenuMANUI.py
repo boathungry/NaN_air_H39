@@ -149,7 +149,7 @@ class ManagerUI:
         elif fieldchange.lower() == "c":
             cellphone = input("What is the employees cellphone number?: ")
         elif fieldchange.lower() == "t":
-            title = input('Is the employee a "manager" or a regular "staff" member?: ')
+            title = input('Is the employee a "manager" or a regular "employee"?: ')
         else:
             print("Invalid option put into selection field.")
     
