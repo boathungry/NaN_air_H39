@@ -4,6 +4,7 @@ import Ui_layer.WorkReportMenu
 import Ui_layer.main_login
 import Logic_layer.LLAPI
 import Data_layer.EmployeeDL
+import Logic_layer.ListingHandler
 class ManagerUI:
     def __init__(self, ID = "", name = "", email = "", location = "", title = "manager"):
         self.ID = ID
@@ -54,7 +55,9 @@ class ManagerUI:
         elif selection == "2":
             self.edit_staff()
         elif selection == "3":
-            Data_layer.EmployeeDL.EmployeeDL.get_all_employees()
+            emplyeelist = Logic_layer.ListingHandler.ListingHandler()
+            emplyeelist.list_all_employees_unsorted()
+            print("3")
         elif selection == "4":
             pass
         elif selection.lower() == "q":

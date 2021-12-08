@@ -4,7 +4,7 @@ from Models.EmployeeModel import Employee
 
 
 
-class ListingHandler():
+class ListingHandler:
     def __init__(self, data_api:DLAPI = DLAPI, logic_api:LLAPI = LLAPI) -> None:
         self.dl_api = data_api
         self.ll_api = logic_api
