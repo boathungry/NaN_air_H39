@@ -1,6 +1,7 @@
 import csv
 from Models.LoginModel import LoginAccount
 from Models.EmployeeModel import Employee
+from Logic_layer import ChangeHandler
 
 class EmployeeDL:
 
@@ -46,14 +47,28 @@ class EmployeeDL:
             return prev_temp  
 
 
-    def change_information_employee(self, attribute, new_value, employee):
-        self.attribute = attribute
+    def change_information_employee(self, employee):
+        pass
+    """
         self.employee = employee
-        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
-            pass
+        header = ["id", "name", "email", "location", "address", "phone", "cellphone", "title"]
+        new_list = []
         
-
-
+        #Get all file(all lines)
+        with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile, delimiter=',')
+            for row in reader:
+                if (row["id"] == self.employee.id):
+                    empl = Employee(self.employee.id, self.employee.name, self.employee.email, self.employee.location, self.employee.address, self.employee.phone, self.employee.cellphone, self.employee.title)
+                else:
+                    empl = Employee(row["id"],row["name"], row["email"], row["location"], row["address"], row["phone"], row["cellphone"], row["title"])
+            new_list.append(empl)
+        #Write all file(all lines)
+        with open("csv_files/Employee.csv", mode="w", newline='', encoding='utf-8') as csvfile:
+            employee_writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            employee_writer.writerow(header)
+            employee_writer.writerow(new_list)
+    """
     def search_for_employee(self, attribute:str, value):
         """Searches for employees whose values in the given attribute matches the given value. Returns a list of employees."""
         results_list = []
@@ -69,7 +84,7 @@ class EmployeeDL:
             
     def login_by_ID(self):
         '''Given the users ID checks if user is a registered employee or a manager'''
-        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
+        with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if row["id"] == self.ID:
