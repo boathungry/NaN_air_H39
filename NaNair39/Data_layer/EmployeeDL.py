@@ -18,7 +18,11 @@ class EmployeeDL:
     def get_all_employees(self):
         '''Returns a list of employees in the given filepath'''
         return_list = []
+<<<<<<< HEAD
+        with open("/Users/valdisosk/Desktop/csvtest/Employee.csv", newline='', encoding='utf-8') as csvfile:
+=======
         with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
+>>>>>>> a1b81b7b3b4de6d85973f4aef0fba0ba40642c25
             reader = csv.DictReader(csvfile, delimiter=',')
             for row in reader:
                 print(row["ID"], "-", row["name"], "-", row["email"], "-", row["location"], "-", row["address"], "-", row["phone"], "-", row["cellphone"], "-", row["title"])
@@ -28,6 +32,7 @@ class EmployeeDL:
                 print("_?_?_?_?_?_?_?_", return_list)
         return return_list
     
+
     def create_employee(self, empl):
         '''Appends a new employee to the given filepath'''
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
@@ -66,6 +71,7 @@ class EmployeeDL:
                     empl = Employee(row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
                     results_list.append(empl)
             return results_list
+            
             
     def login_by_email(self):
         '''Given the users email checks if user is a registered employee or a manager'''

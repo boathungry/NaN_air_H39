@@ -4,7 +4,7 @@ import Ui_layer.WorkReportMenu
 import Ui_layer.main_login
 """import Main"""
 class ManagerUI:
-    def __init__(self, name, email, location, title = "manager"):
+    def __init__(self, name = "", email = "", location = "", title = "manager"):
         self.name = name
         self.email = email
         self.location = location
@@ -25,10 +25,11 @@ class ManagerUI:
             selection = input("Input selection: ")
             if selection == "1":
                 on = False
-                self.staffing_options(self)
+                self.staffing_options()
             elif selection == "2":
                 on = False
-                Ui_layer.PropertyMenu.PropertyMenu.location_options_mangers()
+                current_user = Ui_layer.PropertyMenu.PropertyMenu(self.name, self.email, self.location, self.title)
+                current_user.location_options()
             elif selection == "3":
                 on = False
                 Ui_layer.WorkReportMenu.WorkReportMenu.WorkReportMenuMain()

@@ -22,11 +22,14 @@ class EmployeeUI:
         print("q. quit")
         selection = input("Input selection: ")
         if selection == "1":
-            Ui_layer.PropertyMenu.PropertyMenu(title="staff").location_options()
+            current_user = Ui_layer.PropertyMenu.PropertyMenu(self.name, self.email, self.location, self.title)
+            current_user.location_options()
 
         elif selection == "2":
             
-            Ui_layer.WorkReportMenu.WorkReportMenu(title="staff").work_report_staff_menu()
+            current_user = Ui_layer.WorkReportMenu.WorkReportMenu(self.name, self.email, self.location, self.title)
+            current_user.work_report_staff_menu()
+
             """elif selection.lower() == "l":
             on = False
             Main.main()"""

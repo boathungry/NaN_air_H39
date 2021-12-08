@@ -3,6 +3,7 @@ from Data_layer.DLAPI import DLAPI
 from Logic_layer.RegistrationHandler import RegistrationHandler
 from Logic_layer.ChangeHandler import ChangeHandler
 from datetime import date
+from dateutil.relativedelta import relativedelta
 
 
 from Models.EmployeeModel import Employee
@@ -29,13 +30,13 @@ class WorkRequest(RegistrationHandler, ChangeHandler):
         date_today = date.today()
         if REPEAT == "y":
             if TIME == "daily":
-                date_next = date_today + pandas.DateOffset(days=1)
+                date_next = date_today + relativedelta(days=1)
             elif TIME == "weekly":
-                date_next = date_today + pandas.DateOffset(days=8)
+                date_next = date_today + relativedelta(days=8)
             elif TIME == "monthly":
-                date_next = date_today + pandas.DateOffset(months=1)
+                date_next = date_today + relativedelta(months=1)
             elif TIME == "yearly":
-                date_next = date_today + pandas.DateOffset(years=1)
+                date_next = date_today + relativedelta(years=1)
 
             RegistrationHandler.register_work_request(self, work_request, location, properties, description, worker, priority, repeat, date_next, start, done)
             
