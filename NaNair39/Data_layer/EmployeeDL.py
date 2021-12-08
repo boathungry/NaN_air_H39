@@ -78,6 +78,7 @@ class EmployeeDL:
             for row in reader:
                 if row[attribute]==value:
                     empl = Employee(row["id"],row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
+                    
                     results_list.append(empl)
             return results_list
             
@@ -91,5 +92,14 @@ class EmployeeDL:
                     user = LoginAccount(row["id"],row["name"],row["email"], row["location"],row["title"])
                     
                     return user
+    def search_by_ID(self):
+        '''Given the users ID checks if user is a registered employee or a manager'''
+        with open('csv_files/Employee.csv', newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if row["id"] == self.ID:
+                    empl = Employee(row["id"],row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
+                    Employeedict = {"emid":empl.idnumber, "emname":empl.name, "ememail":empl.email, "emlocation":empl.location,"emaddress":empl.address,"emphone":empl.phone,"emcellphone":empl.cellphone,"emtitle":empl.title }
+                    return Employeedict
 
     
