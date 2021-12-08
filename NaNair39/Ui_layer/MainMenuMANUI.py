@@ -5,7 +5,10 @@ import Ui_layer.main_login
 import Logic_layer.LLAPI
 #import Main
 class ManagerUI:
-    def __init__(self, title = "manager"):
+    def __init__(self, name, email, location, title = "manager"):
+        self.name = name
+        self.email = email
+        self.location = location
         self.title = title
         
         
@@ -14,7 +17,7 @@ class ManagerUI:
         today = date.today()
         today_string = today.strftime("%d/%m/%Y")
         
-        """print(f"Welcome {self.name}. Todays date is {today_string}")"""
+        print(f"Welcome {self.name}. Todays date is {today_string}")
         print("1. Staff")
         print("2. Locations and properties")
         print("3. Work requests/reports")

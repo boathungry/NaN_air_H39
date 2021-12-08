@@ -4,18 +4,12 @@ import Ui_layer.MainMenuEMPUI
 import Ui_layer.MainMenuMANUI 
 def main():
     user = Ui_layer.Login_menuUI.LogIn.innskra()
-    
-    print(user)
-    Ui_layer.main_login.LogedIn.main_menu(user)
-    """selection = Ui_layer.Login_menuUI.LogIn.temp_innskra()
-    if selection == "1":
-        Ui_layer.MainMenuMANUI.ManagerUI(title="manager").managers_menu()
-        
-    elif selection == "2":
-        Ui_layer.MainMenuEMPUI.EmployeeUI(title="staff").staff_menu()
-    elif selection.lower() == "q":
-        pass
+    if user == "q":
+        print("Thank you and have a nice day.")
     else:
-        print("Wrong input!")
-        main()"""
+        userstring = str(user)
+        splituser = userstring.split(", ")
+        loggedin = Ui_layer.main_login.LogedIn(splituser[0], splituser[1], splituser[2], splituser[3])
+        loggedin.main_menu()
+    
 main()
