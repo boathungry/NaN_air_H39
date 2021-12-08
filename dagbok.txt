@@ -66,6 +66,8 @@ Morgunfundur: töluðum um að reyna að koma upp basic beinagrind á klasana
 --03.12.2021--
 Morgunfundur: Héldum fund um skipulag dagsins
 13:00 fundur: töluðum saman um framfarir morgunsins
+
+Eftir daginn:
 Hjörleifur: hélt áfram með UI
 
 --06.12.2021--
