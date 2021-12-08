@@ -1,5 +1,6 @@
 from datetime import date
 from Models.EmployeeModel import Employee
+from Logic_layer.LLAPI import LLAPI
 import Ui_layer.PropertyMenu
 import Ui_layer.WorkReportMenu 
 import Ui_layer.main_login
@@ -8,12 +9,13 @@ import Data_layer.EmployeeDL
 import Logic_layer.ListingHandler
 import Logic_layer.SearchHandler
 class ManagerUI:
-    def __init__(self, ID = "", name = "", email = "", location = "", title = "manager"):
+    def __init__(self, ID = "", name = "", email = "", location = "", title = "manager", logic_api:LLAPI = LLAPI()):
         self.ID = ID
         self.name = name
         self.email = email
         self.location = location
         self.title = title
+        self.llapi = logic_api
         
         
     def managers_menu(self):
