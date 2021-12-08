@@ -1,6 +1,6 @@
 class Employee:
 
-    def __init__(self, idnumber, name, email, location, address, phone, cellphone, title):
+    def __init__(self, idnumber = "", name = "", email= "", location = "", address = "", phone = "", cellphone = "", title = ""):
         self.idnumber = idnumber
         self.name = name
         self.email = email

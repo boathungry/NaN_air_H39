@@ -121,6 +121,7 @@ class ManagerUI:
         employeeID = input("What is the employees ID number?: ")
 
         Employeeinfo = Logic_layer.SearchHandler.SearchHandler.search(Employee(), attribute="ID", value=employeeID)
+        print(Employeeinfo)
         name = Employeeinfo.name
         email = Employeeinfo.email
         location = Employeeinfo.location
