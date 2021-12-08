@@ -15,7 +15,7 @@ class EmployeeDL:
         return self.email
 
 
-    def get_all_employees():
+    def get_all_employees(self):
         '''Returns a list of employees in the given filepath'''
         return_list = []
         with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
