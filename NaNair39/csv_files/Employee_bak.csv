@@ -1,0 +1,10 @@
+id,name,email,location,address,phone,cellphone,title
+S001,Jan Jacobsen,jan.jacobsen@nanair.is,Svalbard,Vei 230 12 Longyearbyen,+47 92 09 77 00,+354 777 1337,manager
+S002,Jacob Yxa,jacob.yxa@nanair.is,Svalbard,Vei 224 3B Longyearbyen,+47 92 09 77 01,+354 777 1338,employee
+S003,Nanna Daema,nanna.daema@nanair.is,Svalbard,Ivan Starostin st. 109 Barantsburg,+47 92 09 77 02,+354 777 1339,employee
+N004,Minik Wallace,minik.wallace@nanair.is,Nuuk,Isaajap Aqqutaa 1 3900,+299 34 24 67,+354 777 1361,manager
+N005,Aqqaluk Lynge,aqqaluk.lynge@nanair.is,Nuuk,Qattaaq 44 3905,+299 35 24 66,+354 777 1362,employee
+N006,Nauja Lynge,nauja.lynge@nanair.is,Nuuk,Qunguleq 3759 3905,+299 31 21 64,+354 777 1363,employee
+F007,Annette Djurhuus,annette.djurhuus@nanair.is,Faroe Islands,Tjarnardeild 8 100 Tórshavn,+298 772000,+354 777 1381,manager
+F008,Áki Knudsen,aki.knudsen@nanair.is,Faroe Islands,Traðartún 3 108 Argir,+298 617210,+354 777 1381,employee
+F009,André Hjaltalin,Andre.hjaltalin@nanair.is,Faroe Islands,Í Lágni 19 100 Tórshavn,+298 661441,+354 777 1382,employee

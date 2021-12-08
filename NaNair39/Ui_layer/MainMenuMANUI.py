@@ -73,7 +73,6 @@ class ManagerUI:
 
     
 
-
     def create_employee(self):
         name = input("What is the name of the new employee?: ")
         email = input("What is the employees email address?: ")
@@ -155,11 +154,51 @@ class ManagerUI:
                 title = input('Is the employee a "manager" or a regular "employee"?: ')
             else:
                 print("Invalid option put into selection field.")
+<<<<<<< HEAD
+
+    def edit_staff(self):
+        print("Change information about employee")
+        employeeID = input("What is the employees ID number?: ")
+        searchinit = Logic_layer.SearchHandler.SearchHandler
+        Employeeinfo = searchinit.search(search_object=Employee(), attribute="id", value=employeeID)
+        print(Employeeinfo)
+        name = Employeeinfo.name
+        email = Employeeinfo.email
+        location = Employeeinfo.location
+        address = Employeeinfo.address
+        phone = Employeeinfo.phone
+        cellphone = Employeeinfo.cellphone
+        title = Employeeinfo.title
+        print(f"Name: {name}")
+        print(f"Email: {email}")
+        print(f"Location: {location}")
+        print(f"Address: {address}")
+        print(f"Phone: {phone}")
+        print(f"Cellphone: {cellphone}")
+        print(f"Title: {title}")
+        print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
+        fieldchange = input("Input the letter of the field you wish to change: ")
+        if fieldchange.lower() == "n":
+            name = input("What is the name of the new employee?: ")
+        elif fieldchange.lower() == "l":
+            location = input("What location does the employee work at?: ")
+        elif fieldchange.lower() == "a":    
+            address = input("What is the address of the employee?: ")
+        elif fieldchange.lower() == "p":
+            phone = input("What is the employees phone number?: ")
+        elif fieldchange.lower() == "c":
+            cellphone = input("What is the employees cellphone number?: ")
+        elif fieldchange.lower() == "t":
+            title = input('Is the employee a "manager" or a regular "employee"?: ')
+        else:
+            print("Invalid option put into selection field.")
+=======
             more_change = input("Would you like to change anything else? input [y] if you are not finished, input anything else to stop and apply changes: ")
             if more_change.lower() == "y":
                 pass
             else:
                 staff_editor = False
+>>>>>>> 55c96e77bc7ff8450291be540679d5f43448f0a8
     
     def staff_search(self):
         print("What paremeter would you like to search by?")
