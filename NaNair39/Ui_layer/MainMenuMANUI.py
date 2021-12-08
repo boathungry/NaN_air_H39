@@ -121,14 +121,6 @@ class ManagerUI:
     def edit_staff(self):
         print("Change information about employee")
         employeeID = input("What is the employees ID number?: ")
-
-        """searchinit = Logic_layer.SearchHandler.SearchHandler
-        Employeeinfo = searchinit.search(search_object=Employee(), attribute="id", value=employeeID)"""
-        
-        """llapinint = self.llapi
-        Employeeinfo = llapinint.search(search_object=Employee, attribute="id", value=employeeID)
-
-        print("1", Employeeinfo)"""
         Employeeinfo = Data_layer.EmployeeDL.EmployeeDL(ID=employeeID)
         results = Employeeinfo.search_by_ID()
         
