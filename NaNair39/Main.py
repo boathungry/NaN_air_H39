@@ -20,6 +20,20 @@ def main():
     elif selection == "2":
         Ui_layer.MainMenuEMPUI
     elif selection.lower == "q":
+<<<<<<< HEAD
+        Ui_layer.MainMenuMANUI.ManagerUI(title="manager").managers_menu()
+        
+    elif selection == "2":
+        Ui_layer.MainMenuEMPUI.EmployeeUI(title="staff").staff_menu()
+    elif selection.lower() == "q":
+        pass
+    else:
+        print("Wrong input!")
+        main()
+main()
+        main()"""
+main()
+=======
         pass
     else:
         print("Wrong input!")"""
@@ -27,3 +41,4 @@ def main():
 main()
 
         
+>>>>>>> b95217144dc85bd080b9d01a58e1213e02ba3606
