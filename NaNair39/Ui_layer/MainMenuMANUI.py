@@ -84,13 +84,13 @@ class ManagerUI:
         createemployeloop = True
         while createemployeloop:
             print("Is this the correct information?")
-            print(f"Name: {name}")
-            print(f"Email: {email}")
-            print(f"Location: {location}")
-            print(f"Address: {address}")
-            print(f"Phone: {phone}")
+            print(f"Name:      {name}")
+            print(f"Email:     {email}")
+            print(f"Location:  {location}")
+            print(f"Address:   {address}")
+            print(f"Phone:     {phone}")
             print(f"Cellphone: {cellphone}")
-            print(f"Title: {title}")
+            print(f"Title:     {title}")
             rightorwrong = input("Is this information correct [y]es, [n]o, [c]ancel: ")
             if rightorwrong.lower() == "y":
                 createemployeloop = False
