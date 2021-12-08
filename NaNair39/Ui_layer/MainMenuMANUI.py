@@ -2,12 +2,9 @@ from datetime import date
 import Ui_layer.PropertyMenu
 import Ui_layer.WorkReportMenu 
 import Ui_layer.main_login
-<<<<<<< HEAD
 """import Main"""
-=======
 import Logic_layer.LLAPI
 #import Main
->>>>>>> af08d48a85a77809a569318da6dbcaa9d13547dc
 class ManagerUI:
     def __init__(self):
         self.staff_class = "manager"
@@ -17,7 +14,6 @@ class ManagerUI:
         on = True
         today = date.today()
         today_string = today.strftime("%d/%m/%Y")
-<<<<<<< HEAD
         while on:
             """print(f"Welcome {self.name}. Todays date is {today_string}")"""
             print("1. Staff")
@@ -43,7 +39,6 @@ class ManagerUI:
                 
             else:
                 print("Invalid option put into selection field.")
-=======
         
         """print(f"Welcome {self.name}. Todays date is {today_string}")"""
         print("1. Staff")
@@ -66,7 +61,6 @@ class ManagerUI:
         else:
             print("Invalid option put into selection field.")
             self.managers_menu()
->>>>>>> af08d48a85a77809a569318da6dbcaa9d13547dc
 
     def staffing_options(self):
         on = True
