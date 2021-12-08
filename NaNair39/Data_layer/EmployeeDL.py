@@ -74,6 +74,7 @@ class EmployeeDL:
             for row in reader:
                 if row["email"] == self.email:
                     user = LoginAccount(row["name"],row["email"], row["location"],row["title"])
+                    
                     return user
 
     

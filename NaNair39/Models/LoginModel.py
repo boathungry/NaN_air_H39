@@ -6,4 +6,6 @@ class LoginAccount:
         self.title = title
 
     def __str__(self):
-        return f"Name: {self.name}, email: {self.email}, location: {self.location}, job title {self.title}"
+        return f"Name: {self.name}, email: {self.email}, location: {self.location}, job title: {self.title}"
+
+    

@@ -1,9 +1,10 @@
-from Logic_layer.LLAPI import LLAPI
-from Data_layer.DLAPI import DLAPI
-from Models.EmployeeModel import Employee
-from Models.PropertyModel import Property
-from Models.WorkReportModel import WorkReport
-from Models.WorkRequestModel import WorkRequest
+from NaNair39.Logic_layer.LLAPI import LLAPI
+from NaNair39.Data_layer.DLAPI import DLAPI
+from NaNair39.Models.EmployeeModel import Employee
+from NaNair39.Models.PropertyModel import Property
+from NaNair39.Models.WorkReportModel import WorkReport
+from NaNair39.Models.WorkRequestModel import WorkRequest
+from NaNair39.Models.ContractorModel import Contractor
 
 
 class SearchHandler():
@@ -23,5 +24,8 @@ class SearchHandler():
             search_results = self.data_api.search_work_report(attribute, value)
         elif search_object == WorkRequest:
             search_results = self.data_api.search_work_request(attribute, value)
+        #elif search_object == Contractor:
+        #    search_results = self.data_api.search_contractor(attribute, value)
+        #NOT IMPLEMENTED YET
 
         return search_results
