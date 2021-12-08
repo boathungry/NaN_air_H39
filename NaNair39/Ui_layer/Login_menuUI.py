@@ -6,15 +6,15 @@ class LogIn:
     def innskra():
         loginon = True
         while loginon:
-            print("To quit put q in email field")
-            email = input("Please input your email: ")
-            if email.lower() == "q":
+            print("To quit put q in the ID field")
+            loginID = input("Please input your employee ID: ")
+            if loginID.lower() == "q":
                 loginon = False
                 return "q"
             else:
-                usermail = EmployeeDL(email)
-                print(usermail)
-                user = EmployeeDL.login_by_email(usermail)
+                userID = EmployeeDL(loginID)
+                
+                user = EmployeeDL.login_by_ID(userID)
                 if user == None:
                     print("Email adress not found")
                 else:

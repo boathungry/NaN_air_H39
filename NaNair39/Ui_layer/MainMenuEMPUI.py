@@ -4,7 +4,8 @@ import Ui_layer.WorkReportMenu
 import Ui_layer.main_login
 
 class EmployeeUI:
-    def __init__(self, name, email, location, title):
+    def __init__(self, ID, name, email, location, title):
+        self.ID = ID
         self.name = name
         self.email = email
         self.location = location
@@ -21,12 +22,12 @@ class EmployeeUI:
         print("q. quit")
         selection = input("Input selection: ")
         if selection == "1":
-            current_user = Ui_layer.PropertyMenu.PropertyMenu(self.name, self.email, self.location, self.title)
+            current_user = Ui_layer.PropertyMenu.PropertyMenu(self.ID, self.name, self.email, self.location, self.title)
             current_user.location_options()
 
         elif selection == "2":
             
-            current_user = Ui_layer.WorkReportMenu.WorkReportMenu(self.name, self.email, self.location, self.title)
+            current_user = Ui_layer.WorkReportMenu.WorkReportMenu(self.ID, self.name, self.email, self.location, self.title)
             current_user.work_report_staff_menu()
         elif selection.lower() == "q":
             pass

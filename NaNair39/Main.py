@@ -9,8 +9,9 @@ def main():
         print("Thank you and have a nice day.")
     else:
         userstring = str(user)
+        print(userstring)
         splituser = userstring.split(", ")
-        loggedin = Ui_layer.main_login.LogedIn(splituser[0], splituser[1], splituser[2], splituser[3])
+        loggedin = Ui_layer.main_login.LogedIn(splituser[0], splituser[1], splituser[2], splituser[3], splituser[4])
         loggedin.main_menu()
     
 main()

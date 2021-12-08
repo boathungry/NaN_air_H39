@@ -5,7 +5,8 @@ import Ui_layer.main_login
 import Logic_layer.LLAPI
 import Data_layer.EmployeeDL
 class ManagerUI:
-    def __init__(self, name = "", email = "", location = "", title = "manager"):
+    def __init__(self, ID = "", name = "", email = "", location = "", title = "manager"):
+        self.ID = ID
         self.name = name
         self.email = email
         self.location = location
@@ -28,11 +29,11 @@ class ManagerUI:
                 self.staffing_options()
             elif selection == "2":
                 on = False
-                current_user = Ui_layer.PropertyMenu.PropertyMenu(self.name, self.email, self.location, self.title)
+                current_user = Ui_layer.PropertyMenu.PropertyMenu(self.ID, self.name, self.email, self.location, self.title)
                 current_user.location_options()
             elif selection == "3":
                 on = False
-                current_user = Ui_layer.WorkReportMenu.WorkReportMenu(self.name, self.email, self.location, self.title)
+                current_user = Ui_layer.WorkReportMenu.WorkReportMenu(self.ID, self.name, self.email, self.location, self.title)
                 current_user.Work_report_manager_menu()
             elif selection.lower() == "q":
                 on = False
