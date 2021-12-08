@@ -1,4 +1,3 @@
-
 from Models.EmployeeModel import Employee
 from Models.PropertyModel import Property
 from Models.ContractorModel import Contractor
