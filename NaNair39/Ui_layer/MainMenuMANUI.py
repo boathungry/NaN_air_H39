@@ -2,6 +2,7 @@ from datetime import date
 import Ui_layer.PropertyMenu
 import Ui_layer.WorkReportMenu 
 import Ui_layer.main_login
+import Logic_layer.LLAPI
 """import Main"""
 class ManagerUI:
     def __init__(self, name = "", email = "", location = "", title = "manager"):
@@ -97,7 +98,7 @@ class ManagerUI:
                 self.managers_menu()
             elif rightorwrong.lower() == "n":
                 print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
-                fieldchange = input("Input the letter of the field you wish to change")
+                fieldchange = input("Input the letter of the field you wish to change: ")
             if fieldchange.lower() == "n":
                 name = input("What is the name of the new employee?: ")
             elif fieldchange.lower() == "l":
