@@ -21,11 +21,8 @@ class EmployeeDL:
         with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile, delimiter=',')
             for row in reader:
-                print(row["ID"], "-", row["name"], "-", row["email"], "-", row["location"], "-", row["address"], "-", row["phone"], "-", row["cellphone"], "-", row["title"])
                 empl = Employee(row["ID"],row["name"], row["email"], row["location"], row["address"], row["phone"], row["cellphone"], row["title"])
-                print("-----", empl)
                 return_list.append(empl)
-                print("_?_?_?_?_?_?_?_", return_list)
         return return_list
     
 
