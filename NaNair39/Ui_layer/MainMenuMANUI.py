@@ -67,6 +67,7 @@ class ManagerUI:
             self.staffing_options()
     def create_employee(self):
         name = input("What is the name of the new employee?: ")
+        email = input("What is the employees email address?: ")
         location = input("What location does the employee work at?: ")
         address = input("What is the address of the employee?: ")
         phone = input("What is the employees phone number?: ")
@@ -76,6 +77,7 @@ class ManagerUI:
         while createemployeloop:
             print("Is this the correct information?")
             print(f"Name: {name}")
+            print(f"Email: {email}")
             print(f"Location: {location}")
             print(f"Address: {address}")
             print(f"Phone: {phone}")
@@ -84,7 +86,7 @@ class ManagerUI:
             rightorwrong = input("Is this information correct [y]es, [n]o, [c]ancel: ")
             if rightorwrong.lower() == "y":
                 createemployeloop == False
-                Logic_layer.LLAPI.LLAPI.create_employee(name, location, address, phone, cellphone, title)
+                Logic_layer.LLAPI.LLAPI.create_employee(name, email, location, address, phone, cellphone, title)
             elif rightorwrong.lower() == "c":
                 createemployeloop == False
                 self.managers_menu()

@@ -59,6 +59,7 @@ Morgunfundur: Stefnum á að byrja að kóða
 Eftir daginn:
 Hjörleifur: Byrjaði að kóða UI
 Ingi: Byrjaði á DL
+Valdís: Byrjaði á LL WorkReport og WorkRequest
 
 --02.12:2021--
 Morgunfundur: töluðum um að reyna að koma upp basic beinagrind á klasana
@@ -69,6 +70,7 @@ Morgunfundur: Héldum fund um skipulag dagsins
 
 Eftir daginn:
 Hjörleifur: hélt áfram með UI
+Valdís: Hélt áfram með LL WorkReport og WorkRequest
 
 --06.12.2021--
 Morgunfundur: Héldum fund til að skipuleggja daginn, ákveðið var að vinna áfram í kóðanum.
@@ -76,12 +78,14 @@ Morgunfundur: Héldum fund til að skipuleggja daginn, ákveðið var að vinna 
 Eftir daginn:
 Hjörleifur: hélt áfram með UI, reyndi að koma login kerfi í gang, gekk ekki. 
 Ingi: Data layer debug
+Valdís: LL WorkReport og WorkRequest
 
 --07.12.2021--
 Morgunfundur: Ræddum um að halda áfram með það sem við unnum í gær, og reyna að koma log in í gang
 
 Eftir daginn:
 Hjörleifur: kláraði að koma allri virkni í að fara á milli valmynda, bara eftir að tengja klasa við aðgerðir
+Valdís: Kláraði LL WorkReport og WorkRequest og vann í login
 
 --08.12.2021--
 Morgunfundur: Erum að reyna að koma search functioninu í gang saman
