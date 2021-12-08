@@ -1,5 +1,4 @@
 import csv
-from os import name
 from Models.LoginModel import LoginAccount
 from Models.EmployeeModel import Employee
 
@@ -19,7 +18,7 @@ class EmployeeDL:
     def get_all_employees(self):
         '''Returns a list of employees in the given filepath'''
         return_list = []
-        with open("/Users/valdisosk/Desktop/csvtest/Employee.csv", newline='', encoding='utf-8') as csvfile:
+        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile, delimiter=',')
             for row in reader:
                 print(row["name"], "-", row["email"], "-", row["location"], "-", row["address"], "-", row["phone"], "-", row["cellphone"], "-", row["title"])
