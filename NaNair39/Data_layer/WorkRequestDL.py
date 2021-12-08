@@ -34,7 +34,7 @@ class WorkRequestDL():
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                request = WorkRequest(row["?????"]) #ROWS NOT ADDED YET
+                request = WorkRequest(row["id"],row["work_request"],row["location"],row["properties"],row["description"],row["worker"],row["priority"],row["repeat"],row["time"],row["start"],row["done"]) #ROWS ADDED
                 if row[attribute] == value:
                     results_list.append(request)
         return results_list
