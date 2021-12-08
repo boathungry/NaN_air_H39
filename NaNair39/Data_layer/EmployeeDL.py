@@ -18,11 +18,7 @@ class EmployeeDL:
     def get_all_employees(self):
         '''Returns a list of employees in the given filepath'''
         return_list = []
-<<<<<<< HEAD
-        with open("/Users/valdisosk/Desktop/csvtest/Employee.csv", newline='', encoding='utf-8') as csvfile:
-=======
         with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
->>>>>>> a1b81b7b3b4de6d85973f4aef0fba0ba40642c25
             reader = csv.DictReader(csvfile, delimiter=',')
             for row in reader:
                 print(row["ID"], "-", row["name"], "-", row["email"], "-", row["location"], "-", row["address"], "-", row["phone"], "-", row["cellphone"], "-", row["title"])
@@ -41,7 +37,7 @@ class EmployeeDL:
             writer.writerow({'ID': empl.ID,'name': empl.name, 'email': empl.email, 'location': empl.location, 'address': empl.address, 'phone': empl.phone, 'cellphone': empl.cellphone, 'title': empl.title})
 
     
-    def get_employee_id_number(self,empl,location):
+    def get_employee_id_number(self):
         prev_temp = int(1)
         '''Checks the next avaliable id number and returns'''
         with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
@@ -50,7 +46,10 @@ class EmployeeDL:
                 temp_number = row["ID"]
                 if int(temp_number[1:]) >= prev_temp:
                         prev_temp = (int(temp_number[1:])+1)
-            return prev_temp
+            for row in reader:
+                if self.location == row["location"]:
+                    idletter = str(row["location"][0])
+            return prev_temp, idletter
 
 
     def change_information_employee(self, attribute, new_value,employee):
