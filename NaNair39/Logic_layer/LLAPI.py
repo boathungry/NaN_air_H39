@@ -12,8 +12,6 @@ class LLAPI():
         self.dl_API = data_API
         self.change_handler = ChangeHandler(data_API)
         self.registration_handler = RegistrationHandler(data_API)
-        self.work_report = WorkReport(data_API)
-        self.work_request = WorkRequest(data_API)
 
     def get_employee_id_number(self):
         return self.registration_handler.get_employee_id_number()
