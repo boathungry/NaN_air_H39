@@ -5,9 +5,9 @@ from Models.PropertyModel import Property
 from Models.WorkReportModel import WorkReport
 from Models.WorkRequestModel import WorkRequest
 from Models.ContractorModel import Contractor
+from Models.LocationModel import Location
 
-
-class SearchHandler():
+class SearchHandler:
     def __init__(self, dl_api:DLAPI = DLAPI(), ll_api:LLAPI = LLAPI()) -> None:
         self.data_api = dl_api
         self.logic_api = ll_api
@@ -23,6 +23,8 @@ class SearchHandler():
         elif search_object == WorkReport:
             search_results = self.data_api.search_work_report(attribute, value)
         elif search_object == WorkRequest:
+            search_results = self.data_api.search_work_request(attribute, value)
+        elif search_object == Location:
             search_results = self.data_api.search_work_request(attribute, value)
 
         return search_results
