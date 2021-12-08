@@ -24,8 +24,5 @@ class SearchHandler():
             search_results = self.data_api.search_work_report(attribute, value)
         elif search_object == WorkRequest:
             search_results = self.data_api.search_work_request(attribute, value)
-        #elif search_object == Contractor:
-        #    search_results = self.data_api.search_contractor(attribute, value)
-        #NOT IMPLEMENTED YET
 
         return search_results
