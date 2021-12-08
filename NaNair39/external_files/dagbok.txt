@@ -93,3 +93,6 @@ Ingi: Áframhald með data layer og uppfærslu á csv fileum
 Morgunfundur: Erum að reyna að koma search functioninu í gang saman
 Samtal við Gylfa: fengum smá skammir fyrir að vera ekki nógu dugleg með dagbók, og að tilkynna ekki að Þorbjörg er ekkert búin að mæta
 uppfærðum dagbók
+
+Eftir daginn:
+Hjörleifur: kom inn meiri virkni í UI, náði að koma create employee í gang með að tengja við klasa sem hin hafa skapað, kom edit employee uiinu alveg í gang, vantar að implementa að það breytu csv skránum
