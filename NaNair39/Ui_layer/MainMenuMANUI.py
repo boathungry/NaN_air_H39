@@ -103,8 +103,46 @@ class ManagerUI:
             elif rightorwrong.lower() == "n":
                 print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
                 fieldchange = input("Input the letter of the field you wish to change: ")
+                if fieldchange.lower() == "n":
+                    name = input("What is the name of the new employee?: ")
+                elif fieldchange.lower() == "l":
+                    location = input("What location does the employee work at?: ")
+                elif fieldchange.lower() == "a":    
+                    address = input("What is the address of the employee?: ")
+                elif fieldchange.lower() == "p":
+                    phone = input("What is the employees phone number?: ")
+                elif fieldchange.lower() == "c":
+                    cellphone = input("What is the employees cellphone number?: ")
+                elif fieldchange.lower() == "t":
+                    title = input('Is the employee a "manager" or a regular "staff" member?: ')
+                else:
+                    print("Invalid option put into selection field.")
+
+    def edit_staff(self):
+        print("Change information about employee")
+        employeeID = input("What is the employees ID number?: ")
+        Employeeinfo = Data_layer.EmployeeDL.EmployeeDL(ID=employeeID)
+        results = Employeeinfo.search_by_ID()
+        name = results["emname"]
+        email = results["ememail"]
+        location = results["emlocation"]
+        address = results["emaddress"]
+        phone = results["emphone"]
+        cellphone = results["emcellphone"]
+        title = results["emtitle"]
+        staff_editor = True
+        while staff_editor:
+            print(f"Name:      {name}")
+            print(f"Email:     {email}")
+            print(f"Location:  {location}")
+            print(f"Address:   {address}")
+            print(f"Phone:     {phone}")
+            print(f"Cellphone: {cellphone}")
+            print(f"Title:     {title}")
+            print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
+            fieldchange = input("Input the letter of the field you wish to change: ")
             if fieldchange.lower() == "n":
-                name = input("What is the name of the new employee?: ")
+                name = input("What is the new name of the employee?: ")   
             elif fieldchange.lower() == "l":
                 location = input("What location does the employee work at?: ")
             elif fieldchange.lower() == "a":    
@@ -114,46 +152,14 @@ class ManagerUI:
             elif fieldchange.lower() == "c":
                 cellphone = input("What is the employees cellphone number?: ")
             elif fieldchange.lower() == "t":
-                title = input('Is the employee a "manager" or a regular "staff" member?: ')
+                title = input('Is the employee a "manager" or a regular "employee"?: ')
             else:
                 print("Invalid option put into selection field.")
-
-    def edit_staff(self):
-        print("Change information about employee")
-        employeeID = input("What is the employees ID number?: ")
-        Employeeinfo = Data_layer.EmployeeDL.EmployeeDL(ID=employeeID)
-        results = Employeeinfo.search_by_ID()
-        
-        name = results["emname"]
-        email = results["ememail"]
-        location = results["emlocation"]
-        address = results["emaddress"]
-        phone = results["emphone"]
-        cellphone = results["emcellphone"]
-        title = results["emtitle"]
-        print(f"Name: {name}")
-        print(f"Email: {email}")
-        print(f"Location: {location}")
-        print(f"Address: {address}")
-        print(f"Phone: {phone}")
-        print(f"Cellphone: {cellphone}")
-        print(f"Title: {title}")
-        print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
-        fieldchange = input("Input the letter of the field you wish to change: ")
-        if fieldchange.lower() == "n":
-            name = input("What is the name of the new employee?: ")
-        elif fieldchange.lower() == "l":
-            location = input("What location does the employee work at?: ")
-        elif fieldchange.lower() == "a":    
-            address = input("What is the address of the employee?: ")
-        elif fieldchange.lower() == "p":
-            phone = input("What is the employees phone number?: ")
-        elif fieldchange.lower() == "c":
-            cellphone = input("What is the employees cellphone number?: ")
-        elif fieldchange.lower() == "t":
-            title = input('Is the employee a "manager" or a regular "employee"?: ')
-        else:
-            print("Invalid option put into selection field.")
+            more_change = input("Would you like to change anything else? input [y] if you are not finished, input anything else to stop and apply changes: ")
+            if more_change.lower() == "y":
+                pass
+            else:
+                staff_editor = False
     
     def staff_search(self):
         print("What paremeter would you like to search by?")
