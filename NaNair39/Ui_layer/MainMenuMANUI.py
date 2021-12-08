@@ -3,8 +3,6 @@ import Ui_layer.PropertyMenu
 import Ui_layer.WorkReportMenu 
 import Ui_layer.main_login
 """import Main"""
-import Logic_layer.LLAPI
-#import Main
 class ManagerUI:
     def __init__(self, name, email, location, title = "manager"):
         self.name = name
@@ -14,7 +12,7 @@ class ManagerUI:
         
         
     def managers_menu(self):
-        
+        on = True
         today = date.today()
         today_string = today.strftime("%d/%m/%Y")
         while on:
