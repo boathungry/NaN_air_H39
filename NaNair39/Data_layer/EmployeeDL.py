@@ -18,11 +18,7 @@ class EmployeeDL:
     def get_all_employees(self):
         '''Returns a list of employees in the given filepath'''
         return_list = []
-<<<<<<< HEAD
         with open("/Users/valdisosk/Desktop/csvtest/Employee.csv", newline='', encoding='utf-8') as csvfile:
-=======
-        with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
->>>>>>> a1b81b7b3b4de6d85973f4aef0fba0ba40642c25
             reader = csv.DictReader(csvfile, delimiter=',')
             for row in reader:
                 print(row["name"], "-", row["email"], "-", row["location"], "-", row["address"], "-", row["phone"], "-", row["cellphone"], "-", row["title"])
@@ -45,11 +41,11 @@ class EmployeeDL:
         '''Checks the next avaliable id number and returns'''
     
 
-    def change_information_employee(self, attribute, new_value,employee):
+    def change_information_employee(self, attribute, new_value, employee):
         self.attribute = attribute
         self.employee = employee
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
-            pass
+        
 
 
     def search_for_employee(self, attribute:str, value):

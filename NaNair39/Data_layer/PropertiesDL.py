@@ -23,7 +23,7 @@ class PropertyDL:
             fieldnames = ["idnumber","name","location","address","size","rooms"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({'Property': prop.idnumber, 'name': prop.name, 'location': prop.location, 'address': prop.address, 'size': prop.size, 'no of rooms': prop.rooms})
-    
+
     def delete_property(self, prop):
         pass
 
