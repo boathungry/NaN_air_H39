@@ -18,28 +18,37 @@ class EmployeeDL:
     def get_all_employees(self):
         '''Returns a list of employees in the given filepath'''
         return_list = []
+<<<<<<< HEAD
         with open("/Users/valdisosk/Desktop/csvtest/Employee.csv", newline='', encoding='utf-8') as csvfile:
+=======
+        with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
+>>>>>>> 7873efbd386c5e041e46350a0b32c2afcd0a3db1
             reader = csv.DictReader(csvfile, delimiter=',')
             for row in reader:
-                print(row["name"], "-", row["email"], "-", row["location"], "-", row["address"], "-", row["phone"], "-", row["cellphone"], "-", row["title"])
-                empl = Employee(row["name"], row["email"], row["location"], row["address"], row["phone"], row["cellphone"], row["title"])
-                print("-----", empl)
+                empl = Employee(row["ID"],row["name"], row["email"], row["location"], row["address"], row["phone"], row["cellphone"], row["title"])
                 return_list.append(empl)
-                print("_?_?_?_?_?_?_?_", return_list)
         return return_list
     
 
     def create_employee(self, empl):
         '''Appends a new employee to the given filepath'''
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
-            fieldnames = ["name","email","location","address","phone","cellphone","title"]
+            fieldnames = ["ID","name","email","location","address","phone","cellphone","title"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerow({'name': empl.name, 'email': empl.email, 'location': empl.location, 'address': empl.address, 'phone': empl.phone, 'cellphone': empl.cellphone, 'title': empl.title})
+            writer.writerow({'ID': empl.ID,'name': empl.name, 'email': empl.email, 'location': empl.location, 'address': empl.address, 'phone': empl.phone, 'cellphone': empl.cellphone, 'title': empl.title})
 
     
-    def get_employee_id_number(self,empl):
+    def get_employee_id_number(self):
+        prev_temp = int(1)
         '''Checks the next avaliable id number and returns'''
-    
+        with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile, delimiter=',')
+            for row in reader:
+                temp_number = row["ID"]
+                if int(temp_number[1:]) >= prev_temp:
+                        prev_temp = (int(temp_number[1:])+1)
+            return prev_temp  
+
 
     def change_information_employee(self, attribute, new_value, employee):
         self.attribute = attribute
@@ -56,18 +65,18 @@ class EmployeeDL:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 if row[attribute]==value:
-                    empl = Employee(row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
+                    empl = Employee(row["ID"],row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
                     results_list.append(empl)
             return results_list
             
             
-    def login_by_email(self):
-        '''Given the users email checks if user is a registered employee or a manager'''
+    def login_by_ID(self):
+        '''Given the users ID checks if user is a registered employee or a manager'''
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                if row["email"] == self.email:
-                    user = LoginAccount(row["name"],row["email"], row["location"],row["title"])
+                if row["ID"] == self.email:
+                    user = LoginAccount(row["ID"],row["name"],row["email"], row["location"],row["title"])
                     
                     return user
 

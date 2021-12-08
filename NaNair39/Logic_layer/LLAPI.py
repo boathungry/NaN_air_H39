@@ -12,9 +12,10 @@ class LLAPI():
         self.dl_API = data_API
         self.change_handler = ChangeHandler(data_API)
         self.registration_handler = RegistrationHandler(data_API)
-        self.work_report = WorkReport(data_API)
-        self.work_request = WorkRequest(data_API)
-    
+
+    def get_employee_id_number(self):
+        return self.registration_handler.get_employee_id_number()
+
     def change_employee(self, employee, attribute, new_value):
         """Changes an attribute of an employee to a new value. Returns the given attribute if successful, otherwise returns None."""
         return self.change_handler.change_employee(employee, attribute, new_value)
@@ -54,3 +55,6 @@ class LLAPI():
     def create_work_request(self, id, work_request, location, properties, description, worker, priority, repeat, time, start, done):
         """Creates a new work request with the given attributes and returns the work request."""
         return self.registration_handler.register_work_request(id, work_request, location, properties, description, worker, priority, repeat, time, start, done)
+    def create_destination(self, city, country, airport, phone, open_hours, manager):
+        """Creates a new property with the given attributes and returns the property."""
+        return self.registration_handler.register_property(city, country, airport, phone, open_hours, manager)

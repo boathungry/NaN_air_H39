@@ -1,0 +1,1 @@
+forritið virkar á Python 3.9.6 og 3.9.9, en þurftum að setja upp datautil hjá sumum

@@ -9,6 +9,16 @@ class RegistrationHandler():
     def __init__(self, dl_api:DLAPI = DLAPI()) -> None:
         self.dl_api = dl_api
 
+    def get_employee_id_number(self,location):
+        number = DLAPI.get_employee_id_number(self)
+        if len(number) == 2:
+            id_number = f"{location[0]}{0}{str(number)}"
+        elif len(number) == 3:
+            id_number = f"{location[0]}{str(number)}"
+        else:
+            return None
+        return id_number 
+
     def register_employee(self, email, name, location, address, phone, cellphone, title):
         """Registers a new employee and returns the employee."""
         new_employee = Employee(name, email, location, address, phone, cellphone, title)
