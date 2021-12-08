@@ -71,6 +71,7 @@ Morgunfundur: Héldum fund um skipulag dagsins
 Eftir daginn:
 Hjörleifur: hélt áfram með UI
 Valdís: Hélt áfram með LL WorkReport og WorkRequest
+Ingi: Hélt áfram með DL
 
 --06.12.2021--
 Morgunfundur: Héldum fund til að skipuleggja daginn, ákveðið var að vinna áfram í kóðanum.
@@ -86,6 +87,7 @@ Morgunfundur: Ræddum um að halda áfram með það sem við unnum í gær, og 
 Eftir daginn:
 Hjörleifur: kláraði að koma allri virkni í að fara á milli valmynda, bara eftir að tengja klasa við aðgerðir
 Valdís: Kláraði LL WorkReport og WorkRequest og vann í login
+Ingi: Áframhald með data layer og uppfærslu á csv fileum
 
 --08.12.2021--
 Morgunfundur: Erum að reyna að koma search functioninu í gang saman
