@@ -14,7 +14,10 @@ class LLAPI():
         self.registration_handler = RegistrationHandler(data_API)
         self.work_report = WorkReport(data_API)
         self.work_request = WorkRequest(data_API)
-    
+
+    def get_employee_id_number(self):
+        return self.registration_handler.get_employee_id_number()
+
     def change_employee(self, employee, attribute, new_value):
         """Changes an attribute of an employee to a new value. Returns the given attribute if successful, otherwise returns None."""
         return self.change_handler.change_employee(employee, attribute, new_value)
