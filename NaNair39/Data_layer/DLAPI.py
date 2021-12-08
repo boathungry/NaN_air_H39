@@ -22,11 +22,12 @@ class DLAPI:
     def delete_employee(self,empl):
         return self.emplDL.delete_employee(empl)
 
+    def search_employee(self, attribute:str, value) -> list:
+        """Searches for employees whose values in the given attribute matches the given value. Returns a list of employees."""
+        return self.emplDL.search_for_employee(attribute, value)
+
     def change_information(self, empl):
         return self.emplDL.change_information_employee(empl)
-
-    def search_by_email(self, empl):
-        return self.emplDL.search_by_email(empl)
     
     def get_all_properties(self):
         return self.propDL.get_all_properties()
@@ -36,6 +37,10 @@ class DLAPI:
 
     def delete_property(self,prop):
         return self.propDL.delete_property(prop)
+
+    def search_property(self, attribute:str, value) -> list:
+        """Searches for properties whose values in the given attribute matches the given value. Returns a list of properties."""
+        return self.propDL.search_for_property(attribute, value)
 
     def change_information_property(self,prop):
         return self.propDL.change_information_property(prop)
@@ -48,6 +53,9 @@ class DLAPI:
 
     def delete_work_report(self,VB):
         return self.VB.delete_work_report(VB)
+    
+    def search_work_report(self, attribute:str, value) -> list:
+        return self.VB.search_for_work_report(attribute, value)
 
     def change_information_work_report(self,VB):
         return self.VB.change_information_work_report(VB)
@@ -60,6 +68,9 @@ class DLAPI:
 
     def delete_work_request(self,req):
         return self.reqDL.delete_work_request(req)
+
+    def search_work_request(self, attribute:str, value) -> list:
+        return self.reqDL.search_for_work_request(attribute, value)
 
     def login_by_email(self,email):    
         return self.emplDL.login_by_email(email)

@@ -5,21 +5,19 @@ from Models.EmployeeModel import Employee
 
 class EmployeeDL:
 
-    def __init__ (self, name, email, location, address, phone, cellphone, title):
-        self.name = name
-        self.email = email
+    def __init__ (self, email= "", location= ""):
         self.location = location
-        self.address = address
-        self.phone = phone
-        self.cellphone = cellphone
-        self.title = title
+        self.email = email
+        self.filepath = "csv_files/Employee.csv"
 
-        #filepath = "csv_files/Employee.csv"
-        #correct_filepath = Users/valdisosk/Desktop/3\ vikna/NaN_air_H39/NaNair39/csv_files
+
     def __str__(self):
+        '''Returns the necessary string'''
         return self.email
 
-    def get_all_employees():
+
+    def get_all_employees(self):
+        '''Returns a list of employees in the given filepath'''
         return_list = []
         with open("/Users/valdisosk/Desktop/csvtest/Employee.csv", newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile, delimiter=',')
@@ -32,6 +30,7 @@ class EmployeeDL:
         return return_list
     
     def create_employee(self, empl):
+        '''Appends a new employee to the given filepath'''
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
             fieldnames = ["name","email","location","address","phone","cellphone","title"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -45,26 +44,20 @@ class EmployeeDL:
             pass
 
 
-    def search_by_email(self):
+    def search_for_employee(self, attribute:str, value):
+        """Searches for employees whose values in the given attribute matches the given value. Returns a list of employees."""
+        results_list = []
+        attribute = attribute.lower()
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                if row["email"] == self.email:
+                if row[attribute]==value:
                     empl = Employee(row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
-            return empl
-
-    def search_by_location(self):
-        empl_list = []
-        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
-            reader = csv.DictReader(csvfile)
-            reader = csv.DictReader
-            for row in reader:
-                if row["location"]==self.location:
-                    empl = Employee(row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
-                    empl_list.append(empl)
-            return empl_list
+                    results_list.append(empl)
+            return results_list
             
     def login_by_email(self):
+        '''Given the users email checks if user is a registered employee or a manager'''
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
