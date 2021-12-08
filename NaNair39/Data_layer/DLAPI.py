@@ -29,6 +29,9 @@ class DLAPI:
     def change_information(self, empl):
         return self.emplDL.change_information_employee(empl)
     
+    def get_employee_id_number(self):
+        return self.emplDL.get_employee_id_number()
+
     def get_all_properties(self):
         return self.propDL.get_all_properties()
     
