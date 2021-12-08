@@ -14,7 +14,7 @@ class LogedIn:
         if self.title.lower() == "manager":
             Ui_layer.MainMenuMANUI.ManagerUI.managers_menu()
         elif self.title.lower() == "employee":
-            "EmployeeUI.valmynd_starfsfolk()"
+            Ui_layer.MainMenuEMPUI.EmployeeUI.staff_menu()
         else:
             print("Some information is wrong")
             self.main_menu()

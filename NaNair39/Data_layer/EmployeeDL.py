@@ -35,7 +35,13 @@ class EmployeeDL:
             fieldnames = ["name","email","location","address","phone","cellphone","title"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({'name': empl.name, 'email': empl.email, 'location': empl.location, 'address': empl.address, 'phone': empl.phone, 'cellphone': empl.cellphone, 'title': empl.title})
+<<<<<<< HEAD
 
+=======
+    
+def get_employee_id_number(self,empl):
+    '''Checks the next avaliable id number and returns'''
+>>>>>>> 4cc436c454bdf1554f630b7064e050dc6041f6c6
 
     def change_information_employee(self, attribute, new_value,employee):
         self.attribute = attribute
