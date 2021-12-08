@@ -78,3 +78,8 @@ Ingi: Data layer debug
 --07.12.2021--
 Morgunfundur: Ræddum um að halda áfram með það sem við unnum í gær, og reyna að koma log in í gang
 
+Eftir daginn:
+Hjörleifur: kláraði að koma allri virkni í að fara á milli valmynda, bara eftir að tengja klasa við aðgerðir
+
+--08.12.2021--
+Morgunfundur: Erum að reyna að koma search functioninu í gang saman
