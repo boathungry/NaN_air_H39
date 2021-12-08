@@ -1,10 +1,12 @@
 from datetime import date
+from Models.EmployeeModel import Employee
 import Ui_layer.PropertyMenu
 import Ui_layer.WorkReportMenu 
 import Ui_layer.main_login
 import Logic_layer.LLAPI
 import Data_layer.EmployeeDL
 import Logic_layer.ListingHandler
+import Logic_layer.SearchHandler
 class ManagerUI:
     def __init__(self, ID = "", name = "", email = "", location = "", title = "manager"):
         self.ID = ID
@@ -55,11 +57,12 @@ class ManagerUI:
         elif selection == "2":
             self.edit_staff()
         elif selection == "3":
-            emplyeelist = Logic_layer.ListingHandler.ListingHandler()
-            emplyeelist.list_all_employees_unsorted()
-            print("3")
+            emplyeelist_init = Logic_layer.ListingHandler.ListingHandler()
+            emplyeelist = emplyeelist_init.list_all_employees_unsorted()
+            Logic_layer.ListingHandler.ListingHandler.list_printer(emplyeelist)
+            self.staffing_options()
         elif selection == "4":
-            pass
+            self.staff_search()
         elif selection.lower() == "q":
             pass 
         else:
@@ -116,7 +119,8 @@ class ManagerUI:
     def edit_staff(self):
         print("Change information about employee")
         employeeID = input("What is the employees ID number?: ")
-        Employeeinfo = employeeIDlookup
+
+        Employeeinfo = Logic_layer.SearchHandler.SearchHandler.search(Employee, attribute="ID", employeeID)
         name = Employeeinfo.name
         email = Employeeinfo.email
         location = Employeeinfo.location
@@ -147,3 +151,32 @@ class ManagerUI:
             title = input('Is the employee a "manager" or a regular "staff" member?: ')
         else:
             print("Invalid option put into selection field.")
+    
+    def staff_search(self):
+        print("What paremeter would you like to search by?")
+        print("[I]D number, [n]ame, [e]mail, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle")
+        print("Use [b] to go back to main menu and [q] to quit")
+        search_attribute = input("Input search attribute: ")
+        if search_attribute.lower() == "i":
+            pass
+        elif search_attribute.lower() == "n":
+            pass
+        elif search_attribute.lower() == "e":
+            pass
+        elif search_attribute.lower() == "l":
+            pass
+        elif search_attribute.lower() == "a":
+            pass
+        elif search_attribute.lower() == "p":
+            pass
+        elif search_attribute.lower() == "c":
+            pass
+        elif search_attribute.lower() == "t":
+            pass
+        elif search_attribute.lower() == "b":
+            self.managers_menu()
+        elif search_attribute.lower() == "q":
+            pass
+        else:
+            print("Not a valid attribute")
+            self.staff_search
