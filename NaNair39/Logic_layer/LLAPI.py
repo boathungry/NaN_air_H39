@@ -1,6 +1,8 @@
 from Data_layer.DLAPI import DLAPI
 from Logic_layer.ChangeHandler import ChangeHandler
+from Logic_layer.ListingHandler import ListingHandler
 from Logic_layer.RegistrationHandler import RegistrationHandler
+from Logic_layer.SearchHandler import SearchHandler
 from Logic_layer.WorkReportLL import WorkReport
 from Logic_layer.WorkRequestLL import WorkRequest
 from Models.WorkReportModel import WorkReport
@@ -12,9 +14,12 @@ class LLAPI():
         self.dl_API = data_API
         self.change_handler = ChangeHandler(data_API)
         self.registration_handler = RegistrationHandler(data_API)
+        self.search_handler = SearchHandler(data_API)
+        self.listing_handler = ListingHandler(data_API)
 
     def get_employee_id_number(self):
         return self.registration_handler.get_employee_id_number()
+
 
     def change_employee(self, employee, attribute, new_value):
         """Changes an attribute of an employee to a new value. Returns the given attribute if successful, otherwise returns None."""
@@ -35,6 +40,7 @@ class LLAPI():
     def change_work_request(self, work_request, attribute, new_value):
         """Changes an attribute of a work request to a new value. Returns the given attribute if successful, otherwise returns None."""
         return self.change_handler.change_work_request(work_request, attribute, new_value)
+
 
     def create_employee(self, name, location, address, phone, cellphone, title):
         """Creates a new employee with the given attributes and returns the employee."""
@@ -58,3 +64,6 @@ class LLAPI():
     def create_destination(self, city, country, airport, phone, open_hours, manager):
         """Creates a new property with the given attributes and returns the property."""
         return self.registration_handler.register_property(city, country, airport, phone, open_hours, manager)
+
+    def search(self, search_object, attribute:str, value) -> list:
+        return self.search_handler.search(search_object, attribute, value)
