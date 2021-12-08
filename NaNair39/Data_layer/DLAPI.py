@@ -55,6 +55,7 @@ class DLAPI:
         return self.VB.delete_work_report(VB)
     
     def search_work_report(self, attribute:str, value) -> list:
+        """Searches for work reports whose values in the given attribute matches the given value. Returns a list of work reports."""
         return self.VB.search_for_work_report(attribute, value)
 
     def change_information_work_report(self,VB):
@@ -70,6 +71,7 @@ class DLAPI:
         return self.reqDL.delete_work_request(req)
 
     def search_work_request(self, attribute:str, value) -> list:
+        """Searches for work requests whose values in the given attribute matches the given value. Returns a list of work requests."""
         return self.reqDL.search_for_work_request(attribute, value)
 
     def login_by_email(self,email):    
