@@ -19,9 +19,9 @@ class RegistrationHandler():
             return None
         return id_number 
 
-    def register_employee(self, email, name, location, address, phone, cellphone, title):
+    def register_employee(self, idnumber, name, email, location, address, phone, cellphone, title):
         """Registers a new employee and returns the employee."""
-        new_employee = Employee(name, email, location, address, phone, cellphone, title)
+        new_employee = Employee(idnumber, name, email, location, address, phone, cellphone, title)
         self.dl_api.create_employee(new_employee) #register new data to database immediately!
         return new_employee
 

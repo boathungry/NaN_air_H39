@@ -42,9 +42,10 @@ class LLAPI():
         return self.change_handler.change_work_request(work_request, attribute, new_value)
 
 
-    def create_employee(self, name, location, address, phone, cellphone, title):
+    def create_employee(self, name, email, location, address, phone, cellphone, title):
         """Creates a new employee with the given attributes and returns the employee."""
-        return self.registration_handler.register_employee(name, location, address, phone, cellphone, title)
+        idnumber = RegistrationHandler.get_employee_id_number(location)
+        return self.registration_handler.register_employee(idnumber, name, email, location, address, phone, cellphone, title)
 
     def create_property(self, name, location, size, rooms):
         """Creates a new property with the given attributes and returns the property."""
