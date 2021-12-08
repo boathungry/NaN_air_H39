@@ -3,6 +3,7 @@ import Ui_layer.PropertyMenu
 import Ui_layer.WorkReportMenu 
 import Ui_layer.main_login
 import Logic_layer.LLAPI
+import Data_layer.EmployeeDL
 class ManagerUI:
     def __init__(self, name = "", email = "", location = "", title = "manager"):
         self.name = name
@@ -16,7 +17,7 @@ class ManagerUI:
         today = date.today()
         today_string = today.strftime("%d/%m/%Y")
         while on:
-            print(f"Welcome {self.name}. Todays date is {today_string}")
+            print(f"Welcome {self.title} {self.name}. Todays date is {today_string}")
             print("1. Staff")
             print("2. Locations and properties")
             print("3. Work requests/reports")
@@ -33,9 +34,6 @@ class ManagerUI:
                 on = False
                 current_user = Ui_layer.WorkReportMenu.WorkReportMenu(self.name, self.email, self.location, self.title)
                 current_user.Work_report_manager_menu()
-                """elif selection.lower() == "l":
-                on = False
-                Main.main()"""
             elif selection.lower() == "q":
                 on = False
                 
@@ -52,13 +50,12 @@ class ManagerUI:
         selection = input("Input selection: ")
         if selection == "1":
             self.create_employee()
-            
         elif selection == "2":
-            current_user = Ui_layer.PropertyMenu.PropertyMenu(self.name, self.email, self.location, self.title)
-            current_user.location_options()
+            self.edit_staff()
         elif selection == "3":
-            current_user = Ui_layer.WorkReportMenu.WorkReportMenu(self.name, self.email, self.location, self.title)
-            current_user.Work_report_manager_menu()
+            Data_layer.EmployeeDL.EmployeeDL.get_all_employees()
+        elif selection == "4":
+            pass
         elif selection.lower() == "q":
             pass 
         else:
