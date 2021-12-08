@@ -119,7 +119,12 @@ class ManagerUI:
     def edit_staff(self):
         print("Change information about employee")
         employeeID = input("What is the employees ID number?: ")
+<<<<<<< HEAD
         Employeeinfo = Logic_layer.SearchHandler.SearchHandler.search(self, search_object=Employee(), attribute="ID", value=employeeID)
+=======
+        searchinit = Logic_layer.SearchHandler.SearchHandler
+        Employeeinfo = searchinit.search(search_object=Employee(), attribute="id", value=employeeID)
+>>>>>>> 729d4bded0f0ac363d8cadd02f2aa0b8f74e2eb6
         print(Employeeinfo)
         name = Employeeinfo.name
         email = Employeeinfo.email

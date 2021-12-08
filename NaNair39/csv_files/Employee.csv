@@ -1,4 +1,4 @@
-ID,name,email,location,address,phone,cellphone,title
+id,name,email,location,address,phone,cellphone,title
 S001,Jan Jacobsen,jan.jacobsen@nanair.is,Svalbard,Vei 230 12 Longyearbyen,+47 92 09 77 00,+354 777 1337,manager
 S002,Jacob Yxa,jacob.yxa@nanair.is,Svalbard,Vei 224 3B Longyearbyen,+47 92 09 77 01,+354 777 1338,employee
 S003,Nanna Daema,nanna.daema@nanair.is,Svalbard,Ivan Starostin st. 109 Barantsburg,+47 92 09 77 02,+354 777 1339,employee

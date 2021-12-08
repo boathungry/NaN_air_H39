@@ -1,13 +1,11 @@
 from Data_layer.DLAPI import DLAPI
-from Logic_layer.LLAPI import LLAPI
 from Models.EmployeeModel import Employee
 
 
 
 class ListingHandler:
-    def __init__(self, data_api:DLAPI = DLAPI(), logic_api:LLAPI = LLAPI()) -> None:
+    def __init__(self, data_api:DLAPI = DLAPI()) -> None:
         self.dl_api = data_api
-        self.ll_api = logic_api
 
     def list_all_employees_unsorted(self) -> list:
         """Returns a list of all employees."""
@@ -122,3 +120,17 @@ class ListingHandler:
                     filtered_list.append(item)
 
         return filtered_list
+
+    #Filters still missing:
+    #ID
+    #work request
+    #worker
+    #priority
+    #repeat
+    #time
+    #start
+    #done
+    #work request id
+    #properties
+    #regular maintenance
+    #approved
