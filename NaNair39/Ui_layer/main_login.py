@@ -1,13 +1,12 @@
 import Ui_layer.MainMenuMANUI
 import Ui_layer.MainMenuEMPUI 
-
-class LogedIn:
-    def __init__(self, name = "", email = "", location = "", title = ""):
-        self.name = name
-        self.email = email
-        self.title = title
-        self.location = location
+import Models.LoginModel
+class LogedIn(Models.LoginModel.LoginAccount):
+    def __init__(self):
+        super().__init__()
         
+    def __str__(self):
+        return f"name: {self.name}, emai: {self.email}, title: {self.title}, location: {self.location}"
 
     def main_menu(self):
 
