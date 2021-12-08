@@ -4,16 +4,18 @@ import Ui_layer.WorkReportMenu
 import Ui_layer.main_login
 #import Main
 class EmployeeUI:
-    def __init__(self, title = "staff"):
+    def __init__(self, name, email, location, title):
+        self.name = name
+        self.email = email
+        self.location = location
         self.title = title
-        
         
     def staff_menu(self):
         
         today = date.today()
         today_string = today.strftime("%d/%m/%Y")
         
-        """print(f"Welcome {self.name}. Todays date is {today_string}")"""
+        print(f"Welcome {self.name}. Todays date is {today_string}")
         print("1. Locations and properties")
         print("2. Work requests/reports")
         """print("l. log out")"""
