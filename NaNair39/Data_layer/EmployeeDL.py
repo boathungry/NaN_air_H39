@@ -18,11 +18,7 @@ class EmployeeDL:
     def get_all_employees(self):
         '''Returns a list of employees in the given filepath'''
         return_list = []
-<<<<<<< HEAD
-        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
-=======
         with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
->>>>>>> d745fce336d650b388f6db172fd5324b4b405801
             reader = csv.DictReader(csvfile, delimiter=',')
             for row in reader:
                 print(row["name"], "-", row["email"], "-", row["location"], "-", row["address"], "-", row["phone"], "-", row["cellphone"], "-", row["title"])
