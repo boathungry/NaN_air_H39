@@ -3,7 +3,6 @@ import Ui_layer.PropertyMenu
 import Ui_layer.WorkReportMenu 
 import Ui_layer.main_login
 import Logic_layer.LLAPI
-"""import Main"""
 class ManagerUI:
     def __init__(self, name = "", email = "", location = "", title = "manager"):
         self.name = name
@@ -21,7 +20,6 @@ class ManagerUI:
             print("1. Staff")
             print("2. Locations and properties")
             print("3. Work requests/reports")
-            """print("l. log out")"""
             print("q. quit")
             selection = input("Input selection: ")
             if selection == "1":
@@ -58,9 +56,6 @@ class ManagerUI:
             Ui_layer.PropertyMenu.PropertyMenu(title= "manager").location_options()
         elif selection == "3":
             Ui_layer.WorkReportMenu.WorkReportMenu(title= "manager").Work_report_manager_menu()
-            """elif selection.lower() == "l":
-            on = False
-            Main.main()"""
         elif selection.lower() == "q":
             pass 
         else:

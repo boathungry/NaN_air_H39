@@ -89,3 +89,5 @@ Valdís: Kláraði LL WorkReport og WorkRequest og vann í login
 
 --08.12.2021--
 Morgunfundur: Erum að reyna að koma search functioninu í gang saman
+Samtal við Gylfa: fengum smá skammir fyrir að vera ekki nógu dugleg með dagbók, og að tilkynna ekki að Þorbjörg er ekkert búin að mæta
+uppfærðum dagbók
