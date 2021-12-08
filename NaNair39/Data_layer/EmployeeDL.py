@@ -37,7 +37,7 @@ class EmployeeDL:
             writer.writerow({'ID': empl.ID,'name': empl.name, 'email': empl.email, 'location': empl.location, 'address': empl.address, 'phone': empl.phone, 'cellphone': empl.cellphone, 'title': empl.title})
 
     
-    def get_employee_id_number(self):
+    def get_employee_id_number():
         prev_temp = int(1)
         '''Checks the next avaliable id number and returns'''
         with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
@@ -46,10 +46,7 @@ class EmployeeDL:
                 temp_number = row["ID"]
                 if int(temp_number[1:]) >= prev_temp:
                         prev_temp = (int(temp_number[1:])+1)
-            for row in reader:
-                if self.location == row["location"]:
-                    idletter = str(row["location"][0])
-            return prev_temp, idletter
+            return prev_temp  
 
 
     def change_information_employee(self, attribute, new_value,employee):
