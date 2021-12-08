@@ -12,8 +12,7 @@ def main():
         splituser = userstring.split(", ")
         loggedin = Ui_layer.main_login.LogedIn(splituser[0], splituser[1], splituser[2], splituser[3])
         loggedin.main_menu()
-    print(user)
-    Ui_layer.main_login.LogedIn.main_menu(user)
+    
     """selection = Ui_layer.Login_menuUI.LogIn.temp_innskra()
     if selection == "1":
         user = ManagerUI("Manager")
