@@ -2,7 +2,7 @@ from Models.WorkRequestModel import WorkRequest
 import csv
 
 class WorkRequestDL():
-    def __init__(self) -> None:
+    def __init__(self):
         pass
 
     def get_all_work_requests(self):
