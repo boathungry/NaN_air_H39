@@ -180,7 +180,7 @@ class PropertyMenu:
         print("Change information about a destination")
         cityname = input("What is the city name of the destination you wish to edit?: ")
 
-        destinationinfo = Logic_layer.SearchHandler.SearchHandler.search(search_object=Location(), attribute="city", value=cityname)
+        destinationinfo = Logic_layer.SearchHandler.SearchHandler.search(search_object=Location, attribute="city", value=cityname)
         print(destinationinfo)
         name = destinationinfo.name
         email = destinationinfo.email
@@ -189,13 +189,13 @@ class PropertyMenu:
         phone = destinationinfo.phone
         cellphone = destinationinfo.cellphone
         title = destinationinfo.title
-        print(f"Name: {name}")
-        print(f"Email: {email}")
-        print(f"Location: {location}")
-        print(f"Address: {address}")
-        print(f"Phone: {phone}")
+        print(f"Name:      {name}")
+        print(f"Email:     {email}")
+        print(f"Location:  {location}")
+        print(f"Address:   {address}")
+        print(f"Phone:     {phone}")
         print(f"Cellphone: {cellphone}")
-        print(f"Title: {title}")
+        print(f"Title:     {title}")
         print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
         fieldchange = input("Input the letter of the field you wish to change: ")
         if fieldchange.lower() == "n":
