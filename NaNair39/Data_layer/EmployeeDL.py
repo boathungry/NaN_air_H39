@@ -101,5 +101,3 @@ class EmployeeDL:
                     empl = Employee(row["id"],row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
                     Employeedict = {"emid":empl.idnumber, "emname":empl.name, "ememail":empl.email, "emlocation":empl.location,"emaddress":empl.address,"emphone":empl.phone,"emcellphone":empl.cellphone,"emtitle":empl.title }
                     return Employeedict
-
-    

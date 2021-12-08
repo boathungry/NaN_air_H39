@@ -83,7 +83,6 @@ class ManagerUI:
         cellphone = input("What is the employees cellphone number?: ")
         title = input('Is the employee a "manager" or a regular "staff" member?: ')
         createemployeloop = True
-
         while createemployeloop:
             print("Is this the correct information?")
             print(f"Name: {name}")
@@ -156,6 +155,7 @@ class ManagerUI:
             else:
                 print("Invalid option put into selection field.")
 
+<<<<<<< HEAD
     def edit_staff(self):
         print("Change information about employee")
         employeeID = input("What is the employees ID number?: ")
@@ -198,6 +198,8 @@ class ManagerUI:
             else:
                 staff_editor = False
     
+=======
+>>>>>>> ef57a92e52b52f0abe59c7849b82bf81e4c726ce
     def staff_search(self):
         print("What paremeter would you like to search by?")
         print("[I]D number, [n]ame, [e]mail, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle")
