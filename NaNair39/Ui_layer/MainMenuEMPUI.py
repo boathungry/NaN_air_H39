@@ -15,7 +15,7 @@ class EmployeeUI:
         today = date.today()
         today_string = today.strftime("%d/%m/%Y")
         
-        print(f"Welcome {self.name}. Todays date is {today_string}")
+        print(f"Welcome {self.title} member {self.name}. Todays date is {today_string}")
         print("1. Locations and properties")
         print("2. Work requests/reports")
         print("q. quit")
