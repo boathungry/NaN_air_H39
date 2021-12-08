@@ -4,7 +4,10 @@ import Ui_layer.MainMenuEMPUI
 #Mögulega að implementa baka um einn menu frekar en alltaf á main menu ef tími gefst
 
 class PropertyMenu:
-    def __init__(self, title):
+    def __init__(self, name, email, location, title):
+        self.name = name
+        self.email = email
+        self.location = location
         self.title = title
 
     def location_options(self):
@@ -30,7 +33,8 @@ class PropertyMenu:
                 self.property_staff_menu()
             elif selection.lower() == "b" and self.title == "manager":
                 location_options_on = False
-                Ui_layer.MainMenuMANUI.ManagerUI(title="staff").managers_menu()
+                current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.name, self.email, self.location, self.title)
+                current_user.managers_menu()
             elif selection.lower() == "b" and self.title == "staff":
                 location_options_on = False
                 Ui_layer.MainMenuEMPUI.EmployeeUI(title="staff").staff_menu
@@ -58,7 +62,8 @@ class PropertyMenu:
         elif selection == "4":
             pass
         elif selection.lower() == "b":
-            Ui_layer.MainMenuMANUI.ManagerUI(title="manager").managers_menu()
+            current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.name, self.email, self.location, self.title)
+            current_user.managers_menu()
         elif selection.lower() == "q":
             pass
         else:
@@ -83,7 +88,8 @@ class PropertyMenu:
         elif selection == "4":
             pass
         elif selection.lower() == "b":
-            Ui_layer.MainMenuMANUI.ManagerUI(title="manager").managers_menu()
+            current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.name, self.email, self.location, self.title)
+            current_user.managers_menu()
         elif selection.lower() == "q":
             pass
         else:

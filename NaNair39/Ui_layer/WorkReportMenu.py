@@ -1,7 +1,10 @@
 import Ui_layer.MainMenuMANUI
 import Ui_layer.MainMenuEMPUI
 class WorkReportMenu:
-    def __init__(self, title = "staff"):
+    def __init__(self, name, email, location, title):
+        self.name = name
+        self.email = email
+        self.location = location
         self.title = title
 
     def Work_report_manager_menu(self):
@@ -27,7 +30,8 @@ class WorkReportMenu:
         elif selection == "6":
             pass
         elif selection == "b":
-            Ui_layer.MainMenuMANUI.ManagerUI("manager").managers_menu()
+            current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.name, self.email, self.location, self.title)
+            current_user.managers_menu()
         elif selection == "q":
             pass
         else:

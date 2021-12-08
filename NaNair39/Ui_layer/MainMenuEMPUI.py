@@ -2,28 +2,34 @@ from datetime import date
 import Ui_layer.PropertyMenu
 import Ui_layer.WorkReportMenu 
 import Ui_layer.main_login
+#import Main
 class EmployeeUI:
-    def __init__(self, title = "staff"):
+    def __init__(self, name, email, location, title):
+        self.name = name
+        self.email = email
+        self.location = location
         self.title = title
-        
         
     def staff_menu(self):
         
         today = date.today()
         today_string = today.strftime("%d/%m/%Y")
         
-        """print(f"Welcome {self.name}. Todays date is {today_string}")"""
+        print(f"Welcome {self.name}. Todays date is {today_string}")
         print("1. Locations and properties")
         print("2. Work requests/reports")
         """print("l. log out")"""
         print("q. quit")
         selection = input("Input selection: ")
         if selection == "1":
-            Ui_layer.PropertyMenu.PropertyMenu(title="staff").location_options()
+            current_user = Ui_layer.PropertyMenu.PropertyMenu(self.name, self.email, self.location, self.title)
+            current_user.location_options()
 
         elif selection == "2":
             
-            Ui_layer.WorkReportMenu.WorkReportMenu(title="staff").work_report_staff_menu()
+            current_user = Ui_layer.WorkReportMenu.WorkReportMenu(self.name, self.email, self.location, self.title)
+            current_user.work_report_staff_menu()
+
             """elif selection.lower() == "l":
             on = False
             Main.main()"""

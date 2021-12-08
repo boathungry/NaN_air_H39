@@ -4,6 +4,7 @@ from Models.EmployeeModel import Employee
 from Models.PropertyModel import Property
 from Models.WorkReportModel import WorkReport
 from Models.WorkRequestModel import WorkRequest
+from Models.ContractorModel import Contractor
 
 
 class SearchHandler():
