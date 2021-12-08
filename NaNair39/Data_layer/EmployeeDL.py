@@ -1,5 +1,4 @@
 import csv
-from os import name
 from Models.LoginModel import LoginAccount
 from Models.EmployeeModel import Employee
 
