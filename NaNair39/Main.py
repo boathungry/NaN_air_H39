@@ -3,10 +3,11 @@ import Ui_layer.Login_menuUI
 import Ui_layer.MainMenuEMPUI
 import Ui_layer.MainMenuMANUI 
 def main():
-    """user = Ui_layer.Login_menuUI.LogIn.innskra()
+    user = Ui_layer.Login_menuUI.LogIn.innskra()
+    
     print(user)
-    Ui_layer.main_login.LogedIn(user)"""
-    selection = Ui_layer.Login_menuUI.LogIn.temp_innskra()
+    Ui_layer.main_login.LogedIn.main_menu(user)
+    """selection = Ui_layer.Login_menuUI.LogIn.temp_innskra()
     if selection == "1":
         Ui_layer.MainMenuMANUI.ManagerUI(title="manager").managers_menu()
         
@@ -16,5 +17,5 @@ def main():
         pass
     else:
         print("Wrong input!")
-        main()
+        main()"""
 main()

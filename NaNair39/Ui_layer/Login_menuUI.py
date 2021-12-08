@@ -9,7 +9,6 @@ class LogIn:
             usermail = EmployeeDL(email)
             print(usermail)
             user = EmployeeDL.login_by_email(usermail)
-            print(user)
             return user
     def temp_innskra():
         print("1. Managers")
