@@ -14,6 +14,7 @@ class locationDL:
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                loct = Location(row["city"],row["country"])
+                loct = Location(row["city"],row["country"],row["airport"],row["phone number"],row["opening hours"],row["local manager"])
                 return_list.append(loct)
         return return_list
+
