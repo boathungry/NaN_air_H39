@@ -1,6 +1,7 @@
 class Employee:
 
-    def __init__(self, name, email, location, address, phone, cellphone, title):
+    def __init__(self, idnumber, name, email, location, address, phone, cellphone, title):
+        self.idnumber = idnumber
         self.name = name
         self.email = email
         self.location = location
@@ -10,4 +11,7 @@ class Employee:
         self.title = title
 
     def __str__(self):
-        return f"{self.name} {self.email} {self.location} {self.address} {self.phone} {self.cellphone} {self.title}"
+        return f"{self.idnumber} {self.name} {self.email} {self.location} {self.address} {self.phone} {self.cellphone} {self.title}"
+
+    #def __repr__(self) -> str:
+       # return f"{self.name} {self.email} {self.location} {self.address} {self.phone} {self.cellphone} {self.title}"
