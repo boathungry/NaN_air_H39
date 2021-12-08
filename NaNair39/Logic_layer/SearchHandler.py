@@ -24,5 +24,5 @@ class SearchHandler:
             search_results = self.data_api.search_work_request(attribute, value)
         elif search_object == Location:
             search_results = self.data_api.search_work_request(attribute, value)
-
+        print(search_results)
         return search_results
