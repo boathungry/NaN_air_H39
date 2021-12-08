@@ -1,6 +1,6 @@
 import Ui_layer.MainMenuMANUI
 import Ui_layer.MainMenuEMPUI
-
+import Logic_layer.LLAPI
 #Mögulega að implementa baka um einn menu frekar en alltaf á main menu ef tími gefst
 
 class PropertyMenu:
@@ -134,7 +134,7 @@ class PropertyMenu:
             current_user = Ui_layer.MainMenuEMPUI.EmployeeUI(self.ID, self.name, self.email, self.location, self.title)
             current_user.staff_menu()
     def create_destination(self):
-        city = input("What city is the new destination: ")
+        city = input("In what city is the new destination: ")
         country = input(f"What country is {city} in: ")
         airport = input(f"What is the airport for {city}: ")
         phone = input(f"What is the phone number for your destination in {city}: ")
@@ -142,7 +142,6 @@ class PropertyMenu:
         manager = input("What is the name of the manager of your new destination: ")
         createdestloop = True
         while createdestloop:
-            print("Is this the correct information?")
             print(f"City: {city}")
             print(f"Country: {country}")
             print(f"Local airport: {airport}")
@@ -151,25 +150,25 @@ class PropertyMenu:
             print(f"Local manager: {manager}")
             rightorwrong = input("Is this information correct [y]es, [n]o, [c]ancel: ")
             if rightorwrong.lower() == "y":
-                createemployeloop = False
+                createdestloop = False
                 Logic_layer.LLAPI.LLAPI.create_destination(city, country, airport, phone, open_hours, manager)
             elif rightorwrong.lower() == "c":
-                createemployeloop = False
-                self.managers_menu()
+                createdestloop = False
+                Ui_layer.MainMenuMANUI.ManagerUI.managers_menu()
             elif rightorwrong.lower() == "n":
-                print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
+                print("Select a field to change: [c]ity, countr[y}, [a]irport, [p]hone, [o]pening hours, [l]ocal manager.")
                 fieldchange = input("Input the letter of the field you wish to change: ")
-            if fieldchange.lower() == "n":
-                name = input("What is the name of the new employee?: ")
-            elif fieldchange.lower() == "l":
-                location = input("What location does the employee work at?: ")
-            elif fieldchange.lower() == "a":    
-                address = input("What is the address of the employee?: ")
-            elif fieldchange.lower() == "p":
-                phone = input("What is the employees phone number?: ")
-            elif fieldchange.lower() == "c":
-                cellphone = input("What is the employees cellphone number?: ")
-            elif fieldchange.lower() == "t":
-                title = input('Is the employee a "manager" or a regular "staff" member?: ')
-            else:
-                print("Invalid option put into selection field.")
+                if fieldchange.lower() == "c":
+                    name = input("What is the name of the destination city?: ")
+                elif fieldchange.lower() == "y":
+                    location = input(f"What country is ?: ")
+                elif fieldchange.lower() == "a":    
+                    address = input("What is the address of the employee?: ")
+                elif fieldchange.lower() == "p":
+                    phone = input("What is the employees phone number?: ")
+                elif fieldchange.lower() == "o":
+                    cellphone = input("What is the employees cellphone number?: ")
+                elif fieldchange.lower() == "l":
+                    title = input('Is the employee a "manager" or a regular "staff" member?: ')
+                else:
+                    print("Invalid option put into selection field.")
