@@ -3,7 +3,7 @@ from Data_layer.DLAPI import DLAPI
 from Logic_layer.RegistrationHandler import RegistrationHandler
 from Logic_layer.ChangeHandler import ChangeHandler
 from datetime import date
-import pandas
+
 
 from Models.EmployeeModel import Employee
 

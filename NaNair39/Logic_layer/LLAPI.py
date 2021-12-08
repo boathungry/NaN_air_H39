@@ -3,8 +3,8 @@ from Logic_layer.ChangeHandler import ChangeHandler
 from Logic_layer.RegistrationHandler import RegistrationHandler
 from Logic_layer.WorkReportLL import WorkReport
 from Logic_layer.WorkRequestLL import WorkRequest
-from NaNair39.Models.WorkReportModel import WorkReport
-from NaNair39.Models.WorkRequestModel import WorkRequest
+from Models.WorkReportModel import WorkReport
+from Models.WorkRequestModel import WorkRequest
 
 
 class LLAPI():
