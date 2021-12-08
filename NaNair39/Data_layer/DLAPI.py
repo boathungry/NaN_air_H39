@@ -3,7 +3,7 @@ from Data_layer.PropertiesDL import PropertyDL
 from Data_layer.WorkReportDL import WorkReportDL
 from Data_layer.WorkRequestDL import WorkRequestDL
 from Data_layer.ContractorsDL import ContractorDL
-
+from Data_layer.LocationsDL import locationDL
 class DLAPI:
     
     def __init__(self):
@@ -12,6 +12,7 @@ class DLAPI:
         self.VB = WorkReportDL()
         self.reqDL = WorkRequestDL()
         self.contr = ContractorDL()
+        self.locDL = locationDL()
 
     def get_all_employees(self):
         return self.emplDL.get_all_employees()
@@ -85,3 +86,6 @@ class DLAPI:
 
     def create_contractor(self, contr):
         return self.contr.create_contractor(contr)
+    def search_destination(self, attribute:str, value) -> list:
+        """Searches for properties whose values in the given attribute matches the given value. Returns a list of properties."""
+        return self.locDL.search_for_destination(attribute, value)

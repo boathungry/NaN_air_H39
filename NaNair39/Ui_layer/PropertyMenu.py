@@ -1,6 +1,7 @@
 import Ui_layer.MainMenuMANUI
 import Ui_layer.MainMenuEMPUI
 import Logic_layer.LLAPI
+import Logic_layer.SearchHandler
 #Mögulega að implementa baka um einn menu frekar en alltaf á main menu ef tími gefst
 
 class PropertyMenu:
@@ -12,7 +13,6 @@ class PropertyMenu:
         self.title = title
 
     def location_options(self):
-        """location_deets = "get_location_details(self.location)"""
         location_options_on = True
         while location_options_on:
             print("1. Destinations")
@@ -133,6 +133,8 @@ class PropertyMenu:
         elif selection.lower() == "b":
             current_user = Ui_layer.MainMenuEMPUI.EmployeeUI(self.ID, self.name, self.email, self.location, self.title)
             current_user.staff_menu()
+    
+    
     def create_destination(self):
         city = input("In what city is the new destination: ")
         country = input(f"What country is {city} in: ")
@@ -159,16 +161,53 @@ class PropertyMenu:
                 print("Select a field to change: [c]ity, countr[y}, [a]irport, [p]hone, [o]pening hours, [l]ocal manager.")
                 fieldchange = input("Input the letter of the field you wish to change: ")
                 if fieldchange.lower() == "c":
-                    name = input("What is the name of the destination city?: ")
+                    city = input("What is the name of the destination city?: ")
                 elif fieldchange.lower() == "y":
-                    location = input(f"What country is ?: ")
+                    country = input(f"What country is {city} in?: ")
                 elif fieldchange.lower() == "a":    
-                    address = input("What is the address of the employee?: ")
+                    airport = input(f"What is the local airport for {city}?: ")
                 elif fieldchange.lower() == "p":
-                    phone = input("What is the employees phone number?: ")
+                    phone = input("What is the phone number for the new destination?: ")
                 elif fieldchange.lower() == "o":
-                    cellphone = input("What is the employees cellphone number?: ")
+                    open_hours = input("What are the opening hours(use format hh:mm - hh:mm)?: ")
                 elif fieldchange.lower() == "l":
-                    title = input('Is the employee a "manager" or a regular "staff" member?: ')
+                    manager = input("What is the name of the local manager of the new destination?: ")
                 else:
                     print("Invalid option put into selection field.")
+
+    def edit_destination(self):
+        print("Change information about a destination")
+        cityname = input("What is the city name of the destination you wish to edit?: ")
+
+        destinationinfo = Logic_layer.SearchHandler.SearchHandler.search(Des(), attribute="ID", value=employeeID)
+        print(Employeeinfo)
+        name = Employeeinfo.name
+        email = Employeeinfo.email
+        location = Employeeinfo.location
+        address = Employeeinfo.address
+        phone = Employeeinfo.phone
+        cellphone = Employeeinfo.cellphone
+        title = Employeeinfo.title
+        print(f"Name: {name}")
+        print(f"Email: {email}")
+        print(f"Location: {location}")
+        print(f"Address: {address}")
+        print(f"Phone: {phone}")
+        print(f"Cellphone: {cellphone}")
+        print(f"Title: {title}")
+        print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
+        fieldchange = input("Input the letter of the field you wish to change: ")
+        if fieldchange.lower() == "n":
+            name = input("What is the name of the new employee?: ")
+        elif fieldchange.lower() == "l":
+            location = input("What location does the employee work at?: ")
+        elif fieldchange.lower() == "a":    
+            address = input("What is the address of the employee?: ")
+        elif fieldchange.lower() == "p":
+            phone = input("What is the employees phone number?: ")
+        elif fieldchange.lower() == "c":
+            cellphone = input("What is the employees cellphone number?: ")
+        elif fieldchange.lower() == "t":
+            title = input('Is the employee a "manager" or a regular "employee"?: ')
+        else:
+            print("Invalid option put into selection field.")
