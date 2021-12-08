@@ -4,15 +4,15 @@ from Models.EmployeeModel import Employee
 
 class EmployeeDL:
 
-    def __init__ (self, email= "", location= ""):
+    def __init__ (self, ID= "", location= ""):
         self.location = location
-        self.email = email
+        self.ID = ID
         self.filepath = "csv_files/Employee.csv"
 
 
     def __str__(self):
         '''Returns the necessary string'''
-        return self.email
+        return self.ID
 
 
     def get_all_employees(self):
@@ -72,7 +72,7 @@ class EmployeeDL:
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                if row["ID"] == self.email:
+                if row["ID"] == self.ID:
                     user = LoginAccount(row["ID"],row["name"],row["email"], row["location"],row["title"])
                     
                     return user
