@@ -109,7 +109,8 @@ class PropertyMenu:
             #Implement destination search class
             pass
         elif selection.lower() == "b":
-            Ui_layer.MainMenuEMPUI.EmployeeUI(title="staff").staff_menu()
+            current_user = Ui_layer.MainMenuEMPUI.EmployeeUI(self.name, self.email, self.location, self.title)
+            current_user.staff_menu()
         elif selection.lower() == "q":
             pass
         else:
@@ -129,4 +130,5 @@ class PropertyMenu:
             #implement search for properties class
             pass
         elif selection.lower() == "b":
-            Ui_layer.MainMenuEMPUI.EmployeeUI(title= "staff").staff_menu()
+            current_user = Ui_layer.MainMenuEMPUI.EmployeeUI(self.name, self.email, self.location, self.title)
+            current_user.staff_menu()

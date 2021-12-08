@@ -31,7 +31,8 @@ class ManagerUI:
                 current_user.location_options()
             elif selection == "3":
                 on = False
-                Ui_layer.WorkReportMenu.WorkReportMenu.WorkReportMenuMain()
+                current_user = Ui_layer.WorkReportMenu.WorkReportMenu(self.name, self.email, self.location, self.title)
+                current_user.Work_report_manager_menu()
                 """elif selection.lower() == "l":
                 on = False
                 Main.main()"""
@@ -53,9 +54,11 @@ class ManagerUI:
             self.create_employee()
             
         elif selection == "2":
-            Ui_layer.PropertyMenu.PropertyMenu(title= "manager").location_options()
+            current_user = Ui_layer.PropertyMenu.PropertyMenu(self.name, self.email, self.location, self.title)
+            current_user.location_options()
         elif selection == "3":
-            Ui_layer.WorkReportMenu.WorkReportMenu(title= "manager").Work_report_manager_menu()
+            current_user = Ui_layer.WorkReportMenu.WorkReportMenu(self.name, self.email, self.location, self.title)
+            current_user.Work_report_manager_menu()
         elif selection.lower() == "q":
             pass 
         else:
@@ -108,3 +111,38 @@ class ManagerUI:
                 title = input('Is the employee a "manager" or a regular "staff" member?: ')
             else:
                 print("Invalid option put into selection field.")
+
+    def edit_staff(self):
+        print("Change information about employee")
+        employeeID = input("What is the employees ID number?: ")
+        Employeeinfo = employeeIDlookup
+        name = Employeeinfo.name
+        email = Employeeinfo.email
+        location = Employeeinfo.location
+        address = Employeeinfo.address
+        phone = Employeeinfo.phone
+        cellphone = Employeeinfo.cellphone
+        title = Employeeinfo.title
+        print(f"Name: {name}")
+        print(f"Email: {email}")
+        print(f"Location: {location}")
+        print(f"Address: {address}")
+        print(f"Phone: {phone}")
+        print(f"Cellphone: {cellphone}")
+        print(f"Title: {title}")
+        print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
+        fieldchange = input("Input the letter of the field you wish to change: ")
+        if fieldchange.lower() == "n":
+            name = input("What is the name of the new employee?: ")
+        elif fieldchange.lower() == "l":
+            location = input("What location does the employee work at?: ")
+        elif fieldchange.lower() == "a":    
+            address = input("What is the address of the employee?: ")
+        elif fieldchange.lower() == "p":
+            phone = input("What is the employees phone number?: ")
+        elif fieldchange.lower() == "c":
+            cellphone = input("What is the employees cellphone number?: ")
+        elif fieldchange.lower() == "t":
+            title = input('Is the employee a "manager" or a regular "staff" member?: ')
+        else:
+            print("Invalid option put into selection field.")
