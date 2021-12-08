@@ -2,6 +2,7 @@ from datetime import date
 import Ui_layer.PropertyMenu
 import Ui_layer.WorkReportMenu 
 import Ui_layer.main_login
+#import Main
 class EmployeeUI:
     def __init__(self, title = "staff"):
         self.title = title

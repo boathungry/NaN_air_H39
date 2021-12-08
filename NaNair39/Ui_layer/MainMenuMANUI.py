@@ -3,7 +3,7 @@ import Ui_layer.PropertyMenu
 import Ui_layer.WorkReportMenu 
 import Ui_layer.main_login
 import Logic_layer.LLAPI
-"""import Main"""
+#import Main
 class ManagerUI:
     def __init__(self, title = "manager"):
         self.title = title
@@ -18,7 +18,7 @@ class ManagerUI:
         print("1. Staff")
         print("2. Locations and properties")
         print("3. Work requests/reports")
-        """print("l. log out")"""
+        print("l. log out")
         print("q. quit")
         selection = input("Input selection: ")
         if selection == "1":
