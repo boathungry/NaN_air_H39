@@ -104,3 +104,18 @@ class ListingHandler:
                     filtered_list.append(item)
 
         return filtered_list
+
+    def filter_by_rooms(self, unfiltered_list, min_rooms:int, max_rooms:int = 0):
+        """If both min_rooms and max_rooms are specified, returns a list of items with room count min_rooms to max_rooms.
+        If only min_rooms is specified, returns a list of items with room count min_rooms."""
+        filtered_list = []
+        if max_rooms == 0:
+            for item in unfiltered_list:
+                if int(item.rooms) == min_rooms:
+                    filtered_list.append(item)
+        else:
+            for item in unfiltered_list:
+                if int(item.rooms) >= min_rooms and int(item.rooms) <= max_rooms:
+                    filtered_list.append(item)
+
+        return filtered_list
