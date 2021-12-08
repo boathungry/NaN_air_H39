@@ -120,3 +120,17 @@ class ListingHandler:
                     filtered_list.append(item)
 
         return filtered_list
+
+    #Filters still missing:
+    #ID
+    #work request
+    #worker
+    #priority
+    #repeat
+    #time
+    #start
+    #done
+    #work request id
+    #properties
+    #regular maintenance
+    #approved
