@@ -8,6 +8,7 @@ import Logic_layer.LLAPI
 import Data_layer.EmployeeDL
 import Logic_layer.ListingHandler
 import Logic_layer.SearchHandler
+
 class ManagerUI:
     def __init__(self, ID = "", name = "", email = "", location = "", title = "manager", logic_api:LLAPI = LLAPI()):
         self.ID = ID
@@ -154,7 +155,6 @@ class ManagerUI:
                 title = input('Is the employee a "manager" or a regular "employee"?: ')
             else:
                 print("Invalid option put into selection field.")
-<<<<<<< HEAD
 
     def edit_staff(self):
         print("Change information about employee")
@@ -192,13 +192,11 @@ class ManagerUI:
             title = input('Is the employee a "manager" or a regular "employee"?: ')
         else:
             print("Invalid option put into selection field.")
-=======
             more_change = input("Would you like to change anything else? input [y] if you are not finished, input anything else to stop and apply changes: ")
             if more_change.lower() == "y":
                 pass
             else:
                 staff_editor = False
->>>>>>> 55c96e77bc7ff8450291be540679d5f43448f0a8
     
     def staff_search(self):
         print("What paremeter would you like to search by?")
