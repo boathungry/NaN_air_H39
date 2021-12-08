@@ -61,9 +61,12 @@ class LLAPI():
     def create_work_request(self, id, work_request, location, properties, description, worker, priority, repeat, time, start, done):
         """Creates a new work request with the given attributes and returns the work request."""
         return self.registration_handler.register_work_request(id, work_request, location, properties, description, worker, priority, repeat, time, start, done)
+
     def create_destination(self, city, country, airport, phone, open_hours, manager):
         """Creates a new property with the given attributes and returns the property."""
         return self.registration_handler.register_property(city, country, airport, phone, open_hours, manager)
 
+
     def search(self, search_object, attribute:str, value) -> list:
+        """Returns a list of objects whose value in the given attribute matches the given value."""
         return self.search_handler.search(search_object, attribute, value)
