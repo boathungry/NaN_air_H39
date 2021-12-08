@@ -69,13 +69,13 @@ class EmployeeDL:
             return results_list
             
             
-    def login_by_email(self):
-        '''Given the users email checks if user is a registered employee or a manager'''
+    def login_by_ID(self):
+        '''Given the users ID checks if user is a registered employee or a manager'''
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                if row["email"] == self.email:
-                    user = LoginAccount(row["name"],row["email"], row["location"],row["title"])
+                if row["ID"] == self.email:
+                    user = LoginAccount(row["ID"],row["name"],row["email"], row["location"],row["title"])
                     
                     return user
 

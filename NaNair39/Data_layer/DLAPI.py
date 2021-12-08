@@ -77,8 +77,8 @@ class DLAPI:
         """Searches for work requests whose values in the given attribute matches the given value. Returns a list of work requests."""
         return self.reqDL.search_for_work_request(attribute, value)
 
-    def login_by_email(self,email):    
-        return self.emplDL.login_by_email(email)
+    def login_by_ID(self,email):    
+        return self.emplDL.login_by_ID(email)
 
     def list_all_contractors(self, contr):
         return self.contr.list_all_contractors(contr)
