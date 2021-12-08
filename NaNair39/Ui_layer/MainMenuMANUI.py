@@ -95,7 +95,7 @@ class ManagerUI:
             rightorwrong = input("Is this information correct [y]es, [n]o, [c]ancel: ")
             if rightorwrong.lower() == "y":
                 createemployeloop = False
-                Logic_layer.LLAPI.LLAPI.create_employee(name, email, location, address, phone, cellphone, title)
+                self.llapi.create_employee(name, email, location, address, phone, cellphone, title)
             elif rightorwrong.lower() == "c":
                 createemployeloop = False
                 self.managers_menu()
@@ -154,6 +154,14 @@ class ManagerUI:
                 title = input('Is the employee a "manager" or a regular "employee"?: ')
             else:
                 print("Invalid option put into selection field.")
+            editmore = input("Would you like to stop editing input [y] to commit changes and go back to the main menu, input [c] to cancel, input anything else to keep editing: ")
+            if editmore == "y":
+                staff_editor = False
+            elif editmore == "c":
+                staff_editor = False
+            else:
+                pass
+
 
     def staff_search(self):
         print("What paremeter would you like to search by?")
