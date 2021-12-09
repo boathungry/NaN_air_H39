@@ -20,9 +20,6 @@ class LLAPI():
     def get_employee_id_number(self):
         return self.registration_handler.get_employee_id_number()
 
-    def get_employee_id_number(self):
-        return self.registration_handler.get_employee_id_number()
-
     def get_work_report_id_number(self):
         return self.registration_handler.get_work_report_id_number()
     
@@ -95,13 +92,8 @@ class LLAPI():
     def list_of_location_names(self):
         """returns a list of all location names"""
         return self.listing_handler.list_all_location_names()
-
     
-    def filter_list_by_attribute(self, attribute:str, unfiltered_list:list, filter, filter_max):
-        """Returns a list of items whose attributes match the given filter. Use filter_max if you'd like to get a list of items with values from {filter} to {filter_max}."""
-        return self.listing_handler.filter(attribute, unfiltered_list, filter, filter_max)
-
-
-    def create_new_destination(self, city,country,airport,phone,opening,manager):
-        '''creates a new destination(location)'''
-        return self.registration_handler.register_location
+    #fæ ekki til að virka og koma login í gegnum apa frekar en beint í úr login í datalayer
+    """def login_byID(self, idnumber):
+        "logs user in with ID number"
+        return DLAPI.login_by_ID(self, idnumber)"""
