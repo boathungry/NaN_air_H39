@@ -22,32 +22,30 @@ class PropertyDL:
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
             fieldnames = ["idnumber","name","location","address","size","rooms"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerow({'Property': prop.idnumber, 'name': prop.name, 'location': prop.location, 'address': prop.address, 'size': prop.size, 'no of rooms': prop.rooms})
+            writer.writerow({'ID number': prop.idnumber, 'name': prop.name, 'location': prop.location, 'address': prop.address, 'size': prop.size, 'no of rooms': prop.rooms})
 
     def delete_property(self, prop):
         pass
 
     def change_information_property(self, prop):
-        pass
-    """"  header = ["id", "name", "email", "location", "address", "phone", "cellphone", "title"]
-        list_employees = []
-        one_employee = []
-        
+        header = ["idnumber", "name", "location", "address", "size", "rooms"]
+        list_properties = []
+        one_property = []
+
         #Get all file(all lines)
-        with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
+        with open("csv_files/Properties.csv", newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile, delimiter=',')
             for row in reader:
-                if (row["id"] == employee["emid"]):
-                    one_employee = (employee["emid"], employee["emname"], employee["ememail"], employee["emlocation"], employee["emaddress"], employee["emphone"], employee["emcellphone"], employee["emtitle"])
+                if (row["idnumber"] == prop["pridnumber"]):
+                    one_property = (prop["pridnumber"], prop["prname"], prop["prlocation"], prop["praddress"], prop["prsize"], prop["prrooms"])
                 else:
-                    one_employee = row["id"],row["name"], row["email"], row["location"], row["address"], row["phone"], row["cellphone"], row["title"]
-                list_employees.append(one_employee)
+                    one_property = row["idnumber"],row["name"],row["location"], row["address"], row["size"], row["rooms"]
+                list_properties.append(one_property)
         #Write all file(all lines)
-        with open("csv_files/Employee.csv", mode="w", newline='', encoding='utf-8') as csvfile:
-            employee_writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-            employee_writer.writerow(header)
-            employee_writer.writerows(list_employees)
-"""
+        with open("csv_files/Properties.csv", mode="w", newline='', encoding='utf-8') as csvfile:
+            prop_writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            prop_writer.writerow(header)
+            prop_writer.writerows(list_properties)
 
     """
     def search_property(self, idnumber):

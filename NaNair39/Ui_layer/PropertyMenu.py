@@ -3,6 +3,7 @@ from Models.PropertyModel import Property
 import Ui_layer.MainMenuMANUI
 import Ui_layer.MainMenuEMPUI
 from Logic_layer.LLAPI import LLAPI
+import Data_layer.PropertiesDL
 import string
 #Mögulega að implementa baka um einn menu frekar en alltaf á main menu ef tími gefst
 
@@ -248,69 +249,57 @@ class PropertyMenu:
         Propertyinfo = self.llapi.pro(Property,  attribute="id", value=propertyID)
         results = Propertyinfo
         print(results)
-        id = results[0]["emid"]
-        name = results[0]["emname"]
-        email = results[0]["ememail"]
-        location = results[0]["emlocation"]
-        address = results[0]["emaddress"]
-        phone = results[0]["emphone"]
-        cellphone = results[0]["emcellphone"]
-        title = results[0]["emtitle"]
+
+        idnumber = results[0]["pridnumber"]
+        name = results[0]["prname"]
+        location = results[0]["prlocation"]
+        address = results[0]["praddress"]
+        size = results[0]["prsize"]
+        rooms = results[0]["prrooms"]
         staff_editor = True
         while staff_editor:
-            print(f"Name:      {name}")
-            print(f"Email:     {email}")
-            print(f"Location:  {location}")
-            print(f"Address:   {address}")
-            print(f"Phone:     {phone}")
-            print(f"Cellphone: {cellphone}")
-            print(f"Title:     {title}")
-            print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
+            print(f"ID number:    {idnumber}")
+            print(f"Name:         {name}")
+            print(f"Location:     {location}")
+            print(f"Address:      {address}")
+            print(f"Size:         {size}")
+            print(f"Rooms:        {rooms}")
+            print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [s]ize, [r]ooms.")
             fieldchange = input("Input the letter of the field you wish to change: ")
             if fieldchange.lower() == "n":
-                name = input("What is the new name of the employee?: ")   
+                name = input("What is the new name of the property?: ")   
             elif fieldchange.lower() == "l":
                 location_check_on = True
                 while location_check_on:
                     available_locations = self.llapi.list_of_location_names()
                     print("Available locations are as follows:")
                     self.llapi.list_printer(available_locations)
-                    location = input("What location does the employee work at?: ")
+                    location = input("What location is the new property at?: ")
                     if location not in available_locations:
                         print("Not a valid location, please either create a new location or select an available one")
                     else:
                         location_check_on = False
             elif fieldchange.lower() == "a":    
-                address = input("What is the address of the employee?: ")
-            elif fieldchange.lower() == "p":
-                phone = input("What is the employees phone number?: ")
-            elif fieldchange.lower() == "c":
-                cellphone = input("What is the employees cellphone number?: ")
-            elif fieldchange.lower() == "t":
-                titlechecker_on = True
-                while titlechecker_on:
-                    title = input('Is the employee a "manager" or a regular "staff" member?: ').lower()
-                    if title.lower() not in ["manager", "staff"]:
-                        print('Not a valid title, please input either the word "manager" or the word "staff"')
-                    else:
-                        titlechecker_on = False
+                address = input("What is the address of the property?: ")
+            elif fieldchange.lower() == "s":
+                phone = input("What is the new size of the property?: ")
+            elif fieldchange.lower() == "r":
+                cellphone = input("What is the new number of rooms?: ")
             else:
                 print("Invalid option put into selection field.")
             editmore = input("Would you like to stop editing input [y] to commit changes and go back to the main menu, input [c] to cancel, input anything else to keep editing: ")
             if editmore == "y":
                 staff_editor = False
                 results_final = {}
-                results_final["emid"] = id
-                results_final["emname"] = name
-                results_final["ememail"] = email
-                results_final["emlocation"] = location
-                results_final["emaddress"] = address
-                results_final["emphone"] = phone
-                results_final["emcellphone"] = cellphone
-                results_final["emtitle"] = title
+                results_final["pridnumber"] = idnumber
+                results_final["prname"] = name
+                results_final["prlocation"] = location
+                results_final["praddress"] = address
+                results_final["prsize"] = size
+                results_final["prrooms"] = rooms
                 #Skrifa í skrá
-                init = Data_layer.EmployeeDL.EmployeeDL(ID=results_final["emid"], location=results_final["emlocation"])
-                init.change_information_employee(results_final)
+                init = Data_layer.PropertiesDL.PropertyDL(ID=results_final["pridnumber"], location=results_final["prlocation"])
+                init.change_information_property(results_final)
                 self.managers_menu()
             elif editmore == "c":
                 staff_editor = False
