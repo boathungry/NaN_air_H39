@@ -81,4 +81,4 @@ class LLAPI():
         
     def list_printer(self, input_list):
         """Prints a list one row at a time"""
-        self.listing_handler.list_printer(self)
+        self.listing_handler.list_printer(input_list)
