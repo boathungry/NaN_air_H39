@@ -39,7 +39,25 @@ class WorkReportMenu:
             print("Wrong input!")
             self.Work_report_manager_menu()
 
-            
+    def create_work_request():
+        pass
+
+    def create_maintenance_report():
+        pass
+
+    def change_maintenance_report():
+        pass
+
+    def mark_meaitenance_or_work_report_as_ready_for_closing():
+        pass
+
+    def Accept_finished_maintenance_and_work_reports():
+        pass
+    
+    def View_work_and_maintenance_reports():
+        pass
+
+
     def work_report_staff_menu(self):
         print("1. Create work request")
         print("2. create maintenance request")
