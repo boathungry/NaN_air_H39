@@ -96,6 +96,8 @@ uppfærðum dagbók
 
 Eftir daginn:
 Hjörleifur: kom inn meiri virkni í UI, náði að koma create employee í gang með að tengja við klasa sem hin hafa skapað, kom edit employee uiinu alveg í gang, vantar að implementa að það breytu csv skránum
+Valdís: Vann í að reyna færa úr change í Data Layer yfir í csv, náðist ekki alveg en klára á morgun. Skipti einnig út pandas fyrir relativedelta þar sem ekki má nota pandas.
+Ingi: Vann í DL og kláraði síðustu csv skjöl sem átti eftir að klára
 
 --09.12.2021--
 Morgunfundur: staðann tekin, rætt hvað þarf að forgangsraða, Valdís fer í að breytingar vistist í csv skrám, Hjörleifur og Ingi halda áfram að koma general virkni í það sem vantar upp á
