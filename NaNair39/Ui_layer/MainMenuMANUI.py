@@ -169,21 +169,43 @@ class ManagerUI:
         print("Use [b] to go back to main menu and [q] to quit")
         search_attribute = input("Input search attribute: ")
         if search_attribute.lower() == "i":
-            pass
+            employeeID = input("What is the ID number you wish to search for?: ")
+            Employeeinfo = self.llapi.search(Employee,  attribute="id", value=employeeID.capitalize())
+            Logic_layer.ListingHandler.ListingHandler.list_printer(Employeeinfo)
         elif search_attribute.lower() == "n":
-            pass
+            employeename = input("What is name you wish to search for?: ")
+            namestring = self.llapi.namecapitalizer(employeename)
+            """namessplit = employeename.split()
+            firstname = str(namessplit[0]).capitalize()
+            lastname = str(namessplit[1]).capitalize()
+            namestring = firstname + " " + lastname"""
+            Employeeinfo = self.llapi.search(Employee,  attribute="name", value=namestring)
+            results = Employeeinfo
+            print(results)
         elif search_attribute.lower() == "e":
-            pass
+            employeeemail = input("What is the email you wish to search for?: ")
+            Employeeinfo = self.llapi.search(Employee,  attribute="email", value=employeeemail.lower())
+            Logic_layer.ListingHandler.ListingHandler.list_printer(Employeeinfo)
         elif search_attribute.lower() == "l":
-            pass
+            employeelocation = input("What is the location you wish to search for?: ")
+            Employeeinfo = self.llapi.search(Employee,  attribute="location", value=employeelocation.capitalize())
+            Logic_layer.ListingHandler.ListingHandler.list_printer(Employeeinfo)
         elif search_attribute.lower() == "a":
-            pass
+            employeeaddress = input("What is the address you wish to search for?: ")
+            Employeeinfo = self.llapi.search(Employee,  attribute="address", value=employeeaddress.capitalize)
+            Logic_layer.ListingHandler.ListingHandler.list_printer(Employeeinfo)
         elif search_attribute.lower() == "p":
-            pass
+            employeephone = input("What is the phone number you wish to search for? (use the format +00 00 00 00 00): ")
+            Employeeinfo = self.llapi.search(Employee,  attribute="phone", value=employeephone)
+            Logic_layer.ListingHandler.ListingHandler.list_printer(Employeeinfo)
         elif search_attribute.lower() == "c":
-            pass
+            employeegsm = input("What is the cellphone number you wish to search for(use the format +000 000 0000)?: ")
+            Employeeinfo = self.llapi.search(Employee,  attribute="cellphone", value=employeegsm)
+            Logic_layer.ListingHandler.ListingHandler.list_printer(Employeeinfo)
         elif search_attribute.lower() == "t":
-            pass
+            employeetitle = input("Do you want to list all staff or managers?: ")
+            Employeeinfo = self.llapi.search(Employee,  attribute="title", value=employeetitle.lower())
+            Logic_layer.ListingHandler.ListingHandler.list_printer(Employeeinfo)
         elif search_attribute.lower() == "b":
             self.managers_menu()
         elif search_attribute.lower() == "q":
