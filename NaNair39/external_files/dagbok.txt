@@ -51,8 +51,11 @@ Valdís: Las yfir skýrslu og lagaði innsláttar-/stafsetningarvillur
 Horfðum á fyrirlestur
 
 --30.11.2021--
-Morgunfundur: Ætlum að laga það sem við getum í hönnunarskýrslunni þangað til við getum fengið fund með kennara og komist að því hvernig við eigum að hafa klasaritið okkar.
+Morgunfundur: Ætlum að laga það sem við getum í hönnunarskýrslunni þangað til við getum fengið fund með kennara og komist að því hvernig við 
+eigum að hafa klasaritið okkar.
 
+Eftir daginn: 
+Hjörleifur, Þór, Ingi og Valdís: tókum samtal við kennara um hvað var að skýrslunni, skiptum verkum hvað hver myndi byrja að forrita á morgun
 --01.12.2021--
 Morgunfundur: Stefnum á að byrja að kóða
 
@@ -64,6 +67,9 @@ Valdís: Byrjaði á LL WorkReport og WorkRequest
 
 --02.12:2021--
 Morgunfundur: töluðum um að reyna að koma upp basic beinagrind á klasana
+
+Eftir daginn:
+Hjörleifur: hélt áfram að setja upp UI beinagrind
 
 --03.12.2021--
 Morgunfundur: Héldum fund um skipulag dagsins
@@ -102,10 +108,13 @@ Samtal við Gylfa: fengum smá skammir fyrir að vera ekki nógu dugleg með dag
 uppfærðum dagbók
 
 Eftir daginn:
-Hjörleifur: kom inn meiri virkni í UI, náði að koma create employee í gang með að tengja við klasa sem hin hafa skapað, kom edit employee uiinu alveg í gang, vantar að implementa að það breytu csv skránum
-Valdís: Vann í að reyna færa úr change í Data Layer yfir í csv, náðist ekki alveg en klára á morgun. Skipti einnig út pandas fyrir relativedelta þar sem ekki má nota pandas.
+Hjörleifur: kom inn meiri virkni í UI, náði að koma create employee í gang með að tengja við klasa sem hin hafa skapað, kom edit employee 
+uiinu alveg í gang, vantar að implementa að það breytu csv skránum
+Valdís: Vann í að reyna færa úr change í Data Layer yfir í csv, náðist ekki alveg en klára á morgun. Skipti einnig út pandas fyrir 
+relativedelta þar sem ekki má nota pandas.
 Ingi: Vann í DL og kláraði síðustu csv skjöl sem átti eftir að klára
 Þór: Hélt áfram með ListingHandler og SearchHandler
 
 --09.12.2021--
-Morgunfundur: staðann tekin, rætt hvað þarf að forgangsraða, Valdís fer í að breytingar vistist í csv skrám, Hjörleifur og Ingi halda áfram að koma general virkni í það sem vantar upp á
+Morgunfundur: staðann tekin, rætt hvað þarf að forgangsraða, Valdís fer í að breytingar vistist í csv skrám, Hjörleifur og Ingi halda áfram að 
+koma general virkni í það sem vantar upp á
