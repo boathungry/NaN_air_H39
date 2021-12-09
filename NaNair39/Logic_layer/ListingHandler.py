@@ -130,17 +130,77 @@ class ListingHandler:
         location = location
 
 
+    def filter_by_id(self, unfiltered_list, filter):
+        """Returns a list of items whose IDs contain the given filter."""
+        filtered_list = []
+        for item in unfiltered_list:
+            if filter in item.id or filter in item.idnumber:
+                filtered_list.append(item)
 
-    #Filters still missing:
-    #ID
-    #work request
-    #worker
-    #priority
-    #repeat
-    #time
-    #start
-    #done
-    #work request id
-    #properties
-    #regular maintenance
-    #approved
+        return filtered_list
+
+    def filter_by_worker(self, unfiltered_list, filter):
+        """Returns a list of items (most likely work reports/requests) whose workers match the given filter."""
+        filtered_list = []
+        for item in unfiltered_list:
+            if item.worker == filter:
+                filtered_list.append(item)
+
+        return filtered_list
+
+    def filter_by_priority(self, unfiltered_list, filter):
+        """Returns a list of items whose priority matches the given filter."""
+        filtered_list = []
+        for item in unfiltered_list:
+            if item.priority == filter:
+                filtered_list.append(item)
+
+        return filtered_list
+
+    def filter_by_start(self, unfiltered_list, filter):
+        filtered_list = []
+        for item in unfiltered_list:
+            if item.start == filter:
+                filtered_list.append(item)
+
+        return filtered_list
+
+    def filter_by_time(self, unfiltered_list, filter):
+        filtered_list = []
+        for item in unfiltered_list:
+            if item.time == filter:
+                filtered_list.append(item)
+
+        return filtered_list
+
+    def filter_by_done(self, unfiltered_list, filter):
+        filtered_list = []
+        for item in unfiltered_list:
+            if item.done == filter:
+                filtered_list.append(item)
+        
+        return filtered_list
+
+    def filter_by_regular_maintenance(self, unfiltered_list, filter):
+        filtered_list = []
+        for item in unfiltered_list:
+            if item.regular_maintenance == filter:
+                filtered_list.append(item)
+        
+        return filtered_list
+
+    def filter_by_property(self, unfiltered_list, filter):
+        filtered_list = []
+        for item in unfiltered_list:
+            if filter in item.properties or item.property == filter:
+                filtered_list.append(item)
+
+        return filtered_list
+
+    def filter_by_approved(self, unfiltered_list, filter):
+        filtered_list = []
+        for item in unfiltered_list:
+            if item.approved == filter:
+                filtered_list.append(item)
+
+        return filtered_list

@@ -45,6 +45,9 @@ class DLAPI:
     def get_work_report_id_number(self):
         return self.VB.get_work_report_id_number()
 
+    def get_work_request_id_number(self):
+        return self.reqDL.get_work_request_id_number()
+
     def get_all_properties(self):
         '''Lists all properties'''
         return self.propDL.get_all_properties()
