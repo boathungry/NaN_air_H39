@@ -35,7 +35,7 @@ class SearchHandler:
         if search_object == Employee:
             search_results = self.data_api.dict_search_employee(attribute, value)
         elif search_object == Property:
-            search_results = self.data_api.search_property(attribute, value)
+            search_results = self.data_api.dict_search_property(attribute, value)
         elif search_object == WorkReport:
             search_results = self.data_api.search_work_report(attribute, value)
         elif search_object == WorkRequest:

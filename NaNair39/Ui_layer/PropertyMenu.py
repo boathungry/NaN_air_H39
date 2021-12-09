@@ -87,7 +87,7 @@ class PropertyMenu:
         if selection == "1":
             pass
         elif selection == "2":
-            pass
+            self.edit_property()
         elif selection == "3":
             pass
         elif selection == "4":
@@ -246,7 +246,7 @@ class PropertyMenu:
     def edit_property(self):
         print("Change information about a property")
         propertyID = input("What is the property´s ID number?: ").capitalize()
-        Propertyinfo = self.llapi.pro(Property,  attribute="id", value=propertyID)
+        Propertyinfo = self.llapi.dict_search(Property,  attribute="idnumber", value=propertyID.capitalize())
         results = Propertyinfo
         print(results)
 
@@ -300,7 +300,7 @@ class PropertyMenu:
                 #Skrifa í skrá
                 init = Data_layer.PropertiesDL.PropertyDL(ID=results_final["pridnumber"], location=results_final["prlocation"])
                 init.change_information_property(results_final)
-                self.managers_menu()
+                Ui_layer.MainMenuMANUI.ManagerUI.managers_menu()
             elif editmore == "c":
                 staff_editor = False
             else:

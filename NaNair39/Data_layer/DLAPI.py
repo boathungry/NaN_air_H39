@@ -91,6 +91,10 @@ class DLAPI:
     def dict_search_location(self, attribute:str, value) -> dict:
         """searches for destinations"""
         return self.locDL.search_for_destination(attribute, value)
+    
+    def dict_search_property(self, attribute:str, value) -> dict:
+        """searches for destinations"""
+        return self.propDL.dict_search_for_property(attribute, value)
 
     def change_information_work_report(self,VB):
         '''Changes information on existing work report'''
