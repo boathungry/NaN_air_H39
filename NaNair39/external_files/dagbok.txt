@@ -60,6 +60,7 @@ Eftir daginn:
 Hjörleifur: Byrjaði að kóða UI
 Ingi: Byrjaði á DL
 Valdís: Byrjaði á LL WorkReport og WorkRequest
+Þór: Byrjaði á ChangeHandler
 
 --02.12:2021--
 Morgunfundur: töluðum um að reyna að koma upp basic beinagrind á klasana
@@ -72,6 +73,7 @@ Eftir daginn:
 Hjörleifur: hélt áfram með UI
 Valdís: Hélt áfram með LL WorkReport og WorkRequest
 Ingi: Hélt áfram með DL
+Þór: Byrjaði á RegistrationHandler
 
 --06.12.2021--
 Morgunfundur: Héldum fund til að skipuleggja daginn, ákveðið var að vinna áfram í kóðanum.
@@ -80,6 +82,7 @@ Eftir daginn:
 Hjörleifur: hélt áfram með UI, reyndi að koma login kerfi í gang, gekk ekki. 
 Ingi: Data layer debug
 Valdís: LL WorkReport og WorkRequest
+Þór: Bug fixes og hélt áfram með logic layer
 
 --07.12.2021--
 Morgunfundur: Ræddum um að halda áfram með það sem við unnum í gær, og reyna að koma log in í gang
@@ -88,8 +91,10 @@ Eftir daginn:
 Hjörleifur: kláraði að koma allri virkni í að fara á milli valmynda, bara eftir að tengja klasa við aðgerðir
 Valdís: Kláraði LL WorkReport og WorkRequest og vann í login
 Ingi: Áframhald með data layer og uppfærslu á csv fileum
+Þór: Vann í SearchHandler, klasa sem á að koma leit áleiðis til data layer
 
 --08.12.2021--
 Morgunfundur: Erum að reyna að koma search functioninu í gang saman
 Samtal við Gylfa: fengum smá skammir fyrir að vera ekki nógu dugleg með dagbók, og að tilkynna ekki að Þorbjörg er ekkert búin að mæta
 uppfærðum dagbók
+Þór: Byrjaði að vinna í ListingHandler, klasa sem á að sjá um að lista og sía hluti
