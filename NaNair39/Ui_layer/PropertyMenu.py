@@ -282,9 +282,9 @@ class PropertyMenu:
             elif fieldchange.lower() == "a":    
                 address = input("What is the address of the property?: ")
             elif fieldchange.lower() == "s":
-                phone = input("What is the new size of the property?: ")
+                size = input("What is the new size of the property?: ")
             elif fieldchange.lower() == "r":
-                cellphone = input("What is the new number of rooms?: ")
+                rooms = input("What is the new number of rooms?: ")
             else:
                 print("Invalid option put into selection field.")
             editmore = input("Would you like to stop editing input [y] to commit changes and go back to the main menu, input [c] to cancel, input anything else to keep editing: ")
@@ -298,7 +298,7 @@ class PropertyMenu:
                 results_final["prsize"] = size
                 results_final["prrooms"] = rooms
                 #Skrifa í skrá
-                init = Data_layer.PropertiesDL.PropertyDL(ID=results_final["pridnumber"], location=results_final["prlocation"])
+                init = Data_layer.PropertiesDL.PropertyDL()
                 init.change_information_property(results_final)
                 Ui_layer.MainMenuMANUI.ManagerUI.managers_menu()
             elif editmore == "c":
