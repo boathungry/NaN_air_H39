@@ -77,10 +77,10 @@ class ManagerUI:
         name = string.capwords(input("What is the name of the new employee?: "))
         email = input("What is the employees email address?: ")
         available_locations = self.llapi.list_of_location_names()
-        print("Available locations are as follows:")
-        self.llapi.list_printer(available_locations)
         location_checker_on = True
         while location_checker_on:
+            print("Available locations are as follows:")
+            self.llapi.list_printer(available_locations)
             location = string.capwords(input("What location does the employee work at?: "))
             if string.capwords(location) not in available_locations:
                 print("Not a valid location, please either create a new location or select an available one")
