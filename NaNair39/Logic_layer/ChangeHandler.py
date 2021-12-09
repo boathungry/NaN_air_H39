@@ -162,3 +162,13 @@ class ChangeHandler():
 
         #self.dl_api.change_information_work_request(work_request) #NOT IMPLEMENTED YET
         return attribute
+    def comma_checker(self, input):
+        inputstringer = str(input)
+        hascomma = False
+        for x in inputstringer:
+            if x == ",":
+                hascomma = True
+                return hascomma
+            else:
+                pass
+        return hascomma

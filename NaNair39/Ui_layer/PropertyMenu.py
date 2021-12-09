@@ -147,9 +147,11 @@ class PropertyMenu:
         used_locations = self.llapi.list_of_location_names()
         while city_checker_on:
             city = string.capwords(input("In what city is the new destination: "))
+            comma_check = self.llapi.comma_checker(city)
             if city in used_locations:
-
                 print("This location is already in use, please enter a different city.")
+            elif comma_check:
+                print("Please don't have a comma in the city name it messes with our database.")
             else:
                 city_checker_on = False            
         country = string.capwords(input(f"What country is {city} in: "))
@@ -244,6 +246,7 @@ class PropertyMenu:
 #idnumber,name,location,address,size,rooms
 
     def edit_property(self):
+        current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.ID, self.name, self.email, self.location, self.title)
         print("Change information about a property")
         propertyID = input("What is the property´s ID number?: ").capitalize()
         Propertyinfo = self.llapi.dict_search(Property,  attribute="idnumber", value=propertyID.capitalize())
@@ -267,24 +270,53 @@ class PropertyMenu:
             print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [s]ize, [r]ooms.")
             fieldchange = input("Input the letter of the field you wish to change: ")
             if fieldchange.lower() == "n":
-                name = input("What is the new name of the property?: ")   
+                commaon = True
+                while commaon:
+                    name = string.capwords(input("What is the new name of the property?: "))
+                    comma_check = self.llapi.comma_checker(input=name)
+                    if comma_check:
+                        print("Please don't have a comma in the name, it messes with our database")
+                    else:
+                        commaon = False
             elif fieldchange.lower() == "l":
                 location_check_on = True
                 while location_check_on:
                     available_locations = self.llapi.list_of_location_names()
                     print("Available locations are as follows:")
                     self.llapi.list_printer(available_locations)
-                    location = input("What location is the new property at?: ")
+                    location = string.capwords(input("What location is the new property at?: "))
                     if location not in available_locations:
                         print("Not a valid location, please either create a new location or select an available one")
                     else:
                         location_check_on = False
             elif fieldchange.lower() == "a":    
-                address = input("What is the address of the property?: ")
+                commaon = True
+                while commaon:
+                    address = string.capwords(input("What is the address of the property?: "))
+                    comma_check = self.llapi.comma_checker(input=address)
+                    if comma_check:
+                        print("Please don't have a comma in the address, it messes with our database")
+                    else:
+                        commaon = False
             elif fieldchange.lower() == "s":
-                size = input("What is the new size of the property?: ")
+                commaon = True
+                while commaon:
+                    size = input("What is the new size of the property? use the format [xx.xm2]: ")
+                    comma_check = self.llapi.comma_checker(input=size)
+                    if comma_check:
+                        print("Please don't have a comma in the size, it messes with our database use a period instead of the comma.")
+                    else:
+                        commaon = False
             elif fieldchange.lower() == "r":
-                rooms = input("What is the new number of rooms?: ")
+                roomnrson = True
+                while roomnrson:
+                    rooms = input("What is the new number of rooms?: ")
+                    try:
+                        int(rooms)
+                        roomnrson = False
+                    except:
+                        print("Please only use whole numebers for number of rooms")
+                
             else:
                 print("Invalid option put into selection field.")
             editmore = input("Would you like to stop editing input [y] to commit changes and go back to the main menu, input [c] to cancel, input anything else to keep editing: ")
@@ -300,9 +332,10 @@ class PropertyMenu:
                 #Skrifa í skrá
                 init = Data_layer.PropertiesDL.PropertyDL()
                 init.change_information_property(results_final)
-                Ui_layer.MainMenuMANUI.ManagerUI.managers_menu()
+                current_user.managers_menu()
             elif editmore == "c":
                 staff_editor = False
+                current_user.managers_menu()
             else:
                 pass
 

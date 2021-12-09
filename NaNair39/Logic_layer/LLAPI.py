@@ -92,7 +92,9 @@ class LLAPI():
     def list_of_location_names(self):
         """returns a list of all location names"""
         return self.listing_handler.list_all_location_names()
-    
+    def comma_checker(self, input):
+        """returns a true or false wether the input has commas in it."""
+        return self.change_handler.comma_checker(input)
     #fæ ekki til að virka og koma login í gegnum apa frekar en beint í úr login í datalayer
     """def login_byID(self, idnumber):
         "logs user in with ID number"
