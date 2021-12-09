@@ -307,7 +307,4 @@ class PropertyMenu:
                 pass
 
 
-            propertyID = input("What is the property´s ID number?: ").capitalize()
-        Propertyinfo = self.llapi.dict_search(Property,  attribute="idnumber", value=propertyID.capitalize())
-        results = Propertyinfo
-        print(results)
+   
