@@ -1,4 +1,5 @@
 from Data_layer.EmployeeDL import EmployeeDL
+import Logic_layer.LLAPI
 class LogIn:
     def __init__(self, user= ""):
         self.user = user
@@ -13,7 +14,8 @@ class LogIn:
                 return "q"
             else:
                 userID = EmployeeDL(loginID)
-                
+                """current_user = Logic_layer.LLAPI.LLAPI.login_byID(idnumber=userID)
+                print(current_user)"""
                 user = EmployeeDL.login_by_ID(userID)
                 if user == None:
                     print("ID number not found")
