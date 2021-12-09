@@ -27,5 +27,23 @@ class SearchHandler:
             search_results = self.data_api.search_work_request(attribute, value)
         self.search_results = search_results
         return self.search_results
+
+    def dict_search(self, search_object, attribute:str, value) -> dict:
+        """Searches for objects of the given type whose values in the given attribute match the given value.
+        Returns a list of the found objects."""
+
+        if search_object == Employee:
+            search_results = self.data_api.dict_search_employee(attribute, value)
+        elif search_object == Property:
+            search_results = self.data_api.search_property(attribute, value)
+        elif search_object == WorkReport:
+            search_results = self.data_api.search_work_report(attribute, value)
+        elif search_object == WorkRequest:
+            search_results = self.data_api.search_work_request(attribute, value)
+        elif search_object == Location:
+            search_results = self.data_api.search_work_request(attribute, value)
+        self.search_results = search_results
+        return self.search_results
+
     def __str__(self):
         return self.search_results

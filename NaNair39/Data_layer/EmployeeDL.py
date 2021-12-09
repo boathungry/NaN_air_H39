@@ -102,3 +102,16 @@ class EmployeeDL:
                     empl = Employee(row["id"],row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
                     Employeedict = {"emid":empl.idnumber, "emname":empl.name, "ememail":empl.email, "emlocation":empl.location,"emaddress":empl.address,"emphone":empl.phone,"emcellphone":empl.cellphone,"emtitle":empl.title }
                     return Employeedict
+
+    def dict_search_for_employee(self, attribute:str, value):
+        """Searches for employees whose values in the given attribute matches the given value. Returns a list of employees."""
+        results_list = []
+        attribute = attribute.lower()
+        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if row[attribute]==value:
+                    empl = Employee(row["id"],row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
+                    Employee_dict = {"emid":empl.idnumber, "emname":empl.name, "ememail":empl.email, "emlocation":empl.location,"emaddress":empl.address,"emphone":empl.phone,"emcellphone":empl.cellphone,"emtitle":empl.title }
+                    results_list.append(Employee_dict)
+            return results_list

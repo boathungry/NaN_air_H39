@@ -20,6 +20,8 @@ class LLAPI():
     def get_employee_id_number(self):
         return self.registration_handler.get_employee_id_number()
 
+    def get_employee_id_number(self):
+        return self.registration_handler.get_employee_id_number()
 
     def change_employee(self, employee, attribute, new_value):
         """Changes an attribute of an employee to a new value. Returns the given attribute if successful, otherwise returns None."""
@@ -71,3 +73,12 @@ class LLAPI():
     def search(self, search_object, attribute:str, value) -> list:
         """Returns a list of objects whose value in the given attribute matches the given value."""
         return self.search_handler.search(search_object, attribute, value)
+    
+    def dict_search(self, search_object, attribute:str, value) -> dict:
+        
+        """Returns a list of objects whose value in the given attribute matches the given value."""
+        return self.search_handler.dict_search(search_object, attribute, value)
+        
+    def list_printer(self, input_list):
+        """Prints a list one row at a time"""
+        self.listing_handler.list_printer(self)
