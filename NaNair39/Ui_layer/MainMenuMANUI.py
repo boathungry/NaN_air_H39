@@ -7,7 +7,7 @@ import Ui_layer.main_login
 import Logic_layer.LLAPI
 import Logic_layer.ListingHandler
 import Logic_layer.SearchHandler
-
+import string
 class ManagerUI:
     def __init__(self, ID = "", name = "", email = "", location = "", title = "manager", logic_api:LLAPI = LLAPI()):
         self.ID = ID
@@ -171,42 +171,39 @@ class ManagerUI:
         if search_attribute.lower() == "i":
             employeeID = input("What is the ID number you wish to search for?: ")
             Employeeinfo = self.llapi.search(Employee,  attribute="id", value=employeeID.capitalize())
-            Logic_layer.ListingHandler.ListingHandler.list_printer(Employeeinfo)
+            print(Employeeinfo)
+            self.llapi.list_printer(Employeeinfo)
         elif search_attribute.lower() == "n":
             employeename = input("What is name you wish to search for?: ")
-            namestring = self.llapi.namecapitalizer(employeename)
-            """namessplit = employeename.split()
-            firstname = str(namessplit[0]).capitalize()
-            lastname = str(namessplit[1]).capitalize()
-            namestring = firstname + " " + lastname"""
+            namestring = string.capwords(employeename)
             Employeeinfo = self.llapi.search(Employee,  attribute="name", value=namestring)
-            results = Employeeinfo
-            print(results)
+            self.llapi.list_printer(Employeeinfo)
         elif search_attribute.lower() == "e":
             employeeemail = input("What is the email you wish to search for?: ")
             Employeeinfo = self.llapi.search(Employee,  attribute="email", value=employeeemail.lower())
-            Logic_layer.ListingHandler.ListingHandler.list_printer(Employeeinfo)
+            self.llapi.list_printer(Employeeinfo)
         elif search_attribute.lower() == "l":
             employeelocation = input("What is the location you wish to search for?: ")
-            locationstring = self.llapi.namecapitalizer(employeelocation)
+            locationstring = string.capwords(employeelocation)
             Employeeinfo = self.llapi.search(Employee,  attribute="location", value=locationstring)
-            Logic_layer.ListingHandler.ListingHandler.list_printer(Employeeinfo)
+            self.llapi.list_printer(Employeeinfo)
         elif search_attribute.lower() == "a":
             employeeaddress = input("What is the address you wish to search for?: ")
-            Employeeinfo = self.llapi.search(Employee,  attribute="address", value=employeeaddress.capitalize)
-            Logic_layer.ListingHandler.ListingHandler.list_printer(Employeeinfo)
+            addressstring = string.capwords(employeeaddress)
+            Employeeinfo = self.llapi.search(Employee,  attribute="address", value=addressstring)
+            self.llapi.list_printer(Employeeinfo)
         elif search_attribute.lower() == "p":
             employeephone = input("What is the phone number you wish to search for? (use the format +00 00 00 00 00): ")
             Employeeinfo = self.llapi.search(Employee,  attribute="phone", value=employeephone)
-            Logic_layer.ListingHandler.ListingHandler.list_printer(Employeeinfo)
+            self.llapi.list_printer(Employeeinfo)
         elif search_attribute.lower() == "c":
             employeegsm = input("What is the cellphone number you wish to search for(use the format +000 000 0000)?: ")
             Employeeinfo = self.llapi.search(Employee,  attribute="cellphone", value=employeegsm)
-            Logic_layer.ListingHandler.ListingHandler.list_printer(Employeeinfo)
+            self.llapi.list_printer(Employeeinfo)
         elif search_attribute.lower() == "t":
             employeetitle = input("Do you want to list all staff or managers?: ")
             Employeeinfo = self.llapi.search(Employee,  attribute="title", value=employeetitle.lower())
-            Logic_layer.ListingHandler.ListingHandler.list_printer(Employeeinfo)
+            self.llapi.list_printer(Employeeinfo)
         elif search_attribute.lower() == "b":
             self.managers_menu()
         elif search_attribute.lower() == "q":

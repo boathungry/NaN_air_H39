@@ -113,6 +113,4 @@ class EmployeeDL:
                     empl = Employee(row["id"],row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
                     Employee_dict = {"emid":empl.idnumber, "emname":empl.name, "ememail":empl.email, "emlocation":empl.location,"emaddress":empl.address,"emphone":empl.phone,"emcellphone":empl.cellphone,"emtitle":empl.title }
                     results_list.append(Employee_dict)
-                    print("employeedict", Employee_dict)
-                    print("result_list", results_list)
             return results_list

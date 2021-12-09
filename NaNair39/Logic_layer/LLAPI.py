@@ -78,7 +78,7 @@ class LLAPI():
         
         """Returns a list of objects whose value in the given attribute matches the given value."""
         return self.search_handler.dict_search(search_object, attribute, value)
-    
-    def namecapitalizer(self, name):
-        "Returns all words in a string with the first letter capitalized"
-        return self.listing_handler.name_capitalizer(name)
+        
+    def list_printer(self, input_list):
+        """Prints a list one row at a time"""
+        self.listing_handler.list_printer(input_list)

@@ -7,7 +7,7 @@ class LogIn:
         loginon = True
         while loginon:
             print("To quit put q in the ID field")
-            loginID = input("Please input your employee ID: ")
+            loginID = input("Please input your employee ID: ").capitalize()
             if loginID.lower() == "q":
                 loginon = False
                 return "q"

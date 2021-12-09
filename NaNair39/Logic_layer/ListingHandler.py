@@ -69,6 +69,7 @@ class ListingHandler:
                 filtered_list.append(item)
         
         return filtered_list
+        
     def list_printer(list_to_print):
         for x in list_to_print:
             print(x)
@@ -120,20 +121,6 @@ class ListingHandler:
                     filtered_list.append(item)
 
         return filtered_list
-
-    def name_capitalizer(name):
-        namesplitter = name.split()
-        numberofnames = len(namesplitter)
-        counter = 0
-        namestring = ""
-        for x in namesplitter:
-            counter+=1
-            if counter < numberofnames:
-                namestring = namestring+x+" "
-            elif counter == numberofnames:
-                namestring = namestring+x
-        return namestring
-
 
 
     #Filters still missing:
