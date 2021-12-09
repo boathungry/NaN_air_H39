@@ -60,6 +60,7 @@ Eftir daginn:
 Hjörleifur: Byrjaði að kóða UI
 Ingi: Byrjaði á DL
 Valdís: Byrjaði á LL WorkReport og WorkRequest
+Þór: Byrjaði á ChangeHandler
 
 --02.12:2021--
 Morgunfundur: töluðum um að reyna að koma upp basic beinagrind á klasana
@@ -72,6 +73,10 @@ Eftir daginn:
 Hjörleifur: hélt áfram með UI
 Valdís: Hélt áfram með LL WorkReport og WorkRequest
 Ingi: Hélt áfram með DL
+Þór: Byrjaði á RegistrationHandler
+
+--Helgin 04.12 til 05.12--
+Þór: Bug fixes, tók til í kóðanum, hélt áfram með ChangeHandler og RegistrationHandler
 
 --06.12.2021--
 Morgunfundur: Héldum fund til að skipuleggja daginn, ákveðið var að vinna áfram í kóðanum.
@@ -80,6 +85,7 @@ Eftir daginn:
 Hjörleifur: hélt áfram með UI, reyndi að koma login kerfi í gang, gekk ekki. 
 Ingi: Data layer debug
 Valdís: LL WorkReport og WorkRequest
+Þór: Byrjaði á SearchHandler
 
 --07.12.2021--
 Morgunfundur: Ræddum um að halda áfram með það sem við unnum í gær, og reyna að koma log in í gang
@@ -88,6 +94,7 @@ Eftir daginn:
 Hjörleifur: kláraði að koma allri virkni í að fara á milli valmynda, bara eftir að tengja klasa við aðgerðir
 Valdís: Kláraði LL WorkReport og WorkRequest og vann í login
 Ingi: Áframhald með data layer og uppfærslu á csv fileum
+Þór: Byrjaði á ListingHandler
 
 --08.12.2021--
 Morgunfundur: Erum að reyna að koma search functioninu í gang saman
@@ -98,6 +105,7 @@ Eftir daginn:
 Hjörleifur: kom inn meiri virkni í UI, náði að koma create employee í gang með að tengja við klasa sem hin hafa skapað, kom edit employee uiinu alveg í gang, vantar að implementa að það breytu csv skránum
 Valdís: Vann í að reyna færa úr change í Data Layer yfir í csv, náðist ekki alveg en klára á morgun. Skipti einnig út pandas fyrir relativedelta þar sem ekki má nota pandas.
 Ingi: Vann í DL og kláraði síðustu csv skjöl sem átti eftir að klára
+Þór: Hélt áfram með ListingHandler og SearchHandler
 
 --09.12.2021--
 Morgunfundur: staðann tekin, rætt hvað þarf að forgangsraða, Valdís fer í að breytingar vistist í csv skrám, Hjörleifur og Ingi halda áfram að koma general virkni í það sem vantar upp á
