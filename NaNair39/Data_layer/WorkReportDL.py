@@ -17,6 +17,17 @@ class WorkReportDL:
                 return_list.append(VB)
         return return_list
     
+    def get_work_report_id_number(self):
+        prev_temp = int(1)
+        '''Checks the next avaliable id number and returns'''
+        with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile, delimiter=',')
+            for row in reader:
+                temp_number = row["id"]
+                if int(temp_number[2:]) >= prev_temp:
+                        prev_temp = (int(temp_number[1:])+1)
+            return prev_temp  
+
     def create_work_report(self, VB):
         '''Appends a new work report to the given filepath'''
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
