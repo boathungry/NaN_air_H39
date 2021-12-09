@@ -120,7 +120,16 @@ class ManagerUI:
                                 if fieldchange.lower() == "n":
                                     name = input("What is the name of the new employee?: ")
                                 elif fieldchange.lower() == "l":
-                                    location = input("What location does the employee work at?: ")
+                                    location_check_on = True
+                                    while location_check_on:
+                                        available_locations = self.llapi.list_of_location_names()
+                                        print("Available locations are as follows:")
+                                        self.llapi.list_printer(available_locations)
+                                        location = input("What location does the employee work at?: ")
+                                        if location not in available_locations:
+                                            print("Not a valid location, please either create a new location or select an available one")
+                                        else:
+                                            location_check_on = False
                                 elif fieldchange.lower() == "a":    
                                     address = input("What is the address of the employee?: ")
                                 elif fieldchange.lower() == "p":
@@ -128,7 +137,13 @@ class ManagerUI:
                                 elif fieldchange.lower() == "c":
                                     cellphone = input("What is the employees cellphone number?: ")
                                 elif fieldchange.lower() == "t":
-                                    title = input('Is the employee a "manager" or a regular "staff" member?: ')
+                                    titlechecker_on = True
+                                    while titlechecker_on:
+                                        title = input('Is the employee a "manager" or a regular "staff" member?: ').lower()
+                                        if title.lower() not in ["manager", "staff"]:
+                                            print('Not a valid title, please input either the word "manager" or the word "staff"')
+                                        else:
+                                            titlechecker_on = False
                                 else:
                                     print("Invalid option put into selection field.")
 
@@ -160,7 +175,17 @@ class ManagerUI:
             if fieldchange.lower() == "n":
                 name = input("What is the new name of the employee?: ")   
             elif fieldchange.lower() == "l":
-                location = input("What location does the employee work at?: ")
+                location_check_on = True
+                while location_check_on:
+                    available_locations = self.llapi.list_of_location_names()
+                    print("Available locations are as follows:")
+                    self.llapi.list_printer(available_locations)
+                    location = input("What location does the employee work at?: ")
+                    if location not in available_locations:
+                        print("Not a valid location, please either create a new location or select an available one")
+                    else:
+                        location_check_on = False
+
             elif fieldchange.lower() == "a":    
                 address = input("What is the address of the employee?: ")
             elif fieldchange.lower() == "p":
@@ -168,7 +193,13 @@ class ManagerUI:
             elif fieldchange.lower() == "c":
                 cellphone = input("What is the employees cellphone number?: ")
             elif fieldchange.lower() == "t":
-                title = input('Is the employee a "manager" or a regular "employee"?: ')
+                titlechecker_on = True
+                while titlechecker_on:
+                    title = input('Is the employee a "manager" or a regular "staff" member?: ').lower()
+                    if title.lower() not in ["manager", "staff"]:
+                        print('Not a valid title, please input either the word "manager" or the word "staff"')
+                    else:
+                        titlechecker_on = False
             else:
                 print("Invalid option put into selection field.")
             editmore = input("Would you like to stop editing input [y] to commit changes and go back to the main menu, input [c] to cancel, input anything else to keep editing: ")
