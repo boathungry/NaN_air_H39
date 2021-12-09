@@ -1,11 +1,35 @@
 from Data_layer.DLAPI import DLAPI
-from Models.EmployeeModel import Employee
 
-
+NAME = "name"
+LOCATION = "location"
+TITLE = "title"
+ADDRESS = "address"
+SIZE = "size"
+ROOMS = "rooms"
+ID = "id"
+WORKER = "worker"
+PRIORITY = "priority"
+START = "start"
+TIME = "time"
+DONE = "done"
+REGULAR_MAINTENANCE = "regular maintenance"
+PROPERTY = "property"
+APPROVED = "approved"
 
 class ListingHandler:
     def __init__(self, data_api:DLAPI = DLAPI()) -> None:
         self.dl_api = data_api
+        self.filters = [NAME, LOCATION, TITLE, ADDRESS, SIZE, ROOMS, ID, WORKER, PRIORITY, START, TIME, DONE, REGULAR_MAINTENANCE, PROPERTY, APPROVED]
+
+
+
+    def list_printer(self, list_to_print):
+        for x in list_to_print:
+            print(x)
+
+    def location_existence_check(self, location):
+        location = location
+
 
     def list_all_employees_unsorted(self) -> list:
         """Returns a list of all employees."""
@@ -56,6 +80,44 @@ class ListingHandler:
         return sorted(unsorted_list, key=lambda item: item.worker, reverse=descending)
 
 
+
+    def filter(self, attribute:str, unfiltered_list, filter, filter_max = 0):
+        """Returns a list of items whose attributes match the given filter. Use filter_max if you'd like to get a list of items with values from {filter} to {filter_max}."""
+        attribute = attribute.lower()
+        if attribute in self.filters:
+            if attribute == NAME:
+                return self.filter_by_name(unfiltered_list, filter)
+            elif attribute == LOCATION:
+                return self.filter_by_location(unfiltered_list, filter)
+            elif attribute == TITLE:
+                return self.filter_by_title(unfiltered_list, filter)
+            elif attribute == ADDRESS:
+                return self.filter_by_address(unfiltered_list, filter)
+            elif attribute == SIZE:
+                return self.filter_by_size(unfiltered_list, filter, filter_max)
+            elif attribute == ROOMS:
+                return self.filter_by_rooms(unfiltered_list, filter, filter_max)
+            elif attribute == ID:
+                return self.filter_by_id(unfiltered_list, filter)
+            elif attribute == WORKER:
+                return self.filter_by_worker(unfiltered_list, filter)
+            elif attribute == PRIORITY:
+                return self.filter_by_priority(unfiltered_list, filter)
+            elif attribute == START:
+                return self.filter_by_start(unfiltered_list, filter)
+            elif attribute == TIME:
+                return self.filter_by_time(unfiltered_list, filter)
+            elif attribute == DONE:
+                return self.filter_by_done(unfiltered_list, filter)
+            elif attribute == REGULAR_MAINTENANCE:
+                return self.filter_by_regular_maintenance(unfiltered_list, filter)
+            elif attribute == PROPERTY:
+                return self.filter_by_property(unfiltered_list, filter)
+            elif attribute == APPROVED:
+                return self.filter_by_approved(unfiltered_list, filter)
+        else:
+            return None
+
     def filter_by_name(self, unfiltered_list, filter) -> list:
         """Returns a list of items whose name contains the given filter."""
         filtered_list = []
@@ -73,10 +135,6 @@ class ListingHandler:
                 filtered_list.append(item)
         
         return filtered_list
-
-    def list_printer(self, list_to_print):
-        for x in list_to_print:
-            print(x)
 
     def filter_by_title(self, unfiltered_list, filter) -> list:
         """Returns a list of items whose title matches the given filter."""
@@ -126,10 +184,6 @@ class ListingHandler:
 
         return filtered_list
     
-    def location_existence_check(self, location):
-        location = location
-
-
     def filter_by_id(self, unfiltered_list, filter):
         """Returns a list of items whose IDs contain the given filter."""
         filtered_list = []
@@ -158,6 +212,7 @@ class ListingHandler:
         return filtered_list
 
     def filter_by_start(self, unfiltered_list, filter):
+        """Returns a list of items whose start time matches the given filter."""
         filtered_list = []
         for item in unfiltered_list:
             if item.start == filter:
@@ -166,6 +221,7 @@ class ListingHandler:
         return filtered_list
 
     def filter_by_time(self, unfiltered_list, filter):
+        """Returns a list of items whose time value matches the given filter."""
         filtered_list = []
         for item in unfiltered_list:
             if item.time == filter:
@@ -174,6 +230,7 @@ class ListingHandler:
         return filtered_list
 
     def filter_by_done(self, unfiltered_list, filter):
+        """Returns a list of values whose 'done' variable matches the given filter."""
         filtered_list = []
         for item in unfiltered_list:
             if item.done == filter:
@@ -182,6 +239,7 @@ class ListingHandler:
         return filtered_list
 
     def filter_by_regular_maintenance(self, unfiltered_list, filter):
+        """Returns a list of values whose 'regular maintenance' variable matches the given filter."""
         filtered_list = []
         for item in unfiltered_list:
             if item.regular_maintenance == filter:
@@ -190,6 +248,7 @@ class ListingHandler:
         return filtered_list
 
     def filter_by_property(self, unfiltered_list, filter):
+        """Returns a list of items whose 'property' or 'properties' variables match or contain the given filter."""
         filtered_list = []
         for item in unfiltered_list:
             if filter in item.properties or item.property == filter:
@@ -198,6 +257,7 @@ class ListingHandler:
         return filtered_list
 
     def filter_by_approved(self, unfiltered_list, filter):
+        """Returns a list of items whose 'approved' variable matches the given filter."""
         filtered_list = []
         for item in unfiltered_list:
             if item.approved == filter:
