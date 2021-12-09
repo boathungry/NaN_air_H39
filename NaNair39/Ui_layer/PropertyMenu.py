@@ -219,7 +219,7 @@ class PropertyMenu:
         print("Change information about a property")
         cityname = input("What is the city name of the destination you wish to edit?: ")
 
-        propertyinfo = Logic_layer.SearchHandler.SearchHandler.search(search_object=Location, attribute="city", value=property_id)
+        propertyinfo = Logic_layer.SearchHandler.SearchHandler.search(search_object=Location, attribute="city", value="property_id")
         print(propertyinfo)
         idnumber = propertyinfo.idnumber
         name = propertyinfo.name
