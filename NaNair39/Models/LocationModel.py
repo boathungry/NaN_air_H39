@@ -8,4 +8,7 @@ class Location:
         self.local_manager = local_manager
 
     def __str__(self):
-        return f"City: {self.city}, Country: {self.country}, Local airport: {self.airport}, Branch phone number: {self.phone_number}, Opening hours: {self.opening_hours}, Local manager: {self.local_manager}"
+        return f"{self.city} {self.country} {self.airport} {self.phone_number} {self.opening_hours} {self.local_manager}"
+    
+    def __repr__(self) -> str:
+        return f"{self.city} {self.country} {self.airport} {self.phone_number} {self.opening_hours} {self.local_manager}"

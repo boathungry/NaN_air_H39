@@ -70,7 +70,7 @@ class LLAPI():
 
     def create_destination(self, city, country, airport, phone, open_hours, manager):
         """Creates a new property with the given attributes and returns the property."""
-        return self.registration_handler.register_property(city, country, airport, phone, open_hours, manager)
+        return self.registration_handler.register_location(city, country, airport, phone, open_hours, manager)
 
 
     def search(self, search_object, attribute:str, value) -> list:

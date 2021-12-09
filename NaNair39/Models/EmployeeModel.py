@@ -14,4 +14,4 @@ class Employee:
         return f"{self.idnumber} {self.name} {self.email} {self.location} {self.address} {self.phone} {self.cellphone} {self.title}"
 
     def __repr__(self) -> str:
-        return f"{self.name} {self.email} {self.location} {self.address} {self.phone} {self.cellphone} {self.title}"
+        return f"{self.idnumber} {self.name} {self.email} {self.location} {self.address} {self.phone} {self.cellphone} {self.title}"

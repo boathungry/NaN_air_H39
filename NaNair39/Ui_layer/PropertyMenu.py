@@ -1,17 +1,19 @@
 from Models.LocationModel import Location
 import Ui_layer.MainMenuMANUI
 import Ui_layer.MainMenuEMPUI
-import Logic_layer.LLAPI
+from Logic_layer.LLAPI import LLAPI
 import Logic_layer.SearchHandler
+import string
 #Mögulega að implementa baka um einn menu frekar en alltaf á main menu ef tími gefst
 
 class PropertyMenu:
-    def __init__(self, ID, name, email, location, title):
+    def __init__(self, ID, name, email, location, title, logic_api:LLAPI = LLAPI()):
         self.ID = ID
         self.name = name
         self.email = email
         self.location = location
         self.title = title
+        self.llapi = logic_api
 
     def location_options(self):
         location_options_on = True
@@ -137,13 +139,21 @@ class PropertyMenu:
     
     
     def create_destination(self):
-        city = input("In what city is the new destination: ")
-        country = input(f"What country is {city} in: ")
-        airport = input(f"What is the airport for {city}: ")
+        city = string.capwords(input("In what city is the new destination: "))
+        country = string.capwords(input(f"What country is {city} in: "))
+        airport = string.capwords(input(f"What is the airport for {city}: "))
         phone = input(f"What is the phone number for your destination in {city}: ")
         open_hours = input("What are the opening hours for you new destination(input in format hh:mm - hh:mm): ")
-        manager = input("What is the name of the manager of your new destination: ")
+        manager = string.capwords(input("What is the name of the manager of your new destination: "))
         createdestloop = True
+        list_of_things = []
+        list_of_things.append(city)
+        list_of_things.append(country)
+        list_of_things.append(airport)
+        list_of_things.append(phone)
+        list_of_things.append(open_hours)
+        list_of_things.append(manager)
+        
         while createdestloop:
             print(f"City: {city}")
             print(f"Country: {country}")
@@ -154,7 +164,7 @@ class PropertyMenu:
             rightorwrong = input("Is this information correct [y]es, [n]o, [c]ancel: ")
             if rightorwrong.lower() == "y":
                 createdestloop = False
-                Logic_layer.LLAPI.LLAPI.create_destination(city, country, airport, phone, open_hours, manager)
+                self.llapi.create_destination(city, country, airport, phone, open_hours, manager)
             elif rightorwrong.lower() == "c":
                 createdestloop = False
                 Ui_layer.MainMenuMANUI.ManagerUI.managers_menu()

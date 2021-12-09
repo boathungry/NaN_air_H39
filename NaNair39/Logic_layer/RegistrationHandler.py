@@ -63,8 +63,9 @@ class RegistrationHandler():
         self.dl_api.create_work_request(new_work_request)
         return new_work_request
     
-    def register_location(self,city,country,airport,phone,opening,manager):
-        new_location = Location(city,country,airport,phone,opening,manager)
+    def register_location(self, city, country, airport, phone, opening, manager):
+        new_location = Location(city, country, airport, phone, opening, manager)
         self.dl_api.create_destination(new_location)
+        return new_location
 
        
