@@ -30,7 +30,7 @@ class SearchHandler:
 
     def dict_search(self, search_object, attribute:str, value) -> dict:
         """Searches for objects of the given type whose values in the given attribute match the given value.
-        Returns a list of the found objects."""
+        Returns a dictionary of the found objects."""
 
         if search_object == Employee:
             search_results = self.data_api.dict_search_employee(attribute, value)

@@ -92,7 +92,7 @@ class EmployeeDL:
                     user = LoginAccount(row["id"],row["name"],row["email"], row["location"],row["title"])
                     
                     return user
-    def search_by_ID(self):
+    """ def search_by_ID(self):
         '''Given the users ID checks if user is a registered employee or a manager'''
         with open('csv_files/Employee.csv', newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -100,7 +100,7 @@ class EmployeeDL:
                 if row["id"] == self.ID:
                     empl = Employee(row["id"],row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
                     Employeedict = {"emid":empl.idnumber, "emname":empl.name, "ememail":empl.email, "emlocation":empl.location,"emaddress":empl.address,"emphone":empl.phone,"emcellphone":empl.cellphone,"emtitle":empl.title }
-                    return Employeedict
+                    return Employeedict"""
 
     def dict_search_for_employee(self, attribute:str, value):
         """Searches for employees whose values in the given attribute matches the given value. Returns a list of employees."""
