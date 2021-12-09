@@ -4,11 +4,9 @@ from Logic_layer.LLAPI import LLAPI
 import Ui_layer.PropertyMenu
 import Ui_layer.WorkReportMenu 
 import Ui_layer.main_login
-import Logic_layer.LLAPI
-import Logic_layer.ListingHandler
-import Logic_layer.SearchHandler
 import string
 import Data_layer.EmployeeDL
+
 class ManagerUI:
     def __init__(self, ID = "", name = "", email = "", location = "", title = "manager", logic_api:LLAPI = LLAPI()):
         self.ID = ID
@@ -76,47 +74,77 @@ class ManagerUI:
     def create_employee(self):
         name = string.capwords(input("What is the name of the new employee?: "))
         email = input("What is the employees email address?: ")
-        available_locations = self.llapi.list_of_location_names
-        print(available_locations)
-        location = string.capwords(input("What location does the employee work at?: "))
-        address = string.capwords(input("What is the address of the employee?: "))
-        phone = input("What is the employees phone number?: ")
-        cellphone = input("What is the employees cellphone number?: ")
-        title = input('Is the employee a "manager" or a regular "staff" member?: ').lower()
-        createemployeloop = True
-        while createemployeloop:
-            print("Is this the correct information?")
-            print(f"Name:      {name}")
-            print(f"Email:     {email}")
-            print(f"Location:  {location}")
-            print(f"Address:   {address}")
-            print(f"Phone:     {phone}")
-            print(f"Cellphone: {cellphone}")
-            print(f"Title:     {title}")
-            rightorwrong = input("Is this information correct [y]es, [n]o, [c]ancel: ")
-            if rightorwrong.lower() == "y":
-                createemployeloop = False
-                self.llapi.create_employee(name, email, location, address, phone, cellphone, title)
-            elif rightorwrong.lower() == "c":
-                createemployeloop = False
-                self.managers_menu()
-            elif rightorwrong.lower() == "n":
-                print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
-                fieldchange = input("Input the letter of the field you wish to change: ")
-                if fieldchange.lower() == "n":
-                    name = input("What is the name of the new employee?: ")
-                elif fieldchange.lower() == "l":
-                    location = input("What location does the employee work at?: ")
-                elif fieldchange.lower() == "a":    
-                    address = input("What is the address of the employee?: ")
-                elif fieldchange.lower() == "p":
-                    phone = input("What is the employees phone number?: ")
-                elif fieldchange.lower() == "c":
-                    cellphone = input("What is the employees cellphone number?: ")
-                elif fieldchange.lower() == "t":
-                    title = input('Is the employee a "manager" or a regular "staff" member?: ')
-                else:
-                    print("Invalid option put into selection field.")
+        available_locations = self.llapi.list_of_location_names()
+        location_checker_on = True
+        while location_checker_on:
+            print("Available locations are as follows:")
+            self.llapi.list_printer(available_locations)
+            location = string.capwords(input("What location does the employee work at?: "))
+            if string.capwords(location) not in available_locations:
+                print("Not a valid location, please either create a new location or select an available one")
+            else:
+                location_checker_on = False
+                address = string.capwords(input("What is the address of the employee?: "))
+                phone = input("What is the employees phone number?: ")
+                cellphone = input("What is the employees cellphone number?: ")
+                titlechecker_on = True
+                while titlechecker_on:
+                    title = input('Is the employee a "manager" or a regular "staff" member?: ').lower()
+                    if title.lower() not in ["manager", "staff"]:
+                        print('Not a valid title, please input either the word "manager" or the word "staff"')
+                    else:
+                        titlechecker_on = False
+                        createemployeloop = True
+                        while createemployeloop:
+                            print("Is this the correct information?")
+                            print(f"Name:      {name}")
+                            print(f"Email:     {email}")
+                            print(f"Location:  {location}")
+                            print(f"Address:   {address}")
+                            print(f"Phone:     {phone}")
+                            print(f"Cellphone: {cellphone}")
+                            print(f"Title:     {title}")
+                            rightorwrong = input("Is this information correct [y]es, [n]o, [c]ancel: ")
+                            if rightorwrong.lower() == "y":
+                                createemployeloop = False
+                                self.llapi.create_employee(name, email, location, address, phone, cellphone, title)
+                                self.managers_menu()
+                            elif rightorwrong.lower() == "c":
+                                createemployeloop = False
+                                self.managers_menu()
+                            elif rightorwrong.lower() == "n":
+                                print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
+                                fieldchange = input("Input the letter of the field you wish to change: ")
+                                if fieldchange.lower() == "n":
+                                    name = input("What is the name of the new employee?: ")
+                                elif fieldchange.lower() == "l":
+                                    location_check_on = True
+                                    while location_check_on:
+                                        available_locations = self.llapi.list_of_location_names()
+                                        print("Available locations are as follows:")
+                                        self.llapi.list_printer(available_locations)
+                                        location = input("What location does the employee work at?: ")
+                                        if location not in available_locations:
+                                            print("Not a valid location, please either create a new location or select an available one")
+                                        else:
+                                            location_check_on = False
+                                elif fieldchange.lower() == "a":    
+                                    address = input("What is the address of the employee?: ")
+                                elif fieldchange.lower() == "p":
+                                    phone = input("What is the employees phone number?: ")
+                                elif fieldchange.lower() == "c":
+                                    cellphone = input("What is the employees cellphone number?: ")
+                                elif fieldchange.lower() == "t":
+                                    titlechecker_on = True
+                                    while titlechecker_on:
+                                        title = input('Is the employee a "manager" or a regular "staff" member?: ').lower()
+                                        if title.lower() not in ["manager", "staff"]:
+                                            print('Not a valid title, please input either the word "manager" or the word "staff"')
+                                        else:
+                                            titlechecker_on = False
+                                else:
+                                    print("Invalid option put into selection field.")
+
 
     def edit_staff(self):
         print("Change information about employee")
@@ -146,7 +174,16 @@ class ManagerUI:
             if fieldchange.lower() == "n":
                 name = input("What is the new name of the employee?: ")   
             elif fieldchange.lower() == "l":
-                location = input("What location does the employee work at?: ")
+                location_check_on = True
+                while location_check_on:
+                    available_locations = self.llapi.list_of_location_names()
+                    print("Available locations are as follows:")
+                    self.llapi.list_printer(available_locations)
+                    location = input("What location does the employee work at?: ")
+                    if location not in available_locations:
+                        print("Not a valid location, please either create a new location or select an available one")
+                    else:
+                        location_check_on = False
             elif fieldchange.lower() == "a":    
                 address = input("What is the address of the employee?: ")
             elif fieldchange.lower() == "p":
@@ -154,7 +191,13 @@ class ManagerUI:
             elif fieldchange.lower() == "c":
                 cellphone = input("What is the employees cellphone number?: ")
             elif fieldchange.lower() == "t":
-                title = input('Is the employee a "manager" or a regular "employee"?: ')
+                titlechecker_on = True
+                while titlechecker_on:
+                    title = input('Is the employee a "manager" or a regular "staff" member?: ').lower()
+                    if title.lower() not in ["manager", "staff"]:
+                        print('Not a valid title, please input either the word "manager" or the word "staff"')
+                    else:
+                        titlechecker_on = False
             else:
                 print("Invalid option put into selection field.")
             editmore = input("Would you like to stop editing input [y] to commit changes and go back to the main menu, input [c] to cancel, input anything else to keep editing: ")
@@ -222,8 +265,7 @@ class ManagerUI:
                 self.staff_search()
             else:
                 self.llapi.list_printer(Employeeinfo)
-                self.managers_menu()
-            
+                self.managers_menu()   
         elif search_attribute.lower() == "a":
             employeeaddress = input("What is the address you wish to search for?: ")
             addressstring = string.capwords(employeeaddress)

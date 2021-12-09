@@ -212,3 +212,44 @@ class PropertyMenu:
             title = input('Is the employee a "manager" or a regular "employee"?: ')
         else:
             print("Invalid option put into selection field.")
+
+
+    def edit_property(self):
+        pass
+    """
+        print("Change information about a property")
+        cityname = input("What is the city name of the destination you wish to edit?: ")
+
+        destinationinfo = Logic_layer.SearchHandler.SearchHandler.search(search_object=Location, attribute="city", value=cityname)
+        print(destinationinfo)
+        name = destinationinfo.name
+        email = destinationinfo.email
+        location = destinationinfo.location
+        address = destinationinfo.address
+        phone = destinationinfo.phone
+        cellphone = destinationinfo.cellphone
+        title = destinationinfo.title
+        print(f"Name:      {name}")
+        print(f"Email:     {email}")
+        print(f"Location:  {location}")
+        print(f"Address:   {address}")
+        print(f"Phone:     {phone}")
+        print(f"Cellphone: {cellphone}")
+        print(f"Title:     {title}")
+        print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
+        fieldchange = input("Input the letter of the field you wish to change: ")
+        if fieldchange.lower() == "n":
+            name = input("What is the name of the new employee?: ")
+        elif fieldchange.lower() == "l":
+            location = input("What location does the employee work at?: ")
+        elif fieldchange.lower() == "a":    
+            address = input("What is the address of the employee?: ")
+        elif fieldchange.lower() == "p":
+            phone = input("What is the employees phone number?: ")
+        elif fieldchange.lower() == "c":
+            cellphone = input("What is the employees cellphone number?: ")
+        elif fieldchange.lower() == "t":
+            title = input('Is the employee a "manager" or a regular "employee"?: ')
+        else:
+            print("Invalid option put into selection field.")
+            """
