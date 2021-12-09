@@ -235,15 +235,15 @@ class PropertyMenu:
         print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [s]ize, [r]ooms.")
         fieldchange = input("Input the letter of the field you wish to change: ")
         if fieldchange.lower() == "n":
-            location = input("What is the new name for the property?: ")
+            name = input("What is the new name for the property?: ")
         elif fieldchange.lower() == "l":    
-            address = input("What is the new location of the property?: ")
+            location = input("What is the new location of the property?: ")
         elif fieldchange.lower() == "a":
-            phone = input("What is the new address of the property?: ")
+            address = input("What is the new address of the property?: ")
         elif fieldchange.lower() == "s":
-            cellphone = input("What is the new size of the property?: ")
+            size = input("What is the new size of the property?: ")
         elif fieldchange.lower() == "r":
-            title = input('What is the new number of rooms"?: ')
+            rooms = input('What is the new number of rooms"?: ')
         else:
             print("Invalid option put into selection field.")
         
