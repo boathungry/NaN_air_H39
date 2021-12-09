@@ -87,3 +87,11 @@ class LLAPI():
     def list_printer(self, input_list):
         """Prints a list one row at a time"""
         self.listing_handler.list_printer(input_list)
+
+    def list_all_employees(self):
+        "gives a list of all employees and information"
+        return self.listing_handler.list_all_employees_unsorted()
+    
+    def list_of_location_names(self):
+        """returns a list of all location names"""
+        return self.listing_handler.list_all_location_names()
