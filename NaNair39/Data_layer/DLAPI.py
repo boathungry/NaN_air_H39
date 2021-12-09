@@ -116,6 +116,12 @@ class DLAPI:
         '''Creates a contractor'''
         return self.contr.create_contractor(contr)
 
+    def create_destination(self):
+        return self.locDL.create_new_destination()
+
+    def get_all_destinations(self):
+        return self.locDL.get_all_locations()
+
     def search_destination(self, attribute:str, value) -> list:
         """Searches for properties whose values in the given attribute matches the given value. Returns a list of properties."""
         return self.locDL.search_for_destination(attribute, value)

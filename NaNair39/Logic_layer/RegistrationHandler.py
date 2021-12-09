@@ -1,4 +1,5 @@
 from Models.EmployeeModel import Employee
+from Models.LocationModel import Location
 from Models.PropertyModel import Property
 from Models.ContractorModel import Contractor
 from Models.WorkReportModel import WorkReport
@@ -61,3 +62,9 @@ class RegistrationHandler():
         new_work_request = WorkRequest(id, work_request, location, properties, description, worker, priority, repeat, time, start, done)
         self.dl_api.create_work_request(new_work_request)
         return new_work_request
+    
+    def register_location(self,city,country,airport,phone,opening,manager):
+        new_location = Location(city,country,airport,phone,opening,manager)
+        self.dl_api.create_destination(new_location)
+
+       

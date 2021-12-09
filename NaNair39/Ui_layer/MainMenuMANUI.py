@@ -4,11 +4,9 @@ from Logic_layer.LLAPI import LLAPI
 import Ui_layer.PropertyMenu
 import Ui_layer.WorkReportMenu 
 import Ui_layer.main_login
-import Logic_layer.LLAPI
-import Logic_layer.ListingHandler
-import Logic_layer.SearchHandler
 import string
 import Data_layer.EmployeeDL
+
 class ManagerUI:
     def __init__(self, ID = "", name = "", email = "", location = "", title = "manager", logic_api:LLAPI = LLAPI()):
         self.ID = ID
@@ -147,6 +145,7 @@ class ManagerUI:
                                 else:
                                     print("Invalid option put into selection field.")
 
+
     def edit_staff(self):
         print("Change information about employee")
         employeeID = input("What is the employees ID number?: ").capitalize()
@@ -185,7 +184,6 @@ class ManagerUI:
                         print("Not a valid location, please either create a new location or select an available one")
                     else:
                         location_check_on = False
-
             elif fieldchange.lower() == "a":    
                 address = input("What is the address of the employee?: ")
             elif fieldchange.lower() == "p":
@@ -267,8 +265,7 @@ class ManagerUI:
                 self.staff_search()
             else:
                 self.llapi.list_printer(Employeeinfo)
-                self.managers_menu()
-            
+                self.managers_menu()   
         elif search_attribute.lower() == "a":
             employeeaddress = input("What is the address you wish to search for?: ")
             addressstring = string.capwords(employeeaddress)

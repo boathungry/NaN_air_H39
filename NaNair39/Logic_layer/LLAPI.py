@@ -95,3 +95,13 @@ class LLAPI():
     def list_of_location_names(self):
         """returns a list of all location names"""
         return self.listing_handler.list_all_location_names()
+
+    
+    def filter_list_by_attribute(self, attribute:str, unfiltered_list:list, filter, filter_max):
+        """Returns a list of items whose attributes match the given filter. Use filter_max if you'd like to get a list of items with values from {filter} to {filter_max}."""
+        return self.listing_handler.filter(attribute, unfiltered_list, filter, filter_max)
+
+
+    def create_new_destination(self, city,country,airport,phone,opening,manager):
+        '''creates a new destination(location)'''
+        return self.registration_handler.register_location
