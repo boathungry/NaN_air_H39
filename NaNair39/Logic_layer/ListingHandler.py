@@ -69,6 +69,7 @@ class ListingHandler:
                 filtered_list.append(item)
         
         return filtered_list
+        
     def list_printer(list_to_print):
         for x in list_to_print:
             print(x)
@@ -120,6 +121,7 @@ class ListingHandler:
                     filtered_list.append(item)
 
         return filtered_list
+
 
     #Filters still missing:
     #ID

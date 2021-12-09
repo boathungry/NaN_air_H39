@@ -20,6 +20,8 @@ class LLAPI():
     def get_employee_id_number(self):
         return self.registration_handler.get_employee_id_number()
 
+    def get_employee_id_number(self):
+        return self.registration_handler.get_employee_id_number()
 
     def change_employee(self, employee, attribute, new_value):
         """Changes an attribute of an employee to a new value. Returns the given attribute if successful, otherwise returns None."""
@@ -42,9 +44,10 @@ class LLAPI():
         return self.change_handler.change_work_request(work_request, attribute, new_value)
 
 
-    def create_employee(self, name, location, address, phone, cellphone, title):
+    def create_employee(self, name, email, location, address, phone, cellphone, title):
         """Creates a new employee with the given attributes and returns the employee."""
-        return self.registration_handler.register_employee(name, location, address, phone, cellphone, title)
+        idnumber = RegistrationHandler.get_employee_id_number(location)
+        return self.registration_handler.register_employee(idnumber, name, email, location, address, phone, cellphone, title)
 
     def create_property(self, name, location, size, rooms):
         """Creates a new property with the given attributes and returns the property."""
@@ -70,3 +73,12 @@ class LLAPI():
     def search(self, search_object, attribute:str, value) -> list:
         """Returns a list of objects whose value in the given attribute matches the given value."""
         return self.search_handler.search(search_object, attribute, value)
+    
+    def dict_search(self, search_object, attribute:str, value) -> dict:
+        
+        """Returns a list of objects whose value in the given attribute matches the given value."""
+        return self.search_handler.dict_search(search_object, attribute, value)
+        
+    def list_printer(self, input_list):
+        """Prints a list one row at a time"""
+        self.listing_handler.list_printer(self)

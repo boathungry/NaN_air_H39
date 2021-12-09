@@ -9,19 +9,26 @@ class RegistrationHandler():
     def __init__(self, dl_api:DLAPI = DLAPI()) -> None:
         self.dl_api = dl_api
 
-    def get_employee_id_number(self,location):
-        number = DLAPI.get_employee_id_number(self)
+    def get_employee_id_number(location):
+        DLAPIinit = DLAPI()
+        number = str(DLAPIinit.get_employee_id_number())
         if len(number) == 2:
-            id_number = f"{location[0]}{0}{str(number)}"
+            id_number = f"{location[0].upper()}{0}{number}"
         elif len(number) == 3:
-            id_number = f"{location[0]}{str(number)}"
+            id_number = f"{location[0].upper()}{number}"
         else:
             return None
         return id_number 
 
-    def register_employee(self, email, name, location, address, phone, cellphone, title):
+    def get_work_report_id_number():
+        DLAPIinit = DLAPI()
+        number = str(DLAPIinit.get_work_report_id_number())
+        id_number = f"VB0{number}"
+        return id_number
+
+    def register_employee(self, idnumber, name, email, location, address, phone, cellphone, title):
         """Registers a new employee and returns the employee."""
-        new_employee = Employee(name, email, location, address, phone, cellphone, title)
+        new_employee = Employee(idnumber, name, email, location, address, phone, cellphone, title)
         self.dl_api.create_employee(new_employee) #register new data to database immediately!
         return new_employee
 
