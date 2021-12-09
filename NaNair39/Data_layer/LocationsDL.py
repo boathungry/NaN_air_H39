@@ -27,7 +27,7 @@ class locationDL:
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
             fieldnames = ["id","name","email","location","address","phone","cellphone","title"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerow({'city': location.city,'country': location.country, 'airport': location.airport, 'phone number': location.phone_number, 'opening hours': location.opening_hours, 'local manager': location.local_manager})
+            writer.writerow({'city': location.city,'country': location.country, 'airport': location.airport, 'phone number': location.phone, 'opening hours': location.opening, 'local manager': location.manager})
     
     def search_for_destination(self, attribute:str, value):
         results_list = []

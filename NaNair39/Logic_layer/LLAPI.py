@@ -95,3 +95,8 @@ class LLAPI():
     def list_of_location_names(self):
         """returns a list of all location names"""
         return self.listing_handler.list_all_location_names()
+
+
+    def create_new_destination(self, city,country,airport,phone,opening,manager):
+        '''creates a new destination(location)'''
+        return self.registration_handler.register_location
