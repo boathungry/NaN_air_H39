@@ -119,6 +119,6 @@ class DLAPI:
 
     def get_all_location_names(self):
         '''Lists all work requests'''
-        return self.locDL.get_all_location_names(self)
+        return self.locDL.get_all_location_names()
 
     

@@ -10,6 +10,10 @@ class ListingHandler:
     def list_all_employees_unsorted(self) -> list:
         """Returns a list of all employees."""
         return self.dl_api.get_all_employees()
+        
+    def list_all_location_names(self) -> list:
+        """Returns a list of all location names."""
+        return self.dl_api.get_all_location_names()
 
     def list_all_properties_unsorted(self) -> list:
         """Returns a list of all properties."""
@@ -124,7 +128,7 @@ class ListingHandler:
     
     def location_existence_check(self, location):
         location = location
-        
+
 
 
     #Filters still missing:

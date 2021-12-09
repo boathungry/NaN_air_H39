@@ -8,6 +8,9 @@ class locationDL:
         self.country = country
         self.filepath = "csv_files/Locations.csv"
 
+        def __str__(self):
+            return self.city
+
     def get_all_locations(self):
         '''Returns all locations in given filepath'''
         return_list = []
