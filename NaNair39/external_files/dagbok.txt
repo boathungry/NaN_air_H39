@@ -70,6 +70,7 @@ Morgunfundur: töluðum um að reyna að koma upp basic beinagrind á klasana
 
 Eftir daginn:
 Hjörleifur: hélt áfram að setja upp UI beinagrind
+Valdís: Vann áfram í LL WorkReport og WorkRequest
 
 --03.12.2021--
 Morgunfundur: Héldum fund um skipulag dagsins
