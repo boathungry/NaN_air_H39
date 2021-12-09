@@ -188,7 +188,8 @@ class ManagerUI:
             Logic_layer.ListingHandler.ListingHandler.list_printer(Employeeinfo)
         elif search_attribute.lower() == "l":
             employeelocation = input("What is the location you wish to search for?: ")
-            Employeeinfo = self.llapi.search(Employee,  attribute="location", value=employeelocation.capitalize())
+            locationstring = self.llapi.namecapitalizer(employeelocation)
+            Employeeinfo = self.llapi.search(Employee,  attribute="location", value=locationstring)
             Logic_layer.ListingHandler.ListingHandler.list_printer(Employeeinfo)
         elif search_attribute.lower() == "a":
             employeeaddress = input("What is the address you wish to search for?: ")
