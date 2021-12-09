@@ -175,41 +175,6 @@ class ManagerUI:
             counter +=1
 
 
-
-
-    """def employee_create_overview(self, name, email, location, address, phone, cellphone, title)
-        
-                if fieldchange.lower() == "n":
-                    name = input("What is the name of the new employee?: ")
-                elif fieldchange.lower() == "l":
-                    location_check_on = True
-                    while location_check_on:
-                        available_locations = self.llapi.list_of_location_names()
-                        print("Available locations are as follows:")
-                        self.llapi.list_printer(available_locations)
-                        location = input("What location does the employee work at?: ")
-                        if location not in available_locations:
-                            print("Not a valid location, please either create a new location or select an available one")
-                        else:
-                            location_check_on = False
-                elif fieldchange.lower() == "a":    
-                    address = input("What is the address of the employee?: ")
-                elif fieldchange.lower() == "p":
-                    phone = input("What is the employees phone number?: ")
-                elif fieldchange.lower() == "c":
-                    cellphone = input("What is the employees cellphone number?: ")
-                elif fieldchange.lower() == "t":
-                    titlechecker_on = True
-                    while titlechecker_on:
-                        title = input('Is the employee a "manager" or a regular "staff" member?: ').lower()
-                        if title.lower() not in ["manager", "staff"]:
-                            print('Not a valid title, please input either the word "manager" or the word "staff"')
-                        else:
-                            titlechecker_on = False
-                else:
-                    print("Invalid option put into selection field.")"""
-
-
     def edit_staff(self):
         print("Change information about employee")
         employeeID = input("What is the employees ID number?: ").capitalize()
