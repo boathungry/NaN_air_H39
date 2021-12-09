@@ -102,6 +102,7 @@ class ManagerUI:
                     self.managers_menu()
                 elif rightorwrong.lower() == "c":
                     create_employee_loop = False
+                    fieldchange = ""
                     self.managers_menu()
                 elif rightorwrong.lower() == "n":
                     print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
