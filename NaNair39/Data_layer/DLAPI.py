@@ -30,6 +30,10 @@ class DLAPI:
         """Searches for employees whose values in the given attribute matches the given value. Returns a list of employees."""
         return self.emplDL.search_for_employee(attribute, value)
 
+    def dict_search_employee(self, attribute:str, value) -> dict:
+        """Searches for employees whose values in the given attribute matches the given value. Returns a list of dictionaries for employees."""
+        return self.emplDL.dict_search_for_employee(attribute, value)
+
     def change_information(self, empl):
         '''Changes information on given employee'''
         return self.emplDL.change_information_employee(empl)

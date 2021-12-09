@@ -71,3 +71,8 @@ class LLAPI():
     def search(self, search_object, attribute:str, value) -> list:
         """Returns a list of objects whose value in the given attribute matches the given value."""
         return self.search_handler.search(search_object, attribute, value)
+    
+    def dict_search(self, search_object, attribute:str, value) -> dict:
+        
+        """Returns a list of objects whose value in the given attribute matches the given value."""
+        return self.search_handler.dict_search(search_object, attribute, value)

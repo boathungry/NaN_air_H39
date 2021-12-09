@@ -120,15 +120,16 @@ class ManagerUI:
     def edit_staff(self):
         print("Change information about employee")
         employeeID = input("What is the employees ID number?: ")
-        Employeeinfo = Data_layer.EmployeeDL.EmployeeDL(ID=employeeID)
-        results = Employeeinfo.search_by_ID()
-        name = results["emname"]
-        email = results["ememail"]
-        location = results["emlocation"]
-        address = results["emaddress"]
-        phone = results["emphone"]
-        cellphone = results["emcellphone"]
-        title = results["emtitle"]
+        Employeeinfo = self.llapi.dict_search(Employee,  attribute="id", value=employeeID)
+        results = Employeeinfo
+        print(results)
+        name = results[0]["emname"]
+        email = results[0]["ememail"]
+        location = results[0]["emlocation"]
+        address = results[0]["emaddress"]
+        phone = results[0]["emphone"]
+        cellphone = results[0]["emcellphone"]
+        title = results[0]["emtitle"]
         staff_editor = True
         while staff_editor:
             print(f"Name:      {name}")
