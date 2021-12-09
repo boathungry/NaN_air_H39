@@ -20,6 +20,7 @@ Eftir daginn:
 Þór: Kláraði use cases fyrir A-kröfurnar.
 Valdís: Kláraði use cases fyrir B-kröfurnar.
 Hjörleifur: Byrjaði á að formfære use cases
+Ingi: Byrjaði á kröfulista
 
 --24.11.2021--
 Morgunfundur: Töluðum um árangur gærdagsins og plönuðum daginn. Ætlum að vinna í Klasariti, Stöðuritum og Kröfulista í dag.
@@ -71,6 +72,7 @@ Morgunfundur: töluðum um að reyna að koma upp basic beinagrind á klasana
 Eftir daginn:
 Hjörleifur: hélt áfram að setja upp UI beinagrind
 Valdís: Vann áfram í LL WorkReport og WorkRequest
+Ingi: Hélt áfram með DL
 
 --03.12.2021--
 Morgunfundur: Héldum fund um skipulag dagsins
@@ -122,3 +124,4 @@ koma general virkni í það sem vantar upp á
 
 Eftir daginn:
 Hjörleifur: fór afturvirkt yfir dagbók og bætti inn þar sem vantaði fleirri upplýsingar, 
+Þór: Bætti við filtering functionality í ListingHandler og LLAPI, gerði nokkur bug fix
