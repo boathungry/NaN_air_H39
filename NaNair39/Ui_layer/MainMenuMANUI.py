@@ -75,13 +75,13 @@ class ManagerUI:
     
 
     def create_employee(self):
-        name = input("What is the name of the new employee?: ")
+        name = string.capwords(input("What is the name of the new employee?: "))
         email = input("What is the employees email address?: ")
-        location = input("What location does the employee work at?: ")
-        address = input("What is the address of the employee?: ")
+        location = string.capwords(input("What location does the employee work at?: "))
+        address = string.capwords(input("What is the address of the employee?: "))
         phone = input("What is the employees phone number?: ")
         cellphone = input("What is the employees cellphone number?: ")
-        title = input('Is the employee a "manager" or a regular "staff" member?: ')
+        title = input('Is the employee a "manager" or a regular "staff" member?: ').lower()
         createemployeloop = True
         while createemployeloop:
             print("Is this the correct information?")
@@ -200,14 +200,25 @@ class ManagerUI:
         elif search_attribute.lower() == "e":
             employeeemail = input("What is the email you wish to search for?: ")
             Employeeinfo = self.llapi.search(Employee,  attribute="email", value=employeeemail.lower())
-            self.llapi.list_printer(Employeeinfo)
-            self.managers_menu()
+            print(len(Employeeinfo))
+            if len(Employeeinfo) < 1:
+                print("No results were found")
+                self.staff_search()
+            else:
+                self.llapi.list_printer(Employeeinfo)
+                self.managers_menu()
         elif search_attribute.lower() == "l":
             employeelocation = input("What is the location you wish to search for?: ")
             locationstring = string.capwords(employeelocation)
             Employeeinfo = self.llapi.search(Employee,  attribute="location", value=locationstring)
-            self.llapi.list_printer(Employeeinfo)
-            self.managers_menu()
+            print(Employeeinfo)
+            if len(Employeeinfo) < 1:
+                print("No results were found")
+                self.staff_search()
+            else:
+                self.llapi.list_printer(Employeeinfo)
+                self.managers_menu()
+            
         elif search_attribute.lower() == "a":
             employeeaddress = input("What is the address you wish to search for?: ")
             addressstring = string.capwords(employeeaddress)
