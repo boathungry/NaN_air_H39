@@ -45,6 +45,9 @@ class DLAPI:
     def get_work_report_id_number(self):
         return self.VB.get_work_report_id_number()
 
+    def get_work_request_id_number(self):
+        return self.reqDL.get_work_request_id_number()
+
     def get_all_properties(self):
         '''Lists all properties'''
         return self.propDL.get_all_properties()
@@ -116,3 +119,9 @@ class DLAPI:
     def search_destination(self, attribute:str, value) -> list:
         """Searches for properties whose values in the given attribute matches the given value. Returns a list of properties."""
         return self.locDL.search_for_destination(attribute, value)
+
+    def get_all_location_names(self):
+        '''Lists all work requests'''
+        return self.locDL.get_all_location_names()
+
+    

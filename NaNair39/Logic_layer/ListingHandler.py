@@ -10,6 +10,10 @@ class ListingHandler:
     def list_all_employees_unsorted(self) -> list:
         """Returns a list of all employees."""
         return self.dl_api.get_all_employees()
+        
+    def list_all_location_names(self) -> list:
+        """Returns a list of all location names."""
+        return self.dl_api.get_all_location_names()
 
     def list_all_properties_unsorted(self) -> list:
         """Returns a list of all properties."""
@@ -69,7 +73,7 @@ class ListingHandler:
                 filtered_list.append(item)
         
         return filtered_list
-        
+
     def list_printer(self, list_to_print):
         for x in list_to_print:
             print(x)
@@ -121,6 +125,10 @@ class ListingHandler:
                     filtered_list.append(item)
 
         return filtered_list
+    
+    def location_existence_check(self, location):
+        location = location
+
 
     def filter_by_id(self, unfiltered_list, filter):
         """Returns a list of items whose IDs contain the given filter."""

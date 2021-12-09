@@ -60,9 +60,8 @@ class ManagerUI:
         elif selection == "2":
             self.edit_staff()
         elif selection == "3":
-            emplyeelist_init = Logic_layer.ListingHandler.ListingHandler()
-            emplyeelist = emplyeelist_init.list_all_employees_unsorted()
-            Logic_layer.ListingHandler.ListingHandler.list_printer(emplyeelist)
+            employeelist = self.llapi.list_all_employees()
+            self.llapi.list_printer(employeelist)
             self.staffing_options()
         elif selection == "4":
             self.staff_search()
@@ -77,6 +76,8 @@ class ManagerUI:
     def create_employee(self):
         name = string.capwords(input("What is the name of the new employee?: "))
         email = input("What is the employees email address?: ")
+        available_locations = self.llapi.list_of_location_names
+        print(available_locations)
         location = string.capwords(input("What location does the employee work at?: "))
         address = string.capwords(input("What is the address of the employee?: "))
         phone = input("What is the employees phone number?: ")
@@ -171,6 +172,7 @@ class ManagerUI:
                 #Skrifa í skrá
                 init = Data_layer.EmployeeDL.EmployeeDL(ID=results_final["emid"], location=results_final["emlocation"])
                 init.change_information_employee(results_final)
+                self.managers_menu()
             elif editmore == "c":
                 staff_editor = False
             else:

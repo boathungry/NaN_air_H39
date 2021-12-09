@@ -3,7 +3,7 @@ import csv
 
 class WorkRequestDL():
     def __init__(self):
-        pass
+        self.filepath = "csv_files/WorkRequests.csv"
 
     def get_all_work_requests(self):
         '''Lists all work requests to the given filepath'''
@@ -14,6 +14,17 @@ class WorkRequestDL():
                 req = WorkRequest(row["id"],row["work_request"], row["location"], row["properties"],row["description"],row["worker"],row["priority"],row["repeat"],row["time"],row["start"],row["done"])
                 return_list.append(req)
         return return_list
+
+    def get_work_request_id_number(self):
+        prev_temp = int(1)
+        '''Checks the next avaliable id number and returns'''
+        with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile, delimiter=',')
+            for row in reader:
+                temp_number = row["id"]
+                if int(temp_number[2:]) >= prev_temp:
+                        prev_temp = (int(temp_number[1:])+1)
+            return prev_temp      
 
     def create_work_request(self, req):
         '''appends a new work request to the given filepath'''
