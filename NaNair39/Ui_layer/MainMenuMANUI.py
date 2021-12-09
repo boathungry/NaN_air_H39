@@ -122,6 +122,7 @@ class ManagerUI:
         employeeID = input("What is the employees ID number?: ")
         Employeeinfo = Data_layer.EmployeeDL.EmployeeDL(ID=employeeID)
         results = Employeeinfo.search_by_ID()
+        results_final = results
         name = results["emname"]
         email = results["ememail"]
         location = results["emlocation"]
@@ -129,6 +130,7 @@ class ManagerUI:
         phone = results["emphone"]
         cellphone = results["emcellphone"]
         title = results["emtitle"]
+
         staff_editor = True
         while staff_editor:
             print(f"Name:      {name}")
@@ -157,6 +159,15 @@ class ManagerUI:
             editmore = input("Would you like to stop editing input [y] to commit changes and go back to the main menu, input [c] to cancel, input anything else to keep editing: ")
             if editmore == "y":
                 staff_editor = False
+                results_final["emname"] = name
+                results_final["ememail"] = email
+                results_final["emlocation"] = location
+                results_final["emaddress"] = address
+                results_final["emphone"] = phone
+                results_final["emcellphone"] = cellphone
+                results_final["emtitle"] = title
+                #Skrifa í skrá
+                Data_layer.EmployeeDL.EmployeeDL.change_information_employee(self, results_final)
             elif editmore == "c":
                 staff_editor = False
             else:

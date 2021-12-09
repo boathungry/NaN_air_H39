@@ -48,27 +48,28 @@ class EmployeeDL:
 
 
     def change_information_employee(self, employee):
-        pass
-    """
-        self.employee = employee
         header = ["id", "name", "email", "location", "address", "phone", "cellphone", "title"]
-        new_list = []
+        list_employees = []
+        one_employee = []
         
         #Get all file(all lines)
         with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile, delimiter=',')
             for row in reader:
-                if (row["id"] == self.employee.id):
-                    empl = Employee(self.employee.id, self.employee.name, self.employee.email, self.employee.location, self.employee.address, self.employee.phone, self.employee.cellphone, self.employee.title)
+                if (row["id"] == employee["emid"]):
+                    one_employee = (employee["emid"], employee["emname"], employee["ememail"], employee["emlocation"], employee["emaddress"], employee["emphone"], employee["emcellphone"], employee["emtitle"])
+                    print("1 - ", one_employee)
                 else:
-                    empl = Employee(row["id"],row["name"], row["email"], row["location"], row["address"], row["phone"], row["cellphone"], row["title"])
-            new_list.append(empl)
+                    one_employee = row["id"],row["name"], row["email"], row["location"], row["address"], row["phone"], row["cellphone"], row["title"]
+                    print("2 - ", one_employee)
+                list_employees.append(one_employee)
         #Write all file(all lines)
         with open("csv_files/Employee.csv", mode="w", newline='', encoding='utf-8') as csvfile:
             employee_writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
             employee_writer.writerow(header)
-            employee_writer.writerow(new_list)
-    """
+            employee_writer.writerows(list_employees)
+
+
     def search_for_employee(self, attribute:str, value):
         """Searches for employees whose values in the given attribute matches the given value. Returns a list of employees."""
         results_list = []
