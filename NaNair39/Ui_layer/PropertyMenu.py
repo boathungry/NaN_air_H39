@@ -246,7 +246,7 @@ class PropertyMenu:
     def edit_property(self):
         print("Change information about a property")
         propertyID = input("What is the property´s ID number?: ").capitalize()
-        Propertyinfo = self.llapi.create_property(Property,  attribute="id", value=propertyID)
+        Propertyinfo = self.llapi.change_property(Property,  attribute="id", value=propertyID)
         results = Propertyinfo
         print(results)
 
