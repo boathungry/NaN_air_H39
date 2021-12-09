@@ -22,7 +22,8 @@ class WorkRequestDL():
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({'id': req.id, 'location': req.location, 'properties': req.properties, 'description': req.description, 'worker': req.worker, 'priority': req.priority, 'repeat': req.repeat, 'time': req.time, 'start': req.start, 'done': req.done})
     
-
+    def change_information_work_request(self, req):
+        pass
 
     def delete_work_request(self, req):
         pass
