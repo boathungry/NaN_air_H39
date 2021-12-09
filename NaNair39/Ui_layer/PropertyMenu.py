@@ -179,37 +179,35 @@ class PropertyMenu:
     def edit_destination(self):
         print("Change information about a destination")
         cityname = input("What is the city name of the destination you wish to edit?: ")
-
+ 
         destinationinfo = Logic_layer.SearchHandler.SearchHandler.search(search_object=Location, attribute="city", value=cityname)
         print(destinationinfo)
-        name = destinationinfo.name
-        email = destinationinfo.email
-        location = destinationinfo.location
-        address = destinationinfo.address
-        phone = destinationinfo.phone
-        cellphone = destinationinfo.cellphone
-        title = destinationinfo.title
-        print(f"Name:      {name}")
-        print(f"Email:     {email}")
-        print(f"Location:  {location}")
-        print(f"Address:   {address}")
-        print(f"Phone:     {phone}")
-        print(f"Cellphone: {cellphone}")
-        print(f"Title:     {title}")
-        print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
+        city = destinationinfo.city
+        country = destinationinfo.country
+        airport = destinationinfo.airport
+        phone_number = destinationinfo.phone_number
+        opening_hours = destinationinfo.opening_hours
+        local_manager = destinationinfo.local_manager
+        print(f"Name of city:  {city}")
+        print(f"Country:   {country}")
+        print(f"Airport:  {airport}")
+        print(f"Phone number:   {phone_number}")
+        print(f"Opening hours:     {opening_hours}")
+        print(f"Local manager: {local_manager}")
+        print("Select a field to change: [n]ame of city, [c]ountry, [a]irport, [p]hone number, [o]pening hours, [l]ocal manager.")
         fieldchange = input("Input the letter of the field you wish to change: ")
         if fieldchange.lower() == "n":
-            name = input("What is the name of the new employee?: ")
-        elif fieldchange.lower() == "l":
-            location = input("What location does the employee work at?: ")
-        elif fieldchange.lower() == "a":    
-            address = input("What is the address of the employee?: ")
-        elif fieldchange.lower() == "p":
-            phone = input("What is the employees phone number?: ")
+            city = input("What is the name of the new city?: ")
         elif fieldchange.lower() == "c":
-            cellphone = input("What is the employees cellphone number?: ")
-        elif fieldchange.lower() == "t":
-            title = input('Is the employee a "manager" or a regular "employee"?: ')
+            country = input("In which country is your new destination?: ")
+        elif fieldchange.lower() == "a":    
+            address = input("What is the name of the new airport?: ")
+        elif fieldchange.lower() == "p":
+            phone = input("What is the new destination´s phone number?: ")
+        elif fieldchange.lower() == "o":
+            cellphone = input("What are the new opening hours?: ")
+        elif fieldchange.lower() == "l":
+            cellphone = input("Who is the new local manager?: ")
         else:
             print("Invalid option put into selection field.")
 
@@ -218,9 +216,9 @@ class PropertyMenu:
         pass
     """
         print("Change information about a property")
-        cityname = input("What is the city name of the destination you wish to edit?: ")
+        property_id = input("What is the ID number of the property you wish to edit?: ")
 
-        destinationinfo = Logic_layer.SearchHandler.SearchHandler.search(search_object=Location, attribute="city", value=cityname)
+        destinationinfo = Logic_layer.SearchHandler.SearchHandler.search(search_object=Location, attribute="city", value=pro)
         print(destinationinfo)
         name = destinationinfo.name
         email = destinationinfo.email

@@ -1,4 +1,4 @@
-city,country,airport,phone number,opening hours,local manager
+city,country,airport,phone_number,opening_hours,local_manager
 Nuuk,Greenland,Nuuk International,+299 34 24 67,09:00-22:00,Minik Wallace
 Torshavn,Faroe Islands,Vágar Airport,+298 772000,10:00-20:00,Annette Djurhuus
 Svalbard,Norway,Svalbard Airport,+47 92 09 77 00,08:00-23:00,Jan Jacobsen
