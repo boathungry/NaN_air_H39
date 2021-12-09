@@ -3,7 +3,7 @@ import csv
 
 class WorkRequestDL():
     def __init__(self):
-        pass
+        self.filepath = "csv_files/WorkRequests.csv"
 
     def get_all_work_requests(self):
         '''Lists all work requests to the given filepath'''
