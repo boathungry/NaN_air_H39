@@ -70,7 +70,7 @@ class ListingHandler:
         
         return filtered_list
         
-    def list_printer(list_to_print):
+    def list_printer(self, list_to_print):
         for x in list_to_print:
             print(x)
 
