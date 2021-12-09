@@ -58,10 +58,8 @@ class EmployeeDL:
             for row in reader:
                 if (row["id"] == employee["emid"]):
                     one_employee = (employee["emid"], employee["emname"], employee["ememail"], employee["emlocation"], employee["emaddress"], employee["emphone"], employee["emcellphone"], employee["emtitle"])
-                    print("1 - ", one_employee)
                 else:
                     one_employee = row["id"],row["name"], row["email"], row["location"], row["address"], row["phone"], row["cellphone"], row["title"]
-                    print("2 - ", one_employee)
                 list_employees.append(one_employee)
         #Write all file(all lines)
         with open("csv_files/Employee.csv", mode="w", newline='', encoding='utf-8') as csvfile:
