@@ -116,8 +116,8 @@ class DLAPI:
         '''Creates a contractor'''
         return self.contr.create_contractor(contr)
 
-    def create_destination(self):
-        return self.locDL.create_new_destination()
+    def create_destination(self, location):
+        return self.locDL.create_new_destination(location)
 
     def get_all_destinations(self):
         return self.locDL.get_all_locations()
