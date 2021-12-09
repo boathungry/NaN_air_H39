@@ -95,6 +95,10 @@ class LLAPI():
     def comma_checker(self, input):
         """returns a true or false wether the input has commas in it."""
         return self.change_handler.comma_checker(input)
+
+    def list_all_destinations(self):
+        """returns a list of all the destinations in the destination csv"""
+        return self.listing_handler.list_all_destinations()
     #fæ ekki til að virka og koma login í gegnum apa frekar en beint í úr login í datalayer
     """def login_byID(self, idnumber):
         "logs user in with ID number"

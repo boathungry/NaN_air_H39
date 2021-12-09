@@ -51,6 +51,7 @@ class PropertyMenu:
 
 
     def destination_manager_menu(self):
+        current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.ID, self.name, self.email, self.location, self.title)
         print("1. Register new destination.")
         print("2. Get list of existing destination.")
         print("3. Search for destination.")
@@ -61,13 +62,15 @@ class PropertyMenu:
         if selection == "1":
             self.create_destination()
         elif selection == "2":
-            pass
+            all_destinations = self.llapi.list_all_destinations()
+            self.llapi.list_printer(all_destinations)
+            current_user.managers_menu()
         elif selection == "3":
             pass
             """elif selection == "4":
             self.edit_destination()"""
         elif selection.lower() == "b":
-            current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.ID, self.name, self.email, self.location, self.title)
+            
             current_user.managers_menu()
         elif selection.lower() == "q":
             pass
@@ -109,7 +112,8 @@ class PropertyMenu:
         print("q. Quit")
         selection = input("Input selection: ")
         if selection == "1":
-            #Implement list of destinations
+            all_destinations = self.llapi.list_all_destinations()
+            self.llapi.list_printer(all_destinations)
             pass
         elif selection == "2":
             #Implement destination search class
@@ -154,19 +158,48 @@ class PropertyMenu:
                 print("Please don't have a comma in the city name it messes with our database.")
             else:
                 city_checker_on = False            
-        country = string.capwords(input(f"What country is {city} in: "))
-        airport = string.capwords(input(f"What is the airport for {city}: "))
-        phone = input(f"What is the phone number for your destination in {city}: ")
-        open_hours = input("What are the opening hours for you new destination(input in format hh:mm - hh:mm): ")
-        manager = string.capwords(input("What is the name of the manager of your new destination: "))
+        countrycommaon = True
+        while countrycommaon:
+            country = string.capwords(input(f"What country is {city} in: "))
+            comma_check = self.llapi.comma_checker(input=country)
+            if comma_check:
+                print("Please don't have a comma in the country name, it messes with our database")
+            else:
+                countrycommaon = False
+        airpcommaon = True
+        while airpcommaon:
+            airport = string.capwords(input(f"What is the airport for {city}: "))
+            comma_check = self.llapi.comma_checker(input=airport)
+            if comma_check:
+                print("Please don't have a comma in the airport name, it messes with our database")
+            else:
+                airpcommaon = False
+        phonecommaon = True
+        while phonecommaon:
+            phone = input(f"What is the phone number for your destination in {city}: ")
+            comma_check = self.llapi.comma_checker(input=phone)
+            if comma_check:
+                print("Please don't have a comma in the phone number, it messes with our database")
+            else:
+                phonecommaon = False
+        timecommaon = True
+        while timecommaon:
+            open_hours = input("What are the opening hours for you new destination(input in format hh:mm - hh:mm): ")
+            comma_check = self.llapi.comma_checker(input=open_hours)
+            if comma_check:
+                print("Please don't have a comma in the opening hours, it messes with our database")
+            else:
+                timecommaon = False
+        mancommaon = True
+        while mancommaon:
+            manager = string.capwords(input("What is the name of the manager of your new destination: "))
+            comma_check = self.llapi.comma_checker(input=manager)
+            if comma_check:
+                print("Please don't have a comma in the managers name, it messes with our database")
+            else:
+                airpcommaon = False
+        
         createdestloop = True
-        list_of_things = []
-        list_of_things.append(city)
-        list_of_things.append(country)
-        list_of_things.append(airport)
-        list_of_things.append(phone)
-        list_of_things.append(open_hours)
-        list_of_things.append(manager)
         current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.ID, self.name, self.email, self.location, self.title)
         while createdestloop:
             print(f"City: {city}")
@@ -182,7 +215,7 @@ class PropertyMenu:
                 current_user.managers_menu()
             elif rightorwrong.lower() == "c":
                 createdestloop = False
-                current_user.ManagerUI.managers_menu()
+                current_user.managers_menu()
             elif rightorwrong.lower() == "n":
                 print("Select a field to change: [c]ity, countr[y}, [a]irport, [p]hone, [o]pening hours, [l]ocal manager.")
                 fieldchange = input("Input the letter of the field you wish to change: ")

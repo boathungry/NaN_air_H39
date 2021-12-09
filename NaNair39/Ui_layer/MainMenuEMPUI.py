@@ -15,11 +15,13 @@ class EmployeeUI:
         
         today = date.today()
         today_string = today.strftime("%d/%m/%Y")
-        
+        print("")
         print(f"Welcome {self.name}. Todays date is {today_string}")
+        print("")
         print("1. Locations and properties")
         print("2. Work requests/reports")
         print("q. quit")
+        print("")
         selection = input("Input selection: ")
         if selection == "1":
             current_user = Ui_layer.PropertyMenu.PropertyMenu(self.ID, self.name, self.email, self.location, self.title)

@@ -6,6 +6,7 @@ def main():
     user = Ui_layer.Login_menuUI.LogIn.innskra()
 
     if user == "q":
+        print("")
         print("Thank you and have a nice day.")
     else:
         userstring = str(user)
