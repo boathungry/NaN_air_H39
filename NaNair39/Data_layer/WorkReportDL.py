@@ -38,9 +38,6 @@ class WorkReportDL:
     def delete_work_report(self, VB):
         pass
 
-    def change_information_work_report(self, VB):
-        pass
-
     def search_for_work_report(self, attribute:str, value) -> list:
         '''Searches for work order within the given filepath, using the given attribute'''
         results_list = []

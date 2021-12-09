@@ -29,6 +29,25 @@ class PropertyDL:
 
     def change_information_property(self, prop):
         pass
+    """"  header = ["id", "name", "email", "location", "address", "phone", "cellphone", "title"]
+        list_employees = []
+        one_employee = []
+        
+        #Get all file(all lines)
+        with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile, delimiter=',')
+            for row in reader:
+                if (row["id"] == employee["emid"]):
+                    one_employee = (employee["emid"], employee["emname"], employee["ememail"], employee["emlocation"], employee["emaddress"], employee["emphone"], employee["emcellphone"], employee["emtitle"])
+                else:
+                    one_employee = row["id"],row["name"], row["email"], row["location"], row["address"], row["phone"], row["cellphone"], row["title"]
+                list_employees.append(one_employee)
+        #Write all file(all lines)
+        with open("csv_files/Employee.csv", mode="w", newline='', encoding='utf-8') as csvfile:
+            employee_writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            employee_writer.writerow(header)
+            employee_writer.writerows(list_employees)
+"""
 
     """
     def search_property(self, idnumber):
