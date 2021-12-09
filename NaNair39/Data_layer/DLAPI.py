@@ -84,6 +84,14 @@ class DLAPI:
         """Searches for work reports whose values in the given attribute matches the given value. Returns a list of work reports."""
         return self.VB.search_for_work_report(attribute, value)
 
+    def search_location(self, attribute:str, value) -> list:
+        """searches for destinations"""
+        return self.locDL.search_for_destination(attribute, value)
+    
+    def dict_search_location(self, attribute:str, value) -> dict:
+        """searches for destinations"""
+        return self.locDL.search_for_destination(attribute, value)
+
     def change_information_work_report(self,VB):
         '''Changes information on existing work report'''
         return self.VB.change_information_work_report(VB)

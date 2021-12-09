@@ -2,7 +2,6 @@ from Models.LocationModel import Location
 import Ui_layer.MainMenuMANUI
 import Ui_layer.MainMenuEMPUI
 from Logic_layer.LLAPI import LLAPI
-import Logic_layer.SearchHandler
 import string
 #Mögulega að implementa baka um einn menu frekar en alltaf á main menu ef tími gefst
 
@@ -51,20 +50,20 @@ class PropertyMenu:
 
     def destination_manager_menu(self):
         print("1. Register new destination.")
-        print("2. Change existing destination.")
-        print("3. Get list of existing destination.")
-        print("4. Search for destination.")
+        print("2. Get list of existing destination.")
+        print("3. Search for destination.")
+        """print("4. Change existing destination.")"""
         print("b. Back to main menu.")
         print("q. Quit.")
         selection = input("Input selection: ")
         if selection == "1":
             self.create_destination()
         elif selection == "2":
-            self.edit_destination()
+            pass
         elif selection == "3":
             pass
-        elif selection == "4":
-            pass
+            """elif selection == "4":
+            self.edit_destination()"""
         elif selection.lower() == "b":
             current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.ID, self.name, self.email, self.location, self.title)
             current_user.managers_menu()
@@ -75,7 +74,7 @@ class PropertyMenu:
             self.destination_manager_menu()
     
     def property_manager_menu(self):
-        
+        current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.ID, self.name, self.email, self.location, self.title)
         print("1. Create new property")
         print("2. Edit existing property")
         print("3. Get list of properties")
@@ -92,7 +91,7 @@ class PropertyMenu:
         elif selection == "4":
             pass
         elif selection.lower() == "b":
-            current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.ID, self.name, self.email, self.location, self.title)
+            
             current_user.managers_menu()
         elif selection.lower() == "q":
             pass
@@ -101,6 +100,7 @@ class PropertyMenu:
             self.property_manager_menu()
         
     def destination_staff_menu(self):
+        current_user = Ui_layer.MainMenuEMPUI.EmployeeUI(self.ID, self.name, self.email, self.location, self.title)
         print("1. Get list of destinations")
         print("2. Search for destination")
         print("b. Back to main menu")
@@ -113,7 +113,7 @@ class PropertyMenu:
             #Implement destination search class
             pass
         elif selection.lower() == "b":
-            current_user = Ui_layer.MainMenuEMPUI.EmployeeUI(self.ID, self.name, self.email, self.location, self.title)
+            
             current_user.staff_menu()
         elif selection.lower() == "q":
             pass
@@ -122,6 +122,7 @@ class PropertyMenu:
             self.destination_staff_menu()
 
     def property_staff_menu(self):
+        current_user = Ui_layer.MainMenuEMPUI.EmployeeUI(self.ID, self.name, self.email, self.location, self.title)
         print("1. Get list of properties")
         print("2. Search for property")
         print("b. Back to main menu")
@@ -134,12 +135,21 @@ class PropertyMenu:
             #implement search for properties class
             pass
         elif selection.lower() == "b":
-            current_user = Ui_layer.MainMenuEMPUI.EmployeeUI(self.ID, self.name, self.email, self.location, self.title)
+            
             current_user.staff_menu()
     
     
     def create_destination(self):
-        city = string.capwords(input("In what city is the new destination: "))
+        
+        city_checker_on = True
+        used_locations = self.llapi.list_of_location_names()
+        while city_checker_on:
+            city = string.capwords(input("In what city is the new destination: "))
+            if city in used_locations:
+
+                print("This location is already in use, please enter a different city.")
+            else:
+                city_checker_on = False            
         country = string.capwords(input(f"What country is {city} in: "))
         airport = string.capwords(input(f"What is the airport for {city}: "))
         phone = input(f"What is the phone number for your destination in {city}: ")
@@ -153,7 +163,7 @@ class PropertyMenu:
         list_of_things.append(phone)
         list_of_things.append(open_hours)
         list_of_things.append(manager)
-        
+        current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.ID, self.name, self.email, self.location, self.title)
         while createdestloop:
             print(f"City: {city}")
             print(f"Country: {country}")
@@ -165,14 +175,20 @@ class PropertyMenu:
             if rightorwrong.lower() == "y":
                 createdestloop = False
                 self.llapi.create_destination(city, country, airport, phone, open_hours, manager)
+                current_user.managers_menu()
             elif rightorwrong.lower() == "c":
                 createdestloop = False
-                Ui_layer.MainMenuMANUI.ManagerUI.managers_menu()
+                current_user.ManagerUI.managers_menu()
             elif rightorwrong.lower() == "n":
                 print("Select a field to change: [c]ity, countr[y}, [a]irport, [p]hone, [o]pening hours, [l]ocal manager.")
                 fieldchange = input("Input the letter of the field you wish to change: ")
                 if fieldchange.lower() == "c":
                     city = input("What is the name of the destination city?: ")
+                    while city_checker_on:
+                        if city in used_locations:
+                            print("This location is already in use, please enter a different city.")
+                        else:
+                            city_checker_on = False 
                 elif fieldchange.lower() == "y":
                     country = input(f"What country is {city} in?: ")
                 elif fieldchange.lower() == "a":    
@@ -186,26 +202,26 @@ class PropertyMenu:
                 else:
                     print("Invalid option put into selection field.")
 
-    def edit_destination(self):
+    # C krafa
+    """def edit_destination(self):
         print("Change information about a destination")
-        cityname = input("What is the city name of the destination you wish to edit?: ")
+        cityname = string.capwords(input("What is the city name of the destination you wish to edit?: "))
 
-        destinationinfo = Logic_layer.SearchHandler.SearchHandler.search(search_object=Location, attribute="city", value=cityname)
+        destinationinfo = self.llapi.dict_search(search_object=Location, attribute="city", value=cityname)
+        results = destinationinfo
         print(destinationinfo)
-        name = destinationinfo.name
-        email = destinationinfo.email
-        location = destinationinfo.location
-        address = destinationinfo.address
-        phone = destinationinfo.phone
-        cellphone = destinationinfo.cellphone
-        title = destinationinfo.title
-        print(f"Name:      {name}")
-        print(f"Email:     {email}")
-        print(f"Location:  {location}")
-        print(f"Address:   {address}")
-        print(f"Phone:     {phone}")
-        print(f"Cellphone: {cellphone}")
-        print(f"Title:     {title}")
+        city = results[0]["city"]
+        country = results[0]["country"]
+        airport = results[0]["airport"]
+        phone_number = results[0]["phone_number"]
+        opening_hours = results[0]["opening_hours"]
+        local_manager = results[0]["local_manager"]
+        print(f"City:          {city}")
+        print(f"Country:       {country}")
+        print(f"Airport:       {airport}")
+        print(f"Phone no:      {phone_number}")
+        print(f"Opening hours: {opening_hours}")
+        print(f"Local Manager: {local_manager}")
         print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
         fieldchange = input("Input the letter of the field you wish to change: ")
         if fieldchange.lower() == "n":
@@ -221,7 +237,7 @@ class PropertyMenu:
         elif fieldchange.lower() == "t":
             title = input('Is the employee a "manager" or a regular "employee"?: ')
         else:
-            print("Invalid option put into selection field.")
+            print("Invalid option put into selection field.")"""
 
 
     def edit_property(self):
@@ -229,7 +245,7 @@ class PropertyMenu:
         print("Change information about a property")
         cityname = input("What is the city name of the destination you wish to edit?: ")
 
-        propertyinfo = Logic_layer.SearchHandler.SearchHandler.search(search_object=Location, attribute="city", value="property_id")
+        propertyinfo = self.llapi.search(search_object=Location, attribute="city", value="property_id")
         print(propertyinfo)
         idnumber = propertyinfo.idnumber
         name = propertyinfo.name

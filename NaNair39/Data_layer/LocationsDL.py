@@ -49,3 +49,16 @@ class locationDL:
                 loct = row["city"]
                 return_list.append(loct)
         return return_list
+
+    def dict_search_for_location(self, attribute:str, value):
+        """Searches for location whose values in the given attribute matches the given value. Returns a list of employees."""
+        results_list = []
+        attribute = attribute.lower()
+        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if row[attribute]==value:
+                    loc = Location(row["city"],row["country"],row["airport"], row["phone_number"], row["opening_hours"],row["local_manager"])
+                    Location_dict = {"city":loc.city, "country":loc.country, "airport":loc.airport, "phone_number":loc.phone_number,"opening_hours":loc.opening_hours,"local_manager":loc.local_manager}
+                    results_list.append(Location_dict)
+            return results_list
