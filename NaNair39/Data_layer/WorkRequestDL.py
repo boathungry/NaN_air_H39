@@ -29,7 +29,7 @@ class WorkRequestDL():
     def create_work_request(self, req):
         '''appends a new work request to the given filepath'''
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
-            fieldnames = ["name","email","location","address","phone","cellphone","title"]
+            fieldnames = ["id","location","properties","description","worker","priority","repeat","time","start","done"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             writer.writerow({'id': req.id, 'location': req.location, 'properties': req.properties, 'description': req.description, 'worker': req.worker, 'priority': req.priority, 'repeat': req.repeat, 'time': req.time, 'start': req.start, 'done': req.done})
     
