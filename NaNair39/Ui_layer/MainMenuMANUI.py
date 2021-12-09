@@ -77,6 +77,7 @@ class ManagerUI:
     def create_employee(self):
         name = string.capwords(input("What is the name of the new employee?: "))
         email = input("What is the employees email address?: ")
+        self.llapi
         location = string.capwords(input("What location does the employee work at?: "))
         address = string.capwords(input("What is the address of the employee?: "))
         phone = input("What is the employees phone number?: ")

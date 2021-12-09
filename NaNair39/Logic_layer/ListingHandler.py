@@ -69,7 +69,7 @@ class ListingHandler:
                 filtered_list.append(item)
         
         return filtered_list
-        
+
     def list_printer(self, list_to_print):
         for x in list_to_print:
             print(x)
@@ -121,6 +121,10 @@ class ListingHandler:
                     filtered_list.append(item)
 
         return filtered_list
+    
+    def location_existence_check(self, location):
+        location = location
+        
 
 
     #Filters still missing:
