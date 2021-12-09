@@ -77,8 +77,9 @@ class ManagerUI:
     def create_employee(self):
         name = input("What is the name of the new employee?: ")
         email = input("What is the employees email address?: ")
-        location = input("What location does the employee work at?: ")
-        address = input("What is the address of the employee?: ")
+        self.llapi
+        location = string.capwords(input("What location does the employee work at?: "))
+        address = string.capwords(input("What is the address of the employee?: "))
         phone = input("What is the employees phone number?: ")
         cellphone = input("What is the employees cellphone number?: ")
         title = input('Is the employee a "manager" or a regular "staff" member?: ')
