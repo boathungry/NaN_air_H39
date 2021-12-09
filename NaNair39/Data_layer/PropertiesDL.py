@@ -68,7 +68,19 @@ class PropertyDL:
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                prop = Property(row["idnumber"],row["name"], row["location"], row["address"],row["size"],row["cellphone"],row["rooms"])
+                prop = Property(row["idnumber"],row["name"], row["location"], row["address"], row["size"],row["rooms"])
                 if row[attribute] == value:
                     results_list.append(prop)
+            return results_list
+
+    def dict_search_for_property(self, attribute:str, value):
+        results_list = []
+        attribute = attribute.lower()
+        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                prop = Property(row["idnumber"],row["name"], row["location"], row["address"],row["size"],row["rooms"])
+                Property_dict = {"pridnumber":prop.idnumber, "prname":prop.name, "prlocation":prop.location, "praddress":prop.address,"prsize":prop.size,"prrooms":prop.rooms }
+                if row[attribute] == value:
+                    results_list.append(Property_dict)
             return results_list
