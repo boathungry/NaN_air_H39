@@ -124,3 +124,4 @@ koma general virkni í það sem vantar upp á
 
 Eftir daginn:
 Hjörleifur: fór afturvirkt yfir dagbók og bætti inn þar sem vantaði fleirri upplýsingar, 
+Þór: Bætti við filtering functionality í ListingHandler og LLAPI, gerði nokkur bug fix
