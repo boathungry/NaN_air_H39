@@ -37,6 +37,9 @@ class DLAPI:
     def get_employee_id_number(self):
         '''Gets employees ID number'''
         return self.emplDL.get_employee_id_number()
+    
+    def get_work_report_id_number(self):
+        return self.VB.get_work_report_id_number()
 
     def get_all_properties(self):
         '''Lists all properties'''

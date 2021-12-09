@@ -20,6 +20,12 @@ class RegistrationHandler():
             return None
         return id_number 
 
+    def get_work_report_id_number():
+        DLAPIinit = DLAPI()
+        number = str(DLAPIinit.get_work_report_id_number())
+        id_number = f"VB0{number}"
+        return id_number
+
     def register_employee(self, idnumber, name, email, location, address, phone, cellphone, title):
         """Registers a new employee and returns the employee."""
         new_employee = Employee(idnumber, name, email, location, address, phone, cellphone, title)
