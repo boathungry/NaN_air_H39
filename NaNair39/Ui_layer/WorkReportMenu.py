@@ -4,10 +4,7 @@ from Models.WorkReportModel import WorkReport
 from Models.WorkRequestModel import WorkRequest
 import Data_layer.WorkRequestDL
 import Data_layer.WorkReportDL
-<<<<<<< HEAD
 
-=======
->>>>>>> acb82005ef35167a5607fa0d86de2cc9aea4f561
 from Logic_layer.WorkRequestLL import WorkRequest
 from datetime import date
 
