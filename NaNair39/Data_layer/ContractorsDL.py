@@ -13,15 +13,15 @@ class ContractorDL:
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                cont = Contractor(row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
+                cont = Contractor(row["name"],row["phone"], row["email"], row["opening_hours"],row["address"],row["location"])
                 return_list.append(cont)
         return return_list
 
     def create_contractor(self,cont):
         '''Appends a contractor to the given filepath'''
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
-            fieldnames = ["name","email","location","address","phone","cellphone","title"]
+            fieldnames = ["name","phone","email","opening_hours","address","location",]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerow({'name': cont.name, 'phone': cont.phone, 'email': cont.email, 'opening_hours': cont.opening_hours, 'address': cont.address})
+            writer.writerow({'name': cont.name, 'phone': cont.phone, 'email': cont.email, 'opening_hours': cont.opening_hours, 'address': cont.address, 'location': cont.location})
     
 

@@ -124,9 +124,9 @@ class DLAPI:
         '''Logs employee in by ID'''
         return self.emplDL.login_by_ID(email)
 
-    def list_all_contractors(self, contr):
+    def list_all_contractors(self):
         '''List all contractors'''
-        return self.contr.list_all_contractors(contr)
+        return self.contr.list_all_contractors()
 
     def create_contractor(self, contr):
         '''Creates a contractor'''

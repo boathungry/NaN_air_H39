@@ -45,9 +45,9 @@ class RegistrationHandler():
         self.dl_api.create_property(new_property)
         return new_property
 
-    def register_contractor(self, name, phone, email, opening_hours, address):
+    def register_contractor(self, name, phone, email, opening_hours, address, location):
         """Registers a new contractor and returns the contractor."""
-        new_contractor = Contractor(name, phone, email, opening_hours, address)
+        new_contractor = Contractor(name, phone, email, opening_hours, address,location)
         self.dl_api.create_contractor(new_contractor) #NOT IMPLEMENTED YET
         return new_contractor
 
