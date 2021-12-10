@@ -89,7 +89,7 @@ class WorkReportMenu:
                 print(f"Start:               {start}")
                 print(f"Done:                {done}")
                 print("")
-                approve = string.capwords(input("Do you confirm the details above and wish to approve this work request?(y/n): "))
+                approve = string.capwords(input("Do you confirm the details above and wish to approve this work report?(y/n): "))
                 if approve == "Y":
                     editor = False
                     results_final = {}
@@ -461,7 +461,7 @@ class WorkReportMenu:
             if counter == 0 or counter !=0 and fieldchange.lower() == "r":
                 repeat_check_on = True
                 while repeat_check_on:
-                    repeat = input("Repeat (y/n)").lower()
+                    repeat = input("Repeat (y/n)?: ").lower()
                     if repeat not in ["y", "n"]:
                         print('Please only use a "y" or a "n"')
                     else:
@@ -700,17 +700,30 @@ class WorkReportMenu:
     """
     
     def view_work_requests(self):
-        work_request_list = self.llapi.get_work_request_list()
-        self.llapi.list_printer(work_request_list)
+        print("Closed work requests:")
+        print("")
+        closed_work_request_list = self.llapi.get_closed_work_request_list()
+        self.llapi.list_printer(closed_work_request_list)
+        print("Open work requests:")
+        print("")
+        open_work_requests_list = self.llapi.get_open_work_request_list()
+        self.llapi.list_printer(open_work_requests_list)
+
    
     def view_work_reports(self):
-        work_report_list = self.llapi.get_work_report_list()
-        self.llapi.list_printer(work_report_list)
+        print("Approved work reports:")
+        print("")
+        closed_work_report_list = self.llapi.get_closed_work_report_list()
+        self.llapi.list_printer(closed_work_report_list)
+        print("Open work reports:")
+        print("")
+        open_work_report_list = self.llapi.get_open_work_report_list()
+        self.llapi.list_printer(open_work_report_list)
 
     def work_report_staff_menu(self):
         print("1. Create work request")
         print("2. Change work request")
-        print("3. Browse work and maintenance reports")
+        print("3. Browse work reports")
         print("b. Back to main menu")
         print("q. Quit")
         selection = input("Input selection: ")

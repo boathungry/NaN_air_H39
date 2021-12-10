@@ -61,11 +61,23 @@ class WorkReportDL:
     def delete_work_report(self, VB):
         pass
 
-    def search_for_work_report(self, attribute:str, value) -> list:
+    def search_for_open_work_report(self, attribute:str, value) -> list:
         '''Searches for work order within the given filepath, using the given attribute'''
         results_list = []
         attribute = attribute.lower()
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                report = WorkReport(row["id"],row["work_request_id"], row["description"], row["location"], row["properties"], row["worker"], row["comment"], row["regular_maintenance"], row["expenses"], row["start"], row["done"])
+                if row[attribute] == value:
+                    results_list.append(report)
+        return results_list
+
+    def search_for_closed_work_report(self, attribute:str, value) -> list:
+        '''Searches for work order within the given filepath, using the given attribute'''
+        results_list = []
+        attribute = attribute.lower()
+        with open("csv_files/ApprovedWorkReports.csv", newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 report = WorkReport(row["id"],row["work_request_id"], row["description"], row["location"], row["properties"], row["worker"], row["comment"], row["regular_maintenance"], row["expenses"], row["start"], row["done"])
