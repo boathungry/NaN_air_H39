@@ -41,7 +41,7 @@ class PropertyMenu:
                 return True
             elif selection.lower() == "b" and self.title == "employee":
                 location_options_on = False
-                Ui_layer.MainMenuEMPUI.EmployeeUI(title="staff").staff_menu
+                return True
             elif selection.lower() == "q":
                 location_options_on = False
                 return False
@@ -51,7 +51,6 @@ class PropertyMenu:
 
 
     def destination_manager_menu(self):
-        current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.ID, self.name, self.email, self.location, self.title)
         print("1. Register new destination.")
         print("2. Get list of existing destination.")
         print("3. Search for destination.")
@@ -70,10 +69,9 @@ class PropertyMenu:
             """elif selection == "4":
             self.edit_destination()"""
         elif selection.lower() == "b":
-            
             return True
         elif selection.lower() == "q":
-            pass
+            return False
         else:
             print("Wrong input!")
             self.destination_manager_menu()
@@ -96,10 +94,9 @@ class PropertyMenu:
         elif selection == "4":
             pass
         elif selection.lower() == "b":
-            
             return True
         elif selection.lower() == "q":
-            pass
+            return False
         else:
             print("Wrong input")
             self.property_manager_menu()
@@ -145,7 +142,6 @@ class PropertyMenu:
     
     
     def create_destination(self):
-        
         city_checker_on = True
         used_locations = self.llapi.list_of_location_names()
         while city_checker_on:
@@ -197,9 +193,7 @@ class PropertyMenu:
                 print("Please don't have a comma in the managers name, it messes with our database")
             else:
                 airpcommaon = False
-        
         createdestloop = True
-        current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.ID, self.name, self.email, self.location, self.title)
         while createdestloop:
             print(f"City: {city}")
             print(f"Country: {country}")
@@ -278,7 +272,6 @@ class PropertyMenu:
 #idnumber,name,location,address,size,rooms
 
     def edit_property(self):
-        current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.ID, self.name, self.email, self.location, self.title)
         print("Change information about a property")
         propertyID = input("What is the property´s ID number?: ")
         print("input fyrir prop_id: ", propertyID)
