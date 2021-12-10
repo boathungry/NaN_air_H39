@@ -262,6 +262,7 @@ class WorkReportMenu:
                         print("Not a valid location, please either create a new location or select an available one")
                     else:
                         location_checker_on = False
+                        location_split = location.split(" - ")
             if counter == 0 or counter !=0 and fieldchange == "p":
                 properties_comma_checkon = True
                 while properties_comma_checkon:
@@ -273,7 +274,6 @@ class WorkReportMenu:
                         else:
                             properties_comma_checkon = False
                     else:
-                        location_split = location.split(" - ")
                         properties = input("What is the property's ID number?: ").lower()
                         propID = self.llapi.get_all_property_ID()                        
                         if properties not in propID:
@@ -296,12 +296,20 @@ class WorkReportMenu:
             if counter == 0 or counter !=0 and fieldchange == "wo":
                 worker_comma_check_on = True
                 while worker_comma_check_on: 
-                    worker = input("Who is the worker?: ")
-                    comma_check = self.llapi.comma_checker(worker)
-                    if comma_check:
-                        print("Please don't have a comma. It messes with our database")
-                    else:
+                    worker = string.capwords(input("Who is the worker?: "))
+                    exists = self.llapi.list_all_employees_names()
+                    print(exists)
+                    if worker not in exists:
+                        print("please make sure the worker exists")
+                    elif location.lower() == "all locations":
                         worker_comma_check_on = False
+                    else:
+                        does_he_work_there = self.llapi.does_he_work_there(worker, location_split[0])
+                        print(does_he_work_there)
+                        if does_he_work_there:
+                            worker_comma_check_on = False
+                        else:
+                            print("Employee does not work there")
             if counter == 0 or counter !=0 and fieldchange.lower() == "pr":
                 priority_comma_check_on = True
                 while priority_comma_check_on:

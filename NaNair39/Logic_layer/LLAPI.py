@@ -51,7 +51,9 @@ class LLAPI():
     def change_work_request(self, work_request, attribute, new_value):
         """Changes an attribute of a work request to a new value. Returns the given attribute if successful, otherwise returns None."""
         return self.change_handler.change_work_request(work_request, attribute, new_value)
-
+    def does_he_work_there(self, name, location):
+        """checks if a employee works in the input location"""
+        return self.search_handler.does_he_work_there(name, location)
 
     def finalize_work_request(self):
         return self.change_handler.finalize_work_request()
@@ -101,7 +103,7 @@ class LLAPI():
     def is_it_there(self, id, location):
         "check id is in the location"
         return self.dl_API.is_it_there(id, location)
-        
+
     def list_all_employees(self):
         "gives a list of all employees and information"
         return self.listing_handler.list_all_employees_unsorted()

@@ -58,8 +58,9 @@ class RegistrationHandler():
         self.dl_api.create_work_report(new_work_report)
         return new_work_report
 
-    def register_work_request(self, id, work_request, location, properties, description, worker, priority, repeat, time, start, done):
+    def register_work_request(self, work_request, location, properties, description, worker, priority, repeat, time, start, done):
         """Registers a new work request and returns the work request."""
+        id = self.dl_api.get_work_request_id_number()
         new_work_request = WorkRequest(id, work_request, location, properties, description, worker, priority, repeat, time, start, done)
         self.dl_api.create_work_request(new_work_request)
         return new_work_request
