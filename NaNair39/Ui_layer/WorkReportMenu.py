@@ -240,7 +240,7 @@ class WorkReportMenu:
             if counter == 0 or counter !=0 and fieldchange.lower() == "r":
                 repeat_comma_check_on = True
                 while repeat_comma_check_on:
-                    repeat = input("")
+                    repeat = input("Repeat (y/n)")
                     comma_check = self.llapi.comma_checker(repeat)
                     if comma_check:
                         print("Please don't have a comma. It messes with our database")
