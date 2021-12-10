@@ -133,6 +133,9 @@ class ManagerUI:
                     location = string.capwords(input("What location does the employee work at?: "))
                     if string.capwords(location) not in available_locations:
                         print("Not a valid location, please either create a new location or select an available one")
+                        cancel = input("If you wish to quit and go back to the main menu input [q] any other input will continue: ")
+                        if cancel.lower() == "q":
+                            return True
                     else:
                         location_checker_on = False
             if counter == 0 or counter !=0 and fieldchange == "a":            
