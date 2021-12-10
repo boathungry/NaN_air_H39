@@ -276,7 +276,7 @@ class WorkReportMenu:
             counter +=1
 
     
-    def create_work_report():
+    def create_work_report(self):
         #id,work_request_id,description,location,properties,worker,comment,regular_maintenance,expenses,start,done,approved
         counter = 0
         print("")
