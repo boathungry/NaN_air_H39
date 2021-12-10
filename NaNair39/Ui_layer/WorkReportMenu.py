@@ -60,7 +60,7 @@ class WorkReportMenu:
 
     def edit_work_request(self):
         print("Change information about a work request")
-        work_request_ID = input("What is the work request´s ID number?: ").capitalize()
+        work_request_ID = input("What is the work request´s ID number?: ")
         Work_requestinfo = self.llapi.dict_search(WorkRequest,  attribute="id", value = work_request_ID)
         results = Work_requestinfo
         print(results)
