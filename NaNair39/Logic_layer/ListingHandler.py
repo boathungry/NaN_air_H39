@@ -38,6 +38,10 @@ class ListingHandler:
     def list_all_destinations(self) -> list:
         """returns a list of all destinations"""
         return self.dl_api.get_all_destinations()
+        
+    def list_all_property_ID(self) -> list:
+        """returns a list of all property id numbers"""
+        return self.dl_api.get_all_property_id()
 
     def list_all_location_names(self) -> list:
         """Returns a list of all location names."""
@@ -54,6 +58,10 @@ class ListingHandler:
     def list_all_work_requests_unsorted(self) -> list:
         """Returns a list of all work requests."""
         return self.dl_api.get_all_work_requests()
+    
+    def list_all_contractors(self) -> list:
+        '''Returns a list of all contractors'''
+        return self.dl_api.list_all_contractors()
 
 
     def sort_by_name(self, unsorted_list, descending:bool = False) -> list:

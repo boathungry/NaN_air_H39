@@ -6,18 +6,13 @@ import Data_layer.WorkRequestDL
 
 
 class WorkReportMenu:
-    def __init__(self, id, work_request, location, properties, description, worker, priority, repeat, time, start, done, logic_api:LLAPI = LLAPI()):
-        self.id = id
-        self.work_request = work_request
+    def __init__(self, idnumber = "", name = "", email = "", location = "", title = "", logic_api:LLAPI = LLAPI()):
+        self.idnumber = idnumber
+        self.name = name
+        self.email = email
         self.location = location
-        self.properties = properties
-        self.description = description
-        self.worker = worker
-        self.priority = priority
-        self.repeat = repeat
-        self.time = time
-        self.start = start
-        self.done = done
+        self.title = title
+        self.llapi = logic_api
         self.llapi = logic_api
 
     def Work_report_manager_menu(self):
@@ -60,8 +55,8 @@ class WorkReportMenu:
 
     def edit_work_request(self):
         print("Change information about a work request")
-        work_request_ID = input("What is the work request´s ID number?: ")
-        Work_requestinfo = self.llapi.dict_search(WorkRequest,  attribute="id", value = work_request_ID)
+        work_request_ID = input("What is the work requests ID number?: ")
+        Work_requestinfo = self.llapi.dict_search(WorkRequest,  attribute="id", value=work_request_ID)
         results = Work_requestinfo
         print(results)
 

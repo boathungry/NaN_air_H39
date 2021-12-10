@@ -52,13 +52,13 @@ class LLAPI():
         idnumber = RegistrationHandler.get_employee_id_number(location)
         return self.registration_handler.register_employee(idnumber, name, email, location, address, phone, cellphone, title)
 
-    def create_property(self, name, location, size, rooms):
+    def create_property(self, idnumber, name, location, address, size, rooms):
         """Creates a new property with the given attributes and returns the property."""
-        return self.registration_handler.register_property(name, location, size, rooms)
+        return self.registration_handler.register_property(idnumber, name, location, address, size, rooms)
     
-    def create_contractor(self, name, phone, email, opening_hours, address):
+    def create_contractor(self, name, phone, email, opening_hours, address, location):
         """Creates a new contractor with the given attributes and returns the contractor."""
-        return self.registration_handler.register_contractor(name, phone, email, opening_hours, address)
+        return self.registration_handler.register_contractor(name, phone, email, opening_hours, address, location)
 
     def create_work_report(self, id, work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done, approved):
         """Creates a new work report with the given attributes and returns the work report."""
@@ -99,6 +99,12 @@ class LLAPI():
     def list_all_destinations(self):
         """returns a list of all the destinations in the destination csv"""
         return self.listing_handler.list_all_destinations()
+    def get_all_property_ID(self):
+        """returns a list of all IDnumbers for properties"""
+        return self.listing_handler.list_all_property_ID()
+
+    def list_all_contractors(self):
+        return self.listing_handler.list_all_contractors()
     #fæ ekki til að virka og koma login í gegnum apa frekar en beint í úr login í datalayer
     """def login_byID(self, idnumber):
         "logs user in with ID number"
