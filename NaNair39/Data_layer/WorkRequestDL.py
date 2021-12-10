@@ -72,9 +72,9 @@ class WorkRequestDL:
     def create_work_request(self, req):
         '''appends a new work request to the given filepath'''
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
-            fieldnames = ["id","location","properties","description","worker","priority","repeat","time","start","done"]
+            fieldnames = ["id","work_request","location","properties","description","worker","priority","repeat","time","start","done"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerow({'id': req.id, 'location': req.location, 'properties': req.properties, 'description': req.description, 'worker': req.worker, 'priority': req.priority, 'repeat': req.repeat, 'time': req.time, 'start': req.start, 'done': req.done})
+            writer.writerow({'id': req.id, 'work_request': req.work_request, 'location': req.location, 'properties': req.properties, 'description': req.description, 'worker': req.worker, 'priority': req.priority, 'repeat': req.repeat, 'time': req.time, 'start': req.start, 'done': req.done})
 
     def change_information_work_request(self, req):
         header = ["id", "work_request", "location", "properties", "description", "worker", "priority", "repeat", "time", "start", "done"]

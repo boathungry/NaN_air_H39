@@ -53,11 +53,16 @@ class WorkReportMenu:
 #id,work_request_id,description,location,properties,worker,comment,regular_maintenance,expenses,start,done
     def finalize_work_report(self):
         print("What work report would you like to approve?")
-        work_report_id = (input("Enter work report ID number: "))
-        work_report_info = self.llapi.dict_search(WorkReport, attribute="id", value=work_report_id)
+        work_request_ID = input("What is the ID number of the work report you want to finalize? input [c] to cancel: ")
+        if work_request_ID.lower() == "c":
+            return True
+        work_report_info = self.llapi.dict_search(WorkReport, attribute="id", value=work_request_ID)
         results = work_report_info
         if len(results)<1:
             print("No requests found with that ID")
+            return self.finalize_work_report()
+        elif string.capwords(results[0]["wroplocation"]) not in [self.report_location[0], "All Locations"]:
+            print("You do not have access to this work request")
             return self.finalize_work_report()
         else:
             id = results[0]["wropid"]
@@ -117,13 +122,18 @@ class WorkReportMenu:
  
 #id,work_request,location,properties,description,worker,priority,repeat,time,start,done
     def finalize_work_request(self):
-        print("What work request would you like to approve/close")
+        work_request_ID = input("What is the ID number of the work request you would like to finalize? input [c] to cancel: ")
+        if work_request_ID.lower() == "c":
+            return True
         work_request_id = (input("Enter work request ID number: "))
         work_request_info = self.llapi.dict_search(WorkRequest, attribute="id", value=work_request_id)
         results = work_request_info
         if len(results)<1:
             print("No requests found with that ID")
             return self.finalize_work_request()
+        elif string.capwords(results[0]["wroplocation"]) not in [self.report_location[0], "All Locations"]:
+            print("You do not have access to this work request")
+            return self.finalize_work_report()
         else:
             id = results[0]["wreqid"]
             work_request = results[0]["wreqwork_request"]
@@ -192,7 +202,7 @@ class WorkReportMenu:
         if len(results) < 1:
             print("No requests found with that ID")
             return self.edit_work_request() 
-        if results[0]["wreqlocation"] not in self.report_location:
+        elif results[0]["wreqlocation"] not in self.report_location:
             print("You do not have access to edit this work request")
             print(results[0]["wreqlocation"], self.report_location)
             return self.edit_work_request()
@@ -232,8 +242,6 @@ class WorkReportMenu:
                         location = "All Locations"
                     else:
                         location = self.report_location[0]
-                    
-
                 if fieldchange.lower() == "p":
                     properties_comma_checkon = True
                     while properties_comma_checkon:
@@ -250,7 +258,7 @@ class WorkReportMenu:
                             if properties not in propID:
                                 print("Please input an existing property ID.")
                             else:
-                                is_it_there = self.llapi.is_it_there(properties, self.location[0])
+                                is_it_there = self.llapi.is_it_there(properties, self.location)
                                 if is_it_there:
                                     properties_comma_checkon = False
                                 else:
@@ -266,7 +274,7 @@ class WorkReportMenu:
                         elif location.lower() == "all locations":
                             worker_comma_check_on = False
                         else:
-                            does_he_work_there = self.llapi.does_he_work_there(worker, self.location[0])
+                            does_he_work_there = self.llapi.does_he_work_there(worker, self.location)
                             print(does_he_work_there)
                             if does_he_work_there:
                                 worker_comma_check_on = False
@@ -387,23 +395,16 @@ class WorkReportMenu:
                     else:
                         work_request_comma_check_on = False
             if counter == 0 or counter !=0 and fieldchange == "l":
-                print("")
-                available_locations = self.llapi.list_of_location_names_wr()
-                location_checker_on = True
-                while location_checker_on:
-                    print("Available locations are as follows:")
-                    self.llapi.list_printer(available_locations)
-                    location = string.capwords(input("What location is the work request at?: "))
-                    if string.capwords(location) not in available_locations:
-                        print("Not a valid location, please either create a new location or select an available one")
-                    else:
-                        location_checker_on = False
-                        location_split = location.split(" - ")
+                all_or_your = input("do you want this to apply multiple locations y/n?: ")
+                if all_or_your.lower() == "y":
+                    location = "All Locations"
+                else:
+                    location = self.report_location[0]
             if counter == 0 or counter !=0 and fieldchange == "p":
                 properties_comma_checkon = True
                 while properties_comma_checkon:
                     if location.lower() == "all locations":
-                        properties = input("Input all property id numbers the request is for")
+                        properties = input("Input all property id numbers the request is for: ")
                         comma_check = self.llapi.comma_checker(properties)
                         if comma_check:
                             print("Please don't have a comma in the description, only use periods, commas mess with our database")
@@ -415,7 +416,9 @@ class WorkReportMenu:
                         if properties not in propID:
                             print("Please input an existing property ID.")
                         else:
-                            is_it_there = self.llapi.is_it_there(properties, location_split[0])
+                            is_it_there = self.llapi.is_it_there(properties, self.location)
+
+                            print(self.location)
                             if is_it_there:
                                 properties_comma_checkon = False
                             else:
@@ -439,7 +442,7 @@ class WorkReportMenu:
                     elif location.lower() == "all locations":
                         worker_comma_check_on = False
                     else:
-                        does_he_work_there = self.llapi.does_he_work_there(worker, location_split[0])
+                        does_he_work_there = self.llapi.does_he_work_there(worker, self.location)
                         if does_he_work_there:
                             worker_comma_check_on = False
                         else:
@@ -546,17 +549,11 @@ class WorkReportMenu:
                     else:
                         description_comma_check_on = False
             if counter == 0 or counter !=0 and fieldchange == "l":
-                print("")
-                available_locations = self.llapi.list_of_location_names()
-                location_checker_on = True
-                while location_checker_on:
-                    print("Available locations are as follows:")
-                    self.llapi.list_printer(available_locations)
-                    location = string.capwords(input("What location was the work request at?: "))
-                    if string.capwords(location) not in available_locations:
-                        print("Not a valid location, please either create a new location or select an available one")
-                    else:
-                        location_checker_on = False
+                all_or_your = input("do you want this to apply multiple locations y/n?: ")
+                if all_or_your.lower() == "y":
+                    location = "All Locations"
+                else:
+                    location = self.report_location[0]
             if counter == 0 or counter !=0 and fieldchange == "p":
                 properties_comma_checkon = True
                 while properties_comma_checkon:
