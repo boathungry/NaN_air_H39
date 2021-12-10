@@ -418,7 +418,7 @@ class WorkReportMenu:
     def mark_work_report_as_done():
         pass
 
-    def Accept_finished_work_reports():
+    def accept_finished_work_reports():
         pass
     
     def View_work_requests(self):
