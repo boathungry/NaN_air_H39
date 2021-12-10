@@ -198,11 +198,9 @@ class ManagerUI:
             print(f"Phone:     {phone}")
             print(f"Cellphone: {cellphone}")
             print(f"Title:     {title}")
-            print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
+            print("Select a field to change: [n]ame, [e]mail, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
             fieldchange = input("Input the letter of the field you wish to change: ")
-            if fieldchange.lower() == "n":
-                name = input("What is the new name of the employee?: ")   
-            elif fieldchange.lower() == "l":
+            if fieldchange.lower() == "l":
                 location_check_on = True
                 while location_check_on:
                     available_locations = self.llapi.list_of_location_names()
@@ -213,22 +211,36 @@ class ManagerUI:
                         print("Not a valid location, please either create a new location or select an available one")
                     else:
                         location_check_on = False
-            elif fieldchange.lower() == "a":    
-                address = input("What is the address of the employee?: ")
-            elif fieldchange.lower() == "p":
-                phone = input("What is the employees phone number?: ")
-            elif fieldchange.lower() == "c":
-                cellphone = input("What is the employees cellphone number?: ")
             elif fieldchange.lower() == "t":
-                titlechecker_on = True
-                while titlechecker_on:
-                    title = input('Is the employee a "manager" or a regular "staff" member?: ').lower()
-                    if title.lower() not in ["manager", "staff"]:
-                        print('Not a valid title, please input either the word "manager" or the word "staff"')
+                    titlechecker_on = True
+                    while titlechecker_on:
+                        title = input('Is the employee a "manager" or a regular "staff" member?: ').lower()
+                        if title.lower() not in ["manager", "staff"]:
+                            print('Not a valid title, please input either the word "manager" or the word "staff"')
+                        else:
+                            titlechecker_on = False   
+            elif fieldchange in ["n", "e", "a", "p", "c"]:
+                comma_check_on = True
+                while comma_check_on:
+                    fieldinput = input(f"What would you like it changed to?: ")
+                    comma_check = self.llapi.comma_checker(fieldinput)
+                    if comma_check:
+                        print("Please don't have a comma in the input. It messes with the database")
                     else:
-                        titlechecker_on = False
+                        comma_check_on = False
+                if fieldchange.lower() == "n":
+                    name = string.capwords(fieldinput)
+                elif fieldchange.lower() == "e":    
+                    email = string.capwords(fieldinput)  
+                elif fieldchange.lower() == "a":    
+                    address = string.capwords(fieldinput)
+                elif fieldchange.lower() == "p":
+                    phone = string.capwords(fieldinput)
+                elif fieldchange.lower() == "c":
+                    cellphone = string.capwords(fieldinput)
             else:
                 print("Invalid option put into selection field.")
+                    
             editmore = input("Would you like to stop editing input [y] to commit changes and go back to the main menu, input [c] to cancel, input anything else to keep editing: ")
             if editmore == "y":
                 staff_editor = False
@@ -247,6 +259,7 @@ class ManagerUI:
                 self.managers_menu()
             elif editmore == "c":
                 staff_editor = False
+                self.managers_menu()
             else:
                 pass
 
