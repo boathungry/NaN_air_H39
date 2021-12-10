@@ -136,6 +136,7 @@ class DLAPI:
         return self.locDL.create_new_destination(location)
 
     def get_all_destinations(self):
+        """returns a list with info on all destinations available"""
         return self.locDL.get_all_locations()
 
     def search_destination(self, attribute:str, value) -> list:
@@ -145,5 +146,9 @@ class DLAPI:
     def get_all_location_names(self):
         '''Lists all work requests'''
         return self.locDL.get_all_location_names()
+        
+    def get_all_property_id(self):
+        """returns a list of all used property id numbers"""
+        return self.propDL.get_all_property_ID()
 
     
