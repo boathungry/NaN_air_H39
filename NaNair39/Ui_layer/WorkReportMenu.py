@@ -33,11 +33,7 @@ class WorkReportMenu:
         elif selection == "3":
             return self.edit_work_request()
         elif selection == "4":
-<<<<<<< HEAD
-            self.mark_work_request_as_done()
-=======
             return self.finalize_work_request()
->>>>>>> 4267255e396de43f0dff20df584cc5d34610acbe
         elif selection == "5":
             pass
         elif selection == "6":
@@ -203,13 +199,8 @@ class WorkReportMenu:
                     results_final["wreqtime"] = time
                     results_final["wreqstart"] = start
                     results_final["wreqdone"] = done
-<<<<<<< HEAD
-                    #Write to a file
-                    init = Data_layer.WorkRequestDL.WorkRequestDL()
-=======
                     #Skrifa í skrá
                     init = Data_layer.WorkRequestDL.WorkRequestDL(id=results_final["wreqid"], location=results_final["wreqlocation"])
->>>>>>> 4267255e396de43f0dff20df584cc5d34610acbe
                     init.change_information_work_request(results_final)
                     return True
                 elif editmore == "c":
@@ -351,16 +342,6 @@ class WorkReportMenu:
                             start_comma_check_on = False
                 if counter == 0 or counter !=0 and fieldchange.lower() == "do":
                     done_comma_check_on = True
-<<<<<<< HEAD
-                while done_comma_check_on:
-                    done = input("What is the finished date?: ")
-                    done = "Unknown"
-                    comma_check = self.llapi.comma_checker(done)
-                    if comma_check:
-                        print("Please don't have a comma. It messes with our database")
-                    else:
-                        done_comma_check_on = False
-=======
                     while done_comma_check_on:
                         done = input("What is the finished date?: ")
                         comma_check = self.llapi.comma_checker(done)
@@ -368,7 +349,6 @@ class WorkReportMenu:
                             print("Please don't have a comma. It messes with our database")
                         else:
                             done_comma_check_on = False
->>>>>>> 4267255e396de43f0dff20df584cc5d34610acbe
             counter +=1
 
     
