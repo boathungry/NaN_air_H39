@@ -40,9 +40,9 @@ class WorkReportMenu:
         elif selection == "5":
             return self.finalize_work_report()
         elif selection == "6":
-            return self.view_work_requests
+            return self.view_work_requests()
         elif selection == "7":
-            return self.view_work_reports
+            return self.view_work_reports()
         elif selection == "b":
             return True
         elif selection == "q":
@@ -57,6 +57,7 @@ class WorkReportMenu:
         work_report_id = (input("Enter work report ID number: "))
         work_report_info = self.llapi.dict_search(WorkReport, attribute="id", value=work_report_id)
         results = work_report_info
+        print("results:", results)
         if len(results)<1:
             print("No requests found with that ID")
             return self.finalize_work_report()
@@ -435,14 +436,12 @@ class WorkReportMenu:
                 while worker_comma_check_on: 
                     worker = string.capwords(input("Who is the worker?: "))
                     exists = self.llapi.list_all_employees_names()
-                    print(exists)
                     if worker not in exists:
                         print("please make sure the worker exists")
                     elif location.lower() == "all locations":
                         worker_comma_check_on = False
                     else:
                         does_he_work_there = self.llapi.does_he_work_there(worker, location_split[0])
-                        print(does_he_work_there)
                         if does_he_work_there:
                             worker_comma_check_on = False
                         else:
@@ -503,7 +502,6 @@ class WorkReportMenu:
         create_work_report_loop = True
         fieldchange = ""
         while create_work_report_loop:
-            print(counter)
             if counter != 0:
                 print("Is this the correct information?")
                 print(f"ID:                        {id}")
@@ -711,20 +709,17 @@ class WorkReportMenu:
 
     def work_report_staff_menu(self):
         print("1. Create work request")
-        print("2. Create maintenance request")
-        print("3. Change maintenance report")
-        print("4. Browse work and maintenance reports")
+        print("2. Change work request")
+        print("3. Browse work and maintenance reports")
         print("b. Back to main menu")
         print("q. Quit")
         selection = input("Input selection: ")
         if selection == "1":
-            pass
+            return self.create_work_request()
         elif selection == "2":
-            pass
+            return self.edit_work_request()
         elif selection == "3":
-            pass
-        elif selection == "4":
-            pass
+            return self.view_work_reports()
         elif selection.lower() == "b":
             return True
         elif selection.lower() == "q":
