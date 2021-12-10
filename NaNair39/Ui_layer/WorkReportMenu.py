@@ -380,7 +380,7 @@ class WorkReportMenu:
             if counter == 0 or counter !=0 and fieldchange.lower() == "e":
                 expenses_comma_check_on = True
                 while expenses_comma_check_on:
-                    expenses = input(int("What were the overall expenses?: "))
+                    expenses = input("What were the overall expenses?: ")
                     comma_check = self.llapi.comma_checker(expenses)
                     if comma_check:
                         print("Please don't have a comma. It messes with our database")
