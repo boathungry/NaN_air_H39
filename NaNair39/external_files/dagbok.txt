@@ -134,4 +134,5 @@ Ingi: Debug og að koma virkni sem hafði verið implementuð að hluta til í f
 Morgunfundur: Allir hjálpast að við að leggja lokahönd á forritið og skýrslu.
 
 Eftir daginn:
+Þór: Kláraði klasarit og skýrslu
 
