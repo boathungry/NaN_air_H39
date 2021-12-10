@@ -14,23 +14,11 @@ class LogIn:
                 return "q"
             else:
                 userID = EmployeeDL(loginID)
-                """current_user = Logic_layer.LLAPI.LLAPI.login_byID(idnumber=userID)
-                print(current_user)"""
                 user = EmployeeDL.login_by_ID(userID)
                 if user == None:
                     print("ID number not found")
                 else:
                     return user
-                
-                    
-                
-    
-    def temp_innskra():
-        print("1. Managers")
-        print("2. Staff")
-        print("q. Quit")
-        selection = input("Input selection: ")
-        return selection
 
     def __str__(self):
         return self.user 

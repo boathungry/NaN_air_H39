@@ -4,7 +4,10 @@ from Models.WorkReportModel import WorkReport
 from Models.WorkRequestModel import WorkRequest
 import Data_layer.WorkRequestDL
 import Data_layer.WorkReportDL
+<<<<<<< HEAD
 
+=======
+>>>>>>> acb82005ef35167a5607fa0d86de2cc9aea4f561
 from Logic_layer.WorkRequestLL import WorkRequest
 from datetime import date
 
@@ -40,9 +43,9 @@ class WorkReportMenu:
         elif selection == "5":
             return self.finalize_work_report()
         elif selection == "6":
-            pass
+            return self.view_work_requests
         elif selection == "7":
-            pass
+            return self.view_work_reports
         elif selection == "b":
             return True
         elif selection == "q":
@@ -221,61 +224,129 @@ class WorkReportMenu:
 
                 print("Select a field to change: [w]ork request, [l]ocation, [p]roperties, [d]escription, [wo]rker, [pr]iority, [r]epeat, [t]ime, [s]tart, [do]ne.")
                 fieldchange = input("Input the letter of the field you wish to change: ")
-                if fieldchange.lower() == "w":
-                    work_request = input("What is your new work request?: ")   
-                elif fieldchange.lower() == "l":
-                    location_check_on = True
-                    while location_check_on:
-                        available_locations = self.llapi.list_of_location_names_wr()
+                
+                if fieldchange.lower() == "l":
+                    print("")
+                    available_locations = self.llapi.list_of_location_names_wr()
+                    location_checker_on = True
+                    while location_checker_on:
                         print("Available locations are as follows:")
                         self.llapi.list_printer(available_locations)
-                        location = input("What location is the new work request at?: ")
-                        if location not in available_locations:
+                        location = string.capwords(input("What location is the work request at?: "))
+                        if string.capwords(location) not in available_locations:
                             print("Not a valid location, please either create a new location or select an available one")
                         else:
-                            location_check_on = False
-                elif fieldchange.lower() == "p":    
-                    properties = input("What is the new property?: ")
-                elif fieldchange.lower() == "d":
-                    description = input("What is the new description?: ")
+                            location_checker_on = False
+                            location_split = location.split(" - ")
+                elif fieldchange.lower() == "p":
+                    properties_comma_checkon = True
+                    while properties_comma_checkon:
+                        if location.lower() == "all locations":
+                                properties = input("Input all property id numbers the request is for")
+                                comma_check = self.llapi.comma_checker(properties)
+                                if comma_check:
+                                    print("Please don't have a comma in the description, only use periods, commas mess with our database")
+                                else:
+                                    properties_comma_checkon = False
+                        else:
+                            properties = input("What is the property's ID number?: ").lower()
+                            propID = self.llapi.get_all_property_ID()                        
+                            if properties not in propID:
+                                print("Please input an existing property ID.")
+                            else:
+                                is_it_there = self.llapi.is_it_there(properties, location_split[0])
+                                if is_it_there:
+                                    properties_comma_checkon = False
+                                else:
+                                    print("Property is not in that location")
                 elif fieldchange.lower() == "wo":
-                    worker = input("Who is the new worker?: ")
+                    worker_comma_check_on = True
+                    while worker_comma_check_on: 
+                        worker = string.capwords(input("Who is the worker?: "))
+                        exists = self.llapi.list_all_employees_names()
+                        print(exists)
+                        if worker not in exists:
+                            print("please make sure the worker exists")
+                        elif location.lower() == "all locations":
+                            worker_comma_check_on = False
+                        else:
+                            does_he_work_there = self.llapi.does_he_work_there(worker, location_split[0])
+                            print(does_he_work_there)
+                            if does_he_work_there:
+                                worker_comma_check_on = False
+                            else:
+                                print("Employee does not work there")
                 elif fieldchange.lower() == "pr":
-                    priority = input("What is the new priority?: ")
+                    priority_comma_check_on = True
+                    while priority_comma_check_on:
+                        priority = input("Give the request a priority number from 1 - 10 (1 being priority)?: ")
+                        try:
+                            prinum = int(priority)
+                            if prinum > 10 or prinum < 1:
+                                print("please select a number from 1 to 10")
+                            else:
+                                priority_comma_check_on = False
+                        except:
+                            print("Please only use whole numbers for priority.")
                 elif fieldchange.lower() == "r":
-                    repeat = input("Would you like to repeat (y/n)?: ")
+                        repeat_check_on = True
+                        while repeat_check_on:
+                            repeat = input("Repeat (y/n)").lower()
+                            if repeat not in ["y", "n"]:
+                                print('Please only use a "y" or a "n"')
+                            else:
+                                repeat_check_on = False
                 elif fieldchange.lower() == "t":
-                    time = input("When would you like to repeat (none/daily/weekly/monthly/yearly)?: ")
-                elif fieldchange.lower() == "s":
-                    start = input("What is the new start date?: ")
-                elif fieldchange.lower() == "do":
-                    done = input("What is the new finished date?: ")
-                else:
-                    print("Invalid option put into selection field.")
-                editmore = input("Would you like to stop editing input [y] to commit changes and go back to the main menu, input [c] to cancel, input anything else to keep editing: ")
-                if editmore == "y":
-                    request_editor = False
-                    results_final = {}
-                    results_final["wreqid"] = id
-                    results_final["wreqwork_request"] = work_request
-                    results_final["wreqlocation"] = location
-                    results_final["wreqproperties"] = properties
-                    results_final["wreqdescription"] = description
-                    results_final["wreqworker"] = worker
-                    results_final["wreqpriority"] = priority
-                    results_final["wreqrepeat"] = repeat
-                    results_final["wreqtime"] = time
-                    results_final["wreqstart"] = start
-                    results_final["wreqdone"] = done
-                    #Skrifa í skrá
-                    init = Data_layer.WorkRequestDL.WorkRequestDL(id=results_final["wreqid"], location=results_final["wreqlocation"])
-                    init.change_information_work_request(results_final)
-                    return True
-                elif editmore == "c":
-                    request_editor = False
-                    return True
-                else:
-                    pass
+                        time_check_on = True
+                        while time_check_on:
+                            time = input("When would you like to repeat (none/daily/weekly/monthly/yearly)?: ").lower()
+                            if time not in ["none", "daily", "weekly", "montly", "yearly"]:
+                                print("Please only select one of the apropriate options and spell them like they are spelled in the input line")
+                            else:
+                                time_check_on = False
+                elif fieldchange in ["w", "d", "t", "s", "do"]:
+                    comma_check_on = True
+                    while comma_check_on:
+                        changed_into = input("What would you like it changed to?: ")
+                        comma_check = self.llapi.comma_checker(changed_into)
+                        if comma_check:
+                            print("Please don't have a comma in the input it will mess with our database.")
+                        else:
+                            comma_check_on = False
+                    if fieldchange.lower() == "w":
+                        work_request = changed_into 
+                    elif fieldchange.lower() == "d":
+                        description = changed_into
+                    elif fieldchange.lower() == "s":
+                        start = changed_into
+                    elif fieldchange.lower() == "do":
+                        done = changed_into
+                    else:
+                        print("Invalid option put into selection field.")
+                    editmore = input("Would you like to stop editing input [y] to commit changes and go back to the main menu, input [c] to cancel, input anything else to keep editing: ")
+                    if editmore == "y":
+                        request_editor = False
+                        results_final = {}
+                        results_final["wreqid"] = id
+                        results_final["wreqwork_request"] = work_request
+                        results_final["wreqlocation"] = location
+                        results_final["wreqproperties"] = properties
+                        results_final["wreqdescription"] = description
+                        results_final["wreqworker"] = worker
+                        results_final["wreqpriority"] = priority
+                        results_final["wreqrepeat"] = repeat
+                        results_final["wreqtime"] = time
+                        results_final["wreqstart"] = start
+                        results_final["wreqdone"] = done
+                        #Skrifa í skrá
+                        init = Data_layer.WorkRequestDL.WorkRequestDL(id=results_final["wreqid"], location=results_final["wreqlocation"])
+                        init.change_information_work_request(results_final)
+                        return True
+                    elif editmore == "c":
+                        request_editor = False
+                        return True
+                    else:
+                        pass
 
 
     def create_work_request(self):
@@ -633,19 +704,17 @@ class WorkReportMenu:
                     pass
     """
     
-    def View_work_requests(self):
+    def view_work_requests(self):
         work_request_list = self.llapi.get_work_request_list()
         self.llapi.list_printer(work_request_list)
    
-    def View_work_reports(self):
+    def view_work_reports(self):
         work_report_list = self.llapi.get_work_report_list()
         self.llapi.list_printer(work_report_list)
 
-
-
     def work_report_staff_menu(self):
         print("1. Create work request")
-        print("2. create maintenance request")
+        print("2. Create maintenance request")
         print("3. Change maintenance report")
         print("4. Browse work and maintenance reports")
         print("b. Back to main menu")

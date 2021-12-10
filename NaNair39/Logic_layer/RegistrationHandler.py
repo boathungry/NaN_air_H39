@@ -67,7 +67,6 @@ class RegistrationHandler():
     
     def register_location(self, city, country, airport, phone, opening, manager):
         new_location = Location(city, country, airport, phone, opening, manager)
-        print(new_location)
         self.dl_api.create_destination(new_location)
         return new_location
 
