@@ -415,9 +415,6 @@ class WorkReportMenu:
                         approved_comma_check_on = False
             counter +=1
 
-    def change_work_report():
-        pass
-
     def mark_work_report_as_done():
         pass
 
