@@ -1,3 +1,4 @@
+import string
 import Ui_layer.MainMenuMANUI
 import Ui_layer.MainMenuEMPUI
 from Logic_layer.LLAPI import LLAPI
@@ -146,7 +147,7 @@ class WorkReportMenu:
                 pass
 
 
-    def create_work_request():
+    def create_work_request(self):
         counter = 0
         print("")
         create_work_request_loop = True
