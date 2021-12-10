@@ -40,9 +40,5 @@ class WorkRequest(RegistrationHandler, ChangeHandler):
 
             RegistrationHandler.register_work_request(self, id, work_request, location, properties, description, worker, priority, repeat, date_next, start, done)
             
-        
-    def mark_as_done(self, work_request:WorkRequest):
-        ChangeHandler.change_work_request(self, work_request, "done", date.today())
-
             
 
