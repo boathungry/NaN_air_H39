@@ -127,8 +127,6 @@ class ChangeHandler():
             work_report.start == new_value
         elif attribute == DONE:
             work_report.done == new_value
-        elif attribute == APPROVED:
-            work_report.approved == new_value
         else:
             return None
 
