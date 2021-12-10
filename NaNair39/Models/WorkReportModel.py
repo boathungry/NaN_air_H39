@@ -1,6 +1,6 @@
 class WorkReport:
 
-    def __init__(self, id, work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done, approved):
+    def __init__(self, id, work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done):
         self.id = id
         self.work_request_id = work_request_id
         self.description = description

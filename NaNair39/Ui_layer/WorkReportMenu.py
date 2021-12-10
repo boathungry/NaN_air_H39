@@ -4,6 +4,7 @@ from Models.WorkReportModel import WorkReport
 from Models.WorkRequestModel import WorkRequest
 import Data_layer.WorkRequestDL
 import Data_layer.WorkReportDL
+
 from Logic_layer.WorkRequestLL import WorkRequest
 from datetime import date
 
@@ -104,6 +105,7 @@ class WorkReportMenu:
                     results_final["wropstart"] = start
                     results_final["wropdone"] = done
                     #Skrifa í skrá
+                    print("test")
                     init = Data_layer.WorkReportDL.WorkReportDL(id=results_final["wropid"], location=results_final["wroplocation"])
                     init.finalize_work_report(results_final)
                     return True

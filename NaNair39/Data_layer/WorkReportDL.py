@@ -10,24 +10,24 @@ class WorkReportDL:
     #id,work_request_id,description,location,properties,worker,comment,regular_maintenance,expenses,start,done,approved
     def finalize_work_report(self,req):
         header = ["id", "work_request_id", "description", "location", "properties", "worker", "comment", "regular_maintenance", "expenses", "start", "done"]
-        list_work_requests = []
+        list_work_reports = []
         one_work_request = []
         with open("csv_files/WorkReports.csv", newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile, delimiter=',')
             for row in reader:
-                if (row["id"] == req["wreqid"]):
+                if (row["id"] == req["wroqid"]):
                     with open("csv_files/ApprovedWorkReports.csv", 'a', newline='', encoding='utf-8') as csvfile:
                         fieldnames = [row["id"], row["work_request"], row["description"], row["location"], row["properties"], row["worker"], row["comment"], row["regular_maintenance"], row["expenses"], row["start"], row["done"]]
                         writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
                         writer.writerow(fieldnames)
                 else:
                     one_work_request = row["id"], row["work_request"], row["description"], row["location"], row["properties"], row["worker"], row["comment"], row["regular_maintenance"], row["expenses"], row["start"], row["done"]
-                    list_work_requests.append(one_work_request)
+                    list_work_reports.append(one_work_request)
         #Write all file(all lines)
                     with open("csv_files/WorkReports.csv", mode="w", newline='', encoding='utf-8') as csvfile:
-                        req_writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-                        req_writer.writerow(header)
-                        req_writer.writerows(list_work_requests)
+                        rep_writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                        rep_writer.writerow(header)
+                        rep_writer.writerows(list_work_reports)
 
     def get_all_work_reports(self):
         '''Lists all work reports from the given filepath'''
@@ -71,3 +71,32 @@ class WorkReportDL:
                 if row[attribute] == value:
                     results_list.append(report)
         return results_list
+
+    def get_work_report_id_number(self):
+        prev_temp = int(1)
+        '''Checks the next avaliable id number and returns'''
+        with open("csv_files/WorkRequests.csv", newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile, delimiter=',')
+            for row in reader:
+                temp_number = row["id"]
+                if int(temp_number[2:]) >= prev_temp:
+                    prev_temp = (int(temp_number[2:])+1)
+                    prev_temp_string = str(prev_temp)
+                    if len(prev_temp_string) == 1:
+                        return_id = "VS0"+str(prev_temp)
+                    else: 
+                        return_id = "VS"+str(prev_temp) 
+            return return_id     
+
+    def dict_search_for_work_report(self, attribute:str, value):
+        '''Searches for a work request based on the given attribute'''
+        results_list = []
+        attribute = attribute.lower()
+        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if row[attribute] == value:
+                    request = WorkReport(row["id"],row["work_request_id"],row["description"],row["location"],row["properties"],row["worker"],row["comment"],row["regular_maintenance"],row["expenses"],row["start"],row["done"]) #ROWS ADDED
+                    Request_dict = {"wropid":request.id, "wropwork_request_id":request.work_request_id, "wropdescription":request.description, "wroplocation":request.location,"wropproperties":request.properties,"wropworker":request.worker, "wropcomment":request.comment, "wropregular_maintenance":request.regular_maintenance, "wropexpenses":request.expenses, "wropstart":request.start, "wropdone":request.done}
+                    results_list.append(Request_dict)
+            return results_list
