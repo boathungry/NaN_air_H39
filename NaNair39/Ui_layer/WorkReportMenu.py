@@ -57,7 +57,6 @@ class WorkReportMenu:
         work_report_id = (input("Enter work report ID number: "))
         work_report_info = self.llapi.dict_search(WorkReport, attribute="id", value=work_report_id)
         results = work_report_info
-        print("results:", results)
         if len(results)<1:
             print("No requests found with that ID")
             return self.finalize_work_report()
@@ -104,10 +103,10 @@ class WorkReportMenu:
                     results_final["wropregular_maintenance"] = regular_maintenance
                     results_final["wropexpenses"] = expenses
                     results_final["wropstart"] = start
-                    results_final["wropdone"] = done
+                    results_final["wropdone"] = "done"
                     #Skrifa í skrá
                     print("test")
-                    init = Data_layer.WorkReportDL.WorkReportDL(id=results_final["wropid"], location=results_final["wroplocation"])
+                    init = Data_layer.WorkReportDL.WorkReportDL()
                     init.finalize_work_report(results_final)
                     return True
                 elif approve == "N":
@@ -170,9 +169,10 @@ class WorkReportMenu:
                     results_final["wreqrepeat"] = repeat
                     results_final["wreqtime"] = time
                     results_final["wreqstart"] = start
-                    results_final["wreqdone"] = done
+                    results_final["wreqdone"] = "done"
                      #Skrifa í skrá
-                    init = Data_layer.WorkRequestDL.WorkRequestDL(id=results_final["wreqid"], location=results_final["wreqlocation"])
+                    print(results_final)
+                    init = Data_layer.WorkRequestDL.WorkRequestDL()
                     init.finalize_work_request(results_final)
                     return True
                 elif approve == "N":
@@ -461,7 +461,7 @@ class WorkReportMenu:
             if counter == 0 or counter !=0 and fieldchange.lower() == "r":
                 repeat_check_on = True
                 while repeat_check_on:
-                    repeat = input("Repeat (y/n)").lower()
+                    repeat = input("Repeat (y/n)?: ").lower()
                     if repeat not in ["y", "n"]:
                         print('Please only use a "y" or a "n"')
                     else:
@@ -708,6 +708,7 @@ class WorkReportMenu:
         print("")
         open_work_requests_list = self.llapi.get_open_work_request_list()
         self.llapi.list_printer(open_work_requests_list)
+        return True
 
    
     def view_work_reports(self):
@@ -719,11 +720,12 @@ class WorkReportMenu:
         print("")
         open_work_report_list = self.llapi.get_open_work_report_list()
         self.llapi.list_printer(open_work_report_list)
+        return True
 
     def work_report_staff_menu(self):
         print("1. Create work request")
         print("2. Change work request")
-        print("3. Browse work and maintenance reports")
+        print("3. Browse work reports")
         print("b. Back to main menu")
         print("q. Quit")
         selection = input("Input selection: ")
