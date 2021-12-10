@@ -26,7 +26,7 @@ class WorkReportMenu:
         print("3. Change work request")
         print("4. Mark work request as done")
         print("5. Accept finished work reports")
-        print("6. View work request")
+        print("6. View work requests")
         print("7. View work reports")
         print("b. Back to main menu")
         print("q. Quit")
@@ -153,7 +153,6 @@ class WorkReportMenu:
 
     def create_work_request():
         pass
-
 
     def change_work_report():
         pass
