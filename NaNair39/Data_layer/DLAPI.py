@@ -95,7 +95,7 @@ class DLAPI:
         '''Lists all work reports'''
         return self.reqDL.get_all_open_work_requests()
 
-    def get_all_closed_work_reports(self):
+    def get_all_closed_work_requests(self):
         '''Lists all work reports'''
         return self.reqDL.get_all_closed_work_requests()
 
@@ -188,6 +188,11 @@ class DLAPI:
     def get_all_location_names_wr(self):
         '''Lists all work requests'''
         return self.reqDL.get_all_location_names_wr()
+        
+    def get_your_location_for_wr(self, location):
+        """gets your location to use in work requests"""
+        return self.reqDL.get_your_location_name_wr(location)
+
     def does_he_work_there(self, employee, location):
         """checks if a employee works in given location"""
         return self.emplDL.does_he_work_there(employee, location)

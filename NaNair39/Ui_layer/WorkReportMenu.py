@@ -4,8 +4,6 @@ from Models.WorkReportModel import WorkReport
 from Models.WorkRequestModel import WorkRequest
 import Data_layer.WorkRequestDL
 import Data_layer.WorkReportDL
-
-from Logic_layer.WorkRequestLL import WorkRequest
 from datetime import date
 
 class WorkReportMenu:
@@ -17,7 +15,7 @@ class WorkReportMenu:
         self.title = title
         self.llapi = logic_api
         self.llapi = logic_api
-        #report_location = self.llapi.get_your_location_for_wr(location)
+        self.report_location = self.llapi.get_your_location_for_wr(location)
 
     def Work_report_manager_menu(self):
         print("1. Create work request")
@@ -187,12 +185,15 @@ class WorkReportMenu:
 
     def edit_work_request(self):
         print("Change information about a work request")
-        work_request_ID = input("What is the work requests ID number?: ")
+        work_request_ID = input("What is the work requests ID number? input [c] to cancel: ")
         Work_requestinfo = self.llapi.dict_search(WorkRequest,  attribute="id", value=work_request_ID)
         results = Work_requestinfo
         if len(results) < 1:
             print("No requests found with that ID")
             return self.edit_work_request() 
+        if results[0]["wreqlocation"] != self.report_location:
+            print("You do not have access to edit this work request")
+            return self.edit_work_request()
         else:
             id = results[0]["wreqid"]
             work_request = results[0]["wreqwork_request"]

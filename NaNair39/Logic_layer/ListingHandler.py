@@ -106,6 +106,10 @@ class ListingHandler:
     def list_all_location_names_wr(self) -> list:
         """Returns a list of all location names for work reports."""
         return self.dl_api.get_all_location_names_wr()
+    
+    def get_your_location_for_wr(self, location):
+        """gets a location for you to use in work reports"""
+        return self.dl_api.get_your_location_for_wr(location)
 
     def filter(self, attribute:str, unfiltered_list, filter, filter_max = 0):
         """Returns a list of items whose attributes match the given filter. Use filter_max if you'd like to get a list of items with values from {filter} to {filter_max}."""

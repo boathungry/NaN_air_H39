@@ -140,6 +140,6 @@ class LLAPI():
         """returns a list of all location names"""
         return self.listing_handler.list_all_location_names_wr()
 
-    def get_your_location_for_wr(self):
+    def get_your_location_for_wr(self, location):
         """returns a list of all location names"""
-        return self.listing_handler.list_all_location_names_wr()
+        return self.listing_handler.get_your_location_for_wr(location)
