@@ -740,3 +740,4 @@ class WorkReportMenu:
         else:
             print("Wrong input!")
             return self.work_report_staff_menu()
+    
