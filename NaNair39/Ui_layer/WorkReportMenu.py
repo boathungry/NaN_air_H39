@@ -287,38 +287,48 @@ class WorkReportMenu:
             if counter != 0:
                 print("Is this the correct information?")
                 print(f"ID:           {id}")
-                print(f"Work request: {work_request}")
+                print(f"Work request ID: {work_request_id}")
+                print(f"Description:  {description}")
                 print(f"Location:     {location}")
                 print(f"Properties:   {properties}")
-                print(f"Description:  {description}")
                 print(f"Worker:       {worker}")
-                print(f"Priority:     {priority}")
-                print(f"Repeat (y/n): {repeat}")
-                print(f"Time:         {time}")
+                print(f"Comment:     {comment}")
+                print(f"Regular maintenance (y/n): {regular_maintenance}")
+                print(f"Expenses:         {expenses}")
                 print(f"Start:        {start}")
                 print(f"Done:         {done}")
+                print(f"Approved:         {approved}")
 
                 rightorwrong = input("Is this information correct [y]es, [n]o, [c]ancel: ")
                 if rightorwrong.lower() == "y":
-                    create_work_request_loop = False
-                    self.llapi.create_work_request(id, work_request, location, properties, description, worker, priority, repeat, time, start, done)
+                    create_work_report_loop = False
+                    self.llapi.create_work_report(id, work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done, approved)
                     self.managers_menu()
                 elif rightorwrong.lower() == "c":
-                    create_work_request_loop = False
+                    create_work_report_loop = False
                     fieldchange = ""
                     return True
                 elif rightorwrong.lower() == "n":
-                    print("Select a field to change: [w]ork request, [l]ocation, [p]roperties, [d]escription, [wo]rker, [pr]iority, [r]epeat, [t]ime, [s]tart, [do]ne.")
+                    print("Select a field to change: [w]ork request ID, [d]escription, [l]ocation, [p]roperties, [wo]rker, [r]egular maintenance, [e]xpenses, [s]tart, [do]ne, [a]pproved.")
                     fieldchange = input("Input the letter of the field you wish to change: ")
             if counter == 0 or counter !=0 and fieldchange.lower() == "w":
-                work_request_comma_check_on = True
-                while work_request_comma_check_on:
-                    work_request = string.capwords(input("What is the work request?: "))
-                    comma_check = self.llapi.comma_checker(work_request)
+                work_request_id_comma_check_on = True
+                while work_request_id_comma_check_on:
+                    work_request_id = string.capwords(input("What is the work request ID?: "))
+                    comma_check = self.llapi.comma_checker(work_request_id)
                     if comma_check:
-                        print("Please don't have commas in the work request, only use periods, commas mess with our database.")
+                        print("Please don't have commas in the work request ID, commas mess with our database.")
                     else:
-                        work_request_comma_check_on = False
+                        work_request_id_comma_check_on = False
+            if counter == 0 or counter !=0 and fieldchange == "d":            
+                description_comma_check_on = True
+                while description_comma_check_on:                  
+                    description = string.capwords(input("What is the work report´s description?: "))
+                    comma_check = self.llapi.comma_checker(description)
+                    if comma_check:
+                        print("Please don't have a comma in the description, only use periods, commas mess with our database")
+                    else:
+                        description_comma_check_on = False
             if counter == 0 or counter !=0 and fieldchange == "l":
                 print("")
                 available_locations = self.llapi.list_of_location_names()
@@ -326,7 +336,7 @@ class WorkReportMenu:
                 while location_checker_on:
                     print("Available locations are as follows:")
                     self.llapi.list_printer(available_locations)
-                    location = string.capwords(input("What location is the work request at?: "))
+                    location = string.capwords(input("What location was the work request at?: "))
                     if string.capwords(location) not in available_locations:
                         print("Not a valid location, please either create a new location or select an available one")
                     else:
@@ -340,15 +350,6 @@ class WorkReportMenu:
                         print("Please don't use commas in the property ID. Commas mess with our database.")
                     else:
                         properties_comma_checkon = False
-            if counter == 0 or counter !=0 and fieldchange == "d":            
-                description_comma_check_on = True
-                while description_comma_check_on:                  
-                    description = string.capwords(input("What is the work request´s description?: "))
-                    comma_check = self.llapi.comma_checker(description)
-                    if comma_check:
-                        print("Please don't have a comma in the description, only use periods, commas mess with our database")
-                    else:
-                        description_comma_check_on = False
             if counter == 0 or counter !=0 and fieldchange == "wo":
                 worker_comma_check_on = True
                 while worker_comma_check_on: 
@@ -358,33 +359,24 @@ class WorkReportMenu:
                         print("Please don't have a comma. It messes with our database")
                     else:
                         worker_comma_check_on = False
-            if counter == 0 or counter !=0 and fieldchange.lower() == "pr":
-                priority_comma_check_on = True
-                while priority_comma_check_on:
-                    priority = input("Would you like to repeat (y/n)?: ")
-                    comma_check = self.llapi.comma_checker(priority)
-                    if comma_check:
-                        print("Please don't have a comma. It messes with our database")
-                    else:
-                        priority_comma_check_on = False
             if counter == 0 or counter !=0 and fieldchange.lower() == "r":
-                repeat_comma_check_on = True
-                while repeat_comma_check_on:
-                    repeat = input("")
-                    comma_check = self.llapi.comma_checker(repeat)
+                regular_maintenance_comma_check_on = True
+                while regular_maintenance_comma_check_on:
+                    regular_maintenance = input("Was it a regular maintenance (y/n)?: ")
+                    comma_check = self.llapi.comma_checker(regular_maintenance)
                     if comma_check:
                         print("Please don't have a comma. It messes with our database")
                     else:
-                        repeat_comma_check_on = False
-            if counter == 0 or counter !=0 and fieldchange.lower() == "t":
-                time_comma_check_on = True
-                while time_comma_check_on:
-                    time = input("When would you like to repeat (none/daily/weekly/monthly/yearly)?: ")
-                    comma_check = self.llapi.comma_checker(time)
+                        regular_maintenance_comma_check_on = False
+            if counter == 0 or counter !=0 and fieldchange.lower() == "e":
+                expenses_comma_check_on = True
+                while expenses_comma_check_on:
+                    expenses = input(int("What were the overall expenses?: "))
+                    comma_check = self.llapi.comma_checker(expenses)
                     if comma_check:
                         print("Please don't have a comma. It messes with our database")
                     else:
-                        time_comma_check_on = False
+                        expenses_comma_check_on = False
                 if counter == 0 or counter !=0 and fieldchange.lower() == "s":
                     start_comma_check_on = True
                 while start_comma_check_on:
@@ -403,6 +395,15 @@ class WorkReportMenu:
                         print("Please don't have a comma. It messes with our database")
                     else:
                         done_comma_check_on = False
+            if counter == 0 or counter !=0 and fieldchange.lower() == "a":
+                approved_comma_check_on = True
+                while approved_comma_check_on:
+                    approved = input("When was it approved?: ")
+                    comma_check = self.llapi.comma_checker(approved)
+                    if comma_check:
+                        print("Please don't have a comma. It messes with our database")
+                    else:
+                        approved_comma_check_on = False
             counter +=1
 
     def change_work_report():
