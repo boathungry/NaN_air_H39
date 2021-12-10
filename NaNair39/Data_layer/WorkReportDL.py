@@ -15,13 +15,14 @@ class WorkReportDL:
         with open("csv_files/WorkReports.csv", newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile, delimiter=',')
             for row in reader:
-                if (row["id"] == req["wroqid"]):
+                print(row["work_request_id"])
+                if (row["id"] == req["wropid"]):
                     with open("csv_files/ApprovedWorkReports.csv", 'a', newline='', encoding='utf-8') as csvfile:
-                        fieldnames = [row["id"], row["work_request"], row["description"], row["location"], row["properties"], row["worker"], row["comment"], row["regular_maintenance"], row["expenses"], row["start"], row["done"]]
+                        fieldnames = [row["id"], row["work_request_id"], row["description"], row["location"], row["properties"], row["worker"], row["comment"], row["regular_maintenance"], row["expenses"], row["start"], req["wropdone"]]
                         writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
                         writer.writerow(fieldnames)
                 else:
-                    one_work_request = row["id"], row["work_request"], row["description"], row["location"], row["properties"], row["worker"], row["comment"], row["regular_maintenance"], row["expenses"], row["start"], row["done"]
+                    one_work_request = row["id"], row["work_request_id"], row["description"], row["location"], row["properties"], row["worker"], row["comment"], row["regular_maintenance"], row["expenses"], row["start"], row["done"]
                     list_work_reports.append(one_work_request)
         #Write all file(all lines)
                     with open("csv_files/WorkReports.csv", mode="w", newline='', encoding='utf-8') as csvfile:

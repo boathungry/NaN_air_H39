@@ -57,7 +57,6 @@ class WorkReportMenu:
         work_report_id = (input("Enter work report ID number: "))
         work_report_info = self.llapi.dict_search(WorkReport, attribute="id", value=work_report_id)
         results = work_report_info
-        print("results:", results)
         if len(results)<1:
             print("No requests found with that ID")
             return self.finalize_work_report()
@@ -104,10 +103,10 @@ class WorkReportMenu:
                     results_final["wropregular_maintenance"] = regular_maintenance
                     results_final["wropexpenses"] = expenses
                     results_final["wropstart"] = start
-                    results_final["wropdone"] = done
+                    results_final["wropdone"] = "done"
                     #Skrifa í skrá
                     print("test")
-                    init = Data_layer.WorkReportDL.WorkReportDL(id=results_final["wropid"], location=results_final["wroplocation"])
+                    init = Data_layer.WorkReportDL.WorkReportDL()
                     init.finalize_work_report(results_final)
                     return True
                 elif approve == "N":
@@ -170,9 +169,10 @@ class WorkReportMenu:
                     results_final["wreqrepeat"] = repeat
                     results_final["wreqtime"] = time
                     results_final["wreqstart"] = start
-                    results_final["wreqdone"] = done
+                    results_final["wreqdone"] = "done"
                      #Skrifa í skrá
-                    init = Data_layer.WorkRequestDL.WorkRequestDL(id=results_final["wreqid"], location=results_final["wreqlocation"])
+                    print(results_final)
+                    init = Data_layer.WorkRequestDL.WorkRequestDL()
                     init.finalize_work_request(results_final)
                     return True
                 elif approve == "N":
