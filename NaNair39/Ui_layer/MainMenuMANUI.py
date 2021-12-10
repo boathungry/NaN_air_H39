@@ -65,7 +65,7 @@ class ManagerUI:
             self.llapi.list_printer(employeelist)
             return self.staffing_options()
         elif selection == "4":
-            self.staff_search()
+            return self.staff_search()
         elif selection.lower() == "b":
             return True
         elif selection.lower() == "q":
