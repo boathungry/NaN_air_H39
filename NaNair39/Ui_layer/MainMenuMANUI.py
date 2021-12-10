@@ -83,7 +83,6 @@ class ManagerUI:
         create_employee_loop = True
         fieldchange = ""
         while create_employee_loop:
-            print(counter)
             if counter != 0:
                 print("Is this the correct information?")
                 print(f"Name:      {name}")
