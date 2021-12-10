@@ -1,3 +1,4 @@
+from Models.LocationModel import Location
 from Models.WorkRequestModel import WorkRequest
 import csv
 
@@ -137,6 +138,21 @@ class WorkRequestDL:
                     pass
                 else:
                     return_list.append(loct)
+            
+        return return_list
+    
+    def get_your_location_name_wr(self, location):
+        '''Returns all location names in given filepath'''
+        return_list = []
+        with open('csv_files/Locations.csv', newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if row["city"] == location:
+                    loct = str(row["city"]+" - "+row["country"])
+                    if loct in return_list:
+                        pass
+                    else:
+                        return_list.append(loct)
             
         return return_list
     
