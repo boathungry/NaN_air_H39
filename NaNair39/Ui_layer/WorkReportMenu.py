@@ -57,6 +57,7 @@ class WorkReportMenu:
         work_report_id = (input("Enter work report ID number: "))
         work_report_info = self.llapi.dict_search(WorkReport, attribute="id", value=work_report_id)
         results = work_report_info
+        print("results:", results)
         if len(results)<1:
             print("No requests found with that ID")
             return self.finalize_work_report()

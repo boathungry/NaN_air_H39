@@ -74,6 +74,10 @@ class DLAPI:
     def search_property(self, attribute:str, value) -> list:
         """Searches for properties whose values in the given attribute matches the given value. Returns a list of properties."""
         return self.propDL.search_for_property(attribute, value)
+    
+    def dict_search_work_report(self, attribute:str, value) -> dict:
+        """Searches for work requests whose values in the given attribute matches the given value. Returns a dict of work requests."""
+        return self.VB.dict_search_for_work_report(attribute, value)
 
     def change_information_property(self,prop):
         '''Changes information on an existing property'''

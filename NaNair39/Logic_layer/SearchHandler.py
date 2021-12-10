@@ -37,7 +37,7 @@ class SearchHandler:
         elif search_object == Property:
             search_results = self.dl_api.dict_search_property(attribute, value)
         elif search_object == WorkReport:
-            search_results = self.dl_api.search_work_report(attribute, value)
+            search_results = self.dl_api.dict_search_work_report(attribute, value)
         elif search_object == WorkRequest:
             search_results = self.dl_api.dict_search_work_request(attribute, value)
         elif search_object == Location:
