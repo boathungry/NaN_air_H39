@@ -26,11 +26,11 @@ class WorkReportMenu:
         print("q. Quit")
         selection = input("Input selection: ")
         if selection == "1":
-            self.create_work_request()
+            return self.create_work_request()
         elif selection == "2":
-            self.create_work_report()
+            return self.create_work_report()
         elif selection == "3":
-            self.edit_work_request()
+            return self.edit_work_request()
         elif selection == "4":
             pass
         elif selection == "5":
@@ -134,9 +134,10 @@ class WorkReportMenu:
                     results_final["wreqstart"] = start
                     results_final["wreqdone"] = done
                     #Skrifa í skrá
-                    init = Data_layer.WorkRequestDL.WorkRequestDL()
+                    init = Data_layer.WorkRequestDL.WorkRequestDL(id=results_final["wreqid"], location=results_final["wreqlocation"])
                     init.change_information_work_request(results_final)
-                    #self.managers_menu()
+                    print(results_final)
+                    return True
                 elif editmore == "c":
                     request_editor = False
                     return True

@@ -3,8 +3,10 @@ import csv
 
 class WorkRequestDL:
     
-    def __init__(self):
+    def __init__(self, id = "", location = ""):
         self.filepath = "csv_files/WorkRequests.csv"
+        self.id = id
+        self.location = location
 
     def get_all_work_requests(self):
         '''Lists all work requests to the given filepath'''
@@ -43,7 +45,7 @@ class WorkRequestDL:
         with open("csv_files/WorkRequests.csv", newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile, delimiter=',')
             for row in reader:
-                if (row["id"] == ["wreqid"]):
+                if (row["id"] == req["wreqid"]):
                     one_work_request = (req["wreqid"], req["wreqwork_request"], req["wreqlocation"], req["wreqproperties"], req["wreqdescription"], req["wreqworker"], req["wreqpriority"], req["wreqrepeat"], req["wreqtime"], req["wreqstart"], req["wreqdone"])
                 else:
                     one_work_request = row["id"], row["work_request"], row["location"], row["properties"], row["description"], row["worker"], row["priority"], row["repeat"], row["time"], row["start"], row["done"]
