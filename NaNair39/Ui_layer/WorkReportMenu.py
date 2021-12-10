@@ -1,6 +1,4 @@
 import string
-import Ui_layer.MainMenuMANUI
-import Ui_layer.MainMenuEMPUI
 from Logic_layer.LLAPI import LLAPI
 from Models.WorkRequestModel import WorkRequest
 import Data_layer.WorkRequestDL
@@ -39,17 +37,15 @@ class WorkReportMenu:
             pass
         elif selection == "6":
             pass
-        elif selection == "6":
+        elif selection == "7":
             pass
         elif selection == "b":
-            #current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.ID, self.name, self.email, self.location, self.title)
-            #current_user.managers_menu()
-            pass
+            return False
         elif selection == "q":
-            pass
+            return False
         else:
             print("Wrong input!")
-            self.Work_report_manager_menu()
+            return self.Work_report_manager_menu()
 
  
 #id,work_request,location,properties,description,worker,priority,repeat,time,start,done
@@ -172,7 +168,7 @@ class WorkReportMenu:
                 if rightorwrong.lower() == "y":
                     create_work_request_loop = False
                     self.llapi.create_work_request(id, work_request, location, properties, description, worker, priority, repeat, time, start, done)
-                    self.managers_menu()
+                    return True
                 elif rightorwrong.lower() == "c":
                     create_work_request_loop = False
                     fieldchange = ""
@@ -204,7 +200,7 @@ class WorkReportMenu:
             if counter == 0 or counter !=0 and fieldchange == "p":
                 properties_comma_checkon = True
                 while properties_comma_checkon:
-                    properties = input("What is the property´s ID number?: ")
+                    properties = input("What is the property's ID number?: ")
                     comma_check = self.llapi.comma_checker(properties)
                     if comma_check:
                         print("Please don't use commas in the property ID. Commas mess with our database.")
@@ -213,7 +209,7 @@ class WorkReportMenu:
             if counter == 0 or counter !=0 and fieldchange == "d":            
                 description_comma_check_on = True
                 while description_comma_check_on:                  
-                    description = string.capwords(input("What is the work request´s description?: "))
+                    description = string.capwords(input("What is the work request's description?: "))
                     comma_check = self.llapi.comma_checker(description)
                     if comma_check:
                         print("Please don't have a comma in the description, only use periods, commas mess with our database")
@@ -314,10 +310,9 @@ class WorkReportMenu:
         elif selection == "4":
             pass
         elif selection.lower() == "b":
-            current_user = Ui_layer.MainMenuEMPUI.EmployeeUI(self.ID, self.name, self.email, self.location, self.title)
-            current_user.staff_menu()
+            return True
         elif selection.lower() == "q":
-            pass
+            return False
         else:
             print("Wrong input!")
-            self.work_report_staff_menu()
+            return self.work_report_staff_menu()

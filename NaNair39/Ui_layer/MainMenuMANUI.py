@@ -1,10 +1,8 @@
 from datetime import date
 from Models.EmployeeModel import Employee
 from Logic_layer.LLAPI import LLAPI
-from Models.LocationModel import Location
-import Ui_layer.PropertyMenu
-import Ui_layer.WorkReportMenu 
-import Ui_layer.main_login
+from Ui_layer.PropertyMenu import PropertyMenu
+from Ui_layer.WorkReportMenu import WorkReportMenu
 import string
 import Data_layer.EmployeeDL
 
@@ -36,17 +34,14 @@ class ManagerUI:
             if selection == "1":
                 on = self.staffing_options()
             elif selection == "2":
-                current_user = Ui_layer.PropertyMenu.PropertyMenu(self.idnumber, self.name, self.email, self.location, self.title)
-                on = current_user.location_options()
+                on = PropertyMenu(self.idnumber, self.name, self.email, self.location, self.title).location_options()
             elif selection == "3":
-                current_user = Ui_layer.WorkReportMenu.WorkReportMenu(self.idnumber, self.name, self.email, self.location, self.title)
-                on = current_user.Work_report_manager_menu()
+                on = WorkReportMenu(self.idnumber, self.name, self.email, self.location, self.title).Work_report_manager_menu()
             elif selection == "4":
                 on = self.contractors_menu_man()
             elif selection.lower() == "q":
                 on = False
                 print("Thank you and have a nice day.")
-                
             else:
                 print("Invalid option put into selection field.")
 
@@ -102,7 +97,7 @@ class ManagerUI:
                 if rightorwrong.lower() == "y":
                     create_employee_loop = False
                     self.llapi.create_employee(name, email, location, address, phone, cellphone, title)
-                    self.managers_menu()
+                    return self.managers_menu()
                 elif rightorwrong.lower() == "c":
                     create_employee_loop = False
                     fieldchange = ""
@@ -183,88 +178,90 @@ class ManagerUI:
         employeeID = input("What is the employees ID number?: ").capitalize()
         Employeeinfo = self.llapi.dict_search(Employee,  attribute="id", value=employeeID)
         results = Employeeinfo
-        print(results)
-        id = results[0]["emid"]
-        name = results[0]["emname"]
-        email = results[0]["ememail"]
-        location = results[0]["emlocation"]
-        address = results[0]["emaddress"]
-        phone = results[0]["emphone"]
-        cellphone = results[0]["emcellphone"]
-        title = results[0]["emtitle"]
-        staff_editor = True
-        while staff_editor:
-            print(f"Name:      {name}")
-            print(f"Email:     {email}")
-            print(f"Location:  {location}")
-            print(f"Address:   {address}")
-            print(f"Phone:     {phone}")
-            print(f"Cellphone: {cellphone}")
-            print(f"Title:     {title}")
-            print("Select a field to change: [n]ame, [e]mail, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
-            fieldchange = input("Input the letter of the field you wish to change: ")
-            if fieldchange.lower() == "l":
-                location_check_on = True
-                while location_check_on:
-                    available_locations = self.llapi.list_of_location_names()
-                    print("Available locations are as follows:")
-                    self.llapi.list_printer(available_locations)
-                    location = input("What location does the employee work at?: ")
-                    if location not in available_locations:
-                        print("Not a valid location, please either create a new location or select an available one")
-                    else:
-                        location_check_on = False
-            elif fieldchange.lower() == "t":
-                    titlechecker_on = True
-                    while titlechecker_on:
-                        title = input('Is the employee a "manager" or a regular "staff" member?: ').lower()
-                        if title.lower() not in ["manager", "staff"]:
-                            print('Not a valid title, please input either the word "manager" or the word "staff"')
+        if len(results) < 1:
+            print("ID number not found")
+            return self.edit_staff
+        else:
+            id = results[0]["emid"]
+            name = results[0]["emname"]
+            email = results[0]["ememail"]
+            location = results[0]["emlocation"]
+            address = results[0]["emaddress"]
+            phone = results[0]["emphone"]
+            cellphone = results[0]["emcellphone"]
+            title = results[0]["emtitle"]
+            staff_editor = True
+            while staff_editor:
+                print(f"Name:      {name}")
+                print(f"Email:     {email}")
+                print(f"Location:  {location}")
+                print(f"Address:   {address}")
+                print(f"Phone:     {phone}")
+                print(f"Cellphone: {cellphone}")
+                print(f"Title:     {title}")
+                print("Select a field to change: [n]ame, [e]mail, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
+                fieldchange = input("Input the letter of the field you wish to change: ")
+                if fieldchange.lower() == "l":
+                    location_check_on = True
+                    while location_check_on:
+                        available_locations = self.llapi.list_of_location_names()
+                        print("Available locations are as follows:")
+                        self.llapi.list_printer(available_locations)
+                        location = input("What location does the employee work at?: ")
+                        if location not in available_locations:
+                            print("Not a valid location, please either create a new location or select an available one")
                         else:
-                            titlechecker_on = False   
-            elif fieldchange.lower() in ["n", "e", "a", "p", "c"]:
-                comma_check_on = True
-                while comma_check_on:
-                    fieldinput = input(f"What would you like it changed to?: ")
-                    comma_check = self.llapi.comma_checker(fieldinput)
-                    if comma_check:
-                        print("Please don't have a comma in the input. It messes with the database")
-                    else:
-                        comma_check_on = False
-                if fieldchange.lower() == "n":
-                    name = string.capwords(fieldinput)
-                elif fieldchange.lower() == "e":    
-                    email = string.capwords(fieldinput)  
-                elif fieldchange.lower() == "a":    
-                    address = string.capwords(fieldinput)
-                elif fieldchange.lower() == "p":
-                    phone = string.capwords(fieldinput)
-                elif fieldchange.lower() == "c":
-                    cellphone = string.capwords(fieldinput)
-            else:
-                print("Invalid option put into selection field.")
-                    
-            editmore = input("If you would like to stop editing input [y] to commit changes and go back to the main menu, input [c] to cancel, input anything else to keep editing: ")
-            if editmore == "y":
-                staff_editor = False
-                results_final = {}
-                results_final["emid"] = id
-                results_final["emname"] = name
-                results_final["ememail"] = email
-                results_final["emlocation"] = location
-                results_final["emaddress"] = address
-                results_final["emphone"] = phone
-                results_final["emcellphone"] = cellphone
-                results_final["emtitle"] = title
-                #Skrifa í skrá
-                init = Data_layer.EmployeeDL.EmployeeDL(ID=results_final["emid"], location=results_final["emlocation"])
-                init.change_information_employee(results_final)
-                return True
-            elif editmore == "c":
-                staff_editor = False
-                return True
-            else:
-                pass
+                            location_check_on = False
+                elif fieldchange.lower() == "t":
+                        titlechecker_on = True
+                        while titlechecker_on:
+                            title = input('Is the employee a "manager" or a regular "staff" member?: ').lower()
+                            if title.lower() not in ["manager", "staff"]:
+                                print('Not a valid title, please input either the word "manager" or the word "staff"')
+                            else:
+                                titlechecker_on = False   
+                elif fieldchange.lower() in ["n", "e", "a", "p", "c"]:
+                    comma_check_on = True
+                    while comma_check_on:
+                        fieldinput = input(f"What would you like it changed to?: ")
+                        comma_check = self.llapi.comma_checker(fieldinput)
+                        if comma_check:
+                            print("Please don't have a comma in the input. It messes with the database")
+                        else:
+                            comma_check_on = False
+                    if fieldchange.lower() == "n":
+                        name = string.capwords(fieldinput)
+                    elif fieldchange.lower() == "e":    
+                        email = string.capwords(fieldinput)  
+                    elif fieldchange.lower() == "a":    
+                        address = string.capwords(fieldinput)
+                    elif fieldchange.lower() == "p":
+                        phone = string.capwords(fieldinput)
+                    elif fieldchange.lower() == "c":
+                        cellphone = string.capwords(fieldinput)
+                else:
+                    print("Invalid option put into selection field.")     
+                editmore = input("If you would like to stop editing input [y] to commit changes and go back to the main menu, input [c] to cancel, input anything else to keep editing: ")
+                if editmore == "y":
+                    staff_editor = False
+                    results_final = {}
+                    results_final["emid"] = id
+                    results_final["emname"] = name
+                    results_final["ememail"] = email
+                    results_final["emlocation"] = location
+                    results_final["emaddress"] = address
+                    results_final["emphone"] = phone
+                    results_final["emcellphone"] = cellphone
+                    results_final["emtitle"] = title
+                    #Skrifa í skrá
+                    init = Data_layer.EmployeeDL.EmployeeDL(ID=results_final["emid"], location=results_final["emlocation"])
+                    init.change_information_employee(results_final)
+                    return True
+                elif editmore == "c":
+                    staff_editor = False
+                    return True
+                else:
+                    pass
 
 
     def staff_search(self):

@@ -1,7 +1,5 @@
 from Models.LocationModel import Location
 from Models.PropertyModel import Property
-import Ui_layer.MainMenuMANUI
-import Ui_layer.MainMenuEMPUI
 from Logic_layer.LLAPI import LLAPI
 import Data_layer.PropertiesDL
 import string
@@ -17,37 +15,28 @@ class PropertyMenu:
         self.llapi = logic_api
 
     def location_options(self):
-        location_options_on = True
-        while location_options_on:
-            print("1. Destinations")
-            print("2. Properties")
-            print("b. Back to main menu")
-            print("q. Quit")
-            selection = input("Input selection: ")
-            if selection == "1" and self.title == "manager":
-                location_options_on = False
-                return self.destination_manager_menu()
-            elif selection == "1" and self.title == "employee":
-                location_options_on = False
-                return self.destination_staff_menu()
-            elif selection == "2" and self.title == "manager":
-                location_options_on = False
-                return self.property_manager_menu()
-            elif selection == "2" and self.title == "employee":
-                location_options_on = False
-                return self.property_staff_menu()
-            elif selection.lower() == "b" and self.title == "manager":
-                location_options_on = False
-                return True
-            elif selection.lower() == "b" and self.title == "employee":
-                location_options_on = False
-                return True
-            elif selection.lower() == "q":
-                location_options_on = False
-                return False
-            else:
-                print("Wrong input.")
-                
+        print("1. Destinations")
+        print("2. Properties")
+        print("b. Back to main menu")
+        print("q. Quit")
+        selection = input("Input selection: ")
+        if selection == "1" and self.title == "manager":
+            return self.destination_manager_menu()
+        elif selection == "1" and self.title == "employee":
+            return self.destination_staff_menu()
+        elif selection == "2" and self.title == "manager":
+            return self.property_manager_menu()
+        elif selection == "2" and self.title == "employee":
+            return self.property_staff_menu()
+        elif selection.lower() == "b" and self.title == "manager":
+            return True
+        elif selection.lower() == "b" and self.title == "employee":
+            return True
+        elif selection.lower() == "q":
+            return False
+        else:
+            print("Wrong input.")
+            
 
 
     def destination_manager_menu(self):
@@ -93,14 +82,14 @@ class PropertyMenu:
             self.llapi.list_printer(properties)
             return True
         elif selection == "4":
-            pass
+            return self.property_search()
         elif selection.lower() == "b":
             return True
         elif selection.lower() == "q":
             return False
         else:
             print("Wrong input")
-            self.property_manager_menu()
+            return self.property_manager_menu()
         
     def destination_staff_menu(self):
         print("1. Get list of destinations")
@@ -113,13 +102,11 @@ class PropertyMenu:
             self.llapi.list_printer(all_destinations)
             return True
         elif selection == "2":
-            #Implement destination search class
-            pass
+            return self.destination_search()
         elif selection.lower() == "b":
-            
             return True
         elif selection.lower() == "q":
-            pass
+            return False
         else:
             print("Wrong input!")
             self.destination_staff_menu()
@@ -131,11 +118,11 @@ class PropertyMenu:
         print("q. Quit")
         selection = input("Input selection")
         if selection == "1":
-            #implement list of properties class
-            pass
+            properties = self.llapi.list_all_properties()
+            self.llapi.list_printer(properties)
+            return True
         elif selection == "2":
-            #implement search for properties class
-            pass
+            return self.property_search()
         elif selection.lower() == "b":
             return True
         elif selection.lower() == "q":
@@ -274,97 +261,98 @@ class PropertyMenu:
 
     def edit_property(self):
         print("Change information about a property")
-        propertyID = input("What is the propertys ID number?: ")
+        propertyID = input("What is the propertys ID number (case senistive)?: ")
         print("input fyrir prop_id: ", propertyID)
         Propertyinfo = self.llapi.dict_search(Property,  attribute="idnumber", value=propertyID)
         results = Propertyinfo
-        print(results)
-
-        idnumber = results[0]["pridnumber"]
-        name = results[0]["prname"]
-        location = results[0]["prlocation"]
-        address = results[0]["praddress"]
-        size = results[0]["prsize"]
-        rooms = results[0]["prrooms"]
-        staff_editor = True
-        while staff_editor:
-            print(f"ID number:    {idnumber}")
-            print(f"Name:         {name}")
-            print(f"Location:     {location}")
-            print(f"Address:      {address}")
-            print(f"Size:         {size}")
-            print(f"Rooms:        {rooms}")
-            print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [s]ize, [r]ooms.")
-            fieldchange = input("Input the letter of the field you wish to change: ")
-            if fieldchange.lower() == "n":
-                commaon = True
-                while commaon:
-                    name = input("What is the new name of the property?: ")
-                    comma_check = self.llapi.comma_checker(input=name)
-                    if comma_check:
-                        print("Please don't have a comma in the name, it messes with our database")
-                    else:
-                        commaon = False
-            elif fieldchange.lower() == "l":
-                location_check_on = True
-                while location_check_on:
-                    available_locations = self.llapi.list_of_location_names()
-                    print("Available locations are as follows:")
-                    self.llapi.list_printer(available_locations)
-                    location = string.capwords(input("What location is the new property at?: "))
-                    if location not in available_locations:
-                        print("Not a valid location, please either create a new location or select an available one")
-                    else:
-                        location_check_on = False
-            elif fieldchange.lower() == "a":    
-                commaon = True
-                while commaon:
-                    address = string.capwords(input("What is the address of the property?: "))
-                    comma_check = self.llapi.comma_checker(input=address)
-                    if comma_check:
-                        print("Please don't have a comma in the address, it messes with our database")
-                    else:
-                        commaon = False
-            elif fieldchange.lower() == "s":
-                commaon = True
-                while commaon:
-                    size = input("What is the new size of the property? use the format [xx.xm2]: ")
-                    comma_check = self.llapi.comma_checker(input=size)
-                    if comma_check:
-                        print("Please don't have a comma in the size, it messes with our database use a period instead of the comma.")
-                    else:
-                        commaon = False
-            elif fieldchange.lower() == "r":
-                roomnrson = True
-                while roomnrson:
-                    rooms = input("What is the new number of rooms?: ")
-                    try:
-                        int(rooms)
-                        roomnrson = False
-                    except:
-                        print("Please only use whole numebers for number of rooms")
-                
-            else:
-                print("Invalid option put into selection field.")
-            editmore = input("Would you like to stop editing input [y] to commit changes and go back to the main menu, input [c] to cancel, input anything else to keep editing: ")
-            if editmore == "y":
-                staff_editor = False
-                results_final = {}
-                results_final["pridnumber"] = idnumber
-                results_final["prname"] = name
-                results_final["prlocation"] = location
-                results_final["praddress"] = address
-                results_final["prsize"] = size
-                results_final["prrooms"] = rooms
-                #Skrifa í skrá
-                init = Data_layer.PropertiesDL.PropertyDL()
-                init.change_information_property(results_final)
-                return True
-            elif editmore == "c":
-                staff_editor = False
-                return True
-            else:
-                pass
+        if len(results) < 1:
+            print("No property with that ID")
+        else:
+            idnumber = results[0]["pridnumber"]
+            name = results[0]["prname"]
+            location = results[0]["prlocation"]
+            address = results[0]["praddress"]
+            size = results[0]["prsize"]
+            rooms = results[0]["prrooms"]
+            staff_editor = True
+            while staff_editor:
+                print(f"ID number:    {idnumber}")
+                print(f"Name:         {name}")
+                print(f"Location:     {location}")
+                print(f"Address:      {address}")
+                print(f"Size:         {size}")
+                print(f"Rooms:        {rooms}")
+                print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [s]ize, [r]ooms.")
+                fieldchange = input("Input the letter of the field you wish to change: ")
+                if fieldchange.lower() == "n":
+                    commaon = True
+                    while commaon:
+                        name = input("What is the new name of the property?: ")
+                        comma_check = self.llapi.comma_checker(input=name)
+                        if comma_check:
+                            print("Please don't have a comma in the name, it messes with our database")
+                        else:
+                            commaon = False
+                elif fieldchange.lower() == "l":
+                    location_check_on = True
+                    while location_check_on:
+                        available_locations = self.llapi.list_of_location_names()
+                        print("Available locations are as follows:")
+                        self.llapi.list_printer(available_locations)
+                        location = string.capwords(input("What location is the new property at?: "))
+                        if location not in available_locations:
+                            print("Not a valid location, please either create a new location or select an available one")
+                        else:
+                            location_check_on = False
+                elif fieldchange.lower() == "a":    
+                    commaon = True
+                    while commaon:
+                        address = string.capwords(input("What is the address of the property?: "))
+                        comma_check = self.llapi.comma_checker(input=address)
+                        if comma_check:
+                            print("Please don't have a comma in the address, it messes with our database")
+                        else:
+                            commaon = False
+                elif fieldchange.lower() == "s":
+                    commaon = True
+                    while commaon:
+                        size = input("What is the new size of the property? use the format [xx.xm2]: ")
+                        comma_check = self.llapi.comma_checker(input=size)
+                        if comma_check:
+                            print("Please don't have a comma in the size, it messes with our database use a period instead of the comma.")
+                        else:
+                            commaon = False
+                elif fieldchange.lower() == "r":
+                    roomnrson = True
+                    while roomnrson:
+                        rooms = input("What is the new number of rooms?: ")
+                        try:
+                            int(rooms)
+                            roomnrson = False
+                        except:
+                            print("Please only use whole numebers for number of rooms")
+                    
+                else:
+                    print("Invalid option put into selection field.")
+                editmore = input("Would you like to stop editing input [y] to commit changes and go back to the main menu, input [c] to cancel, input anything else to keep editing: ")
+                if editmore == "y":
+                    staff_editor = False
+                    results_final = {}
+                    results_final["pridnumber"] = idnumber
+                    results_final["prname"] = name
+                    results_final["prlocation"] = location
+                    results_final["praddress"] = address
+                    results_final["prsize"] = size
+                    results_final["prrooms"] = rooms
+                    #Skrifa í skrá
+                    init = Data_layer.PropertiesDL.PropertyDL()
+                    init.change_information_property(results_final)
+                    return True
+                elif editmore == "c":
+                    staff_editor = False
+                    return True
+                else:
+                    pass
 
 
     def destination_search(self):
@@ -558,89 +546,71 @@ class PropertyMenu:
         
     def property_search(self):
         print("What paremeter would you like to search by?")
-        print("[I]D number, [n]ame, [e]mail, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle")
+        print("[I]D number, [n]ame, [l]ocation, [a]ddress, [s]ize, [r]ooms")
         print("Use [b] to go back to main menu and [q] to quit")
         search_attribute = input("Input search attribute: ")
         if search_attribute.lower() == "i":
-            propertyID = input("What is the ID number you wish to search for?: ")
-            Propertyinfo = self.llapi.search(Location,  attribute="idnumber", value=propertyID.capitalize())
+            propertyID = input("What is the ID number(case sensitive) of the property you wish to search for?: ")
+            Propertyinfo = self.llapi.search(Property,  attribute="idnumber", value=propertyID)
             if len(Propertyinfo) < 1:
                 print("No results were found")
-                return self.staff_search()
+                return self.property_search()
             else:
                 self.llapi.list_printer(Propertyinfo)
                 return True
         elif search_attribute.lower() == "n":
-            employeename = input("What is name you wish to search for?: ")
-            namestring = string.capwords(employeename)
-            Propertyinfo = self.llapi.search(Location,  attribute="name", value=namestring)
+            property_name = input("What is name of the property you wish to search for?: ")
+            namestring = string.capwords(property_name)
+            Propertyinfo = self.llapi.search(Property,  attribute="name", value=namestring)
             if len(Propertyinfo) < 1:
                 print("No results were found")
-                self.staff_search()
+                return self.property_search()
             else:
                 self.llapi.list_printer(Propertyinfo)
-                self.managers_menu()
-        elif search_attribute.lower() == "e":
-            employeeemail = input("What is the email you wish to search for?: ")
-            Propertyinfo = self.llapi.search(Location,  attribute="email", value=employeeemail.lower())
-            print(len(Propertyinfo))
-            if len(Propertyinfo) < 1:
-                print("No results were found")
-                self.staff_search()
-            else:
-                self.llapi.list_printer(Propertyinfo)
-                self.managers_menu()
+                return True
         elif search_attribute.lower() == "l":
-            employeelocation = input("What is the location you wish to search for?: ")
-            locationstring = string.capwords(employeelocation)
-            Propertyinfo = self.llapi.search(Location,  attribute="location", value=locationstring)
+            property_location = input("What is the location of the property you wish to search for?: ")
+            locationstring = string.capwords(property_location)
+            Propertyinfo = self.llapi.search(Property,  attribute="location", value=locationstring)
             if len(Propertyinfo) < 1:
                 print("No results were found")
-                self.staff_search()
+                return self.property_search()
             else:
                 self.llapi.list_printer(Propertyinfo)
-                self.managers_menu()   
+                return True  
         elif search_attribute.lower() == "a":
-            Locationaddress = input("What is the address you wish to search for?: ")
-            addressstring = string.capwords(Locationaddress)
-            Locationinfo = self.llapi.search(Location,  attribute="address", value=addressstring)
-            if len(Locationinfo) < 1:
+            property_address = input("What is the address of the property you wish to search for?: ")
+            addressstring = string.capwords(property_address)
+            propertyinfo = self.llapi.search(Property,  attribute="address", value=addressstring)
+            if len(propertyinfo) < 1:
                 print("No results were found")
-                self.staff_search()
+                return self.property_search()
             else:
-                self.llapi.list_printer(Locationinfo)
-                self.managers_menu()
-        elif search_attribute.lower() == "p":
-            Locationphone = input("What is the phone number you wish to search for? (use the format +00 00 00 00 00): ")
-            Propertyinfo = self.llapi.search(Location,  attribute="phone", value=Locationphone)
+                self.llapi.list_printer(propertyinfo)
+                return True
+        elif search_attribute.lower() == "s":
+            property_size = input("What is the size of the property you want to search for? (use the format 00.0): ")
+            property_string = property_size+"m2"
+            Propertyinfo = self.llapi.search(Property,  attribute="size", value=property_string)
             if len(Propertyinfo) < 1:
                 print("No results were found")
-                self.staff_search()
+                return self.property_search()
             else:
                 self.llapi.list_printer(Propertyinfo)
-                self.managers_menu()
-        elif search_attribute.lower() == "c":
-            employeegsm = input("What is the cellphone number you wish to search for(use the format +000 000 0000)?: ")
-            Propertyinfo = self.llapi.search(Location,  attribute="cellphone", value=employeegsm)
+                return True
+        elif search_attribute.lower() == "r":
+            room_number = input("How many rooms does the property have?: ")
+            Propertyinfo = self.llapi.search(Property,  attribute="rooms", value=room_number)
             if len(Propertyinfo) < 1:
                 print("No results were found")
-                self.staff_search()
+                return self.property_search()
             else:
                 self.llapi.list_printer(Propertyinfo)
-                self.managers_menu()
-        elif search_attribute.lower() == "t":
-            employeetitle = input("Do you want to list all staff or managers?: ")
-            Propertyinfo = self.llapi.search(Location,  attribute="title", value=employeetitle.lower())
-            if len(Propertyinfo) < 1:
-                print("No results were found")
-                self.staff_search()
-            else:
-                self.llapi.list_printer(Propertyinfo)
-                self.managers_menu()
+                return True
         elif search_attribute.lower() == "b":
-            self.managers_menu()
+            return True
         elif search_attribute.lower() == "q":
-            pass
+            return False
         else:
             print("Not a valid attribute")
-            self.staff_search()
+            return self.property_search()
