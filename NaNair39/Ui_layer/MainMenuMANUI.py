@@ -375,7 +375,7 @@ class ManagerUI:
             elif selection == "2":
                 on = self.create_contractor()
             elif selection == "b":
-                self.create_contractor()
+                return True
             elif selection == "q":
                 print("Thank you and have a nice day.")
                 return False
