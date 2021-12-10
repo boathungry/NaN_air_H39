@@ -555,3 +555,92 @@ class PropertyMenu:
                     except:
                         print("Please only use whole numbers for the rooms")
             counter +=1
+        
+    def property_search(self):
+        print("What paremeter would you like to search by?")
+        print("[I]D number, [n]ame, [e]mail, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle")
+        print("Use [b] to go back to main menu and [q] to quit")
+        search_attribute = input("Input search attribute: ")
+        if search_attribute.lower() == "i":
+            propertyID = input("What is the ID number you wish to search for?: ")
+            Propertyinfo = self.llapi.search(Location,  attribute="idnumber", value=propertyID.capitalize())
+            if len(Propertyinfo) < 1:
+                print("No results were found")
+                return self.staff_search()
+            else:
+                self.llapi.list_printer(Propertyinfo)
+                return True
+        elif search_attribute.lower() == "n":
+            employeename = input("What is name you wish to search for?: ")
+            namestring = string.capwords(employeename)
+            Propertyinfo = self.llapi.search(Location,  attribute="name", value=namestring)
+            if len(Propertyinfo) < 1:
+                print("No results were found")
+                self.staff_search()
+            else:
+                self.llapi.list_printer(Propertyinfo)
+                self.managers_menu()
+        elif search_attribute.lower() == "e":
+            employeeemail = input("What is the email you wish to search for?: ")
+            Propertyinfo = self.llapi.search(Location,  attribute="email", value=employeeemail.lower())
+            print(len(Propertyinfo))
+            if len(Propertyinfo) < 1:
+                print("No results were found")
+                self.staff_search()
+            else:
+                self.llapi.list_printer(Propertyinfo)
+                self.managers_menu()
+        elif search_attribute.lower() == "l":
+            employeelocation = input("What is the location you wish to search for?: ")
+            locationstring = string.capwords(employeelocation)
+            Propertyinfo = self.llapi.search(Location,  attribute="location", value=locationstring)
+            if len(Propertyinfo) < 1:
+                print("No results were found")
+                self.staff_search()
+            else:
+                self.llapi.list_printer(Propertyinfo)
+                self.managers_menu()   
+        elif search_attribute.lower() == "a":
+            Locationaddress = input("What is the address you wish to search for?: ")
+            addressstring = string.capwords(Locationaddress)
+            Locationinfo = self.llapi.search(Location,  attribute="address", value=addressstring)
+            if len(Locationinfo) < 1:
+                print("No results were found")
+                self.staff_search()
+            else:
+                self.llapi.list_printer(Locationinfo)
+                self.managers_menu()
+        elif search_attribute.lower() == "p":
+            Locationphone = input("What is the phone number you wish to search for? (use the format +00 00 00 00 00): ")
+            Propertyinfo = self.llapi.search(Location,  attribute="phone", value=Locationphone)
+            if len(Propertyinfo) < 1:
+                print("No results were found")
+                self.staff_search()
+            else:
+                self.llapi.list_printer(Propertyinfo)
+                self.managers_menu()
+        elif search_attribute.lower() == "c":
+            employeegsm = input("What is the cellphone number you wish to search for(use the format +000 000 0000)?: ")
+            Propertyinfo = self.llapi.search(Location,  attribute="cellphone", value=employeegsm)
+            if len(Propertyinfo) < 1:
+                print("No results were found")
+                self.staff_search()
+            else:
+                self.llapi.list_printer(Propertyinfo)
+                self.managers_menu()
+        elif search_attribute.lower() == "t":
+            employeetitle = input("Do you want to list all staff or managers?: ")
+            Propertyinfo = self.llapi.search(Location,  attribute="title", value=employeetitle.lower())
+            if len(Propertyinfo) < 1:
+                print("No results were found")
+                self.staff_search()
+            else:
+                self.llapi.list_printer(Propertyinfo)
+                self.managers_menu()
+        elif search_attribute.lower() == "b":
+            self.managers_menu()
+        elif search_attribute.lower() == "q":
+            pass
+        else:
+            print("Not a valid attribute")
+            self.staff_search()
