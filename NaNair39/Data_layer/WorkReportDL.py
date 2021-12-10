@@ -5,7 +5,7 @@ from Models.WorkReportModel import WorkReport
 class WorkReportDL:
 
     def __init__ (self):
-        self.filepath = "csv_files/Workorders.csv"
+        self.filepath = "csv_files/WorkReports.csv"
 
     def get_all_work_reports(self):
         '''Lists all work reports from the given filepath'''

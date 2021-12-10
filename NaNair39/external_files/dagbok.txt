@@ -119,7 +119,7 @@ Ingi: Vann í DL og kláraði síðustu csv skjöl sem átti eftir að klára
 Þór: Hélt áfram með ListingHandler og SearchHandler
 
 --09.12.2021--
-Morgunfundur: staðann tekin, rætt hvað þarf að forgangsraða, Valdís fer í að breytingar vistist í csv skrám, Hjörleifur og Ingi halda áfram að 
+Morgunfundur: staðan tekin, rætt hvað þarf að forgangsraða, Valdís fer í að breytingar vistist í csv skrám, Hjörleifur og Ingi halda áfram að 
 koma general virkni í það sem vantar upp á
 
 Eftir daginn:
@@ -128,3 +128,6 @@ setti inn comma checker til að passa að ekkert input sé með kommum, einfalda
 kláraði að sjá til að öll virkni fyrir yfirmann að stjórna starfsmannaupplýsingum ætti að vera komin í gang
 Þór: Bætti við filtering functionality í ListingHandler og LLAPI, gerði nokkur bug fix
 Valdís: Kláraði næstum föllin til að vista breytingar í csv files, smá villur sem lagfærðar verða á morgun
+
+--10.12.2021--
+Morgunfundur: Allir hjálpast að við að leggja lokahönd á forritið og skýrslu.
