@@ -628,7 +628,7 @@ class WorkReportMenu:
                     return True
                 else:
                     pass
-"""
+    """
     
     def View_work_requests(self):
         work_request_list = self.llapi.get_work_request_list()
