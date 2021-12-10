@@ -32,7 +32,7 @@ class WorkReportMenu:
         elif selection == "3":
             return self.edit_work_request()
         elif selection == "4":
-            pass
+            return self.finalize_work_request()
         elif selection == "5":
             pass
         elif selection == "6":
@@ -49,6 +49,70 @@ class WorkReportMenu:
 
  
 #id,work_request,location,properties,description,worker,priority,repeat,time,start,done
+    def finalize_work_request(self):
+        print("What work request would you like to approve/close")
+        work_request_id = (input("Enter work request ID number: "))
+        work_request_info = self.llapi.dict_search(WorkRequest, attribute="id", value=work_request_id)
+        results = work_request_info
+        if len(results)<1:
+            print("No requests found with that ID")
+            return self.finalize_work_request()
+        else:
+            id = results[0]["wreqid"]
+            work_request = results[0]["wreqwork_request"]
+            location = results[0]["wreqlocation"]
+            properties = results[0]["wreqproperties"]
+            description = results[0]["wreqdescription"]
+            worker = results[0]["wreqworker"]
+            priority = results[0]["wreqpriority"]
+            repeat = results[0]["wreqrepeat"]
+            time = results[0]["wreqtime"]
+            start = results[0]["wreqstart"]
+            done = results[0]["wreqdone"]
+            editor = True
+            while editor:
+                print("")
+                print("Please confirm the following details.")
+                print("")
+                print(f"ID number:      {id}")
+                print(f"Work request:   {work_request}")
+                print(f"Location:       {location}")
+                print(f"Properties:     {properties}")
+                print(f"Description:    {description}")
+                print(f"Worker:         {worker}")
+                print(f"Priority:       {priority}")
+                print(f"Repeat:         {repeat}")
+                print(f"Time:           {time}")
+                print(f"Start:          {start}")
+                print(f"Done:           {done}")
+                print("")
+                approve = string.capwords(input("Do you confirm the details above and wish to approve this work request?(y/n): "))
+                if approve == "Y":
+                    editor = False
+                    results_final = {}
+                    results_final["wreqid"] = id
+                    results_final["wreqwork_request"] = work_request
+                    results_final["wreqlocation"] = location
+                    results_final["wreqproperties"] = properties
+                    results_final["wreqdescription"] = description
+                    results_final["wreqworker"] = worker
+                    results_final["wreqpriority"] = priority
+                    results_final["wreqrepeat"] = repeat
+                    results_final["wreqtime"] = time
+                    results_final["wreqstart"] = start
+                    results_final["wreqdone"] = done
+                     #Skrifa í skrá
+                    init = Data_layer.WorkRequestDL.WorkRequestDL(id=results_final["wreqid"], location=results_final["wreqlocation"])
+                    init.finalize_work_request(results_final)
+                    return True
+                elif approve == "N":
+                    editor = False
+                    return True
+                else:
+                    print("Wrong input")
+                    editor = True
+
+
 
     def edit_work_request(self):
         print("Change information about a work request")
@@ -70,6 +134,7 @@ class WorkReportMenu:
             time = results[0]["wreqtime"]
             start = results[0]["wreqstart"]
             done = results[0]["wreqdone"]
+            
 
             request_editor = True
             while request_editor:

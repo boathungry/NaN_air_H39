@@ -5,8 +5,32 @@ class WorkRequestDL:
     
     def __init__(self, id = "", location = ""):
         self.filepath = "csv_files/WorkRequests.csv"
+        self.filepath_finished = "csv_files/FinishedWorkRequests.csv"
         self.id = id
         self.location = location
+
+    def finalize_work_request(self,req):
+        header = ["id", "work_request", "location", "properties", "description", "worker", "priority", "repeat", "time", "start", "done"]
+        list_work_requests = []
+        one_work_request = []
+        with open("csv_files/WorkRequests.csv", newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile, delimiter=',')
+            for row in reader:
+                if (row["id"] == req["wreqid"]):
+                    with open(self.filepath_finished, 'a', newline='', encoding='utf-8') as csvfile:
+                        fieldnames = [row["id"], row["work_request"], row["location"], row["properties"], row["description"], row["worker"], row["priority"], row["repeat"], row["time"], row["start"], row["done"]]
+                        writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                        writer.writerow(fieldnames)
+                else:
+                    one_work_request = row["id"], row["work_request"], row["location"], row["properties"], row["description"], row["worker"], row["priority"], row["repeat"], row["time"], row["start"], row["done"]
+                    list_work_requests.append(one_work_request)
+        #Write all file(all lines)
+                    with open("csv_files/WorkRequests.csv", mode="w", newline='', encoding='utf-8') as csvfile:
+                        req_writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                        req_writer.writerow(header)
+                        req_writer.writerows(list_work_requests)
+
+
 
     def get_all_work_requests(self):
         '''Lists all work requests to the given filepath'''
