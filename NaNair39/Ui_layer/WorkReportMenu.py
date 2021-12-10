@@ -461,7 +461,7 @@ class WorkReportMenu:
             if counter == 0 or counter !=0 and fieldchange.lower() == "r":
                 repeat_check_on = True
                 while repeat_check_on:
-                    repeat = input("Repeat (y/n)").lower()
+                    repeat = input("Repeat (y/n)?: ").lower()
                     if repeat not in ["y", "n"]:
                         print('Please only use a "y" or a "n"')
                     else:
@@ -723,7 +723,7 @@ class WorkReportMenu:
     def work_report_staff_menu(self):
         print("1. Create work request")
         print("2. Change work request")
-        print("3. Browse work and maintenance reports")
+        print("3. Browse work reports")
         print("b. Back to main menu")
         print("q. Quit")
         selection = input("Input selection: ")
