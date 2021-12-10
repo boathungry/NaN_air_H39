@@ -309,7 +309,7 @@ class WorkReportMenu:
                     fieldchange = ""
                     return True
                 elif rightorwrong.lower() == "n":
-                    print("Select a field to change: [w]ork request ID, [d]escription, [l]ocation, [p]roperties, [wo]rker, [r]egular maintenance, [e]xpenses, [s]tart, [do]ne, [a]pproved.")
+                    print("Select a field to change: [w]ork request ID, [d]escription, [l]ocation, [p]roperties, [wo]rker, [c]omment, [r]egular maintenance, [e]xpenses, [s]tart, [do]ne, [a]pproved.")
                     fieldchange = input("Input the letter of the field you wish to change: ")
             if counter == 0 or counter !=0 and fieldchange.lower() == "w":
                 work_request_id_comma_check_on = True
@@ -359,6 +359,15 @@ class WorkReportMenu:
                         print("Please don't have a comma. It messes with our database")
                     else:
                         worker_comma_check_on = False
+            if counter == 0 or counter !=0 and fieldchange == "c":
+                comment_comma_check_on = True
+                while comment_comma_check_on: 
+                    comment = input("Comment?: ")
+                    comma_check = self.llapi.comma_checker(comment)
+                    if comma_check:
+                        print("Please don't have a comma. It messes with our database")
+                    else:
+                        comment_comma_check_on = False
             if counter == 0 or counter !=0 and fieldchange.lower() == "r":
                 regular_maintenance_comma_check_on = True
                 while regular_maintenance_comma_check_on:
