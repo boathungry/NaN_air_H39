@@ -38,7 +38,7 @@ class WorkRequest(RegistrationHandler, ChangeHandler):
             elif TIME == "yearly":
                 date_next = date_today + relativedelta(years=1)
 
-            RegistrationHandler.register_work_request(self, work_request, location, properties, description, worker, priority, repeat, date_next, start, done)
+            RegistrationHandler.register_work_request(self, id, work_request, location, properties, description, worker, priority, repeat, date_next, start, done)
             
         
     def mark_as_done(self, work_request:WorkRequest):
