@@ -134,4 +134,6 @@ Ingi: Debug og að koma virkni sem hafði verið implementuð að hluta til í f
 Morgunfundur: Allir hjálpast að við að leggja lokahönd á forritið og skýrslu.
 
 Eftir daginn:
-
+Hjörleifur: Kóðað í allan dag, kom mikilli virkni, setti skilyrði á reiti, kom inn á flest að stjórnandi geti bara átti við eigin staðsettningu. 
+setti inn að leitað er af fasteign og staðfest að hún sé á locationinu sem verkbeiðnir eru skráðar á, læsti að bara starfsmenn sem eru á locationinu 
+geti unnið að verkbeiðnum. Mjög mikið debuggað

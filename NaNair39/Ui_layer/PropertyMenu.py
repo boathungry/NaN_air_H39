@@ -388,7 +388,6 @@ class PropertyMenu:
         create_property_loop = True
         fieldchange = ""
         while create_property_loop:
-            print(counter)
             if counter != 0:
                 print("Is this the correct information?")
                 print(f"IDnumber:  {idnumber}")

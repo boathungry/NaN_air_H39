@@ -53,7 +53,7 @@ class RegistrationHandler():
 
     def register_work_report(self, work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done):
         """Registers a new work report and returns the work report."""
-        id = self.get_work_request_id_number()
+        id = self.get_work_report_id_number()
         new_work_report = WorkReport(id, work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done)
         self.dl_api.create_work_report(new_work_report)
         return new_work_report

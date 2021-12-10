@@ -77,9 +77,9 @@ class LLAPI():
         """Creates a new contractor with the given attributes and returns the contractor."""
         return self.registration_handler.register_contractor(name, phone, email, opening_hours, address, location)
 
-    def create_work_report(self, id, work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done):
+    def create_work_report(self, work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done):
         """Creates a new work report with the given attributes and returns the work report."""
-        return self.registration_handler.register_work_report(id, work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done)
+        return self.registration_handler.register_work_report(work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done)
 
     def create_work_request(self, work_request, location, properties, description, worker, priority, repeat, time, start, done):
         """Creates a new work request with the given attributes and returns the work request."""

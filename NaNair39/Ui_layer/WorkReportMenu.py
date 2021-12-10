@@ -31,7 +31,8 @@ class WorkReportMenu:
         if selection == "1":
             return self.create_work_request()
         elif selection == "2":
-            return self.create_work_report()
+            print("Sadly this bugged out on us right before the project was due")
+            return self.Work_report_manager_menu()
         elif selection == "3":
             return self.edit_work_request()
         elif selection == "4":
@@ -419,7 +420,7 @@ class WorkReportMenu:
                             if is_it_there:
                                 properties_comma_checkon = False
                             else:
-                                print("Property is not in that location")
+                                print("Property is not in your location")
             if counter == 0 or counter !=0 and fieldchange == "d":            
                 description_comma_check_on = True
                 while description_comma_check_on:                  
@@ -498,6 +499,7 @@ class WorkReportMenu:
     
     def create_work_report(self):
         #id,work_request_id,description,location,properties,worker,comment,regular_maintenance,expenses,start,done
+        #hætti að virka rétt fyrir skil. 
         counter = 0
         print("")
         create_work_report_loop = True
@@ -505,7 +507,6 @@ class WorkReportMenu:
         while create_work_report_loop:
             if counter != 0:
                 print("Is this the correct information?")
-                print(f"ID:                        {id}")
                 print(f"Work request ID:           {work_request_id}")
                 print(f"Description:               {description}")
                 print(f"Location:                  {location}")
@@ -521,7 +522,7 @@ class WorkReportMenu:
                 rightorwrong = input("Is this information correct [y]es, [n]o, [c]ancel: ")
                 if rightorwrong.lower() == "y":
                     create_work_report_loop = False
-                    self.llapi.create_work_report(id, work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done)
+                    self.llapi.create_work_report(work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done)
                     return True
                 elif rightorwrong.lower() == "c":
                     create_work_report_loop = False
