@@ -18,7 +18,7 @@ class WorkRequestDL():
     def get_work_request_id_number(self):
         prev_temp = int(1)
         '''Checks the next avaliable id number and returns'''
-        with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
+        with open("csv_files/WorkRequests.csv", newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile, delimiter=',')
             for row in reader:
                 temp_number = row["id"]
