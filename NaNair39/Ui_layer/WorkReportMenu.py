@@ -30,7 +30,7 @@ class WorkReportMenu:
         if selection == "1":
             self.create_work_request()
         elif selection == "2":
-            pass
+            self.create_work_report()
         elif selection == "3":
             self.edit_work_request()
         elif selection == "4":
@@ -275,7 +275,9 @@ class WorkReportMenu:
                         done_comma_check_on = False
             counter +=1
 
+    
     def create_work_report():
+        #id,work_request_id,description,location,properties,worker,comment,regular_maintenance,expenses,start,done,approved
         counter = 0
         print("")
         create_work_report_loop = True
