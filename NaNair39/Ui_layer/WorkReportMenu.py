@@ -639,8 +639,6 @@ class WorkReportMenu:
         work_report_list = self.llapi.get_work_report_list()
         self.llapi.list_printer(work_report_list)
 
-
-
     def work_report_staff_menu(self):
         print("1. Create work request")
         print("2. Create maintenance request")
