@@ -86,13 +86,15 @@ class WorkRequestDL:
 
     def get_all_location_names_wr(self):
         '''Returns all location names in given filepath'''
-        return_list = []
-        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
+        return_list = ["All locations"]
+        with open('csv_files/Locations.csv', newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                loct = row["location"]
+                loct = str(row["city"]+" - "+row["country"])
                 if loct in return_list:
                     pass
                 else:
                     return_list.append(loct)
+            
         return return_list
+    

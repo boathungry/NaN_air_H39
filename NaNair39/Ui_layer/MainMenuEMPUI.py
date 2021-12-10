@@ -1,8 +1,6 @@
 from datetime import date
 from Ui_layer.WorkReportMenu import WorkReportMenu
-import Ui_layer.main_login
 from Logic_layer.LLAPI import LLAPI
-from Models.EmployeeModel import Employee
 from Ui_layer.PropertyMenu import PropertyMenu
 class EmployeeUI:
     def __init__(self, idnumber = "", name = "", email = "", location = "", title = "staff", logic_api:LLAPI = LLAPI()):

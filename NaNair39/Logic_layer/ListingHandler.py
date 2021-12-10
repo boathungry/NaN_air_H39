@@ -35,6 +35,10 @@ class ListingHandler:
         """Returns a list of all employees."""
         return self.dl_api.get_all_employees()
 
+    def list_all_employees_name(self) -> list:
+        """Returns a list of all employees."""
+        return self.dl_api.get_all_employees_name()
+
     def list_all_destinations(self) -> list:
         """returns a list of all destinations"""
         return self.dl_api.get_all_destinations()

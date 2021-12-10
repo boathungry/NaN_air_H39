@@ -70,9 +70,9 @@ class LLAPI():
         """Creates a new work report with the given attributes and returns the work report."""
         return self.registration_handler.register_work_report(id, work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done, approved)
 
-    def create_work_request(self, id, work_request, location, properties, description, worker, priority, repeat, time, start, done):
+    def create_work_request(self, work_request, location, properties, description, worker, priority, repeat, time, start, done):
         """Creates a new work request with the given attributes and returns the work request."""
-        return self.registration_handler.register_work_request(id, work_request, location, properties, description, worker, priority, repeat, time, start, done)
+        return self.registration_handler.register_work_request(work_request, location, properties, description, worker, priority, repeat, time, start, done)
 
     def create_destination(self, city, country, airport, phone, open_hours, manager):
         """Creates a new property with the given attributes and returns the property."""
@@ -91,6 +91,14 @@ class LLAPI():
         """Prints a list one row at a time"""
         self.listing_handler.list_printer(input_list)
 
+    def list_all_employees_names(self):
+        "gives a list of all employees and information"
+        return self.listing_handler.list_all_employees_name()
+
+    def is_it_there(self, id, location):
+        "check id is in the location"
+        return self.dl_API.is_it_there(id, location)
+        
     def list_all_employees(self):
         "gives a list of all employees and information"
         return self.listing_handler.list_all_employees_unsorted()

@@ -41,6 +41,13 @@ class DLAPI:
     def get_employee_id_number(self):
         '''Gets employees ID number'''
         return self.emplDL.get_employee_id_number()
+
+    def get_all_employees_name(self):
+        '''Gets employees ID number'''
+        return self.emplDL.get_employee_names()
+    def is_it_there(self, id, location):
+        """checks if a ID number is in the location"""
+        return self.propDL.is_it_there(id, location)
     
     def get_work_report_id_number(self):
         return self.VB.get_work_report_id_number()

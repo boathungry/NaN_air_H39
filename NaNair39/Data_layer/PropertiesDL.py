@@ -95,3 +95,12 @@ class PropertyDL:
                 idnumber = row["idnumber"].lower()
                 return_list.append(idnumber)
         return return_list
+
+    def is_it_there(self, id, location):
+        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                if row["idnumber"] == id and row["location"] == location:
+                    return True
+            return False
+                    

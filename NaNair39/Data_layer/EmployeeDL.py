@@ -26,6 +26,16 @@ class EmployeeDL:
                 return_list.append(empl)
         return return_list
     
+    def get_all_employees_name(self):
+        '''Returns a list of employees in the given filepath'''
+        return_list = []
+        with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile, delimiter=',')
+            for row in reader:
+                empl = Employee(row["name"])
+                return_list.append(empl)
+        return return_list
+    
 
     def create_employee(self, empl):
         '''Appends a new employee to the given filepath'''
