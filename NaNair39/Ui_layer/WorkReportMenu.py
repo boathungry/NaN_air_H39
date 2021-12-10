@@ -5,6 +5,11 @@ from Models.WorkRequestModel import WorkRequest
 import Data_layer.WorkRequestDL
 import Data_layer.WorkReportDL
 
+<<<<<<< HEAD
+from Logic_layer.WorkRequestLL import WorkRequest
+from datetime import date
+=======
+>>>>>>> 9a14a630e75b977980c504b43bd273becd73cb14
 
 class WorkReportMenu:
     def __init__(self, idnumber = "", name = "", email = "", location = "", title = "", logic_api:LLAPI = LLAPI()):
