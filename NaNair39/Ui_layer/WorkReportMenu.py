@@ -136,7 +136,6 @@ class WorkReportMenu:
                     #Skrifa í skrá
                     init = Data_layer.WorkRequestDL.WorkRequestDL(id=results_final["wreqid"], location=results_final["wreqlocation"])
                     init.change_information_work_request(results_final)
-                    print(results_final)
                     return True
                 elif editmore == "c":
                     request_editor = False
