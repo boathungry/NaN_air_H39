@@ -12,9 +12,9 @@ class WorkReport:
         self.expenses = expenses
         self.start = start
         self.done = done
-        self.approved = approved
+
         
     
     def __str__(self):
-        return f"ID: {self.id}, Work request ID: {self.work_request_id}, Description: {self.description}, Location: {self.location}, Properties: {self.properties}, Worker: {self.worker}, Comment: {self.comment}, Regular maintenance: {self.regular_maintenance}, Expenses: {self.expenses}, Start: {self.start}, Done: {self.done}, Approved: {self.approved}"
+        return f"ID: {self.id}, Work request ID: {self.work_request_id}, Description: {self.description}, Location: {self.location}, Properties: {self.properties}, Worker: {self.worker}, Comment: {self.comment}, Regular maintenance: {self.regular_maintenance}, Expenses: {self.expenses}, Start: {self.start}, Done: {self.done}"
 

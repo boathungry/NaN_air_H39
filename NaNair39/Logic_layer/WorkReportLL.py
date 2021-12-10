@@ -9,4 +9,4 @@ class WorkReport():
         self.dl_api = dl_api
 
     def approve_report(self, work_report:WorkReport):
-        ChangeHandler.change_work_report(self, work_report, "approved", date.today())
+        ChangeHandler.change_work_report(self, work_report, date.today())

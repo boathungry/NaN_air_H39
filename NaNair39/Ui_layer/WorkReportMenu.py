@@ -1,9 +1,15 @@
 import string
 from Logic_layer.LLAPI import LLAPI
+from Models.WorkReportModel import WorkReport
 from Models.WorkRequestModel import WorkRequest
 import Data_layer.WorkRequestDL
+<<<<<<< HEAD
+import Data_layer.WorkReportDL
+
+=======
 from Logic_layer.WorkRequestLL import WorkRequest
 from datetime import date
+>>>>>>> f8c6edc947c0b017db52137a6c6cec4eec9faae2
 
 class WorkReportMenu:
     def __init__(self, idnumber = "", name = "", email = "", location = "", title = "", logic_api:LLAPI = LLAPI()):
@@ -35,7 +41,7 @@ class WorkReportMenu:
         elif selection == "4":
             return self.finalize_work_request()
         elif selection == "5":
-            pass
+            return self.finalize_work_report()
         elif selection == "6":
             pass
         elif selection == "7":
@@ -48,6 +54,70 @@ class WorkReportMenu:
             print("Wrong input!")
             return self.Work_report_manager_menu()
 
+#id,work_request_id,description,location,properties,worker,comment,regular_maintenance,expenses,start,done
+    def finalize_work_report(self):
+        print("What work report would you like to approve?")
+        work_report_id = (input("Enter work report ID number: "))
+        work_report_info = self.llapi.dict_search(WorkReport, attribute="id", value=work_report_id)
+        results = work_report_info
+        if len(results)<1:
+            print("No requests found with that ID")
+            return self.finalize_work_report()
+        else:
+            id = results[0]["wropid"]
+            work_request_id = results[0]["wropwork_request_id"]
+            description = results[0]["wropdescription"]
+            location = results[0]["wroplocation"]
+            properties = results[0]["wropproperties"]
+            worker = results[0]["wropworker"]
+            comment = results[0]["wropcomment"]
+            regular_maintenance = results[0]["wropregular_maintenance"]
+            expenses = results[0]["wropexpenses"]
+            start = results[0]["wropstart"]
+            done = results[0]["wropdone"]
+            editor = True
+            while editor:
+                print("")
+                print("Please confirm the following details.")
+                print("")
+                print(f"ID number:           {id}")
+                print(f"Work request_id:     {work_request_id}")
+                print(f"description:         {description}")
+                print(f"location:            {location}")
+                print(f"properties:          {properties}")
+                print(f"Worker:              {worker}")
+                print(f"comment:             {comment}")
+                print(f"regular_maintenance: {regular_maintenance}")
+                print(f"expenses:            {expenses}")
+                print(f"Start:               {start}")
+                print(f"Done:                {done}")
+                print("")
+                approve = string.capwords(input("Do you confirm the details above and wish to approve this work request?(y/n): "))
+                if approve == "Y":
+                    editor = False
+                    results_final = {}
+                    results_final["wropid"] = id
+                    results_final["wropwork_request_id"] = work_request_id
+                    results_final["wropdescription"] = description
+                    results_final["wroplocation"] = location
+                    results_final["wropproperties"] = properties
+                    results_final["wreqworker"] = worker
+                    results_final["wropcomment"] = comment
+                    results_final["wropregular_maintenance"] = regular_maintenance
+                    results_final["wropexpenses"] = expenses
+                    results_final["wropstart"] = start
+                    results_final["wropdone"] = done
+                    #Skrifa í skrá
+                    init = Data_layer.WorkReportDL.WorkReportDL(id=results_final["wropid"], location=results_final["wroplocation"])
+                    init.finalize_work_report(results_final)
+                    return True
+                elif approve == "N":
+                    editor = False
+                    return True
+                else:
+                    print("Wrong input")
+                    editor = True
+     
  
 #id,work_request,location,properties,description,worker,priority,repeat,time,start,done
     def finalize_work_request(self):
@@ -353,7 +423,7 @@ class WorkReportMenu:
 
     
     def create_work_report(self):
-        #id,work_request_id,description,location,properties,worker,comment,regular_maintenance,expenses,start,done,approved
+        #id,work_request_id,description,location,properties,worker,comment,regular_maintenance,expenses,start,done
         counter = 0
         print("")
         create_work_report_loop = True
@@ -373,12 +443,12 @@ class WorkReportMenu:
                 print(f"Expenses:                  {expenses}")
                 print(f"Start:                     {start}")
                 print(f"Done:                      {done}")
-                print(f"Approved:                  {approved}")
+
 
                 rightorwrong = input("Is this information correct [y]es, [n]o, [c]ancel: ")
                 if rightorwrong.lower() == "y":
                     create_work_report_loop = False
-                    self.llapi.create_work_report(id, work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done, approved)
+                    self.llapi.create_work_report(id, work_request_id, description, location, properties, worker, comment, regular_maintenance, expenses, start, done)
                     return True
                 elif rightorwrong.lower() == "c":
                     create_work_report_loop = False
