@@ -35,6 +35,10 @@ class ListingHandler:
         """Returns a list of all employees."""
         return self.dl_api.get_all_employees()
 
+    def list_all_employees_name(self) -> list:
+        """Returns a list of all employees."""
+        return self.dl_api.get_all_employees_name()
+
     def list_all_destinations(self) -> list:
         """returns a list of all destinations"""
         return self.dl_api.get_all_destinations()
@@ -91,7 +95,9 @@ class ListingHandler:
     def sort_by_worker(self, unsorted_list, descending:bool = False) -> list:
         return sorted(unsorted_list, key=lambda item: item.worker, reverse=descending)
 
-
+    def list_all_location_names_wr(self) -> list:
+        """Returns a list of all location names for work reports."""
+        return self.dl_api.get_all_location_names_wr()
 
     def filter(self, attribute:str, unfiltered_list, filter, filter_max = 0):
         """Returns a list of items whose attributes match the given filter. Use filter_max if you'd like to get a list of items with values from {filter} to {filter_max}."""

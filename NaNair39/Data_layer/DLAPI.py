@@ -14,6 +14,10 @@ class DLAPI:
         self.contr = ContractorDL()
         self.locDL = locationDL()
 
+    def finalize_work_request(self):
+        '''Finalizes and closes a work request'''
+        return self.reqDL.finalize_work_request()
+
     def get_all_employees(self):
         '''Lists all employees'''
         return self.emplDL.get_all_employees()
@@ -41,6 +45,13 @@ class DLAPI:
     def get_employee_id_number(self):
         '''Gets employees ID number'''
         return self.emplDL.get_employee_id_number()
+
+    def get_all_employees_name(self):
+        '''Gets employees ID number'''
+        return self.emplDL.get_employee_names()
+    def is_it_there(self, id, location):
+        """checks if a ID number is in the location"""
+        return self.propDL.is_it_there(id, location)
     
     def get_work_report_id_number(self):
         return self.VB.get_work_report_id_number()
@@ -151,4 +162,6 @@ class DLAPI:
         """returns a list of all used property id numbers"""
         return self.propDL.get_all_property_ID()
 
-    
+    def get_all_location_names_wr(self):
+        '''Lists all work requests'''
+        return self.reqDL.get_all_location_names_wr()

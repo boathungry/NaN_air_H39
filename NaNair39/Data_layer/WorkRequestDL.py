@@ -3,8 +3,34 @@ import csv
 
 class WorkRequestDL:
     
-    def __init__(self):
+    def __init__(self, id = "", location = ""):
         self.filepath = "csv_files/WorkRequests.csv"
+        self.filepath_finished = "csv_files/FinishedWorkRequests.csv"
+        self.id = id
+        self.location = location
+
+    def finalize_work_request(self,req):
+        header = ["id", "work_request", "location", "properties", "description", "worker", "priority", "repeat", "time", "start", "done"]
+        list_work_requests = []
+        one_work_request = []
+        with open("csv_files/WorkRequests.csv", newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile, delimiter=',')
+            for row in reader:
+                if (row["id"] == req["wreqid"]):
+                    with open(self.filepath_finished, 'a', newline='', encoding='utf-8') as csvfile:
+                        fieldnames = [row["id"], row["work_request"], row["location"], row["properties"], row["description"], row["worker"], row["priority"], row["repeat"], row["time"], row["start"], row["done"]]
+                        writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                        writer.writerow(fieldnames)
+                else:
+                    one_work_request = row["id"], row["work_request"], row["location"], row["properties"], row["description"], row["worker"], row["priority"], row["repeat"], row["time"], row["start"], row["done"]
+                    list_work_requests.append(one_work_request)
+        #Write all file(all lines)
+                    with open("csv_files/WorkRequests.csv", mode="w", newline='', encoding='utf-8') as csvfile:
+                        req_writer = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                        req_writer.writerow(header)
+                        req_writer.writerows(list_work_requests)
+
+
 
     def get_all_work_requests(self):
         '''Lists all work requests to the given filepath'''
@@ -43,10 +69,10 @@ class WorkRequestDL:
         with open("csv_files/WorkRequests.csv", newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile, delimiter=',')
             for row in reader:
-                if (row["id"] == ["wreqid"]):
+                if (row["id"] == req["wreqid"]):
                     one_work_request = (req["wreqid"], req["wreqwork_request"], req["wreqlocation"], req["wreqproperties"], req["wreqdescription"], req["wreqworker"], req["wreqpriority"], req["wreqrepeat"], req["wreqtime"], req["wreqstart"], req["wreqdone"])
                 else:
-                    one_work_request = row["wreqid"], row["wreqwork_request"], row["wreqlocation"], row["wreqproperties"], row["wreqdescription"], row["wreqworker"], row["wreqpriority"], row["wreqrepeat"], row["wreqtime"], row["wreqstart"], row["wreqdone"]
+                    one_work_request = row["id"], row["work_request"], row["location"], row["properties"], row["description"], row["worker"], row["priority"], row["repeat"], row["time"], row["start"], row["done"]
                 list_work_requests.append(one_work_request)
         #Write all file(all lines)
         with open("csv_files/WorkRequests.csv", mode="w", newline='', encoding='utf-8') as csvfile:
@@ -81,3 +107,18 @@ class WorkRequestDL:
                     Request_dict = {"wreqid":request.id, "wreqwork_request":request.work_request, "wreqlocation":request.location, "wreqproperties":request.properties,"wreqdescription":request.description,"wreqworker":request.worker, "wreqpriority":request.priority, "wreqrepeat":request.repeat, "wreqtime":request.time, "wreqstart":request.start, "wreqdone":request.done}
                     results_list.append(Request_dict)
             return results_list
+
+    def get_all_location_names_wr(self):
+        '''Returns all location names in given filepath'''
+        return_list = ["All locations"]
+        with open('csv_files/Locations.csv', newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                loct = str(row["city"]+" - "+row["country"])
+                if loct in return_list:
+                    pass
+                else:
+                    return_list.append(loct)
+            
+        return return_list
+    

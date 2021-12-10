@@ -27,13 +27,17 @@ class WorkReportMenu:
         print("q. Quit")
         selection = input("Input selection: ")
         if selection == "1":
-            self.create_work_request()
+            return self.create_work_request()
         elif selection == "2":
-            self.create_work_report()
+            return self.create_work_report()
         elif selection == "3":
-            self.edit_work_request()
+            return self.edit_work_request()
         elif selection == "4":
+<<<<<<< HEAD
             self.mark_work_request_as_done()
+=======
+            return self.finalize_work_request()
+>>>>>>> 4267255e396de43f0dff20df584cc5d34610acbe
         elif selection == "5":
             pass
         elif selection == "6":
@@ -50,6 +54,70 @@ class WorkReportMenu:
 
  
 #id,work_request,location,properties,description,worker,priority,repeat,time,start,done
+    def finalize_work_request(self):
+        print("What work request would you like to approve/close")
+        work_request_id = (input("Enter work request ID number: "))
+        work_request_info = self.llapi.dict_search(WorkRequest, attribute="id", value=work_request_id)
+        results = work_request_info
+        if len(results)<1:
+            print("No requests found with that ID")
+            return self.finalize_work_request()
+        else:
+            id = results[0]["wreqid"]
+            work_request = results[0]["wreqwork_request"]
+            location = results[0]["wreqlocation"]
+            properties = results[0]["wreqproperties"]
+            description = results[0]["wreqdescription"]
+            worker = results[0]["wreqworker"]
+            priority = results[0]["wreqpriority"]
+            repeat = results[0]["wreqrepeat"]
+            time = results[0]["wreqtime"]
+            start = results[0]["wreqstart"]
+            done = results[0]["wreqdone"]
+            editor = True
+            while editor:
+                print("")
+                print("Please confirm the following details.")
+                print("")
+                print(f"ID number:      {id}")
+                print(f"Work request:   {work_request}")
+                print(f"Location:       {location}")
+                print(f"Properties:     {properties}")
+                print(f"Description:    {description}")
+                print(f"Worker:         {worker}")
+                print(f"Priority:       {priority}")
+                print(f"Repeat:         {repeat}")
+                print(f"Time:           {time}")
+                print(f"Start:          {start}")
+                print(f"Done:           {done}")
+                print("")
+                approve = string.capwords(input("Do you confirm the details above and wish to approve this work request?(y/n): "))
+                if approve == "Y":
+                    editor = False
+                    results_final = {}
+                    results_final["wreqid"] = id
+                    results_final["wreqwork_request"] = work_request
+                    results_final["wreqlocation"] = location
+                    results_final["wreqproperties"] = properties
+                    results_final["wreqdescription"] = description
+                    results_final["wreqworker"] = worker
+                    results_final["wreqpriority"] = priority
+                    results_final["wreqrepeat"] = repeat
+                    results_final["wreqtime"] = time
+                    results_final["wreqstart"] = start
+                    results_final["wreqdone"] = done
+                     #Skrifa í skrá
+                    init = Data_layer.WorkRequestDL.WorkRequestDL(id=results_final["wreqid"], location=results_final["wreqlocation"])
+                    init.finalize_work_request(results_final)
+                    return True
+                elif approve == "N":
+                    editor = False
+                    return True
+                else:
+                    print("Wrong input")
+                    editor = True
+
+
 
     def edit_work_request(self):
         print("Change information about a work request")
@@ -71,6 +139,7 @@ class WorkReportMenu:
             time = results[0]["wreqtime"]
             start = results[0]["wreqstart"]
             done = results[0]["wreqdone"]
+            
 
             request_editor = True
             while request_editor:
@@ -93,7 +162,7 @@ class WorkReportMenu:
                 elif fieldchange.lower() == "l":
                     location_check_on = True
                     while location_check_on:
-                        available_locations = self.llapi.list_of_location_names()
+                        available_locations = self.llapi.list_of_location_names_wr()
                         print("Available locations are as follows:")
                         self.llapi.list_printer(available_locations)
                         location = input("What location is the new work request at?: ")
@@ -134,10 +203,15 @@ class WorkReportMenu:
                     results_final["wreqtime"] = time
                     results_final["wreqstart"] = start
                     results_final["wreqdone"] = done
+<<<<<<< HEAD
                     #Write to a file
                     init = Data_layer.WorkRequestDL.WorkRequestDL()
+=======
+                    #Skrifa í skrá
+                    init = Data_layer.WorkRequestDL.WorkRequestDL(id=results_final["wreqid"], location=results_final["wreqlocation"])
+>>>>>>> 4267255e396de43f0dff20df584cc5d34610acbe
                     init.change_information_work_request(results_final)
-                    #self.managers_menu()
+                    return True
                 elif editmore == "c":
                     request_editor = False
                     return True
@@ -154,7 +228,6 @@ class WorkReportMenu:
             print(counter)
             if counter != 0:
                 print("Is this the correct information?")
-                print(f"ID:           {id}")
                 print(f"Work request: {work_request}")
                 print(f"Location:     {location}")
                 print(f"Properties:   {properties}")
@@ -169,7 +242,7 @@ class WorkReportMenu:
                 rightorwrong = input("Is this information correct [y]es, [n]o, [c]ancel: ")
                 if rightorwrong.lower() == "y":
                     create_work_request_loop = False
-                    self.llapi.create_work_request(id, work_request, location, properties, description, worker, priority, repeat, time, start, done)
+                    self.llapi.create_work_request(work_request, location, properties, description, worker, priority, repeat, time, start, done = "")
                     return True
                 elif rightorwrong.lower() == "c":
                     create_work_request_loop = False
@@ -181,7 +254,7 @@ class WorkReportMenu:
             if counter == 0 or counter !=0 and fieldchange.lower() == "w":
                 work_request_comma_check_on = True
                 while work_request_comma_check_on:
-                    work_request = string.capwords(input("What is the work request?: "))
+                    work_request = str(input("What is the work request?: "))
                     comma_check = self.llapi.comma_checker(work_request)
                     if comma_check:
                         print("Please don't have commas in the work request, only use periods, commas mess with our database.")
@@ -189,7 +262,7 @@ class WorkReportMenu:
                         work_request_comma_check_on = False
             if counter == 0 or counter !=0 and fieldchange == "l":
                 print("")
-                available_locations = self.llapi.list_of_location_names()
+                available_locations = self.llapi.list_of_location_names_wr()
                 location_checker_on = True
                 while location_checker_on:
                     print("Available locations are as follows:")
@@ -202,16 +275,29 @@ class WorkReportMenu:
             if counter == 0 or counter !=0 and fieldchange == "p":
                 properties_comma_checkon = True
                 while properties_comma_checkon:
-                    properties = input("What is the property's ID number?: ")
-                    comma_check = self.llapi.comma_checker(properties)
-                    if comma_check:
-                        print("Please don't use commas in the property ID. Commas mess with our database.")
+                    if location.lower() == "all locations":
+                        properties = input("Input all property id numbers the request is for")
+                        comma_check = self.llapi.comma_checker(properties)
+                        if comma_check:
+                            print("Please don't have a comma in the description, only use periods, commas mess with our database")
+                        else:
+                            properties_comma_checkon = False
                     else:
-                        properties_comma_checkon = False
+                        location_split = location.split(" - ")
+                        properties = input("What is the property's ID number?: ").lower()
+                        propID = self.llapi.get_all_property_ID()                        
+                        if properties not in propID:
+                            print("Please input an existing property ID.")
+                        else:
+                            is_it_there = self.llapi.is_it_there(properties, location_split[0])
+                            if is_it_there:
+                                properties_comma_checkon = False
+                            else:
+                                print("Property is not in that location")
             if counter == 0 or counter !=0 and fieldchange == "d":            
                 description_comma_check_on = True
                 while description_comma_check_on:                  
-                    description = string.capwords(input("What is the work request's description?: "))
+                    description = str(input("What is the work request's description?: "))
                     comma_check = self.llapi.comma_checker(description)
                     if comma_check:
                         print("Please don't have a comma in the description, only use periods, commas mess with our database")
@@ -229,41 +315,43 @@ class WorkReportMenu:
             if counter == 0 or counter !=0 and fieldchange.lower() == "pr":
                 priority_comma_check_on = True
                 while priority_comma_check_on:
-                    priority = input("Would you like to repeat (y/n)?: ")
-                    comma_check = self.llapi.comma_checker(priority)
-                    if comma_check:
-                        print("Please don't have a comma. It messes with our database")
-                    else:
-                        priority_comma_check_on = False
+                    priority = input("Give the request a priority number from 1 - 10 (1 being priority)?: ")
+                    try:
+                        prinum = int(priority)
+                        if prinum > 10 or prinum < 1:
+                            print("please select a number from 1 to 10")
+                        else:
+                            priority_comma_check_on = False
+                    except:
+                        print("Please only use whole numbers for priority.")
             if counter == 0 or counter !=0 and fieldchange.lower() == "r":
-                repeat_comma_check_on = True
-                while repeat_comma_check_on:
-                    repeat = input("Repeat (y/n)")
-                    comma_check = self.llapi.comma_checker(repeat)
-                    if comma_check:
-                        print("Please don't have a comma. It messes with our database")
+                repeat_check_on = True
+                while repeat_check_on:
+                    repeat = input("Repeat (y/n)").lower()
+                    if repeat not in ["y", "n"]:
+                        print('Please only use a "y" or a "n"')
                     else:
-                        repeat_comma_check_on = False
+                        repeat_check_on = False
             if counter == 0 or counter !=0 and fieldchange.lower() == "t":
-                time_comma_check_on = True
-                while time_comma_check_on:
-                    time = input("When would you like to repeat (none/daily/weekly/monthly/yearly)?: ")
-                    comma_check = self.llapi.comma_checker(time)
-                    if comma_check:
-                        print("Please don't have a comma. It messes with our database")
+                time_check_on = True
+                while time_check_on:
+                    time = input("When would you like to repeat (none/daily/weekly/monthly/yearly)?: ").lower()
+                    if time not in ["none", "daily", "weekly", "montly", "yearly"]:
+                        print("Please only select one of the apropriate options and spell them like they are spelled in the input line")
                     else:
-                        time_comma_check_on = False
+                        time_check_on = False
                 if counter == 0 or counter !=0 and fieldchange.lower() == "s":
                     start_comma_check_on = True
-                while start_comma_check_on:
-                    start = input("What is the start date?: ")
-                    comma_check = self.llapi.comma_checker(start)
-                    if comma_check:
-                        print("Please don't have a comma. It messes with our database")
-                    else:
-                        start_comma_check_on = False
+                    while start_comma_check_on:
+                        start = input("What is the start date?: ")
+                        comma_check = self.llapi.comma_checker(start)
+                        if comma_check:
+                            print("Please don't have a comma. It messes with our database")
+                        else:
+                            start_comma_check_on = False
                 if counter == 0 or counter !=0 and fieldchange.lower() == "do":
                     done_comma_check_on = True
+<<<<<<< HEAD
                 while done_comma_check_on:
                     done = input("What is the finished date?: ")
                     done = "Unknown"
@@ -272,6 +360,15 @@ class WorkReportMenu:
                         print("Please don't have a comma. It messes with our database")
                     else:
                         done_comma_check_on = False
+=======
+                    while done_comma_check_on:
+                        done = input("What is the finished date?: ")
+                        comma_check = self.llapi.comma_checker(done)
+                        if comma_check:
+                            print("Please don't have a comma. It messes with our database")
+                        else:
+                            done_comma_check_on = False
+>>>>>>> 4267255e396de43f0dff20df584cc5d34610acbe
             counter +=1
 
     
