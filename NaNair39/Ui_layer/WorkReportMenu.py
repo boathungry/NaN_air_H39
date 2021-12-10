@@ -3,13 +3,10 @@ from Logic_layer.LLAPI import LLAPI
 from Models.WorkReportModel import WorkReport
 from Models.WorkRequestModel import WorkRequest
 import Data_layer.WorkRequestDL
-<<<<<<< HEAD
 import Data_layer.WorkReportDL
 
-=======
 from Logic_layer.WorkRequestLL import WorkRequest
 from datetime import date
->>>>>>> f8c6edc947c0b017db52137a6c6cec4eec9faae2
 
 class WorkReportMenu:
     def __init__(self, idnumber = "", name = "", email = "", location = "", title = "", logic_api:LLAPI = LLAPI()):
