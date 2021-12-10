@@ -708,6 +708,7 @@ class WorkReportMenu:
         print("")
         open_work_requests_list = self.llapi.get_open_work_request_list()
         self.llapi.list_printer(open_work_requests_list)
+        return True
 
    
     def view_work_reports(self):
@@ -719,6 +720,7 @@ class WorkReportMenu:
         print("")
         open_work_report_list = self.llapi.get_open_work_report_list()
         self.llapi.list_printer(open_work_report_list)
+        return True
 
     def work_report_staff_menu(self):
         print("1. Create work request")
