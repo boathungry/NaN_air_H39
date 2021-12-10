@@ -53,6 +53,9 @@ class LLAPI():
         return self.change_handler.change_work_request(work_request, attribute, new_value)
 
 
+    def finalize_work_request(self):
+        return self.change_handler.finalize_work_request()
+
     def create_employee(self, name, email, location, address, phone, cellphone, title):
         """Creates a new employee with the given attributes and returns the employee."""
         idnumber = RegistrationHandler.get_employee_id_number(location)

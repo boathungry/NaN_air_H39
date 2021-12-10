@@ -136,6 +136,9 @@ class ChangeHandler():
         self.dl_api.change_information_work_report(work_report)
         return attribute
 
+    def finalize_work_request(self):
+        return self.dl_api.finalize_work_request()
+
     def change_work_request(self, work_request:WorkRequest, attribute:str, new_value):
         attribute = attribute.lower()
         if attribute == ID:

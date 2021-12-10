@@ -14,6 +14,10 @@ class DLAPI:
         self.contr = ContractorDL()
         self.locDL = locationDL()
 
+    def finalize_work_request(self):
+        '''Finalizes and closes a work request'''
+        return self.reqDL.finalize_work_request()
+
     def get_all_employees(self):
         '''Lists all employees'''
         return self.emplDL.get_all_employees()
