@@ -38,6 +38,10 @@ class ListingHandler:
     def list_all_destinations(self) -> list:
         """returns a list of all destinations"""
         return self.dl_api.get_all_destinations()
+        
+    def list_all_property_ID(self) -> list:
+        """returns a list of all property id numbers"""
+        return self.dl_api.get_all_property_id()
 
     def list_all_location_names(self) -> list:
         """Returns a list of all location names."""

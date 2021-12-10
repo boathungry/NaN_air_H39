@@ -39,9 +39,9 @@ class RegistrationHandler():
         self.dl_api.create_employee(new_employee) #register new data to database immediately!
         return new_employee
 
-    def register_property(self, name, location, size, rooms):
+    def register_property(self, idnumber, name, location, address, size, rooms):
         """Registers a new property and returns the property."""
-        new_property = Property(name, location, size, rooms)
+        new_property = Property(idnumber, name, location, address, size, rooms)
         self.dl_api.create_property(new_property)
         return new_property
 

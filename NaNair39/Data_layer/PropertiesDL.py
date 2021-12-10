@@ -4,8 +4,11 @@ from Models.PropertyModel import Property
 
 class PropertyDL:
 
-    def __init__(self):
+    def __init__(self, idnumber = ""):
         self.filepath = "csv_files/Properties.csv"
+        self.idnumber = idnumber
+    def __str__(self):
+        return self.idnumber
 
     def get_all_properties(self):
         '''Lists all properties from the given filepath'''
@@ -22,7 +25,7 @@ class PropertyDL:
         with open(self.filepath, 'a', newline='', encoding='utf-8') as csvfile:
             fieldnames = ["idnumber","name","location","address","size","rooms"]
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writerow({'ID number': prop.idnumber, 'name': prop.name, 'location': prop.location, 'address': prop.address, 'size': prop.size, 'no of rooms': prop.rooms})
+            writer.writerow({'idnumber': prop.idnumber, 'name': prop.name, 'location': prop.location, 'address': prop.address, 'size': prop.size, 'rooms': prop.rooms})
 
     def delete_property(self, prop):
         pass
@@ -82,3 +85,13 @@ class PropertyDL:
                     Property_dict = {"pridnumber":prop.idnumber, "prname":prop.name, "prlocation":prop.location, "praddress":prop.address,"prsize":prop.size,"prrooms":prop.rooms }
                     results_list.append(Property_dict)
             return results_list
+
+    def get_all_property_ID(self):
+        '''Returns all location names in given filepath'''
+        return_list = []
+        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                idnumber = row["idnumber"]
+                return_list.append(idnumber)
+        return return_list
