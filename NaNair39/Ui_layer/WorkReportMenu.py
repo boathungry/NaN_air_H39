@@ -185,13 +185,16 @@ class WorkReportMenu:
     def edit_work_request(self):
         print("Change information about a work request")
         work_request_ID = input("What is the work requests ID number? input [c] to cancel: ")
+        if work_request_ID.lower() == "c":
+            return True
         Work_requestinfo = self.llapi.dict_search(WorkRequest,  attribute="id", value=work_request_ID)
         results = Work_requestinfo
         if len(results) < 1:
             print("No requests found with that ID")
             return self.edit_work_request() 
-        if results[0]["wreqlocation"] != self.report_location:
+        if results[0]["wreqlocation"] not in self.report_location:
             print("You do not have access to edit this work request")
+            print(results[0]["wreqlocation"], self.report_location)
             return self.edit_work_request()
         else:
             id = results[0]["wreqid"]
@@ -223,21 +226,15 @@ class WorkReportMenu:
 
                 print("Select a field to change: [w]ork request, [l]ocation, [p]roperties, [d]escription, [wo]rker, [pr]iority, [r]epeat, [t]ime, [s]tart, [do]ne.")
                 fieldchange = input("Input the letter of the field you wish to change: ")
-                
                 if fieldchange.lower() == "l":
-                    print("")
-                    available_locations = self.llapi.list_of_location_names_wr()
-                    location_checker_on = True
-                    while location_checker_on:
-                        print("Available locations are as follows:")
-                        self.llapi.list_printer(available_locations)
-                        location = string.capwords(input("What location is the work request at?: "))
-                        if string.capwords(location) not in available_locations:
-                            print("Not a valid location, please either create a new location or select an available one")
-                        else:
-                            location_checker_on = False
-                            location_split = location.split(" - ")
-                elif fieldchange.lower() == "p":
+                    all_or_your = input("do you want this to apply multiple locations y/n?: ")
+                    if all_or_your.lower() == "y":
+                        location = "All Locations"
+                    else:
+                        location = self.report_location[0]
+                    
+
+                if fieldchange.lower() == "p":
                     properties_comma_checkon = True
                     while properties_comma_checkon:
                         if location.lower() == "all locations":
@@ -253,7 +250,7 @@ class WorkReportMenu:
                             if properties not in propID:
                                 print("Please input an existing property ID.")
                             else:
-                                is_it_there = self.llapi.is_it_there(properties, location_split[0])
+                                is_it_there = self.llapi.is_it_there(properties, self.location[0])
                                 if is_it_there:
                                     properties_comma_checkon = False
                                 else:
@@ -269,7 +266,7 @@ class WorkReportMenu:
                         elif location.lower() == "all locations":
                             worker_comma_check_on = False
                         else:
-                            does_he_work_there = self.llapi.does_he_work_there(worker, location_split[0])
+                            does_he_work_there = self.llapi.does_he_work_there(worker, self.location[0])
                             print(does_he_work_there)
                             if does_he_work_there:
                                 worker_comma_check_on = False

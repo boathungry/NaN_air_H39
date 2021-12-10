@@ -49,6 +49,7 @@ class DLAPI:
     def get_all_employees_name(self):
         '''Gets employees ID number'''
         return self.emplDL.get_employee_names()
+        
     def is_it_there(self, id, location):
         """checks if a ID number is in the location"""
         return self.propDL.is_it_there(id, location)
@@ -181,7 +182,7 @@ class DLAPI:
     def get_all_location_names_wr(self):
         '''Lists all work requests'''
         return self.reqDL.get_all_location_names_wr()
-        
+
     def get_your_location_for_wr(self, location):
         """gets your location to use in work requests"""
         return self.reqDL.get_your_location_name_wr(location)
