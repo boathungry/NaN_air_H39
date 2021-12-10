@@ -136,6 +136,6 @@ Morgunfundur: Allir hjálpast að við að leggja lokahönd á forritið og ský
 Eftir daginn:
 Ingi: Lögðum lokahönd á virkni bætti við contractors og vann í að tengja allt saman og debugga
 Hjörleifur: Lokahönd á alla virkni, vann í öllum lögum, debuggaði og fékk allt til þess að virka.
-Valdís:
+Valdís: Lokahönd lögð á virkni vann í öllum lögum, og kláraði kennslumynndband
 Þór: Kláraði klasarit og skýrslu
 
