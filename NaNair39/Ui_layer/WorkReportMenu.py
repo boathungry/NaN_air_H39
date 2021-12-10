@@ -5,8 +5,11 @@ from Models.WorkRequestModel import WorkRequest
 import Data_layer.WorkRequestDL
 import Data_layer.WorkReportDL
 
+<<<<<<< HEAD
 from Logic_layer.WorkRequestLL import WorkRequest
 from datetime import date
+=======
+>>>>>>> 9a14a630e75b977980c504b43bd273becd73cb14
 
 class WorkReportMenu:
     def __init__(self, idnumber = "", name = "", email = "", location = "", title = "", logic_api:LLAPI = LLAPI()):
@@ -330,6 +333,7 @@ class WorkReportMenu:
                         print("Not a valid location, please either create a new location or select an available one")
                     else:
                         location_checker_on = False
+                        location_split = location.split(" - ")
             if counter == 0 or counter !=0 and fieldchange == "p":
                 properties_comma_checkon = True
                 while properties_comma_checkon:
@@ -341,7 +345,6 @@ class WorkReportMenu:
                         else:
                             properties_comma_checkon = False
                     else:
-                        location_split = location.split(" - ")
                         properties = input("What is the property's ID number?: ").lower()
                         propID = self.llapi.get_all_property_ID()                        
                         if properties not in propID:
@@ -364,12 +367,20 @@ class WorkReportMenu:
             if counter == 0 or counter !=0 and fieldchange == "wo":
                 worker_comma_check_on = True
                 while worker_comma_check_on: 
-                    worker = input("Who is the worker?: ")
-                    comma_check = self.llapi.comma_checker(worker)
-                    if comma_check:
-                        print("Please don't have a comma. It messes with our database")
-                    else:
+                    worker = string.capwords(input("Who is the worker?: "))
+                    exists = self.llapi.list_all_employees_names()
+                    print(exists)
+                    if worker not in exists:
+                        print("please make sure the worker exists")
+                    elif location.lower() == "all locations":
                         worker_comma_check_on = False
+                    else:
+                        does_he_work_there = self.llapi.does_he_work_there(worker, location_split[0])
+                        print(does_he_work_there)
+                        if does_he_work_there:
+                            worker_comma_check_on = False
+                        else:
+                            print("Employee does not work there")
             if counter == 0 or counter !=0 and fieldchange.lower() == "pr":
                 priority_comma_check_on = True
                 while priority_comma_check_on:
@@ -466,7 +477,7 @@ class WorkReportMenu:
             if counter == 0 or counter !=0 and fieldchange == "d":            
                 description_comma_check_on = True
                 while description_comma_check_on:                  
-                    description = string.capwords(input("What is the work report´s description?: "))
+                    description = string.capwords(input("What is the work report's description?: "))
                     comma_check = self.llapi.comma_checker(description)
                     if comma_check:
                         print("Please don't have a comma in the description, only use periods, commas mess with our database")
@@ -487,7 +498,7 @@ class WorkReportMenu:
             if counter == 0 or counter !=0 and fieldchange == "p":
                 properties_comma_checkon = True
                 while properties_comma_checkon:
-                    properties = input("What is the property´s ID number?: ")
+                    properties = input("What is the property's ID number?: ")
                     comma_check = self.llapi.comma_checker(properties)
                     if comma_check:
                         print("Please don't use commas in the property ID. Commas mess with our database.")
@@ -563,69 +574,66 @@ class WorkReportMenu:
        # Work_requestinfo = self.llapi.dict_search(WorkRequest,  attribute="id", value=work_request_ID)
         #results = Work_requestinfo
        # WorkRequest.mark_as_done(results)
-    
-    def mark_work_request_as_done(self):
-        print("Mark work request as done")
-        work_request_ID = input("What is the work request´s ID number?: ")
-        Work_requestinfo = self.llapi.dict_search(WorkRequest,  attribute="id", value=work_request_ID)
-        results = Work_requestinfo
-        if len(results) < 1:
-            print("No requests found with that ID")
-            return self.edit_work_request() 
-        else:
-            id = results[0]["wreqid"]
-            work_request = results[0]["wreqwork_request"]
-            location = results[0]["wreqlocation"]
-            properties = results[0]["wreqproperties"]
-            description = results[0]["wreqdescription"]
-            worker = results[0]["wreqworker"]
-            priority = results[0]["wreqpriority"]
-            repeat = results[0]["wreqrepeat"]
-            time = results[0]["wreqtime"]
-            start = results[0]["wreqstart"]
-            done = results[0]["wreqdone"]
-
-            print(f"ID number:      {id}")
-            print(f"Work request:   {work_request}")
-            print(f"Location:       {location}")
-            print(f"Properties:     {properties}")
-            print(f"Description:    {description}")
-            print(f"Worker:         {worker}")
-            print(f"Priority:       {priority}")
-            print(f"Repeat:         {repeat}")
-            print(f"Time:           {time}")
-            print(f"Start:          {start}")
-            print(f"Done:           {done}")
-
-            #Set done to today´s date
-            done = date.today()
-
-            editmore = input("Would you like to mark this work request as done on today´s date (y/n)?:  ")
-            if editmore == "y":
-                results_final = {}
-                results_final["wreqid"] = id
-                results_final["wreqwork_request"] = work_request
-                results_final["wreqlocation"] = location
-                results_final["wreqproperties"] = properties
-                results_final["wreqdescription"] = description
-                results_final["wreqworker"] = worker
-                results_final["wreqpriority"] = priority
-                results_final["wreqrepeat"] = repeat
-                results_final["wreqtime"] = time
-                results_final["wreqstart"] = start
-                results_final["wreqdone"] = done
-                #Write to a file
-                init = Data_layer.WorkRequestDL.WorkRequestDL()
-                init.change_information_work_request(results_final)
-                #self.managers_menu()
-            elif editmore == "n":
-                return True
+    """
+        def mark_work_request_as_done(self):
+            print("Mark work request as done")
+            work_request_ID = input("What is the work request's ID number?: ")
+            Work_requestinfo = self.llapi.dict_search(WorkRequest,  attribute="id", value=work_request_ID)
+            results = Work_requestinfo
+            if len(results) < 1:
+                print("No requests found with that ID")
+                return self.edit_work_request() 
             else:
-                pass
+                id = results[0]["wreqid"]
+                work_request = results[0]["wreqwork_request"]
+                location = results[0]["wreqlocation"]
+                properties = results[0]["wreqproperties"]
+                description = results[0]["wreqdescription"]
+                worker = results[0]["wreqworker"]
+                priority = results[0]["wreqpriority"]
+                repeat = results[0]["wreqrepeat"]
+                time = results[0]["wreqtime"]
+                start = results[0]["wreqstart"]
+                done = results[0]["wreqdone"]
 
+                print(f"ID number:      {id}")
+                print(f"Work request:   {work_request}")
+                print(f"Location:       {location}")
+                print(f"Properties:     {properties}")
+                print(f"Description:    {description}")
+                print(f"Worker:         {worker}")
+                print(f"Priority:       {priority}")
+                print(f"Repeat:         {repeat}")
+                print(f"Time:           {time}")
+                print(f"Start:          {start}")
+                print(f"Done:           {done}")
 
-    def accept_finished_work_reports():
-        pass
+                #Set done to today's date
+                done = date.today()
+
+                editmore = input("Would you like to mark this work request as done on today's date (y/n)?:  ")
+                if editmore == "y":
+                    results_final = {}
+                    results_final["wreqid"] = id
+                    results_final["wreqwork_request"] = work_request
+                    results_final["wreqlocation"] = location
+                    results_final["wreqproperties"] = properties
+                    results_final["wreqdescription"] = description
+                    results_final["wreqworker"] = worker
+                    results_final["wreqpriority"] = priority
+                    results_final["wreqrepeat"] = repeat
+                    results_final["wreqtime"] = time
+                    results_final["wreqstart"] = start
+                    results_final["wreqdone"] = done
+                    #Write to a file
+                    init = Data_layer.WorkRequestDL.WorkRequestDL()
+                    init.change_information_work_request(results_final)
+                    #self.managers_menu()
+                elif editmore == "n":
+                    return True
+                else:
+                    pass
+    """
     
     def View_work_requests(self):
         work_request_list = self.llapi.get_work_request_list()

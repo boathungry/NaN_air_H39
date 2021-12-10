@@ -44,6 +44,9 @@ class SearchHandler:
             search_results = self.dl_api.dict_search_location(attribute, value)
         self.search_results = search_results
         return self.search_results
+    def does_he_work_there(self, employee, location):
+        """checks if a employee works at the selected location"""
+        return self.dl_api.does_he_work_there(employee, location)
 
     def __str__(self):
         return self.search_results

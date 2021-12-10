@@ -50,8 +50,13 @@ class WorkRequestDL:
             for row in reader:
                 temp_number = row["id"]
                 if int(temp_number[2:]) >= prev_temp:
-                        prev_temp = (int(temp_number[1:])+1)
-            return prev_temp      
+                    prev_temp = (int(temp_number[2:])+1)
+                    prev_temp_string = str(prev_temp)
+                    if len(prev_temp_string) == 1:
+                        return_id = "VB0"+str(prev_temp)
+                    else: 
+                        return_id = "VB"+str(prev_temp) 
+            return return_id     
 
     def create_work_request(self, req):
         '''appends a new work request to the given filepath'''
