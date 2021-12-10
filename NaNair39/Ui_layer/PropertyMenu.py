@@ -373,53 +373,69 @@ class PropertyMenu:
 
 
     def destination_search(self):
+        print("")
         print("What paremeter would you like to search by?")
         print("[c]ity, countr[y], [a]irport, [p]hone number, [l]ocal manager")
         print("Use [b] to go back to main menu and [q] to quit")
         search_attribute = input("Input search attribute: ")
         if search_attribute.lower() == "c":
+            print("")
             cityname = string.capwords(input("What city would you like to look for?: "))
             Locationinfo = self.llapi.search(Location,  attribute="city", value=cityname)
             if len(Locationinfo) < 1:
                 print("No results were found")
                 return self.destination_search()
             else:
+                print("")
+                print("results: ")
                 self.llapi.list_printer(Locationinfo)
-                return self.destination_search()
+                return True
         elif search_attribute.lower() == "y":
+            print("")
             countryname = string.capwords(input("What is country name you wish to search for?: "))
             Locationinfo = self.llapi.search(Location,  attribute="country", value=countryname)
             if len(Locationinfo) < 1:
                 print("No results were found")
                 return self.destination_search()
             else:
+                print("")
+                print("results: ")
                 self.llapi.list_printer(Locationinfo)
                 return True
         elif search_attribute.lower() == "a":
+            print("")
             airportname = string.capwords(input("What is the airport name you wish to search for?: "))
             Locationinfo = self.llapi.search(Location,  attribute="airport", value=airportname)
             if len(Locationinfo) < 1:
                 print("No results were found")
                 return self.destination_search()
             else:
+                print("")
+                print("results: ")
                 self.llapi.list_printer(Locationinfo)
                 return True
         elif search_attribute.lower() == "p":
+            print("")
             phone = input("What is the phone number you wish to search for?: ")
-            Locationinfo = self.llapi.search(Location,  attribute="location", value=phone)
+            Locationinfo = self.llapi.search(Location,  attribute="phone_number", value=phone)
             if len(Locationinfo) < 1:
                 print("No results were found")
                 return self.destination_search()
             else:
+                print("")
+                print("results: ")
                 self.llapi.list_printer(Locationinfo)
                 return True   
         elif search_attribute.lower() == "l":
+            print("")
             local_manager = string.capwords(input("Who is the local manager you wish to search for?: "))
-            Locationinfo = self.llapi.search(Location,  attribute="address", value=local_manager)
+            Locationinfo = self.llapi.search(Location,  attribute="local_manager", value=local_manager)
             if len(Locationinfo) < 1:
                 print("No results were found")
                 return self.destination_search()
             else:
+                print("")
+                print("results: ")
                 self.llapi.list_printer(Locationinfo)
                 return True
         
