@@ -95,7 +95,7 @@ class DLAPI:
         '''Lists all work reports'''
         return self.reqDL.get_all_open_work_requests()
 
-    def get_all_closed_work_reports(self):
+    def get_all_closed_work_requests(self):
         '''Lists all work reports'''
         return self.reqDL.get_all_closed_work_requests()
 
@@ -107,13 +107,9 @@ class DLAPI:
         '''Deletes an existing work report'''
         return self.VB.delete_work_report(VB)
     
-    def search_open_work_report(self, attribute:str, value) -> list:
+    def search_work_report(self, attribute:str, value) -> list:
         """Searches for work reports whose values in the given attribute matches the given value. Returns a list of work reports."""
-        return self.VB.search_for_open_work_report(attribute, value)
-
-    def search_closed_work_report(self, attribute:str, value) -> list:
-        """Searches for work reports whose values in the given attribute matches the given value. Returns a list of work reports."""
-        return self.VB.search_for_closed_work_report(attribute, value)
+        return self.VB.search_for_work_report(attribute, value)
 
     def search_location(self, attribute:str, value) -> list:
         """searches for destinations"""
@@ -143,12 +139,9 @@ class DLAPI:
         '''Deletes an existing work request'''
         return self.reqDL.delete_work_request(req)
 
-    def search_work_open_request(self, attribute:str, value) -> list:
+    def search_work_request(self, attribute:str, value) -> list:
         """Searches for work requests whose values in the given attribute matches the given value. Returns a list of work requests."""
-        return self.reqDL.search_for_work_open_request(attribute, value)
-    def search_work_closed_request(self, attribute:str, value) -> list:
-        """Searches for work requests whose values in the given attribute matches the given value. Returns a list of work requests."""
-        return self.reqDL.search_for_work_closed_request(attribute, value)
+        return self.reqDL.search_for_work_request(attribute, value)
 
     def dict_search_work_request(self, attribute:str, value) -> dict:
         """Searches for work requests whose values in the given attribute matches the given value. Returns a dict of work requests."""
