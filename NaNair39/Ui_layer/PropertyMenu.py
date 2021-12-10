@@ -26,25 +26,25 @@ class PropertyMenu:
             selection = input("Input selection: ")
             if selection == "1" and self.title == "manager":
                 location_options_on = False
-                self.destination_manager_menu()
+                return self.destination_manager_menu()
             elif selection == "1" and self.title == "employee":
                 location_options_on = False
-                self.destination_staff_menu()
+                return self.destination_staff_menu()
             elif selection == "2" and self.title == "manager":
                 location_options_on = False
-                self.property_manager_menu()
+                return self.property_manager_menu()
             elif selection == "2" and self.title == "employee":
                 location_options_on = False
-                self.property_staff_menu()
+                return self.property_staff_menu()
             elif selection.lower() == "b" and self.title == "manager":
                 location_options_on = False
-                current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.ID, self.name, self.email, self.location, self.title)
-                current_user.managers_menu()
+                return True
             elif selection.lower() == "b" and self.title == "employee":
                 location_options_on = False
                 Ui_layer.MainMenuEMPUI.EmployeeUI(title="staff").staff_menu
             elif selection.lower() == "q":
                 location_options_on = False
+                return False
             else:
                 print("Wrong input.")
                 
@@ -60,18 +60,18 @@ class PropertyMenu:
         print("q. Quit.")
         selection = input("Input selection: ")
         if selection == "1":
-            self.create_destination()
+            return self.create_destination()
         elif selection == "2":
             all_destinations = self.llapi.list_all_destinations()
             self.llapi.list_printer(all_destinations)
-            current_user.managers_menu()
+            return True
         elif selection == "3":
-            pass
+            return self.destination_search()
             """elif selection == "4":
             self.edit_destination()"""
         elif selection.lower() == "b":
             
-            current_user.managers_menu()
+            return True
         elif selection.lower() == "q":
             pass
         else:
@@ -79,7 +79,7 @@ class PropertyMenu:
             self.destination_manager_menu()
     
     def property_manager_menu(self):
-        current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.ID, self.name, self.email, self.location, self.title)
+
         print("1. Create new property")
         print("2. Edit existing property")
         print("3. Get list of properties")
@@ -97,7 +97,7 @@ class PropertyMenu:
             pass
         elif selection.lower() == "b":
             
-            current_user.managers_menu()
+            return True
         elif selection.lower() == "q":
             pass
         else:
@@ -105,7 +105,6 @@ class PropertyMenu:
             self.property_manager_menu()
         
     def destination_staff_menu(self):
-        current_user = Ui_layer.MainMenuEMPUI.EmployeeUI(self.ID, self.name, self.email, self.location, self.title)
         print("1. Get list of destinations")
         print("2. Search for destination")
         print("b. Back to main menu")
@@ -114,13 +113,13 @@ class PropertyMenu:
         if selection == "1":
             all_destinations = self.llapi.list_all_destinations()
             self.llapi.list_printer(all_destinations)
-            pass
+            return True
         elif selection == "2":
             #Implement destination search class
             pass
         elif selection.lower() == "b":
             
-            current_user.staff_menu()
+            return True
         elif selection.lower() == "q":
             pass
         else:
@@ -128,7 +127,6 @@ class PropertyMenu:
             self.destination_staff_menu()
 
     def property_staff_menu(self):
-        current_user = Ui_layer.MainMenuEMPUI.EmployeeUI(self.ID, self.name, self.email, self.location, self.title)
         print("1. Get list of properties")
         print("2. Search for property")
         print("b. Back to main menu")
@@ -141,8 +139,9 @@ class PropertyMenu:
             #implement search for properties class
             pass
         elif selection.lower() == "b":
-            
-            current_user.staff_menu()
+            return True
+        elif selection.lower() == "q":
+            return False
     
     
     def create_destination(self):
@@ -212,12 +211,12 @@ class PropertyMenu:
             if rightorwrong.lower() == "y":
                 createdestloop = False
                 self.llapi.create_destination(city, country, airport, phone, open_hours, manager)
-                current_user.managers_menu()
+                return True
             elif rightorwrong.lower() == "c":
                 createdestloop = False
-                current_user.managers_menu()
+                return True
             elif rightorwrong.lower() == "n":
-                print("Select a field to change: [c]ity, countr[y}, [a]irport, [p]hone, [o]pening hours, [l]ocal manager.")
+                print("Select a field to change: [c]ity, countr[y}, [a]irport, [p]hone number, [o]pening hours, [l]ocal manager.")
                 fieldchange = input("Input the letter of the field you wish to change: ")
                 if fieldchange.lower() == "c":
                     city = input("What is the name of the destination city?: ")
@@ -366,12 +365,85 @@ class PropertyMenu:
                 #Skrifa í skrá
                 init = Data_layer.PropertiesDL.PropertyDL()
                 init.change_information_property(results_final)
-                current_user.managers_menu()
+                return True
             elif editmore == "c":
                 staff_editor = False
-                current_user.managers_menu()
+                return True
             else:
                 pass
 
 
-   
+    def destination_search(self):
+        print("")
+        print("What paremeter would you like to search by?")
+        print("[c]ity, countr[y], [a]irport, [p]hone number, [l]ocal manager")
+        print("Use [b] to go back to main menu and [q] to quit")
+        search_attribute = input("Input search attribute: ")
+        if search_attribute.lower() == "c":
+            print("")
+            cityname = string.capwords(input("What city would you like to look for?: "))
+            Locationinfo = self.llapi.search(Location,  attribute="city", value=cityname)
+            if len(Locationinfo) < 1:
+                print("No results were found")
+                return self.destination_search()
+            else:
+                print("")
+                print("results: ")
+                self.llapi.list_printer(Locationinfo)
+                return True
+        elif search_attribute.lower() == "y":
+            print("")
+            countryname = string.capwords(input("What is country name you wish to search for?: "))
+            Locationinfo = self.llapi.search(Location,  attribute="country", value=countryname)
+            if len(Locationinfo) < 1:
+                print("No results were found")
+                return self.destination_search()
+            else:
+                print("")
+                print("results: ")
+                self.llapi.list_printer(Locationinfo)
+                return True
+        elif search_attribute.lower() == "a":
+            print("")
+            airportname = string.capwords(input("What is the airport name you wish to search for?: "))
+            Locationinfo = self.llapi.search(Location,  attribute="airport", value=airportname)
+            if len(Locationinfo) < 1:
+                print("No results were found")
+                return self.destination_search()
+            else:
+                print("")
+                print("results: ")
+                self.llapi.list_printer(Locationinfo)
+                return True
+        elif search_attribute.lower() == "p":
+            print("")
+            phone = input("What is the phone number you wish to search for?: ")
+            Locationinfo = self.llapi.search(Location,  attribute="phone_number", value=phone)
+            if len(Locationinfo) < 1:
+                print("No results were found")
+                return self.destination_search()
+            else:
+                print("")
+                print("results: ")
+                self.llapi.list_printer(Locationinfo)
+                return True   
+        elif search_attribute.lower() == "l":
+            print("")
+            local_manager = string.capwords(input("Who is the local manager you wish to search for?: "))
+            Locationinfo = self.llapi.search(Location,  attribute="local_manager", value=local_manager)
+            if len(Locationinfo) < 1:
+                print("No results were found")
+                return self.destination_search()
+            else:
+                print("")
+                print("results: ")
+                self.llapi.list_printer(Locationinfo)
+                return True
+        
+        elif search_attribute.lower() == "b":
+            return True
+        elif search_attribute.lower() == "q":
+            return False
+        else:
+            print("Not a valid attribute")
+            return self.destination_search()
