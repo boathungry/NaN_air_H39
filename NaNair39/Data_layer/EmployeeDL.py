@@ -75,7 +75,7 @@ class EmployeeDL:
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                if row[attribute]==value:
+                if value in row[attribute]:
                     empl = Employee(row["id"],row["name"],row["email"], row["location"], row["address"],row["phone"],row["cellphone"],row["title"])
                     
                     results_list.append(empl)
