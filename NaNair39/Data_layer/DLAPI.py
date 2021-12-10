@@ -116,6 +116,10 @@ class DLAPI:
         """Searches for work requests whose values in the given attribute matches the given value. Returns a list of work requests."""
         return self.reqDL.search_for_work_request(attribute, value)
 
+    def dict_search_work_request(self, attribute:str, value) -> dict:
+        """Searches for work requests whose values in the given attribute matches the given value. Returns a list of work requests."""
+        return self.reqDL.dict_search_for_work_request(attribute, value)
+
     def login_by_ID(self,email):    
         '''Logs employee in by ID'''
         return self.emplDL.login_by_ID(email)
