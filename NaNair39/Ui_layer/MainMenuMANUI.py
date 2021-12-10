@@ -165,8 +165,8 @@ class ManagerUI:
             if counter == 0 or counter !=0 and fieldchange.lower() == "t":
                 titlechecker_on = True
                 while titlechecker_on:
-                    title = input('Is the employee a "manager" or a regular "staff" member?: ').lower()
-                    if title.lower() not in ["manager", "staff"]:
+                    title = input('Is the employee a "manager" or a regular "employee": ').lower()
+                    if title.lower() not in ["manager", "employee"]:
                         print('Not a valid title, please input either the word "manager" or the word "staff"')
                     else:
                         titlechecker_on = False
