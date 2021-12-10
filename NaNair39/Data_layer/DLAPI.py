@@ -117,16 +117,16 @@ class DLAPI:
         return self.reqDL.search_for_work_request(attribute, value)
 
     def dict_search_work_request(self, attribute:str, value) -> dict:
-        """Searches for work requests whose values in the given attribute matches the given value. Returns a list of work requests."""
+        """Searches for work requests whose values in the given attribute matches the given value. Returns a dict of work requests."""
         return self.reqDL.dict_search_for_work_request(attribute, value)
 
     def login_by_ID(self,email):    
         '''Logs employee in by ID'''
         return self.emplDL.login_by_ID(email)
 
-    def list_all_contractors(self, contr):
+    def list_all_contractors(self):
         '''List all contractors'''
-        return self.contr.list_all_contractors(contr)
+        return self.contr.list_all_contractors()
 
     def create_contractor(self, contr):
         '''Creates a contractor'''

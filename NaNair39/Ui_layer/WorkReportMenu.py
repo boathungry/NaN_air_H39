@@ -21,7 +21,7 @@ class WorkReportMenu:
         print("3. Change work request")
         print("4. Mark work request as done")
         print("5. Accept finished work reports")
-        print("6. View work request")
+        print("6. View work requests")
         print("7. View work reports")
         print("b. Back to main menu")
         print("q. Quit")
@@ -149,19 +149,22 @@ class WorkReportMenu:
     def create_work_request():
         pass
 
-    def create_maintenance_report():
+    def create_work_report():
         pass
 
-    def change_maintenance_report():
+    def change_work_report():
         pass
 
-    def mark_meaitenance_or_work_report_as_ready_for_closing():
+    def mark_work_report_as_done():
         pass
 
-    def Accept_finished_maintenance_and_work_reports():
+    def Accept_finished_work_reports():
         pass
     
-    def View_work_and_maintenance_reports():
+    def View_work_reports():
+        pass
+  
+    def View_work_reports():
         pass
 
 

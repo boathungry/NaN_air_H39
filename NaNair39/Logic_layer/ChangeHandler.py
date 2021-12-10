@@ -138,7 +138,9 @@ class ChangeHandler():
 
     def change_work_request(self, work_request:WorkRequest, attribute:str, new_value):
         attribute = attribute.lower()
-        if attribute == REQUEST:
+        if attribute == ID:
+            work_request.id = new_value
+        elif attribute == REQUEST:
             work_request.work_request = new_value
         elif attribute == LOCATION:
             work_request.location = new_value

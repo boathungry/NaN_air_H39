@@ -58,6 +58,10 @@ class ListingHandler:
     def list_all_work_requests_unsorted(self) -> list:
         """Returns a list of all work requests."""
         return self.dl_api.get_all_work_requests()
+    
+    def list_all_contractors(self) -> list:
+        '''Returns a list of all contractors'''
+        return self.dl_api.list_all_contractors()
 
 
     def sort_by_name(self, unsorted_list, descending:bool = False) -> list:
