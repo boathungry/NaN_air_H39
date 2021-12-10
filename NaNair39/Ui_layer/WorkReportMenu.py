@@ -154,13 +154,16 @@ class WorkReportMenu:
     def create_work_request():
         pass
 
+    def create_work_report():
+        pass
+
     def change_work_report():
         pass
 
     def mark_work_report_as_done():
         pass
 
-    def Accept_finished_work_requests():
+    def Accept_finished_work_reports():
         pass
     
     def View_work_reports():
