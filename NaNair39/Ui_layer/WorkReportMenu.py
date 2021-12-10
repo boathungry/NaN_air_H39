@@ -643,7 +643,7 @@ class WorkReportMenu:
 
     def work_report_staff_menu(self):
         print("1. Create work request")
-        print("2. create maintenance request")
+        print("2. Create maintenance request")
         print("3. Change maintenance report")
         print("4. Browse work and maintenance reports")
         print("b. Back to main menu")
