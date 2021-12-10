@@ -220,43 +220,7 @@ class PropertyMenu:
                 else:
                     print("Invalid option put into selection field.")
 
-    # C krafa
-    """def edit_destination(self):
-        print("Change information about a destination")
-        cityname = string.capwords(input("What is the city name of the destination you wish to edit?: "))
-
-        destinationinfo = self.llapi.dict_search(search_object=Location, attribute="city", value=cityname)
-        results = destinationinfo
-        print(destinationinfo)
-        city = results[0]["city"]
-        country = results[0]["country"]
-        airport = results[0]["airport"]
-        phone_number = results[0]["phone_number"]
-        opening_hours = results[0]["opening_hours"]
-        local_manager = results[0]["local_manager"]
-        print(f"City:          {city}")
-        print(f"Country:       {country}")
-        print(f"Airport:       {airport}")
-        print(f"Phone no:      {phone_number}")
-        print(f"Opening hours: {opening_hours}")
-        print(f"Local Manager: {local_manager}")
-        print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
-        fieldchange = input("Input the letter of the field you wish to change: ")
-        if fieldchange.lower() == "n":
-            name = input("What is the name of the new employee?: ")
-        elif fieldchange.lower() == "l":
-            location = input("What location does the employee work at?: ")
-        elif fieldchange.lower() == "a":    
-            address = input("What is the address of the employee?: ")
-        elif fieldchange.lower() == "p":
-            phone = input("What is the employees phone number?: ")
-        elif fieldchange.lower() == "c":
-            cellphone = input("What is the employees cellphone number?: ")
-        elif fieldchange.lower() == "t":
-            title = input('Is the employee a "manager" or a regular "employee"?: ')
-        else:
-            print("Invalid option put into selection field.")"""
-
+   
 #idnumber,name,location,address,size,rooms
 
     def edit_property(self):
@@ -358,7 +322,7 @@ class PropertyMenu:
     def destination_search(self):
         print("")
         print("What paremeter would you like to search by?")
-        print("[c]ity, countr[y], [a]irport, [p]hone number, [l]ocal manager")
+        print("[c]ity, countr[y], [a]irport, [l]ocal manager")
         print("Use [b] to go back to main menu and [q] to quit")
         search_attribute = input("Input search attribute: ")
         if search_attribute.lower() == "c":
@@ -397,18 +361,6 @@ class PropertyMenu:
                 print("results: ")
                 self.llapi.list_printer(Locationinfo)
                 return True
-        elif search_attribute.lower() == "p":
-            print("")
-            phone = input("What is the phone number you wish to search for?: ")
-            Locationinfo = self.llapi.search(Location,  attribute="phone_number", value=phone)
-            if len(Locationinfo) < 1:
-                print("No results were found")
-                return self.destination_search()
-            else:
-                print("")
-                print("results: ")
-                self.llapi.list_printer(Locationinfo)
-                return True   
         elif search_attribute.lower() == "l":
             print("")
             local_manager = string.capwords(input("Who is the local manager you wish to search for?: "))
