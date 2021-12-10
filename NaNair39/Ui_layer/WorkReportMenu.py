@@ -4,12 +4,8 @@ from Models.WorkReportModel import WorkReport
 from Models.WorkRequestModel import WorkRequest
 import Data_layer.WorkRequestDL
 import Data_layer.WorkReportDL
-
-<<<<<<< HEAD
 from Logic_layer.WorkRequestLL import WorkRequest
 from datetime import date
-=======
->>>>>>> 9a14a630e75b977980c504b43bd273becd73cb14
 
 class WorkReportMenu:
     def __init__(self, idnumber = "", name = "", email = "", location = "", title = "", logic_api:LLAPI = LLAPI()):
@@ -43,9 +39,9 @@ class WorkReportMenu:
         elif selection == "5":
             return self.finalize_work_report()
         elif selection == "6":
-            pass
+            return self.view_work_requests
         elif selection == "7":
-            pass
+            return self.view_work_reports
         elif selection == "b":
             return True
         elif selection == "q":
@@ -635,11 +631,11 @@ class WorkReportMenu:
                     pass
     """
     
-    def View_work_requests(self):
+    def view_work_requests(self):
         work_request_list = self.llapi.get_work_request_list()
         self.llapi.list_printer(work_request_list)
    
-    def View_work_reports(self):
+    def view_work_reports(self):
         work_report_list = self.llapi.get_work_report_list()
         self.llapi.list_printer(work_report_list)
 
