@@ -128,6 +128,10 @@ setti inn comma checker til að passa að ekkert input sé með kommum, einfalda
 kláraði að sjá til að öll virkni fyrir yfirmann að stjórna starfsmannaupplýsingum ætti að vera komin í gang
 Þór: Bætti við filtering functionality í ListingHandler og LLAPI, gerði nokkur bug fix
 Valdís: Kláraði næstum föllin til að vista breytingar í csv files, smá villur sem lagfærðar verða á morgun
+Ingi: Debug og að koma virkni sem hafði verið implementuð að hluta til í fulla virkni
 
 --10.12.2021--
 Morgunfundur: Allir hjálpast að við að leggja lokahönd á forritið og skýrslu.
+
+Eftir daginn:
+
