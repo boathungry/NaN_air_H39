@@ -151,4 +151,6 @@ class DLAPI:
         """returns a list of all used property id numbers"""
         return self.propDL.get_all_property_ID()
 
-    
+    def get_all_location_names_wr(self):
+        '''Lists all work requests'''
+        return self.reqDL.get_all_location_names_wr()

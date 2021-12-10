@@ -92,7 +92,7 @@ class WorkReportMenu:
                 elif fieldchange.lower() == "l":
                     location_check_on = True
                     while location_check_on:
-                        available_locations = self.llapi.list_of_location_names()
+                        available_locations = self.llapi.list_of_location_names_wr()
                         print("Available locations are as follows:")
                         self.llapi.list_printer(available_locations)
                         location = input("What location is the new work request at?: ")
