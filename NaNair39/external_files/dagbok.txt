@@ -127,3 +127,4 @@ Hjörleifur: fór afturvirkt yfir dagbók og bætti inn þar sem vantaði fleirr
 setti inn comma checker til að passa að ekkert input sé með kommum, einfaldaði og stytti suma klasa sem voru orðnir 100 línur+, 
 kláraði að sjá til að öll virkni fyrir yfirmann að stjórna starfsmannaupplýsingum ætti að vera komin í gang
 Þór: Bætti við filtering functionality í ListingHandler og LLAPI, gerði nokkur bug fix
+Valdís: Kláraði næstum föllin til að vista breytingar í csv files, smá villur sem lagfærðar verða á morgun
