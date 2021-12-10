@@ -496,7 +496,7 @@ class WorkReportMenu:
        # Work_requestinfo = self.llapi.dict_search(WorkRequest,  attribute="id", value=work_request_ID)
         #results = Work_requestinfo
        # WorkRequest.mark_as_done(results)
-    
+"""
     def mark_work_request_as_done(self):
         print("Mark work request as done")
         work_request_ID = input("What is the work request´s ID number?: ")
@@ -555,10 +555,7 @@ class WorkReportMenu:
                 return True
             else:
                 pass
-
-
-    def accept_finished_work_reports():
-        pass
+"""
     
     def View_work_requests(self):
         work_request_list = self.llapi.get_work_request_list()
