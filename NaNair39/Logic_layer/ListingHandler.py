@@ -55,13 +55,21 @@ class ListingHandler:
         """Returns a list of all properties."""
         return self.dl_api.get_all_properties()
 
-    def list_all_work_reports_unsorted(self) -> list:
+    def list_all_open_work_reports_unsorted(self) -> list:
         """Returns a list of all work reports."""
-        return self.dl_api.get_all_work_reports()
+        return self.dl_api.search_open_work_report()
 
-    def list_all_work_requests_unsorted(self) -> list:
+    def list_all_closed_work_reports_unsorted(self) -> list:
+        """Returns a list of all work reports."""
+        return self.dl_api.search_closed_work_report()
+
+    def list_all_open_work_requests_unsorted(self) -> list:
         """Returns a list of all work requests."""
-        return self.dl_api.get_all_work_requests()
+        return self.dl_api.search_work_open_request()
+
+    def list_all_closed_work_requests_unsorted(self) -> list:
+        """Returns a list of all work requests."""
+        return self.dl_api.search_work_closed_request()
     
     def list_all_contractors(self) -> list:
         '''Returns a list of all contractors'''
