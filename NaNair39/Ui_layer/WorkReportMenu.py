@@ -17,6 +17,7 @@ class WorkReportMenu:
         self.title = title
         self.llapi = logic_api
         self.llapi = logic_api
+        #report_location = self.llapi.get_your_location_for_wr(location)
 
     def Work_report_manager_menu(self):
         print("1. Create work request")
