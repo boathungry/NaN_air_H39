@@ -134,7 +134,12 @@ Ingi: Debug og að koma virkni sem hafði verið implementuð að hluta til í f
 Morgunfundur: Allir hjálpast að við að leggja lokahönd á forritið og skýrslu.
 
 Eftir daginn:
+<<<<<<< HEAD
 Ingi: Lögðum lokahönd á virkni bætti við contractors og vann í að tengja allt saman og debugga
 Hjörleifur:
 Valdís:
 Þór:
+=======
+Þór: Kláraði klasarit og skýrslu
+
+>>>>>>> 0d961ce814ad02e2ae1739669e91d0872e34fcb1
