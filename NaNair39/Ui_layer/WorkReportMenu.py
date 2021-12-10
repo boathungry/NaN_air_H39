@@ -136,6 +136,7 @@ class WorkReportMenu:
                     #Skrifa í skrá
                     init = Data_layer.WorkRequestDL.WorkRequestDL()
                     init.change_information_work_request(results_final)
+                    self.Work_report_manager_menu()
                     #self.managers_menu()
                 elif editmore == "c":
                     request_editor = False
