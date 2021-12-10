@@ -101,8 +101,7 @@ class PropertyDL:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 rowid = str(row["idnumber"]).lower()
-                rowloc = row["location"]
-                print(f"input id = {id} rowid= {rowid}, row location = {rowloc} location = {location}")
+
                 if rowid == id and row["location"] == location:
                     return True
             return False
