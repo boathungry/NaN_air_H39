@@ -101,23 +101,21 @@ class WorkReportMenu:
                         else:
                             location_check_on = False
                 elif fieldchange.lower() == "p":    
-                    address = input("What is the new property?: ")
-                elif fieldchange.lower() == "s":
-                    phone = input("What is the new size of the property?: ")
+                    properties = input("What is the new property?: ")
                 elif fieldchange.lower() == "d":
-                    cellphone = input("What is the new description?: ")
+                    description = input("What is the new description?: ")
                 elif fieldchange.lower() == "wo":
-                    cellphone = input("Who is the new worker?: ")
+                    worker = input("Who is the new worker?: ")
                 elif fieldchange.lower() == "pr":
-                    cellphone = input("What is the new priority?: ")
+                    priority = input("What is the new priority?: ")
                 elif fieldchange.lower() == "r":
-                    cellphone = input("Would you like to repeat (y/n)?: ")
+                    repeat = input("Would you like to repeat (y/n)?: ")
                 elif fieldchange.lower() == "t":
-                    cellphone = input("When would you like to repeat (none/daily/weekly/monthly/yearly)?: ")
+                    time = input("When would you like to repeat (none/daily/weekly/monthly/yearly)?: ")
                 elif fieldchange.lower() == "s":
-                    cellphone = input("What is the new start date?: ")
+                    start = input("What is the new start date?: ")
                 elif fieldchange.lower() == "do":
-                    cellphone = input("What is the new finished date?: ")
+                    done = input("What is the new finished date?: ")
                 else:
                     print("Invalid option put into selection field.")
                 editmore = input("Would you like to stop editing input [y] to commit changes and go back to the main menu, input [c] to cancel, input anything else to keep editing: ")

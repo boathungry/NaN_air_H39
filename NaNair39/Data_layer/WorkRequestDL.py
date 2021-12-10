@@ -46,7 +46,7 @@ class WorkRequestDL:
                 if (row["id"] == ["wreqid"]):
                     one_work_request = (req["wreqid"], req["wreqwork_request"], req["wreqlocation"], req["wreqproperties"], req["wreqdescription"], req["wreqworker"], req["wreqpriority"], req["wreqrepeat"], req["wreqtime"], req["wreqstart"], req["wreqdone"])
                 else:
-                    one_work_request = row["wreqid"], row["wreqwork_request"], row["wreqlocation"], row["wreqproperties"], row["wreqdescription"], row["wreqworker"], row["wreqpriority"], row["wreqrepeat"], row["wreqtime"], row["wreqstart"], row["wreqdone"]
+                    one_work_request = row["id"], row["work_request"], row["location"], row["properties"], row["description"], row["worker"], row["priority"], row["repeat"], row["time"], row["start"], row["done"]
                 list_work_requests.append(one_work_request)
         #Write all file(all lines)
         with open("csv_files/WorkRequests.csv", mode="w", newline='', encoding='utf-8') as csvfile:
