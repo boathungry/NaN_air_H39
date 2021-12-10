@@ -472,7 +472,7 @@ class PropertyMenu:
                 id_comma_check_on = True
                 while id_comma_check_on:
                     idlist = self.llapi.get_all_property_ID()
-                    idnumber = input("What is the idnumber of the new property?: ").upper()
+                    idnumber = input("What is the idnumber of the new property?: ").lower()
                     comma_check = self.llapi.comma_checker(idnumber)
                     number_of_ids = len(idlist)
                     if idnumber in idlist:

@@ -92,6 +92,6 @@ class PropertyDL:
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                idnumber = row["idnumber"]
+                idnumber = row["idnumber"].lower()
                 return_list.append(idnumber)
         return return_list
