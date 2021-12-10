@@ -443,8 +443,3 @@ class ManagerUI:
                                     location_checker_on = False
                         else:
                             print("Invalid option put into selection field.")
-
-#            employeelist = self.llapi.list_all_employees()
-#            self.llapi.list_printer(employeelist)
-#            self.staffing_options()
-#name,phone,email,opening hours,address,location

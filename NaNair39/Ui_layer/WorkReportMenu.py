@@ -286,11 +286,14 @@ class WorkReportMenu:
     def Accept_finished_work_reports():
         pass
     
-    def View_work_reports():
-        pass
-  
-    def View_work_reports():
-        pass
+    def View_work_requests(self):
+        work_request_list = self.llapi.get_work_request_list()
+        self.llapi.list_printer(work_request_list)
+   
+    def View_work_reports(self):
+        work_report_list = self.llapi.get_work_report_list()
+        self.llapi.list_printer(work_report_list)
+
 
 
     def work_report_staff_menu(self):

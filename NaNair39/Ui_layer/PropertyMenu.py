@@ -77,7 +77,6 @@ class PropertyMenu:
             self.destination_manager_menu()
     
     def property_manager_menu(self):
-
         print("1. Create new property")
         print("2. Edit existing property")
         print("3. Get list of properties")
@@ -90,7 +89,9 @@ class PropertyMenu:
         elif selection == "2":
             return self.edit_property()
         elif selection == "3":
-            pass
+            properties = self.llapi.list_all_properties()
+            self.llapi.list_printer(properties)
+            return True
         elif selection == "4":
             pass
         elif selection.lower() == "b":
@@ -472,7 +473,7 @@ class PropertyMenu:
                 id_comma_check_on = True
                 while id_comma_check_on:
                     idlist = self.llapi.get_all_property_ID()
-                    idnumber = input("What is the idnumber of the new property?: ").upper()
+                    idnumber = input("What is the idnumber of the new property?: ").lower()
                     comma_check = self.llapi.comma_checker(idnumber)
                     number_of_ids = len(idlist)
                     if idnumber in idlist:

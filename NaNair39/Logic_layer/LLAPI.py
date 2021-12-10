@@ -26,6 +26,12 @@ class LLAPI():
     def get_work_request_id_number(self):
         return self.registration_handler.get_work_request_id_number()
 
+    def get_work_report_list(self):
+        return self.listing_handler.list_all_work_reports_unsorted()
+
+    def get_work_request_list(self):
+        return self.listing_handler.list_all_work_requests_unsorted()
+
     def change_employee(self, employee, attribute, new_value):
         """Changes an attribute of an employee to a new value. Returns the given attribute if successful, otherwise returns None."""
         return self.change_handler.change_employee(employee, attribute, new_value)
@@ -88,7 +94,9 @@ class LLAPI():
     def list_all_employees(self):
         "gives a list of all employees and information"
         return self.listing_handler.list_all_employees_unsorted()
-    
+    def list_all_properties(self):
+        """gives a list of all properties"""
+        return self.listing_handler.list_all_properties_unsorted()
     def list_of_location_names(self):
         """returns a list of all location names"""
         return self.listing_handler.list_all_location_names()
