@@ -30,7 +30,7 @@ class WorkReportDL:
                         rep_writer.writerow(header)
                         rep_writer.writerows(list_work_reports)
 
-    def get_all_work_reports(self):
+    def get_all_open_work_reports(self):
         '''Lists all work reports from the given filepath'''
         return_list = []
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
@@ -39,7 +39,17 @@ class WorkReportDL:
                 VB = WorkReport(row["id"],row["work_request_id"], row["description"], row["location"], row["properties"], row["worker"], row["comment"], row["regular_maintenance"], row["expenses"], row["start"], row["done"])
                 return_list.append(VB)
         return return_list
-    
+
+    def get_all_closed_work_reports(self):
+        '''Lists all work reports from the given filepath'''
+        return_list = []
+        with open("csv_files/ApprovedWorkReports.csv", newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                VB = WorkReport(row["id"],row["work_request_id"], row["description"], row["location"], row["properties"], row["worker"], row["comment"], row["regular_maintenance"], row["expenses"], row["start"], row["done"])
+                return_list.append(VB)
+        return return_list
+
     def get_work_report_id_number(self):
         prev_temp = int(1)
         '''Checks the next avaliable id number and returns'''

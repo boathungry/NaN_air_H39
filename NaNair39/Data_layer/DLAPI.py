@@ -83,10 +83,22 @@ class DLAPI:
         '''Changes information on an existing property'''
         return self.propDL.change_information_property(prop)
     
-    def get_all_work_reports(self):
+    def get_all_open_work_reports(self):
         '''Lists all work reports'''
-        return self.VB.get_all_work_reports()
-    
+        return self.VB.get_all_open_work_reports()
+
+    def get_all_closed_work_reports(self):
+        '''Lists all work reports'''
+        return self.VB.get_all_closed_work_reports()
+
+    def get_all_open_work_requests(self):
+        '''Lists all work reports'''
+        return self.reqDL.get_all_open_work_requests()
+
+    def get_all_closed_work_reports(self):
+        '''Lists all work reports'''
+        return self.reqDL.get_all_closed_work_requests()
+
     def create_work_report(self,VB):
         '''Creates a new work report'''
         return self.VB.create_work_report(VB)

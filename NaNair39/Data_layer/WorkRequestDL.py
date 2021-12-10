@@ -33,10 +33,20 @@ class WorkRequestDL:
 
 
 
-    def get_all_work_requests(self):
+    def get_all_open_work_requests(self):
         '''Lists all work requests to the given filepath'''
         return_list = []
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                req = WorkRequest(row["id"],row["work_request"], row["location"], row["properties"],row["description"],row["worker"],row["priority"],row["repeat"],row["time"],row["start"],row["done"])
+                return_list.append(req)
+        return return_list
+
+    def get_all_closed_work_requests(self):
+        '''Lists all work requests to the given filepath'''
+        return_list = []
+        with open(self.filepath_finished, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 req = WorkRequest(row["id"],row["work_request"], row["location"], row["properties"],row["description"],row["worker"],row["priority"],row["repeat"],row["time"],row["start"],row["done"])
