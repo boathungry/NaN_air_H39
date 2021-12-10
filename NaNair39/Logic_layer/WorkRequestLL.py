@@ -32,7 +32,7 @@ class WorkRequest(RegistrationHandler, ChangeHandler):
             if TIME == "daily":
                 date_next = date_today + relativedelta(days=1)
             elif TIME == "weekly":
-                date_next = date_today + relativedelta(days=8)
+                date_next = date_today + relativedelta(days=7)
             elif TIME == "monthly":
                 date_next = date_today + relativedelta(months=1)
             elif TIME == "yearly":
