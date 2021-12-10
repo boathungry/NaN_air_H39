@@ -219,7 +219,7 @@ class ManagerUI:
                             print('Not a valid title, please input either the word "manager" or the word "staff"')
                         else:
                             titlechecker_on = False   
-            elif fieldchange in ["n", "e", "a", "p", "c"]:
+            elif fieldchange.lower() in ["n", "e", "a", "p", "c"]:
                 comma_check_on = True
                 while comma_check_on:
                     fieldinput = input(f"What would you like it changed to?: ")
