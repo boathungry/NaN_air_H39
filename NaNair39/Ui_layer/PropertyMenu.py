@@ -281,8 +281,9 @@ class PropertyMenu:
     def edit_property(self):
         current_user = Ui_layer.MainMenuMANUI.ManagerUI(self.ID, self.name, self.email, self.location, self.title)
         print("Change information about a property")
-        propertyID = input("What is the property´s ID number?: ").capitalize()
-        Propertyinfo = self.llapi.dict_search(Property,  attribute="idnumber", value=propertyID.capitalize())
+        propertyID = input("What is the property´s ID number?: ")
+        print("input fyrir prop_id: ", propertyID)
+        Propertyinfo = self.llapi.dict_search(Property,  attribute="idnumber", value=propertyID)
         results = Propertyinfo
         print(results)
 
@@ -305,7 +306,7 @@ class PropertyMenu:
             if fieldchange.lower() == "n":
                 commaon = True
                 while commaon:
-                    name = string.capwords(input("What is the new name of the property?: "))
+                    name = input("What is the new name of the property?: ")
                     comma_check = self.llapi.comma_checker(input=name)
                     if comma_check:
                         print("Please don't have a comma in the name, it messes with our database")
