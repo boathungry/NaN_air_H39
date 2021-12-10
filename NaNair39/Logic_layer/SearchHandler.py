@@ -8,7 +8,7 @@ from Models.LocationModel import Location
 
 class SearchHandler:
     def __init__(self, search_results = "", dl_api:DLAPI = DLAPI()) -> None:
-        self.data_api = dl_api
+        self.dl_api = dl_api
         self.search_results = search_results
 
     def search(self, search_object, attribute:str, value) -> list:
@@ -16,15 +16,15 @@ class SearchHandler:
         Returns a list of the found objects."""
 
         if search_object == Employee:
-            search_results = self.data_api.search_employee(attribute, value)
+            search_results = self.dl_api.search_employee(attribute, value)
         elif search_object == Property:
-            search_results = self.data_api.search_property(attribute, value)
+            search_results = self.dl_api.search_property(attribute, value)
         elif search_object == WorkReport:
-            search_results = self.data_api.search_work_report(attribute, value)
+            search_results = self.dl_api.search_work_report(attribute, value)
         elif search_object == WorkRequest:
-            search_results = self.data_api.search_work_request(attribute, value)
+            search_results = self.dl_api.search_work_request(attribute, value)
         elif search_object == Location:
-            search_results = self.data_api.search_location(attribute, value)
+            search_results = self.dl_api.search_location(attribute, value)
         self.search_results = search_results
         return self.search_results
 
@@ -33,15 +33,15 @@ class SearchHandler:
         Returns a dictionary of the found objects."""
 
         if search_object == Employee:
-            search_results = self.data_api.dict_search_employee(attribute, value)
+            search_results = self.dl_api.dict_search_employee(attribute, value)
         elif search_object == Property:
-            search_results = self.data_api.dict_search_property(attribute, value)
+            search_results = self.dl_api.dict_search_property(attribute, value)
         elif search_object == WorkReport:
-            search_results = self.data_api.search_work_report(attribute, value)
+            search_results = self.dl_api.search_work_report(attribute, value)
         elif search_object == WorkRequest:
-            search_results = self.data_api.dict_search_work_request(attribute, value)
+            search_results = self.dl_api.dict_search_work_request(attribute, value)
         elif search_object == Location:
-            search_results = self.data_api.dict_search_location(attribute, value)
+            search_results = self.dl_api.dict_search_location(attribute, value)
         self.search_results = search_results
         return self.search_results
 
