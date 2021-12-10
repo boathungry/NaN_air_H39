@@ -26,14 +26,15 @@ class EmployeeDL:
                 return_list.append(empl)
         return return_list
     
-    def get_all_employees_name(self):
+    def get_employee_names(self):
         '''Returns a list of employees in the given filepath'''
         return_list = []
         with open("csv_files/Employee.csv", newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile, delimiter=',')
             for row in reader:
-                empl = Employee(row["name"])
-                return_list.append(empl)
+                empl = str(Employee(row["name"]))
+                name_stripper = empl.strip()
+                return_list.append(name_stripper)
         return return_list
     
 
@@ -123,3 +124,13 @@ class EmployeeDL:
                     Employee_dict = {"emid":empl.idnumber, "emname":empl.name, "ememail":empl.email, "emlocation":empl.location,"emaddress":empl.address,"emphone":empl.phone,"emcellphone":empl.cellphone,"emtitle":empl.title }
                     results_list.append(Employee_dict)
             return results_list
+
+    def does_he_work_there(self, employee, location):
+        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            print(employee, location)
+            for row in reader:
+                print("name", row["name"], "row", row["location"])
+                if row["name"] == employee and row["location"] == location:
+                    return True
+            return False

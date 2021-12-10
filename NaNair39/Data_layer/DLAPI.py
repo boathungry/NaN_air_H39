@@ -165,3 +165,6 @@ class DLAPI:
     def get_all_location_names_wr(self):
         '''Lists all work requests'''
         return self.reqDL.get_all_location_names_wr()
+    def does_he_work_there(self, employee, location):
+        """checks if a employee works in given location"""
+        return self.emplDL.does_he_work_there(employee, location)
