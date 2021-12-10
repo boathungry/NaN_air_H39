@@ -32,16 +32,13 @@ class ManagerUI:
             print("")
             selection = input("Input selection: ")
             if selection == "1":
-                on = False
-                self.staffing_options()
+                on = self.staffing_options()
             elif selection == "2":
-                on = False
                 current_user = Ui_layer.PropertyMenu.PropertyMenu(self.idnumber, self.name, self.email, self.location, self.title)
-                current_user.location_options()
+                on = current_user.location_options()
             elif selection == "3":
-                on = False
                 current_user = Ui_layer.WorkReportMenu.WorkReportMenu(self.idnumber, self.name, self.email, self.location, self.title)
-                current_user.Work_report_manager_menu()
+                on = current_user.Work_report_manager_menu()
             elif selection.lower() == "q":
                 on = False
                 print("")
@@ -71,8 +68,11 @@ class ManagerUI:
             self.staffing_options()
         elif selection == "4":
             self.staff_search()
+        elif selection.lower() == "b":
+            return True
         elif selection.lower() == "q":
             print("Thank you and have a nice day.")
+            return False
         else:
             print("Invalid option put into selection field.")
             self.managers_menu()
@@ -103,7 +103,7 @@ class ManagerUI:
                 elif rightorwrong.lower() == "c":
                     create_employee_loop = False
                     fieldchange = ""
-                    self.managers_menu()
+                    return True
                 elif rightorwrong.lower() == "n":
                     print("Select a field to change: [n]ame, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle.")
                     fieldchange = input("Input the letter of the field you wish to change: ")
@@ -256,10 +256,10 @@ class ManagerUI:
                 #Skrifa í skrá
                 init = Data_layer.EmployeeDL.EmployeeDL(ID=results_final["emid"], location=results_final["emlocation"])
                 init.change_information_employee(results_final)
-                self.managers_menu()
+                return True
             elif editmore == "c":
                 staff_editor = False
-                self.managers_menu()
+                return True
             else:
                 pass
 
