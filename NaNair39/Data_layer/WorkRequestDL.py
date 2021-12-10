@@ -99,23 +99,11 @@ class WorkRequestDL:
     def delete_work_request(self, req):
         pass
 
-    def search_for_work_open_request(self, attribute:str, value):
+    def search_for_work_request(self, attribute:str, value):
         '''Searches for a work request based on the given attribute'''
         results_list = []
         attribute = attribute.lower()
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                request = WorkRequest(row["id"],row["work_request"],row["location"],row["properties"],row["description"],row["worker"],row["priority"],row["repeat"],row["time"],row["start"],row["done"]) #ROWS ADDED
-                if row[attribute] == value:
-                    results_list.append(request)
-            return results_list
-
-    def search_for_work_closed_request(self, attribute:str, value):
-        '''Searches for a work request based on the given attribute'''
-        results_list = []
-        attribute = attribute.lower()
-        with open(self.filepath_finished, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 request = WorkRequest(row["id"],row["work_request"],row["location"],row["properties"],row["description"],row["worker"],row["priority"],row["repeat"],row["time"],row["start"],row["done"]) #ROWS ADDED

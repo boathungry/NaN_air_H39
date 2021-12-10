@@ -104,7 +104,6 @@ class WorkReportMenu:
                     results_final["wropstart"] = start
                     results_final["wropdone"] = "done"
                     #Skrifa í skrá
-                    print("test")
                     init = Data_layer.WorkReportDL.WorkReportDL()
                     init.finalize_work_report(results_final)
                     return True
