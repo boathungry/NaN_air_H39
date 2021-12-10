@@ -154,19 +154,20 @@ class WorkReportMenu:
     def create_work_request():
         pass
 
-    def create_maintenance_report():
+
+    def change_work_report():
         pass
 
-    def change_maintenance_report():
+    def mark_work_report_as_done():
         pass
 
-    def mark_meaitenance_or_work_report_as_ready_for_closing():
-        pass
-
-    def Accept_finished_maintenance_and_work_reports():
+    def Accept_finished_work_requests():
         pass
     
-    def View_work_and_maintenance_reports():
+    def View_work_reports():
+        pass
+  
+    def View_work_reports():
         pass
 
 

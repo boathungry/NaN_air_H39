@@ -75,9 +75,8 @@ class WorkRequestDL():
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                request = WorkRequest(row["id"],row["work_request"],row["location"],row["properties"],row["description"],row["worker"],row["priority"],row["repeat"],row["time"],row["start"],row["done"]) #ROWS ADDED
-                Request_dict = {"wreqid":request.id, "wreqwork_request":request.work_request, "wreqlocation":request.location, "wreqproperties":request.properties,"wreqdescription":request.description,"wreqworker":request.worker, "wreqpriority":request.priority, "wreqrepeat":request.repeat, "wreqtime":request.time, "wreqstart":request.start, "wreqdone":request.done}
-                print(request)
                 if row[attribute] == value:
+                    request = WorkRequest(row["id"],row["work_request"],row["location"],row["properties"],row["description"],row["worker"],row["priority"],row["repeat"],row["time"],row["start"],row["done"]) #ROWS ADDED
+                    Request_dict = {"wreqid":request.id, "wreqwork_request":request.work_request, "wreqlocation":request.location, "wreqproperties":request.properties,"wreqdescription":request.description,"wreqworker":request.worker, "wreqpriority":request.priority, "wreqrepeat":request.repeat, "wreqtime":request.time, "wreqstart":request.start, "wreqdone":request.done}
                     results_list.append(Request_dict)
-        return results_list
+            return results_list
