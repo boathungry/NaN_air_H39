@@ -81,3 +81,16 @@ class WorkRequestDL:
                     Request_dict = {"wreqid":request.id, "wreqwork_request":request.work_request, "wreqlocation":request.location, "wreqproperties":request.properties,"wreqdescription":request.description,"wreqworker":request.worker, "wreqpriority":request.priority, "wreqrepeat":request.repeat, "wreqtime":request.time, "wreqstart":request.start, "wreqdone":request.done}
                     results_list.append(Request_dict)
             return results_list
+
+    def get_all_location_names_wr(self):
+        '''Returns all location names in given filepath'''
+        return_list = []
+        with open(self.filepath, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                loct = row["location"]
+                if loct in return_list:
+                    pass
+                else:
+                    return_list.append(loct)
+        return return_list

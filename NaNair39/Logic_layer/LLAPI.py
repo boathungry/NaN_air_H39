@@ -117,3 +117,6 @@ class LLAPI():
     """def login_byID(self, idnumber):
         "logs user in with ID number"
         return DLAPI.login_by_ID(self, idnumber)"""
+    def list_of_location_names_wr(self):
+        """returns a list of all location names"""
+        return self.listing_handler.list_all_location_names_wr()
