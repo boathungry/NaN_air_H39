@@ -27,16 +27,16 @@ class LLAPI():
         return self.registration_handler.get_work_request_id_number()
 
     def get_open_work_report_list(self):
-        return self.listing_handler.list_all_work_reports_unsorted()
+        return self.listing_handler.list_all_open_work_reports_unsorted()
 
     def get_closed_work_report_list(self):
-        return self.listing_handler.list_all_work_reports_unsorted()
+        return self.listing_handler.list_all_closed_work_reports_unsorted()
 
     def get_open_work_request_list(self):
-        return self.listing_handler.list_all_work_requests_unsorted()
+        return self.listing_handler.list_all_open_work_requests_unsorted()
 
     def get_closed_work_request_list(self):
-        return self.listing_handler.list_all_work_requests_unsorted()
+        return self.listing_handler.list_all_closed_work_requests_unsorted()
 
     def change_employee(self, employee, attribute, new_value):
         """Changes an attribute of an employee to a new value. Returns the given attribute if successful, otherwise returns None."""
