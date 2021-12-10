@@ -2,7 +2,8 @@ import string
 from Logic_layer.LLAPI import LLAPI
 from Models.WorkRequestModel import WorkRequest
 import Data_layer.WorkRequestDL
-
+from Logic_layer.WorkRequestLL import WorkRequest
+from datetime import date
 
 class WorkReportMenu:
     def __init__(self, idnumber = "", name = "", email = "", location = "", title = "", logic_api:LLAPI = LLAPI()):
@@ -32,7 +33,7 @@ class WorkReportMenu:
         elif selection == "3":
             self.edit_work_request()
         elif selection == "4":
-            pass
+            self.mark_work_request_as_done()
         elif selection == "5":
             pass
         elif selection == "6":
@@ -101,23 +102,21 @@ class WorkReportMenu:
                         else:
                             location_check_on = False
                 elif fieldchange.lower() == "p":    
-                    address = input("What is the new property?: ")
-                elif fieldchange.lower() == "s":
-                    phone = input("What is the new size of the property?: ")
+                    properties = input("What is the new property?: ")
                 elif fieldchange.lower() == "d":
-                    cellphone = input("What is the new description?: ")
+                    description = input("What is the new description?: ")
                 elif fieldchange.lower() == "wo":
-                    cellphone = input("Who is the new worker?: ")
+                    worker = input("Who is the new worker?: ")
                 elif fieldchange.lower() == "pr":
-                    cellphone = input("What is the new priority?: ")
+                    priority = input("What is the new priority?: ")
                 elif fieldchange.lower() == "r":
-                    cellphone = input("Would you like to repeat (y/n)?: ")
+                    repeat = input("Would you like to repeat (y/n)?: ")
                 elif fieldchange.lower() == "t":
-                    cellphone = input("When would you like to repeat (none/daily/weekly/monthly/yearly)?: ")
+                    time = input("When would you like to repeat (none/daily/weekly/monthly/yearly)?: ")
                 elif fieldchange.lower() == "s":
-                    cellphone = input("What is the new start date?: ")
+                    start = input("What is the new start date?: ")
                 elif fieldchange.lower() == "do":
-                    cellphone = input("What is the new finished date?: ")
+                    done = input("What is the new finished date?: ")
                 else:
                     print("Invalid option put into selection field.")
                 editmore = input("Would you like to stop editing input [y] to commit changes and go back to the main menu, input [c] to cancel, input anything else to keep editing: ")
@@ -135,7 +134,7 @@ class WorkReportMenu:
                     results_final["wreqtime"] = time
                     results_final["wreqstart"] = start
                     results_final["wreqdone"] = done
-                    #Skrifa í skrá
+                    #Write to a file
                     init = Data_layer.WorkRequestDL.WorkRequestDL()
                     init.change_information_work_request(results_final)
                     #self.managers_menu()
@@ -267,6 +266,7 @@ class WorkReportMenu:
                     done_comma_check_on = True
                 while done_comma_check_on:
                     done = input("What is the finished date?: ")
+                    done = "Unknown"
                     comma_check = self.llapi.comma_checker(done)
                     if comma_check:
                         print("Please don't have a comma. It messes with our database")
@@ -414,8 +414,71 @@ class WorkReportMenu:
                         approved_comma_check_on = False
             counter +=1
 
-    def mark_work_report_as_done():
-        pass
+
+        #work_request_ID = input("What is the work request´s ID number you would like to mark as done?: ")
+       # Work_requestinfo = self.llapi.dict_search(WorkRequest,  attribute="id", value=work_request_ID)
+        #results = Work_requestinfo
+       # WorkRequest.mark_as_done(results)
+    
+    def mark_work_request_as_done(self):
+        print("Mark work request as done")
+        work_request_ID = input("What is the work request´s ID number?: ")
+        Work_requestinfo = self.llapi.dict_search(WorkRequest,  attribute="id", value=work_request_ID)
+        results = Work_requestinfo
+        if len(results) < 1:
+            print("No requests found with that ID")
+            return self.edit_work_request() 
+        else:
+            id = results[0]["wreqid"]
+            work_request = results[0]["wreqwork_request"]
+            location = results[0]["wreqlocation"]
+            properties = results[0]["wreqproperties"]
+            description = results[0]["wreqdescription"]
+            worker = results[0]["wreqworker"]
+            priority = results[0]["wreqpriority"]
+            repeat = results[0]["wreqrepeat"]
+            time = results[0]["wreqtime"]
+            start = results[0]["wreqstart"]
+            done = results[0]["wreqdone"]
+
+            print(f"ID number:      {id}")
+            print(f"Work request:   {work_request}")
+            print(f"Location:       {location}")
+            print(f"Properties:     {properties}")
+            print(f"Description:    {description}")
+            print(f"Worker:         {worker}")
+            print(f"Priority:       {priority}")
+            print(f"Repeat:         {repeat}")
+            print(f"Time:           {time}")
+            print(f"Start:          {start}")
+            print(f"Done:           {done}")
+
+            #Set done to today´s date
+            done = date.today()
+
+            editmore = input("Would you like to mark this work request as done on today´s date (y/n)?:  ")
+            if editmore == "y":
+                results_final = {}
+                results_final["wreqid"] = id
+                results_final["wreqwork_request"] = work_request
+                results_final["wreqlocation"] = location
+                results_final["wreqproperties"] = properties
+                results_final["wreqdescription"] = description
+                results_final["wreqworker"] = worker
+                results_final["wreqpriority"] = priority
+                results_final["wreqrepeat"] = repeat
+                results_final["wreqtime"] = time
+                results_final["wreqstart"] = start
+                results_final["wreqdone"] = done
+                #Write to a file
+                init = Data_layer.WorkRequestDL.WorkRequestDL()
+                init.change_information_work_request(results_final)
+                #self.managers_menu()
+            elif editmore == "n":
+                return True
+            else:
+                pass
+
 
     def accept_finished_work_reports():
         pass
