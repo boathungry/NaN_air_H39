@@ -27,7 +27,7 @@ class WorkReportMenu:
         print("q. Quit")
         selection = input("Input selection: ")
         if selection == "1":
-            pass
+            self.create_work_request()
         elif selection == "2":
             pass
         elif selection == "3":
