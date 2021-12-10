@@ -268,7 +268,7 @@ class ManagerUI:
 
     def staff_search(self):
         print("What paremeter would you like to search by?")
-        print("[I]D number, [n]ame, [e]mail, [l]ocation, [a]ddress, [p]hone, [c]ellphone, [t]itle")
+        print("[I]D number, [n]ame, [l]ocation, [a]ddress, [t]itle")
         print("Use [b] to go back to main menu and [q] to quit")
         search_attribute = input("Input search attribute: ")
         if search_attribute.lower() == "i":
@@ -290,16 +290,7 @@ class ManagerUI:
             else:
                 self.llapi.list_printer(Employeeinfo)
                 return True
-        elif search_attribute.lower() == "e":
-            employeeemail = input("What is the email you wish to search for?: ")
-            Employeeinfo = self.llapi.search(Employee,  attribute="email", value=employeeemail.lower())
-            print(len(Employeeinfo))
-            if len(Employeeinfo) < 1:
-                print("No results were found")
-                return self.staff_search()
-            else:
-                self.llapi.list_printer(Employeeinfo)
-                return True
+        
         elif search_attribute.lower() == "l":
             employeelocation = input("What is the location you wish to search for?: ")
             locationstring = string.capwords(employeelocation)
@@ -320,24 +311,7 @@ class ManagerUI:
             else:
                 self.llapi.list_printer(Employeeinfo)
                 return True
-        elif search_attribute.lower() == "p":
-            employeephone = input("What is the phone number you wish to search for? (use the format +00 00 00 00 00): ")
-            Employeeinfo = self.llapi.search(Employee,  attribute="phone", value=employeephone)
-            if len(Employeeinfo) < 1:
-                print("No results were found")
-                return self.staff_search()
-            else:
-                self.llapi.list_printer(Employeeinfo)
-                return True
-        elif search_attribute.lower() == "c":
-            employeegsm = input("What is the cellphone number you wish to search for(use the format +000 000 0000)?: ")
-            Employeeinfo = self.llapi.search(Employee,  attribute="cellphone", value=employeegsm)
-            if len(Employeeinfo) < 1:
-                print("No results were found")
-                return self.staff_search()
-            else:
-                self.llapi.list_printer(Employeeinfo)
-                return True
+        
         elif search_attribute.lower() == "t":
             employeetitle = input("Do you want to list all staff or managers?: ")
             Employeeinfo = self.llapi.search(Employee,  attribute="title", value=employeetitle.lower())
@@ -350,7 +324,7 @@ class ManagerUI:
         elif search_attribute.lower() == "b":
             return True
         elif search_attribute.lower() == "q":
-            pass
+            return False
         else:
             print("Not a valid attribute")
             return self.staff_search()

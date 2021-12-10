@@ -359,7 +359,6 @@ class WorkReportMenu:
         create_work_request_loop = True
         fieldchange = ""
         while create_work_request_loop:
-            print(counter)
             if counter != 0:
                 print("Is this the correct information?")
                 print(f"Work request: {work_request}")
@@ -417,8 +416,6 @@ class WorkReportMenu:
                             print("Please input an existing property ID.")
                         else:
                             is_it_there = self.llapi.is_it_there(properties, self.location)
-
-                            print(self.location)
                             if is_it_there:
                                 properties_comma_checkon = False
                             else:
@@ -433,20 +430,23 @@ class WorkReportMenu:
                     else:
                         description_comma_check_on = False
             if counter == 0 or counter !=0 and fieldchange == "wo":
-                worker_comma_check_on = True
-                while worker_comma_check_on: 
-                    worker = string.capwords(input("Who is the worker?: "))
-                    exists = self.llapi.list_all_employees_names()
-                    if worker not in exists:
-                        print("please make sure the worker exists")
-                    elif location.lower() == "all locations":
-                        worker_comma_check_on = False
-                    else:
-                        does_he_work_there = self.llapi.does_he_work_there(worker, self.location)
-                        if does_he_work_there:
+                if location == "All Locations":
+                    worker = "Any available"
+                else:
+                    worker_comma_check_on = True
+                    while worker_comma_check_on: 
+                        worker = string.capwords(input("Who is the worker?: "))
+                        exists = self.llapi.list_all_employees_names()
+                        if worker not in exists:
+                            print("please make sure the worker exists")
+                        elif location.lower() == "all locations":
                             worker_comma_check_on = False
                         else:
-                            print("Employee does not work there")
+                            does_he_work_there = self.llapi.does_he_work_there(worker, self.location)
+                            if does_he_work_there:
+                                worker_comma_check_on = False
+                            else:
+                                print("Employee does not work there")
             if counter == 0 or counter !=0 and fieldchange.lower() == "pr":
                 priority_comma_check_on = True
                 while priority_comma_check_on:
