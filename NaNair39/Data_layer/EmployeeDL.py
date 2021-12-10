@@ -128,9 +128,7 @@ class EmployeeDL:
     def does_he_work_there(self, employee, location):
         with open(self.filepath, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
-            print(employee, location)
             for row in reader:
-                print("name", row["name"], "row", row["location"])
                 if row["name"] == employee and row["location"] == location:
                     return True
             return False

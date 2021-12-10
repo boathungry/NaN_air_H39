@@ -180,7 +180,7 @@ class PropertyMenu:
             if comma_check:
                 print("Please don't have a comma in the managers name, it messes with our database")
             else:
-                airpcommaon = False
+                mancommaon = False
         createdestloop = True
         while createdestloop:
             print(f"City: {city}")
