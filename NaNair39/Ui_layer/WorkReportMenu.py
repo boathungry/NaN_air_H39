@@ -109,7 +109,7 @@ class WorkReportMenu:
             elif fieldchange.lower() == "pr":
                 cellphone = input("What is the new priority?: ")
             elif fieldchange.lower() == "r":
-                cellphone = input("Would you like to repeat (y/n)?: ")
+                cellphone = input("Would you like to repeat the work request(y/n)?: ")
             elif fieldchange.lower() == "t":
                 cellphone = input("When would you like to repeat (none/daily/weekly/monthly/yearly)?: ")
             elif fieldchange.lower() == "s":
