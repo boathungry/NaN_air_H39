@@ -39,8 +39,8 @@ class ManagerUI:
                 current_user = Ui_layer.PropertyMenu.PropertyMenu(self.idnumber, self.name, self.email, self.location, self.title)
                 on = current_user.location_options()
             elif selection == "3":
-                #current_user = Ui_layer.WorkReportMenu.WorkReportMenu(self.idnumber, self.name, self.email, self.location, self.title)
-                current_user = Ui_layer.WorkReportMenu.WorkReportMenu("", "", "", "", "", "", "", "", "", "", "")
+                current_user = Ui_layer.WorkReportMenu.WorkReportMenu(self.idnumber, self.name, self.email, self.location, self.title)
+                #current_user = Ui_layer.WorkReportMenu.WorkReportMenu("", "", "", "", "", "", "", "", "", "", "")
                 on = current_user.Work_report_manager_menu()
             elif selection == "4":
                 on = self.contractors_menu_man()

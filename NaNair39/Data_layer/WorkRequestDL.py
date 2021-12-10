@@ -1,7 +1,8 @@
 from Models.WorkRequestModel import WorkRequest
 import csv
 
-class WorkRequestDL():
+class WorkRequestDL:
+    
     def __init__(self):
         self.filepath = "csv_files/WorkRequests.csv"
 

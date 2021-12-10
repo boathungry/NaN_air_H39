@@ -86,9 +86,9 @@ class PropertyMenu:
         print("q. quit")
         selection = input("Input selection: ")
         if selection == "1":
-            pass
+            return self.create_property()
         elif selection == "2":
-            self.edit_property()
+            return self.edit_property()
         elif selection == "3":
             pass
         elif selection == "4":
@@ -273,7 +273,7 @@ class PropertyMenu:
 
     def edit_property(self):
         print("Change information about a property")
-        propertyID = input("What is the property´s ID number?: ")
+        propertyID = input("What is the propertys ID number?: ")
         print("input fyrir prop_id: ", propertyID)
         Propertyinfo = self.llapi.dict_search(Property,  attribute="idnumber", value=propertyID)
         results = Propertyinfo
@@ -440,3 +440,117 @@ class PropertyMenu:
         else:
             print("Not a valid attribute")
             return self.destination_search()
+
+    def create_property(self):
+        counter = 0
+        print("")
+        create_property_loop = True
+        fieldchange = ""
+        while create_property_loop:
+            print(counter)
+            if counter != 0:
+                print("Is this the correct information?")
+                print(f"IDnumber:  {idnumber}")
+                print(f"Name:      {name}")
+                print(f"Location:  {location}")
+                print(f"Address:   {address}")
+                print(f"Size:      {size}")
+                print(f"Rooms:     {rooms}")
+                rightorwrong = input("Is this information correct [y]es, [n]o, [c]ancel: ")
+                if rightorwrong.lower() == "y":
+                    create_property_loop = False
+                    self.llapi.create_property(idnumber, name, location, address, size, rooms)
+                    return True
+                elif rightorwrong.lower() == "c":
+                    create_property_loop = False
+                    fieldchange = ""
+                    return True
+                elif rightorwrong.lower() == "n":
+                    print("Select a field to change: [i]dnumber [n]ame, [l]ocation, [a]ddress, [s]ize, number of [r]ooms.")
+                    fieldchange = input("Input the letter of the field you wish to change: ")
+            if counter == 0 or counter !=0 and fieldchange.lower() == "i":
+                id_comma_check_on = True
+                while id_comma_check_on:
+                    idlist = self.llapi.get_all_property_ID()
+                    idnumber = input("What is the idnumber of the new property?: ").lower()
+                    comma_check = self.llapi.comma_checker(idnumber)
+                    number_of_ids = len(idlist)
+                    if idnumber in idlist:
+                        in_list_loop = True
+                        while in_list_loop:
+                            print("Id number is already taken, please use a different one.")
+                            list_ids = input(f"There are currently {number_of_ids} number of ids in use, would you like a list of them all? y/n?: ").lower()
+                            if list_ids == "y":
+                                whatkind = input("What format would you like: python [l]ist or [o]ne per line?: ").lower()
+                                if whatkind =="l":
+                                    print(idlist)
+                                    in_list_loop = False
+                                elif whatkind == "o":
+                                    self.llapi.list_printer(idlist)
+                                    in_list_loop = False
+                                else:
+                                    print("Invalid input!")
+                            elif list_ids == "n":
+                                in_list_loop = False
+                            else:
+                                print("invalid input")
+                        else:
+                            in_list_loop = False                   
+                    elif comma_check:
+                        print("Please don't have commas in the name, it messes with our database.")
+                    else:
+                            id_comma_check_on = False
+            if counter == 0 or counter !=0 and fieldchange.lower() == "n":
+                name_comma_check_on = True
+                while name_comma_check_on:
+                    name = string.capwords(input("What is the name of the new property?: "))
+                    comma_check = self.llapi.comma_checker(name)
+                    if comma_check:
+                        print("Please don't have commas in the name, it messes with our database.")
+                    else:
+                        name_comma_check_on = False
+            if counter == 0 or counter !=0 and fieldchange == "l":
+                print("")
+                available_locations = self.llapi.list_of_location_names()
+                location_checker_on = True
+                while location_checker_on:
+                    print("Available locations are as follows:")
+                    self.llapi.list_printer(available_locations)
+                    location = string.capwords(input("What location is the property in?: "))
+                    if string.capwords(location) not in available_locations:
+                        print("Not a valid location, please either create a new location or select an available one")
+                        quit = input("would you like to go [b]ack to the main menu to create a new destination. Any other input will go back to selecting destination: ")
+                        if quit.lower() == "b":
+                            return True
+                        else:
+                            pass  
+                    else:
+                        location_checker_on = False
+            if counter == 0 or counter !=0 and fieldchange == "a":            
+                address_comma_check_on = True
+                while address_comma_check_on:                  
+                    address = string.capwords(input("What is the address of the new property?: "))
+                    comma_check = self.llapi.comma_checker(address)
+                    if comma_check:
+                        print("Please don't have a comma in the address. It messes with our database")
+                    else:
+                        address_comma_check_on = False
+            if counter == 0 or counter !=0 and fieldchange == "s":
+                size_check_on = True
+                while size_check_on: 
+                    size = input("What is the size of the new property (use format xx.xm2)?: ")
+                    comma_check = self.llapi.comma_checker(size)
+                    if comma_check:
+                        print("Please don't have a comma in the phone number. It messes with our database")
+                    else:
+                        size_check_on = False
+            if counter == 0 or counter !=0 and fieldchange.lower() == "r":
+                rooms_int_check_on = True
+                while rooms_int_check_on:
+                    rooms = input("What is the number of rooms in the new property?: ")
+                    try:
+                        int(rooms)
+                        rooms_int_check_on = False
+                    except:
+                        print("Please only use whole numbers for the rooms")
+            counter +=1
