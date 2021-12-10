@@ -95,7 +95,7 @@ class DLAPI:
         '''Lists all work reports'''
         return self.reqDL.get_all_open_work_requests()
 
-    def get_all_closed_work_reports(self):
+    def get_all_closed_work_requests(self):
         '''Lists all work reports'''
         return self.reqDL.get_all_closed_work_requests()
 
