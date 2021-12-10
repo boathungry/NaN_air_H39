@@ -7,5 +7,5 @@ Skráðir starfsmenn hafa eftirfarandi login id:
 S002, S003, N005, N006, T008, T009
 Ekkert lykilorð, einungis þarf auðkenni starfsmanns til þess að skrá sig inn
 
-Hlekkur á kennslumyndband #
+Hlekkur á kennslumyndband # https://vimeo.com/655528034
 
